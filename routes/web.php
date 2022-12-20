@@ -17,5 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/notes', [\App\Http\Controllers\Notes\ListController::class, 'show']);
-Route::get('/notes/{id}', [\App\Http\Controllers\Notes\ListController::class, 'showId']);
+// ノート閲覧
+Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.showList');
+// ノート作成
+Route::get('/notes/create', [\App\Http\Controllers\NotesController::class, 'showForm']) -> name('notes.showForm');
+Route::post('/notes/create', [\App\Http\Controllers\NotesController::class, 'create']) -> name('notes.create');
