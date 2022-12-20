@@ -32,13 +32,14 @@
               </select>
             </div>
           </div>
-
           <div class="list--note">
             <ul class="list_body--note">
+
+            @foreach ($notes as $note)
               <li class="panel--note">
                 <img src="img/IMG_5131.JPG" class="panel_thumbnail" alt="">
                 <div class="panel_info">
-                  <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
+                  <h3 class="panel_title">{{ $note->title }}</h3>
                   <div class="userInfo">
                     <img src="img/プロフィールアイコン：有色.jpeg" class="userInfo_img" alt="">
                     <p class="userInfo_name">ユーザーネーム</p>
@@ -52,60 +53,7 @@
                   </div>
                 </div>
               </li>
-
-              <li class="panel--note">
-                <img src="img/6241759280_IMG_3459.JPG" class="panel_thumbnail" alt="">
-                <div class="panel_info">
-                  <h3 class="panel_title">熊本の、城とラーメンと人情と</h3>
-                  <div class="userInfo">
-                    <img src="img/noimage.png" class="userInfo_img" alt="">
-                    <p class="userInfo_name">ユーザーネーム</p>
-                  </div>
-                  <p class="panel_postDay">2002/08/06投稿</p>
-                  <div class="iconBox">
-                    <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                    <span class="iconBox_num">33</span>
-                    <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                    <span class="iconBox_num">2</span>
-                  </div>
-                </div>
-              </li>
-
-              <li class="panel--note">
-                <img src="img/6176658528_IMG_4498.JPG" class="panel_thumbnail" alt="">
-                <div class="panel_info">
-                  <h3 class="panel_title">いつか行ってみたいと思っていた熊本に行ってきました！</h3>
-                  <div class="userInfo">
-                    <img src="img/プロフィール.JPG" class="userInfo_img" alt="">
-                    <p class="userInfo_name">ユーザーネーム</p>
-                  </div>
-                  <p class="panel_postDay">2002/08/06投稿</p>
-                  <div class="iconBox">
-                    <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                    <span class="iconBox_num">33</span>
-                    <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                    <span class="iconBox_num">2</span>
-                  </div>
-                </div>
-              </li>
-
-              <li class="panel--note">
-                <img src="img/IMG_5506.JPG" class="panel_thumbnail" alt="">
-                <div class="panel_info">
-                  <h3 class="panel_title">タイトル</h3>
-                  <div class="userInfo">
-                    <img src="img/noimage.png" class="userInfo_img" alt="">
-                    <p class="userInfo_name">ユーザーネーム</p>
-                  </div>
-                  <p class="panel_postDay">2002/08/06投稿</p>
-                  <div class="iconBox">
-                    <i class="fa-solid fa-bookmark fa-lg icon icon--bookmark active"></i>
-                    <span class="iconBox_num">33</span>
-                    <i class="fa-regular fa-comment-dots fa-lg icon"></i>
-                    <span class="iconBox_num">2</span>
-                  </div>
-                </div>
-              </li>
+            @endforeach
 
             </ul>
           </div>
