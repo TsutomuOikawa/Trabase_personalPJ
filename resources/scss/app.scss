@@ -1,0 +1,1384 @@
+/*====================
+ 変数
+====================*/
+$siteColor: #2f393a;
+$siteColor-base: #d9d9d9;
+$siteColor-sub: #304848;
+$siteColor-note: #fcfaf2;
+$siteColor-accent: #ae9600;
+$siteColor-accent-hover: #ff9f58;
+$siteColor-err: #ff6565;
+
+$fontSize-sss: 10px;
+$fontSize-ss: 13px;
+$fontSize-s: 15px;
+$fontSize-default: 16px;
+$fontSize-m: 18px;
+$fontSize-l: 20px;
+$fontSize-xl: 24px;
+$fontSize-xxl: 30px; //container_title
+$fontSize-xxxl: 36px;
+
+$fontColor-default: #333333;
+$fontColor-sub: #898989;
+
+$color-white: #f3f3f3;
+$color-black: #0e0e0e;
+
+$space-xxs: 5px;
+$space-xs: 10px;
+$space-s: 15px;
+$space-m: 20px;
+$space-l: 30px;
+$space-xl: 40px;
+$space-xxl: 50px;
+
+%imgSize-xs {
+  width: 210px;
+  height: 140px;
+}
+%imgSize-s {
+  width: 270px;
+  height: 180px;
+}
+%imgSize-l {
+  width: 540px;
+  height: 360px;
+}
+
+$breakpoint: (
+  'SP': 'screen and (max-width: 430px)',
+  'TAB': 'screen and (max-width: 1024px)'
+) !default;
+
+@mixin mqSP() {
+  @media #{map-get($breakpoint, 'SP')} {
+    @content;
+  }
+}
+
+@mixin mqTAB() {
+  @media #{map-get($breakpoint, 'TAB')}{
+    @content;
+  }
+}
+%contents-wrapper {
+  padding: $space-xl $space-xxl;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  @include mqSP() {
+    padding: $space-l $space-s;
+  }
+}
+%subTitle {
+  font-weight: bold;
+  font-size: $fontSize-xl;
+  text-align: center;
+  padding-bottom: $space-m;
+  @include mqSP () {
+    font-size: $fontSize-l;
+    padding-bottom: $space-s;
+  }
+}
+
+/*====================
+ ベース
+====================*/
+html,
+body {
+  width: 100%;
+  color: $fontColor-default;
+  font-size: $fontSize-default;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  background-color: $siteColor;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+input, textarea, select {
+  padding: $space-xxs $space-xs;
+  border: none;
+  box-sizing: border-box;
+  background: none;
+}
+ul {
+  list-style: none;
+}
+
+/*====================
+ ヘッダー
+====================*/
+.header {
+  height: 70px;
+  box-shadow: 0 1px 3px $siteColor-base;
+  background: $siteColor-sub;
+  color: $color-white;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 1s;
+  &.active {
+    background: rgba($color-black, .1);
+  }
+  &-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_logo {
+    padding-right: 78px;
+    font-size: $fontSize-xxxl;
+    font-weight: bold;
+  }
+  &_form {
+    width: 500px;
+    height: 40px;
+    padding: 0 $space-l;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: rgba($color-white, .3);
+    box-shadow: 0 0 5px $siteColor;
+    display: flex;
+    align-items: center;
+    transition: all 1s;
+    &.nonactive {
+      opacity: 0;
+    }
+  }
+  &_input{
+    width: 47%;
+    height: 90%;
+    font-size: 15px;
+    color: $color-white;
+    text-shadow: 0 0 5px $siteColor;
+    &::placeholder {
+      color: rgba($color-white, .8)
+    }
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid white;
+    }
+    &:first-child {
+      border-right: 1px solid rgba($color-white, .8);
+    }
+  }
+  &_submit {
+    width: 6%;
+    height: 100%;
+    background: none;
+    color: $color-white;
+  }
+  &_humburger {
+    display: none;
+    height: 44px;
+    width: 50px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    transition: all .4s;
+    & span {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      height: 4px;
+      background: $color-white;
+      &:nth-of-type(1) {
+        top: 0;
+      }
+      &:nth-of-type(2) {
+        top: 20px;
+      }
+      &:nth-of-type(3) {
+        bottom: 0;
+      }
+    }
+  }
+  &_menu {
+    &.active {
+      right: 0;
+    }
+  }
+}
+
+@include mqSP() {
+  .header {
+    &-wrapper {
+      padding: $space-xxs;
+      box-sizing: border-box;
+      position: relative;
+    }
+    &_logo {
+      padding-right: 0;
+    }
+    &_form {
+      display: none;
+    }
+    &_humburger {
+      display: inline-block;
+    }
+    &_menu {
+      width: 100%;
+      padding: 70px $space_l $space-s;
+      box-sizing: border-box;
+      background: rgba(48, 72, 72, .8);
+      position: absolute;
+      top: 0;
+      right: -100%;
+      transition: 1.5s;
+    }
+  }
+}
+
+// メニュー
+.menu {
+  display: flex;
+  &_item {
+    width: 100px;
+    text-align: center;
+    &:hover {
+      background: rgba($color-black, 0.5);
+    }
+    &:last-child {
+      background: $siteColor-accent;
+      color: $color-white;
+      &:hover {
+        background: $siteColor-accent-hover;
+      }
+    }
+    &--sp {
+      @extend .menu_item;
+      display: none;
+      @include mqSP () {
+        display: block;
+      }
+    }
+    &_link {
+      line-height: 70px;
+      display: block;
+    }
+  }
+}
+
+@include mqSP() {
+  .menu {
+    flex-direction: column;
+    &_item {
+      width: 100%;
+      &--sp {
+        display: block;
+      }
+    }
+  }
+}
+
+/*====================
+ フッター
+====================*/
+.footer{
+  height: 150px;
+  background: $siteColor;
+  color: $color-white;
+  &_copyright {
+    text-align: center;
+    padding-top: 150px;
+    display: block;
+    br {
+      display: none;
+    }
+  }
+}
+
+@include mqSP() {
+  .footer {
+    &_copyright {
+      br {
+        display: inline;
+      }
+    }
+  }
+}
+
+/*====================
+ 共通コンテナ
+====================*/
+.page-wrapper {
+  margin-top: 70px;
+}
+.container {
+  color: $color-white;
+  padding: 80px 0 100px;
+  text-align: center;
+  &--baseColor {
+    @extend .container;
+    background: $siteColor-base;
+    color: $fontColor-default;
+  }
+  &--subColor {
+    @extend .container;
+    background: $siteColor-sub;
+  }
+  &--note {
+    @extend .container;
+    background-blend-mode: darken;
+    background-color: rgba($color-black, .4);
+    background-image: url('../img/woody-background.JPG');
+    background-position: left;
+    background-repeat: repeat;
+    background-size: 100% 60%;
+  }
+  &_title {
+    font-size: $fontSize-xxl;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    &::before {
+      content: '';
+      font-size: 60px;
+      top: -45px;
+      letter-spacing: 0.08em;
+      opacity: 0.2;
+      position: absolute;
+      right: 0;
+      left: 0;
+    }
+  }
+  &_notion {
+    br {
+      display: none;
+    }
+  }
+  &_body {
+    max-width: 1000px;
+    padding: 0 $space-xs;
+    box-sizing: border-box;
+    margin: $space-xl auto 0;
+    &--xs {
+      @extend .container_body;
+      max-width: 35%;
+    }
+    &--s {
+      @extend .container_body;
+      width: 70%;
+    }
+    &--l {
+      @extend .container_body;
+      max-width: 1220px;
+    }
+    &--2col {
+      display: flex;
+        justify-content: space-between;
+    }
+    &--carousel {
+      display: flex;
+      overflow: hidden;
+    }
+  }
+}
+
+@include mqSP() {
+  .container {
+    &--note {
+      background-size: 100% 15%;
+    }
+    &_title {
+      font-size: $fontSize-xl;
+    }
+    &_notion {
+      br {
+        display: inline;
+      }
+    }
+    &_body {
+      &--xs {
+        max-width: 100%;
+      }
+      &--s {
+        width: 100%;
+      }
+    }
+  }
+}
+/*====================
+ index.php
+====================*/
+.firstView {
+  height: 900px;
+  background-image: url('../img/IMG_9461.JPG');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  &_container {
+    opacity: 0.6;
+    text-align: center;
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+  }
+  &_title {
+    padding-bottom: $space-m;
+    color: $color-white;
+    font-size:$fontSize-xxxl;
+    br {
+      display: none;
+    }
+  }
+}
+.map {
+  overflow: hidden;
+  position: relative;
+  &>.container_title::before {
+    content: 'Where will you visit next ?';
+  }
+}
+.imgSlider {
+  width: 100%;
+  border-top: 1px solid $color-white;
+  padding: $space-xs 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  &_list {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  &_item {
+    padding: 0 $space-xs;
+  }
+  &_img {
+    @extend %imgSize-xs;
+  }
+}
+#about > .container_title::before {
+  content: 'About';
+}
+#search > .container_title::before {
+  content: 'Search';
+}
+
+@include mqSP() {
+  .firstView {
+    &_title {
+      span {
+        display: none;
+      }
+      br {
+        display: inline;
+      }
+    }
+  }
+  .map {
+    display: none;
+  }
+}
+/*====================
+ index.php > feature
+====================*/
+.features-wrapper {
+  @extend %contents-wrapper;
+  padding: $space-xl $space-xxl;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}
+.feature {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: $space-xxl;
+  &:last-child {
+    padding-bottom: 0;
+  }
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+  &_img {
+    @extend %imgSize-l;
+  }
+  &_description {
+    width: 35%;
+    box-sizing: border-box;
+  }
+  &_title {
+    @extend %subTitle;
+  }
+}
+
+@include mqSP() {
+  .features-wrapper {
+    padding: 0;
+    box-shadow: none;
+  }
+  .feature {
+    flex-direction:column;
+    &--reverse {
+      flex-direction: column;
+    }
+    &_img {
+      width: 270px;
+      height: 180px;
+      padding-bottom: $space-xs;
+    }
+    &_description {
+      width: 100%;
+    }
+  }
+}
+
+/*====================
+ prefectures.php > information
+====================*/
+.information {
+  &_orderItems {
+    display: flex;
+      justify-content: space-around;
+      align-items: center;
+    margin-top: $space-l;
+  }
+  &_now {
+    height:400px;
+    margin: $space-s 0;
+    width:400px;
+  }
+  &_map {
+    height:400px;
+    margin: $space-s 0;
+    width:400px;
+  }
+}
+
+@include mqSP() {
+  .information {
+    &_orderItems {
+      flex-direction: column;
+    }
+    &_now {
+      height: 200px;
+      width: 300px;
+    }
+    &_map {
+      height: 200px;
+      width: 300px;
+    }
+  }
+}
+
+/*====================
+ prefectures.php > changeDestination
+====================*/
+.changeDestination {
+  position: relative;
+  z-index: 3;
+  &::after {
+    content: '';
+    background-attachment: fixed;
+    background-blend-mode: lighten;
+    background-color: rgba(255, 255, 255, .1);
+    background-image: url('../img/IMG_5228.JPG');
+    background-position: center;
+    background-size: cover;
+    height: 60%;
+    position: absolute;
+      top: 40%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    z-index: -100;
+  }
+}
+
+/*====================
+ note
+====================*/
+.note {
+  @extend %contents-wrapper;
+  background: rgba($siteColor-base, .8);
+  color: $fontColor-default;
+  margin-bottom: $space-m;
+  width: 100%;
+  &-wrapper {
+    margin-left: 18%;
+    width: 60%;
+  }
+  &_thumbnail {
+    border-radius: 4px 4px 0 0;
+    display: none;
+    height: 200px;
+    margin: -30px -15px $space-s;
+    width: calc(100% + 30px);
+  }
+  &_subInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &_text {
+    margin-top: $space-m;
+    padding: $space-xxs;
+  }
+}
+
+@include mqSP() {
+  .note {
+    &-wrapper {
+      margin-left: 0;
+      width: 100%;
+    }
+    &_thumbnail {
+      display: block;
+    }
+  }
+}
+
+.comments {
+  @extend %contents-wrapper;
+  background: rgba($siteColor-base, .8);
+  color: $fontColor-default;
+  &_list {
+    margin-bottom: $space-m;
+  }
+  &_item {
+    border-bottom: 1px solid $siteColor;
+    padding: $space-xxs;
+  }
+  &_text {
+    font-size: $fontSize-s;
+  }
+  &_posting {
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: $space-xs;
+    width: 100%;
+  }
+}
+
+@include mqSP() {
+  .comments {
+    &_list {
+    }
+    &_item {
+    }
+    &_text {
+      font-size: $fontSize-ss;
+    }
+    &_posting {
+    }
+  }
+}
+
+.userInfo {
+  display: flex;
+    align-items: center;
+  margin-bottom: $space-xxs;
+  &--big {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  &_img {
+    border-radius: 100%;
+    height: 35px;
+    margin-right: $space-xs;
+    width: 35px;
+    &--big {
+      height: 100px;
+      padding-bottom: $space-xxs;
+      width: 100px;
+    }
+  }
+  &_name {
+    font-size: $fontSize-s;
+    &--big {
+      font-size: $fontSize-default;
+      font-weight: bold;
+    }
+  }
+}
+
+@include mqSP() {
+  .userInfo {
+    margin-bottom: $space-xxs;
+    &--big {
+      align-items: center;
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+    &_img {
+      &--big {
+        height: 35px;
+        padding-bottom: 0;
+        width: 35px;
+      }
+    }
+    &_name {
+      font-size: $fontSize-ss;
+    }
+  }
+}
+
+.iconBox {
+  color: $fontColor-sub;
+  display: flex;
+    align-items: center;
+  padding-top: $space-xs;
+  &_num {
+    padding: 0 $space-xs 0 $space-xxs;
+  }
+}
+
+.icon {
+  cursor: pointer;
+  &--bookmark {
+    &.active {
+      color: #487878;
+    }
+  }
+}
+
+/*====================
+ noteList
+====================*/
+.searchMenu {
+  line-height: 1;
+  &_item {
+    display: flex;
+      align-items: center;
+      justify-content: space-between;
+    padding-bottom: $space-s;
+  }
+  &_sort {
+    display: flex;
+    p {
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &_appearNum {
+    padding: $space-xxs;
+  }
+}
+@include mqSP() {
+  .searchMenu {
+    &_item {
+      &:last-child {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+      }
+    }
+    &_appearNum {
+      margin-bottom: $space-s;
+    }
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  text-align: left;
+  &-wrapper {
+    width: 980px;
+    position: absolute;
+      top: 120px;
+      left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+  }
+  &_note {
+    background: rgba($siteColor-base, .8);
+    border-radius: 4px;
+    margin-bottom: $space-m;
+  }
+  &_thumbnail {
+     border-radius: 4px 4px 0 0;
+     height: 250px;
+     position: relative;
+     &::before {
+       content: '';
+       background-image: url('../img/IMG_5131.JPG');
+       background-position: center;
+       background-size: cover;
+       border-radius: 4px 4px 0 0;
+       position: absolute;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+    }
+  }
+  &_body {
+    color: $fontColor-default;
+    display: flex;
+    padding: $space-s;
+  }
+  &_outline {
+    border-left: 1px solid $fontColor-default;
+    box-sizing: border-box;
+    display: flex;
+      flex-direction: column;
+    max-width: 50%;
+    min-width: 50%;
+    padding: $space-xs;
+  }
+  &_chapter {
+    display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+    padding-bottom: $space-xxs;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  &_beginning {
+    font-size: $fontSize-s;
+    height: 20px;
+    overflow: hidden;
+  }
+  &_form {
+    width: 50%;
+    margin-bottom: $space-m;
+    p {
+      font-size: $fontSize-l;
+      font-weight: bold;
+      margin-bottom: $space-s;
+    }
+  }
+  &_action {
+    color: $color-white;
+    cursor: pointer;
+    font-size: $fontSize-l;
+    margin-top: $space-xs;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &_cover {
+    background: rgba($color-black, .9);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@include mqSP() {
+  .modal {
+    display: none;
+    &-wrapper {
+      width: 90%;
+        top: 100px;
+    }
+    &_note {
+      margin-bottom: $space-xs;
+    }
+    &_thumbnail {
+      height: 150px;
+    }
+    &_body {
+      padding: $space-xxs;
+    }
+    &_outline {
+      padding: $space-xs;
+    }
+    &_chapter {
+      font-size: $fontSize-s;
+      padding-bottom: $space-xxs;
+    }
+    &_beginning {
+      font-size: $fontSize-sss;
+      height: 40px;
+    }
+    &_form {
+      width: 100%;
+      margin-bottom: $space-xs;
+    }
+    &_action {
+      font-size: $fontSize-s;
+    }
+  }
+}
+
+/*====================
+ mypage
+====================*/
+.mypage {
+  background: rgba($siteColor-base, .7);
+  border-radius: 4px;
+  color: $fontColor-default;
+  margin-bottom: $space_l;
+  padding: $space-xs $space-xxs;
+  width: 78%;
+  &_nav {
+    display: flex;
+    font-size: $fontSize-m;
+    padding: 0 0 $space-m $space-xs;
+    span {
+      background: $fontColor-default;
+    }
+  }
+  &_article {
+    display: flex;
+    overflow-x: scroll;
+    section {
+      min-width: 100%;
+    }
+  }
+  &_title {
+    @extend %subTitle;
+  }
+  &_body {
+    min-width: 100%;
+  }
+
+}
+
+@include mqSP() {
+  .mypage {
+    width: 100%;
+    &_nav {
+      font-size: $fontSize-s;
+    }
+  }
+}
+
+/*====================
+ sidebar
+====================*/
+.sidebar {
+  background: rgba($siteColor-base, .7);
+  border-radius: 4px;
+  height: 100%;
+  margin-left: 1%;
+  width: 23%;
+  &_thumbnail {
+    border-radius: 4px 4px 0 0;
+    height: 200px;
+  }
+  &_contents {
+    color: $fontColor-default;
+    padding: $space-xs;
+    text-align: left;
+  }
+  &_profile {
+    color: $fontColor-default;
+    margin-bottom: $space-xs;
+  }
+  &_chapters {
+    margin-bottom: $space-xs;
+    padding: $space-xxs ;
+  }
+}
+
+@include mqSP() {
+  .sidebar {
+    border-radius: 0;
+    height: auto;
+    margin-left: 0;
+    position: fixed;
+      top: 70px;
+      left: 0;
+    width: 100%;
+    &_thumbnail {
+      display: none;
+    }
+    &_contents {
+      padding: $space-xxs $space-xs;
+    }
+    &_profile {
+      margin-bottom: 0;
+    }
+    &_menu {
+      display: none;
+    }
+    &_chapters {
+      display: none;
+    }
+  }
+}
+/*====================
+ list
+====================*/
+.list {
+  @extend %contents-wrapper;
+  padding-top: $space-m;
+  &--note {
+    @extend .list;
+    padding: $space-s 0;
+  }
+  &--wish {
+  }
+  &--destination {
+    @extend .list;
+    .list_title {
+      text-align: left;
+    }
+  }
+  &_title {
+    @extend %subTitle;
+    &--destination {
+      @extend .list_title;
+      text-align: center;
+    }
+  }
+  &_body {
+    display: flex;
+    flex-wrap: wrap;
+    &--wish {
+      background: rgba($siteColor-base, .2);
+      box-sizing: border-box;
+      height: 300px;
+      overflow-y: auto;
+      padding: $space-s;
+      width: 100%;
+    }
+    &--note {
+      @extend .list_body;
+      justify-content: space-around;
+      margin-left: -10px;
+    }
+    &--destination {
+      @extend .list_body;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      margin: 0 -10px $space-l 0;
+      overflow-x: auto;
+    }
+  }
+}
+
+@include mqSP() {
+  .list {
+    flex-direction: column;
+    padding: 0 0 $space-l;
+    &_body {
+      &--note {
+          flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+    }
+  }
+}
+
+/*====================
+ panel
+====================*/
+.panel {
+  border-radius: 4px;
+  color: $fontColor-default;
+  position: relative;
+  &--note {
+    @extend .panel;
+    background: rgba(252, 250, 242, .8);
+    height: 330px;
+    margin: 0 0 $space-s $space-xxs;
+    width: 220px;
+  }
+  &_thumbnail {
+    border-radius: 4px 4px 0 0;
+    box-sizing: border-box;
+    height: 45%;
+  }
+  &_info {
+    box-sizing: border-box;
+    height: auto;
+    padding: $space-xs;
+    text-align: left;
+    width: 100%;
+  }
+  &_title {
+    @extend %subTitle;
+    font-size: $fontSize-m;
+    max-height: 55px;
+    margin-bottom: $space-xxs;
+    overflow: hidden;
+    padding-bottom: 0;
+    text-align: left;
+  }
+  &_postDay{
+    color: $fontColor-sub;
+    font-size: $fontSize-ss;
+  }
+  &--wish {
+    @extend .panel;
+    background: $color-white;
+    box-sizing: border-box;
+    display: flex;
+      align-items: center;
+      justify-content: space-between;
+    margin-bottom: $space-xxs;
+    padding: $space-xs $space-s;
+    width: 100%;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &::after {
+      content: '\f004';
+      color: $fontColor-sub;
+      font-family: "Font Awesome 6 Free";
+      font-size: $fontSize-xl;
+      font-weight: 900;
+      position: absolute;
+      right: 15px;
+    }
+  }
+  &_table {
+    margin-right: 25px;
+    width: 70%;
+    tbody {
+      display: flex;
+        align-items: center;
+    }
+  }
+  &_tableElm {
+    &:first-child {
+      width: 30%;
+    }
+    th {
+      color: $fontColor-sub;
+      font-size: $fontSize-ss;
+      padding-right: $space-xs;
+    }
+    td {
+      font-size: $fontSize-m;
+    }
+  }
+  &--destination {
+    @extend .panel;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    height: 120px;
+    margin: 0 $space-xs $space-xs 0;
+    min-width: 20%;
+  }
+  &_destImg {
+    border-radius: 4px;
+    height: 100%;
+  }
+  &_destCover {
+    background: rgba($color-black, .9);
+    border-radius: 4px;
+    position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    transition: 1s;
+  }
+  &_destName {
+    color: $color-white;
+    font-size: $fontSize-xl;
+    position: absolute;
+      top: 50%;
+      left: 50%;
+    transform: translate(-50%, -40%);
+  }
+}
+
+@include mqSP() {
+  .panel {
+    &--note {
+      height: 300px;
+      min-width: 180px;
+    }
+    &_title {
+      font-size: $fontSize-s;
+      max-height: 45px;
+    }
+    &--wish {
+      align-items: flex-start;
+      flex-direction: column;
+      &::after {
+        top: 8px;
+      }
+    }
+    &_table {
+      width: 100%;
+    }
+    &_tableElm {
+      display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+      &:first-child {
+        width: 25%;
+      }
+      td {
+        font-size: $fontSize-s;
+      }
+    }
+    &--destination {
+      height: auto;
+      min-width: 35%;
+    }
+    &_destName {
+      font-size: $fontSize-s;
+    }
+  }
+}
+
+/*====================
+ form
+====================*/
+.form {
+  @extend %contents-wrapper;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  text-align: center;
+  &--carousel {
+    box-shadow: none;
+    margin-right: 10px;
+    min-width: 100%;
+  }
+  &_title {
+    @extend %subTitle;
+    color: $fontColor-default;
+    padding-bottom: $space-xl;
+  }
+  &_name {
+    margin-bottom: $space-xxs;
+    display: flex;
+    align-items: center;
+  }
+  &_label {
+    padding: 2px 3px;
+    border-radius: 2px;
+    margin-right: $space-xxs;
+    font-size: $fontSize-ss;
+    color: #fff;
+    &--required {
+      background: $siteColor-err;
+    }
+    &--optional {
+      background: $siteColor-base;
+    }
+  }
+  &_input {
+    height: 45px;
+    width: 100%;
+    border-radius: 3px;
+    background: $siteColor-base;
+    &:focus-visible {
+      outline: none;
+    }
+    &:focus {
+      border: 2px solid $siteColor-sub;
+    }
+  }
+  &_date {
+    display: flex;
+      align-items: flex-end;
+  }
+  &_button {
+    width: 45%;
+    padding: $space-xs 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: $space-s 0;
+    background: $siteColor-accent;
+    box-shadow: 0 4px 1px #552808;
+    font-size: $fontSize-m;
+    color: $color-white;
+    letter-spacing: 0.05em;
+    transition: .1s;
+    &:hover {
+      background: $siteColor-accent-hover;
+    }
+    &:active {
+      box-shadow: none;
+      transform: translateY(4px);
+    }
+  }
+  &_errMsg {
+    height: 15px;
+    margin-bottom: $space-s;
+    font-size: $fontSize-ss;
+    color: $siteColor-err;
+  }
+  &_notion {
+    margin-top: $space-xs;
+    text-align: right;
+  }
+}
+
+@include mqSP() {
+  .form {
+    &_date {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}
+
+/*====================
+  ウィッシュリスト
+====================*/
+.followingBtn {
+  background: #487878;
+  border-radius: 40px;
+  box-shadow: 0 8px $color-black;
+  box-sizing: border-box;
+  color: $color-white;
+  cursor: pointer;
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+  font-size: $fontSize-s;
+  font-weight: bold;
+  height: 50px;
+  padding: $space-xs;
+  position: fixed;
+    right: 50px;
+    bottom: 50px;
+  width: 120px;
+}
+
+@include mqSP() {
+  .followingBtn {
+    box-shadow: 0 5px $color-black;
+    font-size: $fontSize-ss;
+    height: 40px;
+    padding: $space-xxs;
+      right: 10px;
+    width: 95px;
+  }
+}
+
+/*====================
+  ピンポイントアイテム
+====================*/
+.smallfont {
+  font-size: $fontSize-ss;
+  letter-spacing: 0.01em;
+}
+
+.link{
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.itemSeparater {
+  background: $color-white;
+  margin: 0 $space-xs;
+  width: 1px;
+}
