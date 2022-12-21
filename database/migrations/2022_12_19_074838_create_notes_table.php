@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id('note_id');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('pref_id');
+            $table->foreign('pref_id')->references('pref_id')->on('prefectures');
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();
@@ -30,6 +32,10 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('notes', function (Blueprint $table) {
+          $table->dropForeign('notes_user_id_foreign');
+          $table->dropForeign('notes_pref_id_foreign');
+        });
         Schema::dropIfExists('notes');
     }
 };
