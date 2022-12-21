@@ -44,7 +44,7 @@
                 旅先
               </div>
               <select name="pref_id" class="form_input" value="">
-                <option value="">北海道</option>
+                <option value="1">北海道</option>
               </select>
             </label>
             @error('pref_id')
