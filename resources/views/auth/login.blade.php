@@ -8,7 +8,6 @@
         <div class="container_body--xs">
           <form method="POST" action="{{ route('login') }}" class="form">
           @csrf
-          <h2 class="form_title">ご登録情報を入力してください</h2>
             <label>
               <div class="form_name">
                 <span class="form_label form_label--required">必須</span>
@@ -30,13 +29,12 @@
 
             <label>
               <div class="form_notion">
-                <input type="checkbox" name="remember" value="">
-                <span class="smallfont">{{ __('Remember me') }}</span>
+                <input type="checkbox" name="remember" value="">ログイン状態を保存する
               </div>
             </label>
             <button type="submit" class="form_button" name="">ログインする</button>
-            <p class="form_notion"><a href="passRemindSend.php" class="link"><span style="font-size:18px;">&gt</span> パスワードをお忘れの方はこちら</a></p>
-            <p class="form_notion"><a href="register.php" class="link"><span style="font-size:18px;">&gt</span> ご登録がお済みでない方はこちら</a></p>
+            <p class="form_notion"><a href="passRemindSend.php" class="link">&gt パスワードをお忘れの方はこちら</a></p>
+            <p class="form_notion"><a href="{{ route('register') }}" class="link">&gt ご登録がお済みでない方はこちら</a></p>
           </form>
         </div>
       </div>
