@@ -10,4 +10,10 @@ class Note extends Model
     use HasFactory;
 
     protected $primaryKey = 'note_id';
+
+    protected $fillable = [
+      'user_id',
+      'pref_id',
+      'title',
+    ];
 }

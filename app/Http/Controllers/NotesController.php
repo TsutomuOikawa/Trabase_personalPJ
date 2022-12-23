@@ -13,19 +13,27 @@ class NotesController extends Controller
   {
     $notes = Note::all();
     return view('notes.list')
-      -> with('notes', $notes);
+      ->with('notes', $notes);
   }
   // ノート検索
+
 
   // ノートフォーム
   public function showForm()
   {
     return view('notes.form');
   }
+  // ノート投稿
   public function create(CreateRequest $request)
   {
-
+    $note = new Note;
+    // todo:note筆者のユーザーIDも格納
+    $note->fill($request->note())->save();
+    return redirect()->route('notes.showList')->with('flash_message', __('Registerd.'));
+  }
+  // ノート編集
+  public function edit()
+  {
 
   }
-
 }
