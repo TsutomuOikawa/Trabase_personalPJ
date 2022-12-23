@@ -22,9 +22,9 @@ Route::get('/', function () {
  Route::get('/prefecture/', \App\Http\Controllers\PrefectureController::class) -> name('prefectures');
 
 // ノート一覧画面
-Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.showList');
+Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.list');
 // ノート詳細閲覧
-
+Route::get('/notes/article', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.detail');
 
 
 
