@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ホーム画面
 Route::get('/', function () {
     return view('index');
 });
+// 都道府県別ページ
+ Route::get('/prefecture/', \App\Http\Controllers\PrefectureController::class) -> name('prefectures');
+
+// ノート一覧画面
+Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.showList');
+// ノート詳細閲覧
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,6 +43,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// ノート閲覧
-Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.showList');
