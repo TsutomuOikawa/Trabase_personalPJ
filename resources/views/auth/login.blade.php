@@ -1,47 +1,44 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.app')
+@section('title', 'ログイン｜Trabase(トラベス)')
+@section('content')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+    <main class="page-wrapper">
+      <div class="container--baseColor">
+        <h1 class="container_title">ログイン</h1>
+        <div class="container_body--xs">
+          <form method="POST" action="{{ route('login') }}" class="form">
+          @csrf
+          <h2 class="form_title">ご登録情報を入力してください</h2>
+            <label>
+              <div class="form_name">
+                <span class="form_label form_label--required">必須</span>
+                メールアドレス
+              </div>
+              <input type="text" name="email" class="form_input @error('email') form_input--err @enderror" value="" placeholder="example@test.com">
             </label>
-        </div>
+            <p class="form_errMsg">@error('email') {{ $message }} @enderror</p>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <label>
+              <div class="form_name">
+                <span class="form_label form_label--required">必須</span>
+                パスワード
+                <span class="smallfont">（半角英数字6文字以上）</span>
+              </div>
+              <input type="password" name="password" class="form_input @error('password') form_input--err @enderror" value="">
+            </label>
+            <p class="form_errMsg">@error('password') {{ $message }} @enderror</p>
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <label>
+              <div class="form_notion">
+                <input type="checkbox" name="remember" value="">
+                <span class="smallfont">{{ __('Remember me') }}</span>
+              </div>
+            </label>
+            <button type="submit" class="form_button" name="">ログインする</button>
+            <p class="form_notion"><a href="passRemindSend.php" class="link"><span style="font-size:18px;">&gt</span> パスワードをお忘れの方はこちら</a></p>
+            <p class="form_notion"><a href="register.php" class="link"><span style="font-size:18px;">&gt</span> ご登録がお済みでない方はこちら</a></p>
+          </form>
         </div>
-    </form>
-</x-guest-layout>
+      </div>
+    </main>
+@endsection
