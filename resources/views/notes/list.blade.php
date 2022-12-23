@@ -1,15 +1,6 @@
-
-<!DOCTYPE html>
-<html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="alert--err js-show-err-msg">
-      <p><?php //echo $err_msg['common']; ?></p>
-    </div>
-
+@extends('layouts.app')
+@section('title', 'ノート一覧｜ Trabase（トラベス）')
+@section('content')
     <main class="page-wrapper">
       <div class="container--note">
         <h1 class="container_title">書庫</h1>
@@ -37,11 +28,11 @@
 
             @foreach ($notes as $note)
               <li class="panel--note">
-                <img src="img/IMG_5131.JPG" class="panel_thumbnail" alt="">
+                <img src="{{ asset('img/IMG_5131.JPG') }}" class="panel_thumbnail" alt="">
                 <div class="panel_info">
                   <h3 class="panel_title">{{ $note->title }}</h3>
                   <div class="userInfo">
-                    <img src="img/プロフィールアイコン：有色.jpeg" class="userInfo_img" alt="">
+                    <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
                     <p class="userInfo_name">ユーザーネーム</p>
                   </div>
                   <p class="panel_postDay">2002/08/06投稿</p>
@@ -66,7 +57,7 @@
                 <div class="panel_info">
                   <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
                   <div class="userInfo">
-                    <img src="img/プロフィールアイコン：有色.jpeg" class="userInfo_img userInfo_img--big" alt="">
+                    <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
                     <p class="userInfo_name userInfo_name--big">ユーザーネーム</p>
                   </div>
                   <p class="panel_postDay">2002/08/06投稿</p>
@@ -105,5 +96,4 @@
       </div>
     </main>
 
-  </body>
-</html>
+@endsection
