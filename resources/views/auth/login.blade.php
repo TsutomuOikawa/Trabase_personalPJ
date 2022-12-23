@@ -33,7 +33,7 @@
               </div>
             </label>
             <button type="submit" class="form_button" name="">ログインする</button>
-            <p class="form_notion"><a href="passRemindSend.php" class="link">&gt パスワードをお忘れの方はこちら</a></p>
+            <p class="form_notion"><a href="{{ route('password.request') }}" class="link">&gt パスワードをお忘れの方はこちら</a></p>
             <p class="form_notion"><a href="{{ route('register') }}" class="link">&gt ご登録がお済みでない方はこちら</a></p>
           </form>
         </div>
