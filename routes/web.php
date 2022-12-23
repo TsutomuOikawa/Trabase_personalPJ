@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // ノート作成
-    Route::get('/notes/create', [\App\Http\Controllers\NotesController::class, 'showForm']) -> name('notes.showForm');
+    Route::get('/notes/create', [\App\Http\Controllers\NotesController::class, 'post']) -> name('notes.post');
     Route::post('/notes/create', [\App\Http\Controllers\NotesController::class, 'create']) -> name('notes.create');
 });
 

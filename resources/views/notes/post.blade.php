@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="alert--err js-show-err-msg">
-      <p><?php //echo $err_msg['common']; ?></p>
-    </div>
-
+@extends('layouts.app')
+@section( 'title', 'ノート投稿｜Trabase（トラベス）')
+@section('content')
     <main class="page-wrapper">
       <div class="container--note">
         <div class="container_body">
@@ -69,5 +61,4 @@
 
       </div>
     </main>
-  </body>
-</html>
+@endsection

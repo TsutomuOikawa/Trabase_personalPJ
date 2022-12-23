@@ -22,8 +22,8 @@ class NotesController extends Controller
   }
 
   // ノートフォーム
-  public function showForm() {
-    return view('notes.form');
+  public function post() {
+    return view('notes.post');
   }
   // ノート投稿
   public function create(CreateRequest $request) {
