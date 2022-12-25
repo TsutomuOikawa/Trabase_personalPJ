@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Scripts -->
-    @vite(['resources/css/reset.css', 'resources/js/app.js', 'resources/sass/app.scss'])
+    @vite(['resources/css/reset.css', 'resources/js/app.js', 'resources/js/editor.js', 'resources/sass/app.scss'])
     <link rel="stylesheet" href="icon/css/all.css">
   </head>
 
