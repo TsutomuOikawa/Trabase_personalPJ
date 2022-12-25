@@ -369,7 +369,7 @@ ul {
     }
     &--s {
       @extend .container_body;
-      width: 70%;
+      max-width: 60%;
     }
     &--l {
       @extend .container_body;
@@ -404,7 +404,7 @@ ul {
         max-width: 100%;
       }
       &--s {
-        width: 100%;
+        max-width: 100%;
       }
     }
   }
@@ -1282,6 +1282,13 @@ ul {
     &:focus {
       border: 2px solid $siteColor-sub;
     }
+    &--header {
+      font-size: $fontSize-xl;
+      height: 55px;
+    }
+    &--half {
+      width: 40%;
+    }
     &--err {
       background: rgba($siteColor-err, .3);
     }
@@ -1309,6 +1316,10 @@ ul {
       box-shadow: none;
       transform: translateY(4px);
     }
+  }
+  &_editor {
+    background: $siteColor-base;
+    border-radius: 4px;
   }
   &_errMsg {
     height: 15px;
