@@ -25,8 +25,8 @@ Route::get('/', function () {
 Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.list');
 // ノート詳細閲覧
 Route::get('/notes/article', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.detail');
-
-
+// ノート投稿画面
+Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'post']) -> name('notes.new');
 
 
 Route::get('/dashboard', function () {
