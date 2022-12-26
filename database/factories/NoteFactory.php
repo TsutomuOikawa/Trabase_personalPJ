@@ -17,9 +17,10 @@ class NoteFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween($min = 1, $max = 5),
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 2),
             'pref_id' => 4,
             'title' => $this->faker->realText(15),
+            'text' => $this->faker->realText(300),
             'created_at' => date('Y-m-d H:i:s')
         ];
     }
