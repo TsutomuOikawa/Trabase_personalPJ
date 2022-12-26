@@ -2,6 +2,8 @@
 @section('title', 'マイページ｜Trabase（トラベス）')
 @section('content')
 
+<?php echo(print_r($user, true)); ?>
+
 <main class="page-wrapper">
   <div class="container">
     <h1 class="container_title">マイページ</h1>
@@ -32,15 +34,16 @@
             <div class="mypage_body">
               <div class="list--note">
                 <ul class="list_body--note">
+                  @foreach ($myNotes as $myNote)
                   <li class="panel--note">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
-                      <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
+                      <h3 class="panel_title">{{ $myNote->title }}</h3>
                       <div class="userInfo">
                         <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                        <p class="userInfo_name">ユーザーネーム</p>
+                        <p class="userInfo_name">{{ $user->name }}</p>
                       </div>
-                      <p class="panel_postDay">2002/08/06投稿</p>
+                      <p class="panel_postDay">{{ date('y/m/d', strtotime($myNote->created_at)) }} 投稿</p>
                       <div class="iconBox">
                         <i></i>
                         <span></span>
@@ -49,60 +52,7 @@
                       </div>
                     </div>
                   </li>
-
-                  <li class="panel--note">
-                    <img src="{{ asset('img/6241759280_IMG_3459.jpg') }}" class="panel_thumbnail" alt="">
-                    <div class="panel_info">
-                      <h3 class="panel_title">熊本の、城とラーメンと人情と</h3>
-                      <div class="userInfo">
-                        <img src="{{ asset('img/noimage.png') }}" class="userInfo_img" alt="">
-                        <p class="userInfo_name">ユーザーネーム</p>
-                      </div>
-                      <p class="panel_postDay">2002/08/06投稿</p>
-                      <div class="iconBox">
-                        <i></i>
-                        <span></span>
-                        <i></i>
-                        <span></span>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="panel--note">
-                    <img src="{{ asset('img/6176658528_IMG_4498.jpg') }}" class="panel_thumbnail" alt="">
-                    <div class="panel_info">
-                      <h3 class="panel_title">いつか行ってみたいと思っていた熊本に行ってきました！</h3>
-                      <div class="userInfo">
-                        <img src="{{ asset('img/プロフィール.jpg') }}" class="userInfo_img" alt="">
-                        <p class="userInfo_name">ユーザーネーム</p>
-                      </div>
-                      <p class="panel_postDay">2002/08/06投稿</p>
-                      <div class="iconBox">
-                        <i></i>
-                        <span></span>
-                        <i></i>
-                        <span></span>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="panel--note">
-                    <img src="{{ asset('img/IMG_5506.jpg') }}" class="panel_thumbnail" alt="">
-                    <div class="panel_info">
-                      <h3 class="panel_title">タイトル</h3>
-                      <div class="userInfo">
-                        <img src="{{ asset('img/noimage.png') }}" class="userInfo_img" alt="">
-                        <p class="userInfo_name">ユーザーネーム</p>
-                      </div>
-                      <p class="panel_postDay">2002/08/06投稿</p>
-                      <div class="iconBox">
-                        <i></i>
-                        <span></span>
-                        <i></i>
-                        <span></span>
-                      </div>
-                    </div>
-                  </li>
+                  @endforeach
 
                 </ul>
               </div>
@@ -196,6 +146,7 @@
             <div class="mypage_body">
               <div class="list--wish">
                 <ul class="list_body--wish">
+                  @for($i=1; $i<=10; $i++)
                   <li class="panel--wish">
                     <div class="userInfo">
                       <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
@@ -212,109 +163,7 @@
                       </tr>
                     </table>
                   </li>
-
-                  <li class="panel--wish">
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <table class="panel_table">
-                      <tr class="panel_tableElm">
-                        <th>WHERE</th>
-                        <td>熊本城</td>
-                      </tr>
-                      <tr class="panel_tableElm">
-                        <th>WHAT</th>
-                        <td>雪の熊本城を撮りたい！</td>
-                      </tr>
-                    </table>
-                  </li>
-
-                  <li class="panel--wish">
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <table class="panel_table">
-                      <tr class="panel_tableElm">
-                        <th>WHERE</th>
-                        <td>熊本城</td>
-                      </tr>
-                      <tr class="panel_tableElm">
-                        <th>WHAT</th>
-                        <td>雪の熊本城を撮りたい！</td>
-                      </tr>
-                    </table>
-                  </li>
-
-
-                  <li class="panel--wish">
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <table class="panel_table">
-                      <tr class="panel_tableElm">
-                        <th>WHERE</th>
-                        <td>熊本城</td>
-                      </tr>
-                      <tr class="panel_tableElm">
-                        <th>WHAT</th>
-                        <td>雪の熊本城を撮りたい！</td>
-                      </tr>
-                    </table>
-                  </li>
-
-                  <li class="panel--wish">
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <table class="panel_table">
-                      <tr class="panel_tableElm">
-                        <th>WHERE</th>
-                        <td>熊本城</td>
-                      </tr>
-                      <tr class="panel_tableElm">
-                        <th>WHAT</th>
-                        <td>雪の熊本城を撮りたい！</td>
-                      </tr>
-                    </table>
-                  </li>
-
-                  <li class="panel--wish">
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <table class="panel_table">
-                      <tr class="panel_tableElm">
-                        <th>WHERE</th>
-                        <td>熊本城</td>
-                      </tr>
-                      <tr class="panel_tableElm">
-                        <th>WHAT</th>
-                        <td>雪の熊本城を撮りたい！</td>
-                      </tr>
-                    </table>
-                  </li>
-
-                  <li class="panel--wish">
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <table class="panel_table">
-                      <tr class="panel_tableElm">
-                        <th>WHERE</th>
-                        <td>熊本城</td>
-                      </tr>
-                      <tr class="panel_tableElm">
-                        <th>WHAT</th>
-                        <td>雪の熊本城を撮りたい！</td>
-                      </tr>
-                    </table>
-                  </li>
+                  @endfor
                 </ul>
               </div>
             </div>
@@ -328,7 +177,7 @@
           <div class="sidebar_profile">
             <div class="userInfo userInfo--big">
               <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
-              <p class="userInfo_name userInfo_name--big">ユーザーネーム</p>
+              <p class="userInfo_name userInfo_name--big">{{ $user->name }}</p>
             </div>
 
           </div>
@@ -343,14 +192,9 @@
     </div>
     <div class="imgSlider">
       <ul class="imgSlider_list">
+        @for($i=1; $i<=10; $i++)
         <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
+        @endfor
       </ul>
     </div>
   </div>
