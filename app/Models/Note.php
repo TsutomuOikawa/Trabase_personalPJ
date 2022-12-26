@@ -12,8 +12,16 @@ class Note extends Model
     protected $primaryKey = 'note_id';
 
     protected $fillable = [
-      'user_id',
       'pref_id',
       'title',
+      'img',
+      'text'
     ];
+
+    public function user() {
+      return $this->belongsTo(User::class);
+    }
+    public function prefecture() {
+      return $this->belongsTo(Prefecture::class);
+    }
 }
