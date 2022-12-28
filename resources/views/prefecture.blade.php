@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '熊本県｜ Trabase（トラベス）')
+@section('title', $data->pref_name )
 @section('content')
 
 <main>
@@ -16,7 +16,7 @@
         <h3 class="list_title">みんなの興味関心 in {{ $data->pref_name }}</h3>
         <ul class="list_body--wish">
 
-          @for($i=1; $i <= 10 ; $i++)
+          @for($i=1; $i<=10; $i++)
           <li class="panel--wish">
             <div class="userInfo">
               <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
@@ -95,72 +95,50 @@
     <h2 class="container_title">行き先を変える</h2>
     <div class="container_body">
       <div class="list--destination">
-
-        <h3 class="list_title--destination">北海道・東北</h3>
+        <h3 class="list_title">北海道・東北</h3>
         <div class="list_body--destination">
-          <a class="panel--destination">
+          @foreach($prefs as $pref)
+          <a href="{{ route('prefecture', ['id' => $pref->pref_id]) }}" class="panel--destination">
             <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
             <span class="panel_destCover"></span>
-            <span class="panel_destName">北海道</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">青森</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">岩手</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">宮城</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">秋田</span>
+            <span class="panel_destName">{{ $pref->pref_name }}</span>
           </a>
 
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">山形</span>
-          </a>
-
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">福島</span>
-          </a>
+          @switch($pref->pref_id)
+          @case(7)
         </div>
-
-        <h3 class="list_title--destination">南関東</h3>
+        <h3 class="list_title">関東</h3>
         <div class="list_body--destination">
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">東京</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">神奈川</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">埼玉</span>
-          </a>
-          <a class="panel--destination">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">千葉</span>
-          </a>
+          @break
+          @case(14)
         </div>
+        <h3 class="list_title">中部</h3>
+        <div class="list_body--destination">
+          @break
+          @case(23)
+        </div>
+        <h3 class="list_title">近畿</h3>
+        <div class="list_body--destination">
+          @break
+          @case(30)
+        </div>
+        <h3 class="list_title">中国</h3>
+        <div class="list_body--destination">
+          @break
+          @case(35)
+        </div>
+        <h3 class="list_title">四国</h3>
+        <div class="list_body--destination">
+          @break
+          @case(39)
+        </div>
+        <h3 class="list_title">九州・沖縄</h3>
+        <div class="list_body--destination">
 
+          @default
+          @endswitch
+          @endforeach
+        </div>
       </div>
     </div>
   </section>
