@@ -23,14 +23,9 @@
   </section>
   <div class="imgSlider">
     <ul class="imgSlider_list">
+      @for($i=1; $i<=10; $i++)
       <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-      <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
+      @endfor
     </ul>
 
   </div>
@@ -79,15 +74,17 @@
       <h3 class="list_title">人気のノートから探す</h3>
       <div class="list--note">
         <ul class="list_body--note">
+
+          @foreach($notes as $note)
           <li class="panel--note">
             <img src="img/IMG_5131.JPG" class="panel_thumbnail" alt="">
             <div class="panel_info">
-              <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
+              <h3 class="panel_title">{{ $note->title }}</h3>
               <div class="userInfo">
                 <img src="img/プロフィールアイコン：有色.jpeg" class="userInfo_img" alt="">
-                <p class="userInfo_name">ユーザーネーム</p>
+                <p class="userInfo_name">{{ $note->user->name }}</p>
               </div>
-              <p class="panel_postDay">2002/08/06投稿</p>
+              <p class="panel_postDay">{{ date('y/m/d', strtotime($note->created_at)) }} 投稿</p>
               <div class="iconBox">
                 <i></i>
                 <span></span>
@@ -96,125 +93,55 @@
               </div>
             </div>
           </li>
+          @endforeach
 
-          <li class="panel--note">
-            <img src="img/6241759280_IMG_3459.JPG" class="panel_thumbnail" alt="">
-            <div class="panel_info">
-              <h3 class="panel_title">熊本の、城とラーメンと人情と</h3>
-              <div class="userInfo">
-                <img src="{{ asset('img/noimage.png') }}" class="userInfo_img" alt="">
-                <p class="userInfo_name">ユーザーネーム</p>
-              </div>
-              <p class="panel_postDay">2002/08/06投稿</p>
-              <div class="iconBox">
-                <i></i>
-                <span></span>
-                <i></i>
-                <span></span>
-              </div>
-            </div>
-          </li>
-
-          <li class="panel--note">
-            <img src="img/6176658528_IMG_4498.JPG" class="panel_thumbnail" alt="">
-            <div class="panel_info">
-              <h3 class="panel_title">いつか行ってみたいと思っていた熊本に行ってきました！</h3>
-              <div class="userInfo">
-                <img src="img/プロフィール.JPG" class="userInfo_img" alt="">
-                <p class="userInfo_name">ユーザーネーム</p>
-              </div>
-              <p class="panel_postDay">2002/08/06投稿</p>
-              <div class="iconBox">
-                <i></i>
-                <span></span>
-                <i></i>
-                <span></span>
-              </div>
-            </div>
-          </li>
-
-          <li class="panel--note">
-            <img src="img/IMG_5506.JPG" class="panel_thumbnail" alt="">
-            <div class="panel_info">
-              <h3 class="panel_title">タイトル</h3>
-              <div class="userInfo">
-                <img src="{{ asset('img/noimage.png') }}" class="userInfo_img" alt="">
-                <p class="userInfo_name">ユーザーネーム</p>
-              </div>
-              <p class="panel_postDay">2002/08/06投稿</p>
-              <div class="iconBox">
-                <i></i>
-                <span></span>
-                <i></i>
-                <span></span>
-              </div>
-            </div>
-          </li>
         </ul>
       </div>
       <h3 class="list_title">都道府県一覧から探す</h3>
       <div class="list--destination">
         <h4 class="list_title--destination">北海道・東北</h3>
         <div class="list_body--destination">
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
+          @foreach($prefs as $pref)
+          <a href="{{ route('prefecture', ['id' => $pref->pref_id]) }}" class="panel--destination">
+            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
             <span class="panel_destCover"></span>
-            <span class="panel_destName">北海道</span>
+            <span class="panel_destName">{{ $pref->pref_name }}</span>
           </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">青森</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">岩手</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">宮城</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">秋田</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">山形</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">福島</span>
-          </a>
-        </div>
 
-        <h4 class="list_title--destination">南関東</h3>
+          @switch($pref->pref_id)
+          @case(7)
+        </div>
+        <h4 class="list_title">関東</h3>
         <div class="list_body--destination">
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">東京</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">神奈川</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">埼玉</span>
-          </a>
-          <a class="panel--destination">
-            <img src="img/IMG_3930.JPG" class="panel_destImg" alt="">
-            <span class="panel_destCover"></span>
-            <span class="panel_destName">千葉</span>
-          </a>
+          @break
+          @case(14)
+        </div>
+        <h4 class="list_title">中部</h3>
+        <div class="list_body--destination">
+          @break
+          @case(23)
+        </div>
+        <h4 class="list_title">近畿</h3>
+        <div class="list_body--destination">
+          @break
+          @case(30)
+        </div>
+        <h4 class="list_title">中国</h3>
+        <div class="list_body--destination">
+          @break
+          @case(35)
+        </div>
+        <h4 class="list_title">四国</h3>
+        <div class="list_body--destination">
+          @break
+          @case(39)
+        </div>
+        <h4 class="list_title">九州・沖縄</h3>
+        <div class="list_body--destination">
+
+          @default
+          @endswitch
+          @endforeach
         </div>
       </div>
     </div>

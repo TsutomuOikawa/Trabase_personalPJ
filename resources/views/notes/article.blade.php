@@ -8,16 +8,16 @@
           <article class="note-wrapper">
             <section class="note">
               <img src="{{ asset('img/IMG_5131.jpg') }}" class="note_thumbnail" alt="">
-              <h1 class="container_title">h1:ノートのタイトルはここ</h1>
+              <h1 class="container_title">{{ $note->title }}</h1>
               <div class="note_subInfo">
-                <p>投稿日：2022/9/10</p>
+                <p>投稿日：{{ date('y年m月d日', strtotime($note->created_at)); }}</p>
                 <div class="iconBox">
                   <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
                   <span class="iconBox_num">33</span>
                 </div>
               </div>
               <div class="note_text">
-                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス
+                {{ $note->text }}
               </div>
             </section>
 
@@ -87,7 +87,7 @@
           <aside class="sidebar">
             <img src="{{ asset('img/IMG_5131.jpg') }}" class="sidebar_thumbnail" alt="">
             <div class="sidebar_contents">
-              <p class="panel_title">朝5時に家を出てから、18時間での熊本訪問</p>
+              <p class="panel_title">{{ $note->title }}</p>
               <ul class="sidebar_chapters">
                 <li><a href="#">Chapter 1</a></li>
                 <li><a href="#">Chapter 2</a></li>
@@ -98,7 +98,7 @@
               <div class="sidebar_profile">
                 <div class="userInfo userInfo--big">
                   <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
-                  <p class="userInfo_name userInfo_name--big">ユーザーネーム</p>
+                  <p class="userInfo_name userInfo_name--big">{{ $note->user->name }}</p>
                 </div>
               </div>
 
