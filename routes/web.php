@@ -15,19 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ホーム画面
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', \App\Http\Controllers\IndexController::class) -> name('index');
 // 都道府県別ページ
- Route::get('/prefecture/', \App\Http\Controllers\PrefectureController::class) -> name('prefectures');
+Route::get('/prefecture/{id}', [\App\Http\Controllers\PrefectureController::class, 'showPref']) -> name('prefecture');
 
 // ノート一覧画面
 Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.list');
-// ノート詳細閲覧
-Route::get('/notes/article', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.detail');
 // ノート投稿画面
-Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'post']) -> name('notes.new');
+Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
+Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
 
+// ノート詳細閲覧
+Route::get('/notes/{id}', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.article');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
