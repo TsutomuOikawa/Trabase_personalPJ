@@ -24,8 +24,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
-            'pref_id' => 'required|integer|max:47'
+          'pref_id' => 'required|integer|max:47',
+          'title' => 'required|string|max:255',
+          'img' => 'nullable|string',
+          'text' => 'required|json'
         ];
     }
 }

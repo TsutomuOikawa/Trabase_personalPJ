@@ -12,6 +12,7 @@ class Note extends Model
     protected $primaryKey = 'note_id';
 
     protected $fillable = [
+      'user_id',
       'pref_id',
       'title',
       'img',
