@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Trabase（トラベス）')</title>
+    <title>@yield('title')｜Trabase（トラベス）</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Scripts -->
-    @vite(['resources/css/reset.css', 'resources/js/app.js', 'resources/js/editor.js', 'resources/sass/app.scss'])
-    <link rel="stylesheet" href="icon/css/all.css">
+    @vite(['resources/css/reset.css', 'resources/icon/css/all.css', 'resources/js/app.js', 'resources/sass/app.scss'])
   </head>
 
   <body>
     <header id="header" class="header js-change-header <?php if(strpos($_SERVER['PHP_SELF'],'index.php')||strpos($_SERVER['PHP_SELF'],'prefectures.php')) echo 'active';?>">
       <div class="header-wrapper">
-        <a href="index.php" class="header_logo">Trabase</a>
+        <a href="{{ route('index') }}" class="header_logo">Trabase</a>
         <form class="header_form js-change-header_form <?php if(strpos($_SERVER['PHP_SELF'],'index.php')||strpos($_SERVER['PHP_SELF'],'prefectures.php')) echo 'nonactive';?>" action="index.html" method="post">
           <input type="text" name="" class="header_input" value="" placeholder="都道府県名を入力">
           <input type="text" name="" class="header_input" value="" placeholder="キーワードを入力">
@@ -31,8 +30,8 @@
           <ul class="menu">
             <li class="menu_item"><a href="index.php#about" class="menu_item_link">About</a></li>
             <li class="menu_item--sp"><a href="index.php#about" class="menu_item_link">Search Destination</a></li>
-            <li class="menu_item"><a href="login.php" class="menu_item_link">Login</a></li>
-            <li class="menu_item"><a href="register.php" class="menu_item_link">Register</a></li>
+            <li class="menu_item"><a href="{{ route('login') }}" class="menu_item_link">Login</a></li>
+            <li class="menu_item"><a href="{{ route('register') }}" class="menu_item_link">Register</a></li>
           </ul>
         </nav>
       </div>
@@ -44,7 +43,6 @@
     <footer id="footer" class="footer">
       <small class="footer_copyright"> Copyright @ GlobeNote <br>All Rights Reserved</small>
     </footer>
-    <script src="js/jquery-3.6.0.min.js" charset="utf-8"></script>
-    <script src="js/app.js" charset="utf-8"></script>
+
   </body>
 </html>
