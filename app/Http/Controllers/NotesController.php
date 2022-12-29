@@ -4,33 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Note\CreateRequest;
 use App\Models\Note;
+use App\Models\Prefecture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
 {
   // ノート一覧表示（検索なし）
   public function showList(Request $request) {
-    $notes = Note::all();
+    $notes = Note::with('user')->get();
     return view('notes.list')
       ->with('notes', $notes);
   }
   // ノート検索
 
   // ノート詳細表示
-  public function showArticle() {
-    return view('notes.article');
+  public function showArticle($note_id) {
+    $note = Note::with('user')->find($note_id);
+    return view('notes.article')
+      ->with('note', $note);
   }
 
-  // ノートフォーム
+  // ノート新規作成画面
   public function new() {
-    return view('notes.editor');
+    $prefs = Prefecture::all();
+    return view('notes.editor')
+    ->with('prefs', $prefs);
   }
-  // ノート投稿
-  public function create(CreateRequest $request) {
+
+  // 投稿
+  public function store(CreateRequest $request) {
     $note = new Note;
+    $note->user_id = Auth::id();
+    $note->fill($request->all());
     // todo:note筆者のユーザーIDも格納
-    $note->fill($request->note())->save();
-    return redirect()->route('notes.showList')->with('flash_message', __('Registerd.'));
+    $note->save();
+
+    return redirect('/notes')->with('flash_message','投稿が完了しました');
   }
   // ノート編集
   public function edit() {
