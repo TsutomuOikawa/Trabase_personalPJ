@@ -5,6 +5,7 @@ $siteColor: #2f393a;
 $siteColor-base: #d9d9d9;
 $siteColor-sub: #304848;
 $siteColor-note: #fcfaf2;
+$siteColor-button: #de6710;
 $siteColor-accent: #ae9600;
 $siteColor-accent-hover: #ff9f58;
 $siteColor-err: #ff6565;
@@ -247,13 +248,13 @@ ul {
     width: 100px;
     text-align: center;
     &:hover {
-      background: rgba($color-black, 0.5);
+      background: rgba($color-white, 0.3);
     }
     &:last-child {
       background: $siteColor-accent;
       color: $color-white;
       &:hover {
-        background: $siteColor-accent-hover;
+        filter: brightness(1.2);
       }
     }
     &--sp {
@@ -318,7 +319,6 @@ ul {
 .container {
   color: $color-white;
   padding: 80px 0 100px;
-  text-align: center;
   &--baseColor {
     @extend .container;
     background: $siteColor-base;
@@ -740,7 +740,7 @@ ul {
   cursor: pointer;
   &--bookmark {
     &.active {
-      color: #487878;
+      color: $siteColor-accent;
     }
   }
 }
@@ -1166,9 +1166,9 @@ ul {
     border-radius: 4px;
     cursor: pointer;
     display: inline-flex;
-    height: 120px;
+    height: 80px;
     margin: 0 $space-xs $space-xs 0;
-    min-width: 20%;
+    min-width: 15%;
   }
   &_destImg {
     border-radius: 4px;
@@ -1186,7 +1186,7 @@ ul {
   }
   &_destName {
     color: $color-white;
-    font-size: $fontSize-xl;
+    font-size: $fontSize-m;
     position: absolute;
       top: 50%;
       left: 50%;
@@ -1242,7 +1242,6 @@ ul {
   @extend %contents-wrapper;
   background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-  text-align: center;
   &--carousel {
     box-shadow: none;
     margin-right: 10px;
@@ -1302,15 +1301,16 @@ ul {
     padding: $space-xs 0;
     border-radius: 10px;
     box-sizing: border-box;
-    margin: $space-s 0;
-    background: $siteColor-accent;
+    margin: $space-s auto;
+    background: $siteColor-button;
     box-shadow: 0 4px 1px #552808;
     font-size: $fontSize-m;
     color: $color-white;
     letter-spacing: 0.05em;
     transition: .1s;
+    display: block;
     &:hover {
-      background: $siteColor-accent-hover;
+      filter: brightness(1.5);
     }
     &:active {
       box-shadow: none;
@@ -1343,13 +1343,14 @@ ul {
   }
 }
 
+
 /*====================
   ウィッシュリスト
 ====================*/
 .followingBtn {
-  background: #487878;
+  background: $siteColor-button;
   border-radius: 40px;
-  box-shadow: 0 8px $color-black;
+  box-shadow: 0 4px 1px #552808;
   box-sizing: border-box;
   color: $color-white;
   cursor: pointer;
