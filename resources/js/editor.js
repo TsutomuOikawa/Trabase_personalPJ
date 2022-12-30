@@ -90,7 +90,7 @@ $(function() {
           })
           .done(function() {
             console.log('成功');
-            window.location = ('/notes');
+            window.location = ('/mypage');
           })
           .fail(function() {
              console.log('失敗');
@@ -99,5 +99,4 @@ $(function() {
       .catch((error) => {console.log('Saving failed: ', error)});
 
   });
-
 });
