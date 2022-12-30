@@ -2,8 +2,6 @@
 @section('title', 'マイページ｜Trabase（トラベス）')
 @section('content')
 
-<?php echo(print_r($user, true)); ?>
-
 <main class="page-wrapper">
   <div class="container">
     <h1 class="container_title">マイページ</h1>

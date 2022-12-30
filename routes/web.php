@@ -21,12 +21,6 @@ Route::get('/prefecture/{id}', [\App\Http\Controllers\PrefectureController::clas
 
 // ノート一覧画面
 Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.list');
-// ノート投稿画面
-Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
-Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
-
-// ノート詳細閲覧
-Route::get('/notes/{id}', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.article');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,11 +30,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // ノート作成
-    Route::get('/notes/create', [\App\Http\Controllers\NotesController::class, 'post']) -> name('notes.post');
-    Route::post('/notes/create', [\App\Http\Controllers\NotesController::class, 'create']) -> name('notes.create');
+    // ノート投稿画面
+    Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
+    Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
 });
 
 require __DIR__.'/auth.php';
+
+// ノート詳細閲覧
+Route::get('/notes/{id}', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.article');
 
 Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
