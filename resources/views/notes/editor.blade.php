@@ -45,6 +45,6 @@
 
       </div>
     </main>
-    @vite(['resources/js/jquery-3.6.0.min.js', 'resources/js/editor.js'])
+    @vite(['resources/js/jquery-3.6.0.min.js','resources/js/editor.js'])
 
 @endsection

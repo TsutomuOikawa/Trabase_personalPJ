@@ -37,10 +37,10 @@ class NotesController extends Controller
     $note = new Note;
     $note->user_id = Auth::id();
     $note->fill($request->all());
-    // todo:note筆者のユーザーIDも格納
     $note->save();
 
-    return redirect('/notes')->with('flash_message','投稿が完了しました');
+    // セッションメッセージを追加
+    session()->flash('session_success', '保存が完了しました');
   }
   // ノート編集
   public function edit() {

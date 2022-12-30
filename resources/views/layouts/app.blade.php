@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Scripts -->
-    @vite(['resources/css/reset.css', 'resources/icon/css/all.css', 'resources/js/app.js', 'resources/sass/app.scss'])
+    @vite(['resources/css/reset.css', 'resources/icon/css/all.css', 'resources/sass/app.scss'])
   </head>
 
   <body>
@@ -36,6 +36,13 @@
         </nav>
       </div>
     </header>
+
+    @if(session('session_success'))
+    <!-- Session Message -->
+    <div class="flashMsg flashMsg--success js-show-flashMsg">
+      <p class="flashMsg_text js-get-flashMsg">{{ session('session_success') }}</p>
+    </div>
+    @endif
     <!-- Page Content -->
     @yield('content')
 
@@ -43,6 +50,7 @@
     <footer id="footer" class="footer">
       <small class="footer_copyright"> Copyright @ GlobeNote <br>All Rights Reserved</small>
     </footer>
+    @vite(['resources/js/jquery-3.6.0.min.js', 'resources/js/app.js'])
 
   </body>
 </html>

@@ -1,7 +1,15 @@
-import './bootstrap';
+$(function () {
 
-import Alpine from 'alpinejs';
+  //////////////////////
+  // フラッシュメッセージ
+  let msgWindow = $('.js-show-flashMsg');
 
-window.Alpine = Alpine;
+  if ($('.js-get-flashMsg').text()) {
+    msgWindow.toggleClass('active');
+    setTimeout(function(){
+      msgWindow.toggleClass('active');
+    }, 4000);
+  }
 
-Alpine.start();
+
+});
