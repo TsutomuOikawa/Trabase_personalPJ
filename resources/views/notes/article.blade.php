@@ -17,7 +17,24 @@
                 </div>
               </div>
               <div class="note_text">
-                {{ $note->text }}
+                @foreach($note->text['blocks'] as $text)
+                  @if($text['type'] === 'header')
+                    <h{{ $text['data']['level'] }} class="note_h{{ $text['data']['level'] }}">{{ $text['data']['text'] }}</h{{ $text['data']['level'] }}>
+                  @elseif($text['type'] === 'paragraph')
+                    <p class="note_paragraph">{!! $text['data']['text'] !!}</p>
+                  @elseif($text['type'] === 'list')
+
+                    @if($text['data']['style'] === 'ordered')
+                      <ul style="list-style: decimal inside;">
+                    @elseif($text['data']['style'] === 'unordered')
+                      <ul style="list-style: disc inside;">
+                    @endif
+                      @foreach($text['data']['items'] as $num => $item)
+                        <li>{{ $item }}</li>
+                      @endforeach
+                    </ul>
+                  @endif
+                @endforeach
               </div>
             </section>
 

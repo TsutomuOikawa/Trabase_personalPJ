@@ -21,6 +21,7 @@ class NotesController extends Controller
   // ノート詳細表示
   public function showArticle($note_id) {
     $note = Note::with('user')->find($note_id);
+    $note->text = json_decode($note->text, true);
     return view('notes.article')
       ->with('note', $note);
   }
