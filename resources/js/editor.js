@@ -2,7 +2,6 @@ import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import ImageTool from '@editorjs/image';
 import List from '@editorjs/list';
-import Table from '@editorjs/table';
 import Paragraph from '@editorjs/paragraph';
 
 // エディターJSの設定
@@ -44,14 +43,6 @@ const editor = new EditorJS ({
         inlineToolBar: true,
         config: {
           defaultStyle: 'unorderd'
-        }
-      },
-      table: {
-        class: Table,
-        inlineToolBar: true,
-        config: {
-          rows: 2,
-          cols: 3
         }
       },
       paragraph: {
