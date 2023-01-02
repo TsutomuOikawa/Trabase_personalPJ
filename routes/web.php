@@ -33,11 +33,12 @@ Route::middleware('auth')->group(function () {
     // ノート投稿画面
     Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
     Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
+    // マイページ
+    Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
+
 });
 
 require __DIR__.'/auth.php';
 
 // ノート詳細閲覧
 Route::get('/notes/{id}', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.article');
-
-Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
