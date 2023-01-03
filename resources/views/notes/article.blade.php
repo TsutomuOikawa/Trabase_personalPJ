@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '｜Trabase（トラベス）')
+@section('title', $note->title)
 @section('content')
 
     <main class="page-wrapper">
@@ -7,10 +7,9 @@
         <div class="container_body--l container_body--2col">
           <article class="note-wrapper">
             <section class="note">
-              <img src="{{ asset('img/IMG_5131.jpg') }}" class="note_thumbnail" alt="">
               <h1 class="container_title">{{ $note->title }}</h1>
-              <div class="note_subInfo">
-                <p>投稿日：{{ date('y年m月d日', strtotime($note->created_at)); }}</p>
+              <img src="{{ asset('img/IMG_5131.jpg') }}" class="note_thumbnail" alt="">
+              <div class="note_icon">
                 <div class="iconBox">
                   <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
                   <span class="iconBox_num">33</span>
@@ -19,17 +18,17 @@
               <div class="note_text">
                 @foreach($note->text['blocks'] as $text)
                   @if($text['type'] === 'header')
-                    <h{{ $text['data']['level'] }} class="note_h{{ $text['data']['level'] }}">{{ $text['data']['text'] }}</h{{ $text['data']['level'] }}>
+                    <h{{ $text['data']['level'] }} id="{{ $text['id'] }}" class="note_h{{ $text['data']['level'] }}">{{ $text['data']['text'] }}</h{{ $text['data']['level'] }}>
                   @elseif($text['type'] === 'paragraph')
                     <p class="note_paragraph">{!! $text['data']['text'] !!}</p>
                   @elseif($text['type'] === 'list')
 
                     @if($text['data']['style'] === 'ordered')
-                      <ul style="list-style: decimal inside;">
+                      <ul class="note_list" style="list-style: decimal inside;">
                     @elseif($text['data']['style'] === 'unordered')
-                      <ul style="list-style: disc inside;">
+                      <ul class="note_list" style="list-style: disc inside;">
                     @endif
-                      @foreach($text['data']['items'] as $num => $item)
+                      @foreach($text['data']['items'] as $item)
                         <li>{{ $item }}</li>
                       @endforeach
                     </ul>
@@ -105,19 +104,23 @@
             <img src="{{ asset('img/IMG_5131.jpg') }}" class="sidebar_thumbnail" alt="">
             <div class="sidebar_contents">
               <p class="panel_title">{{ $note->title }}</p>
+              <p>{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
               <ul class="sidebar_chapters">
-                <li><a href="#">Chapter 1</a></li>
-                <li><a href="#">Chapter 2</a></li>
-                <li><a href="#">Chapter 3</a></li>
-                <li><a href="#">Chapter 4</a></li>
+              @foreach($note->text['blocks'] as $text)
+              @if($text['type'] === 'header')
+                <li><a href="#{{ $text['id'] }}">{{ $text['data']['text'] }}</a></li>
+              @endif
+              @endforeach
               </ul>
-
               <div class="sidebar_profile">
                 <div class="userInfo userInfo--big">
                   <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
                   <p class="userInfo_name userInfo_name--big">{{ $note->user->name }}</p>
                 </div>
               </div>
+              @auth
+              <a href="/notes/{{ $note->note_id }}/edit">投稿を編集する</a>
+              @endauth
 
             </div>
           </aside>

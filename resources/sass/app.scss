@@ -340,7 +340,6 @@ ul {
   &_title {
     font-size: $fontSize-xxl;
     font-weight: bold;
-    text-align: center;
     position: relative;
     &::before {
       content: '';
@@ -618,14 +617,31 @@ ul {
     margin: -30px -15px $space-s;
     width: calc(100% + 30px);
   }
-  &_subInfo {
+  &_icon {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    margin-top: $space-xs;
   }
   &_text {
+    line-height: 1.8;
     margin-top: $space-m;
-    padding: $space-xxs;
+  }
+  &_h2 {
+    font-size: $fontSize-xl;
+    line-height: 2;
+  }
+  &_h3 {
+    font-size: $fontSize-l;
+  }
+  &_h4 {
+    font-size: $fontSize-m;
+  }
+  &_paragraph {
+    padding-bottom: $space-s;
+  }
+  &_list {
+    list-style: inside;
+    padding: 0 0 $space-s $space-xs;
   }
 }
 
@@ -983,7 +999,7 @@ ul {
   }
   &_chapters {
     margin-bottom: $space-xs;
-    padding: $space-xxs ;
+    padding: $space-xxs 0;
   }
 }
 
