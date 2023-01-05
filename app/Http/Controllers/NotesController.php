@@ -30,7 +30,7 @@ class NotesController extends Controller
   public function new() {
     $prefs = Prefecture::all();
     return view('notes.editor')
-    ->with('prefs', $prefs);
+      ->with('prefs', $prefs);
   }
 
   // 投稿
@@ -43,8 +43,22 @@ class NotesController extends Controller
     // セッションメッセージを追加
     session()->flash('session_success', '保存が完了しました');
   }
-  // ノート編集
-  public function edit() {
 
+  // ノート編集画面表示
+  public function edit($note_id) {
+    $prefs = Prefecture::all();
+    $note = Note::find($note_id);
+
+    return view('notes.editor')
+      ->with('editMode', true)
+      ->with('prefs', $prefs)
+      ->with('note', $note);
   }
+
+  // テキストデータ取得
+  public function getText(Request $request) {
+    $text = Note::where('note_id', $request->note_id)->value('text');
+    echo $text;
+  }
+
 }

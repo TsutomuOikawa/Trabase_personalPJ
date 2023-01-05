@@ -30,9 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     // ノート投稿画面
     Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
     Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
+
+    // ノート再編集画面
+    Route::get('notes/{id}/edit', [\App\Http\Controllers\NotesController::class, 'edit']) -> name('notes.edit');
+    Route::post('notes/{id}/edit', [\App\Http\Controllers\NotesController::class, 'getText']) ->name('notes.getText');
+    
     // マイページ
     Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
 
