@@ -36,9 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
 
     // ノート再編集画面
-    Route::get('notes/{id}/edit', [\App\Http\Controllers\NotesController::class, 'edit']) -> name('notes.edit');
-    Route::post('notes/{id}/edit', [\App\Http\Controllers\NotesController::class, 'getText']) ->name('notes.getText');
-    
+    Route::get('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'edit']) -> name('notes.edit');
+    Route::post('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'getText']) ->name('notes.getText');
+    Route::put('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'update']) ->name('notes.update');
+
     // マイページ
     Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
 

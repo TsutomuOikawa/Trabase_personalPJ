@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Note\CreateRequest;
+use App\Http\Requests\Note\UpdateRequest;
 use App\Models\Note;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
@@ -61,4 +62,14 @@ class NotesController extends Controller
     echo $text;
   }
 
+  // ノート更新
+  public function update(UpdateRequest $request) {
+    $note = Note::find($request->route('note_id'));
+    $note->fill($request->all());
+    $note->save();
+
+    // セッションメッセージを追加
+    session()->flash('session_success', '更新が完了しました');
+    echo $note->note_id;
+  }
 }
