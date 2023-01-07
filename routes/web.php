@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
     Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
 
+    // ノート削除機能
+    Route::delete('/notes/{note_id}/delete', [\App\Http\Controllers\NotesController::class, 'delete']) -> name('notes.delete');
+
     // ノート再編集画面
     Route::get('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'edit']) -> name('notes.edit');
     Route::post('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'getText']) ->name('notes.getText');

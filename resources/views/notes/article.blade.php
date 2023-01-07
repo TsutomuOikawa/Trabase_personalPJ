@@ -18,7 +18,7 @@
               <div class="note_text">
                 @foreach($note->text['blocks'] as $text)
                   @if($text['type'] === 'header')
-                    <h{{ $text['data']['level'] }} id="{{ $text['id'] }}" class="note_h{{ $text['data']['level'] }}">{{ $text['data']['text'] }}</h{{ $text['data']['level'] }}>
+                    <h{{ $text['data']['level'] }} id="{{ $text['data']['text'] }}" class="note_h{{ $text['data']['level'] }}">{{ $text['data']['text'] }}</h{{ $text['data']['level'] }}>
                   @elseif($text['type'] === 'paragraph')
                     <p class="note_paragraph">{!! $text['data']['text'] !!}</p>
                   @elseif($text['type'] === 'list')
@@ -107,9 +107,9 @@
               <p>{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
               <ul class="sidebar_chapters">
               @foreach($note->text['blocks'] as $text)
-              @if($text['type'] === 'header')
-                <li><a href="#{{ $text['id'] }}">{{ $text['data']['text'] }}</a></li>
-              @endif
+                @if($text['type'] === 'header')
+                  <li><a href="#{{ $text['data']['text'] }}">{{ $text['data']['text'] }}</a></li>
+                @endif
               @endforeach
               </ul>
               <div class="sidebar_profile">
@@ -118,13 +118,20 @@
                   <p class="userInfo_name userInfo_name--big">{{ $note->user->name }}</p>
                 </div>
               </div>
-              @auth
-              <a href="/notes/{{ $note->note_id }}/edit">投稿を編集する</a>
-              @endauth
+              @if($note->user->id === Auth::id())
+              <ul>
+                <li><a href="/notes/{{ $note->note_id }}/edit">投稿を編集する</a></li>
+                <li>
+                  <form action="{{ route('notes.delete', ['note_id'=>$note->note_id]) }}" method="post">
+                    @csrf @method('DELETE')
+                    <button type="submit">投稿を削除する</button>
+                  </form>
+                </li>
+              </ul>
+              @endif
 
             </div>
           </aside>
-
 
         </div>
       </div>
