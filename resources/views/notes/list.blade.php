@@ -28,21 +28,23 @@
 
             @foreach ($notes as $note)
               <li class="panel--note">
-                <img src="{{ asset('img/IMG_5131.JPG') }}" class="panel_thumbnail" alt="">
-                <div class="panel_info">
-                  <h3 class="panel_title">{{ $note->title }}</h3>
-                  <div class="userInfo">
-                    <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                    <p class="userInfo_name">{{ $note->user->name }}</p>
+                <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}">
+                  <img src="{{ asset('img/IMG_5131.JPG') }}" class="panel_thumbnail" alt="">
+                  <div class="panel_info">
+                    <h3 class="panel_title">{{ $note->title }}</h3>
+                    <div class="userInfo">
+                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
+                      <p class="userInfo_name">{{ $note->user->name }}</p>
+                    </div>
+                    <p class="panel_postDay">{{ date('y/m/d' ,strtotime($note->created_at)) }} 投稿</p>
+                    <div class="iconBox">
+                      <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
+                      <span class="iconBox_num">33</span>
+                      <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
+                      <span class="iconBox_num">2</span>
+                    </div>
                   </div>
-                  <p class="panel_postDay">{{ date('y/m/d' ,strtotime($note->created_at)) }} 投稿</p>
-                  <div class="iconBox">
-                    <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                    <span class="iconBox_num">33</span>
-                    <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                    <span class="iconBox_num">2</span>
-                  </div>
-                </div>
+                </a>
               </li>
             @endforeach
 
