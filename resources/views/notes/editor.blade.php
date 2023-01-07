@@ -12,7 +12,11 @@
                 <span class="form_label form_label--required">必須</span>
                 タイトル
               </div>
-              <input type="text" name="title" class="form_input form_input--header @error('title') form_input--err @enderror js-get-note-title" value="">
+              @if($editMode)
+              <input type="text" name="title" class="form_input form_input--header @error('title') form_input--err @enderror js-get-note-title" value="{{ (old('title'))?old('title'):$note->title }}">
+              @else
+              <input type="text" name="title" class="form_input form_input--header @error('title') form_input--err @enderror js-get-note-title" value="{{ old('title') }}">
+              @endif
             </label>
             <p class="form_errMsg">@error('title') {{ $message }} @enderror</p>
 
@@ -21,10 +25,14 @@
                 <span class="form_label form_label--required">必須</span>
                 旅先
               </div>
-              <select name="pref_id" class="form_input form_input--half @error('pref_id') form_input--err @enderror" value="">
-                @foreach($prefs as $pref)
-                <option value="{{ $pref->pref_id }}" class="js-get-note-pref">{{ $pref->pref_name }}</option>
-                @endforeach
+              <select name="pref_id" class="form_input form_input--half @error('pref_id') form_input--err @enderror js-get-note-pref" >
+              @foreach($prefs as $pref)
+                @if($editMode)
+                <option value="{{ $pref->pref_id }}" @if(old('pref_id')===$pref->pref_id) selected @elseif($note->pref_id === $pref->pref_id) selected @endif>{{ $pref->pref_name }}</option>
+                @else
+                <option value="{{ $pref->pref_id }}" {{ (old('pref_id')===$pref->pref_id)?'selected':'' }} >{{ $pref->pref_name }}</option>
+                @endif
+              @endforeach
               </select>
             </label>
             <p class="form_errMsg">@error('pref_id') {{ $message }} @enderror</p>
@@ -38,7 +46,7 @@
             </label>
             <p class="form_errMsg">@error('text') {{ $message }} @enderror</p>
 
-            <button type="button" class="form_button js-save-note" name="">投稿する</button>
+            <button type="button" class="form_button js-save-note">@if($editMode) 更新する @else 投稿する @endif</button>
 
           </form>
         </div>
