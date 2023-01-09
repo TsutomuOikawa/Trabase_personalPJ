@@ -39,15 +39,18 @@
 
             <section class="comments">
               <ul class="comments_list">
+                @foreach($comments as $comment)
                 <li class="comments_item">
                   <div class="userInfo">
                     <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                    <p class="userInfo_name">ユーザーネーム</p>
+                    <p class="userInfo_name">{{ $comment->user->name }}</p>
+                    <p class="userInfo_date">{{ date('y/m/d', strtotime($comment->created_at)); }}投稿</p>
                   </div>
-                  <div class="comments_text">
-                    コメントテキストコメントテキストコメントテキストコメントテキストコメントテキスト
-                  </div>
+                  <p class="comments_text">
+                    {{ $comment->comment }}
+                  </p>
                 </li>
+                @endforeach
               </ul>
               @auth
               <form action="{{ route('comment.storeComment', ['note_id' => $note->note_id]) }}" method="post">

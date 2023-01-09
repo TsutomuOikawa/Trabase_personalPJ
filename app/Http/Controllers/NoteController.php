@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Note\CreateRequest;
 use App\Http\Requests\Note\UpdateRequest;
+use App\Models\Comment;
 use App\Models\Note;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
@@ -23,9 +24,11 @@ class NoteController extends Controller
   public function showArticle($note_id) {
     $note = Note::with('user')->find($note_id);
     $note->text = json_decode($note->text, true);
+    $comments = Comment::where('note_id', $note_id)->with('user')->get();
 
     return view('notes.article')
-      ->with('note', $note);
+      ->with('note', $note)
+      ->with('comments', $comments);
   }
 
   // ノート新規作成画面

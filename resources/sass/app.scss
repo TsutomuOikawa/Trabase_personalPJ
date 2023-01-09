@@ -666,7 +666,7 @@ ul {
   }
   &_item {
     border-bottom: 1px solid $siteColor;
-    padding: $space-xxs;
+    padding: $space-xs;
   }
   &_text {
     font-size: $fontSize-s;
@@ -718,6 +718,11 @@ ul {
       font-size: $fontSize-default;
       font-weight: bold;
     }
+  }
+  &_date {
+    color: $fontColor-sub;
+    font-size: $fontSize-ss;
+    margin-left: $space-xs;
   }
 }
 
