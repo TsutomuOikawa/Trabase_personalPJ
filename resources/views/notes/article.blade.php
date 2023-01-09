@@ -49,10 +49,14 @@
                   </div>
                 </li>
               </ul>
-              <textarea name="name" class="comments_posting" rows="2"></textarea>
-              <button type="submit" class="form_button">送信する</button>
+              @auth
+              <form action="{{ route('comment.storeComment', ['note_id' => $note->note_id]) }}" method="post">
+                @csrf @method('POST')
+                <textarea name="comment" class="comments_posting" rows="2" placeholder="感想・参考になったことなどをコメントしてみよう"></textarea>
+                <button type="submit" class="form_button">送信する</button>
+              </form>
+              @endauth
             </section>
-
           </article>
 
           <div class="followingBtn">

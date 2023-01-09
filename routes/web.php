@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/notes/{note_id}/edit', [\App\Http\Controllers\NoteController::class, 'getText'])->whereNumber('note_id')->name('notes.getText');
     Route::put('/notes/{note_id}/edit', [\App\Http\Controllers\NoteController::class, 'update'])->whereNumber('note_id')->name('notes.update');
 
+    // コメント投稿
+    Route::post('/notes/{note_id}', [\App\Http\Controllers\CommentController::class, 'storeComment'])->whereNumber('note_id')->name('comment.storeComment');
+
     // マイページ
     Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
 });
