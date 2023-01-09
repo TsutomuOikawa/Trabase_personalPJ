@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Note extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $primaryKey = 'note_id';
 
@@ -26,5 +25,8 @@ class Note extends Model
     }
     public function prefecture() {
       return $this->belongsTo(Prefecture::class);
+    }
+    public function comments() {
+      return $this->hasMany(Comment::class);
     }
 }
