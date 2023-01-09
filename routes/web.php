@@ -17,14 +17,17 @@ use Illuminate\Support\Facades\Route;
 // ホーム画面
 Route::get('/', \App\Http\Controllers\IndexController::class) -> name('index');
 // 都道府県別ページ
-Route::get('/prefecture/{id}', [\App\Http\Controllers\PrefectureController::class, 'showPref']) -> name('prefecture');
+Route::get('/prefecture/{id}', [\App\Http\Controllers\PrefectureController::class, 'showPref'])->whereNumber('id')->name('prefecture');
 
 // ノート一覧画面
-Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'showList']) -> name('notes.list');
+Route::get('/notes', [\App\Http\Controllers\NoteController::class, 'showList'])->name('notes.list');
+// ノート詳細閲覧
+Route::get('/notes/{note_id}', [\App\Http\Controllers\NoteController::class, 'showArticle'])->whereNumber('note_id')->name('notes.article');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,23 +35,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // ノート投稿画面
-    Route::get('/notes/new', [\App\Http\Controllers\NotesController::class, 'new']) -> name('notes.new');
-    Route::post('/notes/new', [\App\Http\Controllers\NotesController::class, 'store']) -> name('notes.store');
-
+    Route::get('/notes/new', [\App\Http\Controllers\NoteController::class, 'new'])->name('notes.new');
+    Route::post('/notes/new', [\App\Http\Controllers\NoteController::class, 'storeNote'])->name('notes.store');
     // ノート削除機能
-    Route::delete('/notes/{note_id}/delete', [\App\Http\Controllers\NotesController::class, 'delete']) -> name('notes.delete');
+    Route::delete('/notes/{note_id}/delete', [\App\Http\Controllers\NoteController::class, 'delete'])->whereNumber('note_id')->name('notes.delete');
 
     // ノート再編集画面
-    Route::get('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'edit']) -> name('notes.edit');
-    Route::post('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'getText']) ->name('notes.getText');
-    Route::put('notes/{note_id}/edit', [\App\Http\Controllers\NotesController::class, 'update']) ->name('notes.update');
+    Route::get('/notes/{note_id}/edit', [\App\Http\Controllers\NoteController::class, 'edit'])->whereNumber('note_id')->name('notes.edit');
+    Route::post('/notes/{note_id}/edit', [\App\Http\Controllers\NoteController::class, 'getText'])->whereNumber('note_id')->name('notes.getText');
+    Route::put('/notes/{note_id}/edit', [\App\Http\Controllers\NoteController::class, 'update'])->whereNumber('note_id')->name('notes.update');
 
     // マイページ
     Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
-
 });
 
 require __DIR__.'/auth.php';
-
-// ノート詳細閲覧
-Route::get('/notes/{id}', [\App\Http\Controllers\NotesController::class, 'showArticle']) -> name('notes.article');
