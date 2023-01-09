@@ -9,7 +9,7 @@ use App\Models\Prefecture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class NotesController extends Controller
+class NoteController extends Controller
 {
   // ノート一覧表示（検索なし）
   public function showList(Request $request) {
@@ -37,7 +37,7 @@ class NotesController extends Controller
   }
 
   // 投稿
-  public function store(CreateRequest $request) {
+  public function storeNote(CreateRequest $request) {
     $note = new Note;
     $note->user_id = Auth::id();
     $note->fill($request->all());
