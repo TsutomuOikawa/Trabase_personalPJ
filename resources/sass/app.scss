@@ -337,6 +337,10 @@ ul {
     background-repeat: repeat;
     background-size: 100% 60%;
   }
+  &_head {
+    margin: 0 auto;
+    width: 70%;
+  }
   &_title {
     font-size: $fontSize-xxl;
     font-weight: bold;
@@ -1393,21 +1397,21 @@ ul {
   height: 550px;
   overflow: hidden;
   position:relative;
-  &_container {
+  &_wrapper {
     display: flex;
     position: absolute;
   }
   &_item {
-    box-shadow: none;
-    height: 100%;
-    min-width: 33%;
+    box-sizing: border-box;
+    min-width: 100vw;
+    padding: 0 32.5vw;
   }
   &_nav {
     box-sizing: border-box;
     display: flex;
       justify-content: space-between;
     margin: 0 auto;
-    padding: 0 $space-xs $space-m;
+    padding: $space-l 15% $space-m;
   }
   &_navItem {
     cursor: pointer;

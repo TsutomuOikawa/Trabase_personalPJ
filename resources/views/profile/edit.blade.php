@@ -4,9 +4,8 @@
 
 <main class="page-wrapper">
   <div class="container--baseColor">
-    <h1 class="container_title">プロフィール編集</h1>
-    {{ var_dump($errors) }}
-    <div class="container_body--xs">
+    <div class="container_head">
+      <h1 class="container_title">プロフィール編集</h1>
       <ul class="carousel_nav">
         <li class="carousel_navItem js-switch-carousel01 active">
           <span><i class="fa-solid fa-user carousel_icon"></i></span>
@@ -21,9 +20,12 @@
           <p>退会</p>
         </li>
       </ul>
-      <div class="carousel js-set-height">
-        <div class="carousel_container js-move-position">
-          <form method="post" action="{{ route('profile.update') }}" class="form carousel_item">
+    </div>
+
+    <div class="carousel">
+      <div class="carousel_wrapper js-move-position">
+        <div class="carousel_item">
+          <form method="post" action="{{ route('profile.update') }}" class="form">
             @csrf
             @method('patch')
 
@@ -61,8 +63,10 @@
             <p class="form_errMsg">{{ $errors->first('intro') }}</p>
             <button type="submit" class="form_button" name="">更新する</button>
           </form>
+        </div>
 
-          <form action="{{ route('password.update') }}" method="post" class="form carousel_item">
+        <div class="carousel_item">
+          <form action="{{ route('password.update') }}" method="post" class="form">
             @csrf
             @method('put')
             <label>
@@ -91,13 +95,15 @@
             <p class="form_errMsg">{{ $errors->updatePassword->first('password_confirmation') }}</p>
             <button type="submit" class="form_button">変更する</button>
           </form>
+        </div>
 
-          <div class="form carousel_item">
+        <div class="carousel_item">
+          <div class="form">
             <button type="button" class="form_button js-show-modal">退会する</button>
           </div>
-
         </div>
       </div>
+
     </div>
   </div>
 </main>

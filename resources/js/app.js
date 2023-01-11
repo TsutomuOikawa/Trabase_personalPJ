@@ -20,37 +20,34 @@ $(function () {
 
 //////////////////////
   // プロフィールカルーセル
-  let whole = $('.js-set-height');
   let movingContainer = $('.js-move-position');
   // カルーセルアイテムの数とcssのmin-widthにセットしたパーセンテージを指定
   let itemNum = 3;
-  let setMinWidth = 33;
-  // innerWidthでは、「画面に表示された幅*setMinWidth」が取得されるので、倍率を戻す
-  let itemWidth = $('.carousel_item:first-child').innerWidth() * 100/setMinWidth ;
+  let itemWidth = $('.carousel_item:first-child').innerWidth();
   let containerWidth = itemWidth * itemNum;
   // コンテナの幅をセット
   movingContainer.css('width', containerWidth + 'px');
 
-  let switch1 = $('.js-switch-carousel01');
-  let switch2 = $('.js-switch-carousel02');
-  let switch3 = $('.js-switch-carousel03');
+  let s1 = $('.js-switch-carousel01');
+  let s2 = $('.js-switch-carousel02');
+  let s3 = $('.js-switch-carousel03');
   function changeActive( pushed, stay1, stay2 ) {
     pushed.addClass('active').removeClass('nonactive');
     stay1.addClass('nonactive').removeClass('active');
     stay2.addClass('nonactive').removeClass('active');
   }
 
-  switch1.on('click', function() {
+  s1.on('click', function() {
     movingContainer.animate({left: (itemWidth * 0) + 'px'}, 800);
-    changeActive( switch1, switch2, switch3 );
+    changeActive( s1, s2, s3 );
   });
-  switch2.on('click', function() {
+  s2.on('click', function() {
     movingContainer.animate({left: '-' + (itemWidth * 1) + 'px'}, 800);
-    changeActive( switch2, switch1, switch3 );
+    changeActive( s2, s1, s3 );
   });
-  switch3.on('click', function() {
+  s3.on('click', function() {
     movingContainer.animate({left: '-' + (itemWidth * 2) + 'px'}, 800);
-    changeActive( switch3, switch1, switch2 );
+    changeActive( s3, s1, s2 );
   });
 
   //////////////////////
