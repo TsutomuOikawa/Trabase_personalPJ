@@ -17,6 +17,6 @@ class CommentController extends Controller
 
       $comment->save();
       session()->flash('session_success', 'コメントが投稿されました');
-      return redirect()->route('notes.article', ['note_id'=>$request->route('note_id')]);
+      return back();
     }
 }

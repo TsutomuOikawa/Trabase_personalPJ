@@ -47,7 +47,7 @@ class NoteController extends Controller
     $note->save();
 
     // セッションメッセージを追加
-    session()->flash('session_success', '保存が完了しました');
+    session()->flash('session_success', 'ノートが公開されました');
     // ajaxにlastInsertIdを返却
     echo $note->note_id;
   }
@@ -76,7 +76,7 @@ class NoteController extends Controller
     $note->save();
 
     // セッションメッセージを追加
-    session()->flash('session_success', '更新が完了しました');
+    session()->flash('session_success', 'ノートを完了しました');
     echo $note->note_id;
   }
 
