@@ -53,6 +53,20 @@ $(function () {
     changeActive( switch3, switch1, switch2 );
   });
 
+  //////////////////////
+    // モーダル表示
+    let modal = $('.js-modal');
+    $('.js-show-modal').on('click', function() {
+      setTimeout(function() {
+        modal.show();
+      }, 500);
+    });
+    // モーダル非表示
+    $('.js-hide-modal').on('click', function() {
+      modal.hide();
+    });
+
+
 
 
 
