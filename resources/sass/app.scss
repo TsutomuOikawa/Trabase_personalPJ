@@ -1021,6 +1021,8 @@ ul {
   border-radius: 4px;
   height: 100%;
   margin-left: 1%;
+  position: sticky;
+    top: 90px;
   width: 23%;
   &_thumbnail {
     border-radius: 4px 4px 0 0;
