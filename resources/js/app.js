@@ -50,18 +50,30 @@ $(function () {
     changeActive( s3, s1, s2 );
   });
 
-  //////////////////////
-    // モーダル表示
-    let modal = $('.js-modal');
-    $('.js-show-modal').on('click', function() {
-      setTimeout(function() {
-        modal.show();
-      }, 500);
-    });
-    // モーダル非表示
-    $('.js-hide-modal').on('click', function() {
-      modal.hide();
-    });
+//////////////////////
+  // モーダル表示
+  let modal = $('.js-modal');
+  $('.js-show-modal').on('click', function() {
+    setTimeout(function() {
+      modal.show();
+    }, 500);
+  });
+  // モーダル非表示
+  $('.js-hide-modal').on('click', function() {
+    modal.hide();
+  });
+
+//////////////////////
+  // マイページタブ
+  $('.js-get-tab').on('click', function() {
+    let tabName = $(this).text();
+    // 現在の要素を非活性
+    $('.js-get-tab'+'.selected').removeClass('selected');
+    $('.js-show-contents'+'.active').removeClass('active');
+    // 選択した要素を活性
+    $(this).addClass('selected');
+    $('#'+tabName).addClass('active');
+  });
 
 
 

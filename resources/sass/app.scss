@@ -948,34 +948,54 @@ ul {
  mypage
 ====================*/
 .mypage {
-  background: rgba($siteColor-base, .7);
-  border-radius: 4px;
   color: $fontColor-default;
   margin-bottom: $space_l;
-  padding: $space-xs $space-xxs;
   width: 78%;
   &_nav {
     display: flex;
-    font-size: $fontSize-m;
-    padding: 0 0 $space-m $space-xs;
     span {
       background: $fontColor-default;
     }
   }
+  &_navItem {
+    border-radius: 3px 3px 0 0;
+    color: $color-white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: $space-xs $space-s $space-xxs;
+    &:hover {
+      background: rgba($siteColor-base, .2);
+    }
+    &.selected {
+      background: rgba($siteColor-base, .7);
+      color: $fontColor-default;
+    }
+  }
   &_article {
-    display: flex;
-    overflow-x: scroll;
-    section {
-      min-width: 100%;
+    background: rgba($siteColor-base, .7);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: $space-m $space-xs $space-s;
+    width: 100%;
+  }
+  &_contents {
+    display: none;
+    &.active {
+      display: block;
+      animation: fadeIn 1.7s;
     }
   }
   &_title {
     @extend %subTitle;
   }
-  &_body {
-    min-width: 100%;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-
+  100% {
+    opacity: 1;
+  }
 }
 
 @include mqSP() {
