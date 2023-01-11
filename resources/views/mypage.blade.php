@@ -11,51 +11,50 @@
       <div class="mypage">
         <ul class="mypage_nav">
           <li class="mypage_navItem js-get-tab">Map</li>
-          <!-- <span class="itemSeparater"></span> -->
           <li class="mypage_navItem js-get-tab selected">Notes</li>
-          <!-- <span class="itemSeparater"></span> -->
           <li class="mypage_navItem js-get-tab">WishList</li>
-          <!-- <span class="itemSeparater"></span> -->
           <li class="mypage_navItem js-get-tab">Favorites</li>
         </ul>
         <div class="mypage_article">
 
-          <section id="Map" class="mypage_contents map js-show-contents">
+          <section id="map" class="mypage_contents map js-show-contents">
             <h2 class="mypage_title">MY MAP</h2>
             <div class="map">
 
             </div>
           </section>
 
-          <section id="Notes" class="mypage_contents js-show-contents active">
+          <section id="notes" class="mypage_contents js-show-contents active">
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--note">
                 @foreach ($myNotes as $myNote)
                 <li class="panel--note">
-                  <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
-                  <div class="panel_info">
-                    <h3 class="panel_title">{{ $myNote->title }}</h3>
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">{{ $user->name }}</p>
+                  <a href="{{ route('notes.article', ['note_id' => $myNote->note_id]) }}">
+                    <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
+                    <div class="panel_info">
+                      <h3 class="panel_title">{{ $myNote->title }}</h3>
+                      <div class="userInfo">
+                        <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
+                        <p class="userInfo_name">{{ $user->name }}</p>
+                      </div>
+                      <p class="panel_postDay">{{ date('y/m/d', strtotime($myNote->created_at)) }} 投稿</p>
+                      <div class="iconBox">
+                        <i></i>
+                        <span></span>
+                        <i></i>
+                        <span></span>
+                      </div>
                     </div>
-                    <p class="panel_postDay">{{ date('y/m/d', strtotime($myNote->created_at)) }} 投稿</p>
-                    <div class="iconBox">
-                      <i></i>
-                      <span></span>
-                      <i></i>
-                      <span></span>
-                    </div>
-                  </div>
+                  </a>
                 </li>
                 @endforeach
               </ul>
             </div>
           </section>
 
-          <section id="WishList" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">WishLists</h2>
+          <section id="wishlist" class="mypage_contents js-show-contents">
+            <h2 class="mypage_title">Wish Lists</h2>
             <div class="list--wish">
               <ul class="list_body--wish">
                 @for($i=1; $i<=10; $i++)
@@ -80,26 +79,28 @@
             </div>
           </section>
 
-          <section id="Favorites" class="mypage_contents js-show-contents">
+          <section id="favorites" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">お気に入りのノート</h2>
             <div class="list--note">
               <ul class="list_body--note">
                 <li class="panel--note">
-                  <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
-                  <div class="panel_info">
-                    <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
+                  <a href="#">
+                    <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
+                    <div class="panel_info">
+                      <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
+                      <div class="userInfo">
+                        <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
+                        <p class="userInfo_name">ユーザーネーム</p>
+                      </div>
+                      <p class="panel_postDay">2002/08/06投稿</p>
+                      <div class="iconBox">
+                        <i></i>
+                        <span></span>
+                        <i></i>
+                        <span></span>
+                      </div>
                     </div>
-                    <p class="panel_postDay">2002/08/06投稿</p>
-                    <div class="iconBox">
-                      <i></i>
-                      <span></span>
-                      <i></i>
-                      <span></span>
-                    </div>
-                  </div>
+                  </a>
                 </li>
 
                 <li class="panel--note">
@@ -169,13 +170,13 @@
             <div class="userInfo userInfo--big">
               <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
               <p class="userInfo_name userInfo_name--big">{{ $user->name }}</p>
+              <p>{{ $user->intro }}</p>
             </div>
 
           </div>
           <ul class="sidebar_menu">
-            <li>password</li>
-            <li>logout</li>
-            <li>withdrawal</li>
+            <li><a href="{{ route('profile.edit') }}">プロフィール編集</a></li>
+            <li><a href="{{ route('logout') }}">ログアウト</a></li>
           </ul>
         </div>
       </div>

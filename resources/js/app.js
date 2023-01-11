@@ -66,7 +66,7 @@ $(function () {
 //////////////////////
   // マイページタブ
   $('.js-get-tab').on('click', function() {
-    let tabName = $(this).text();
+    let tabName = $(this).text().toLowerCase();
     // 現在の要素を非活性
     $('.js-get-tab'+'.selected').removeClass('selected');
     $('.js-show-contents'+'.active').removeClass('active');
