@@ -958,11 +958,17 @@ ul {
     }
   }
   &_navItem {
-    border-radius: 3px 3px 0 0;
+    background: rgba($siteColor-base, .4);
     color: $color-white;
     cursor: pointer;
     font-weight: bold;
-    padding: $space-xs $space-s $space-xxs;
+    padding: $space-xs $space-s;
+    &:first-child {
+      border-radius: 4px 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 4px 0 0;
+    }
     &:hover {
       background: rgba($siteColor-base, .2);
     }
@@ -973,7 +979,7 @@ ul {
   }
   &_article {
     background: rgba($siteColor-base, .7);
-    border-radius: 4px;
+    border-radius: 0 4px 4px 4px;
     box-sizing: border-box;
     padding: $space-m $space-xs $space-s;
     width: 100%;
