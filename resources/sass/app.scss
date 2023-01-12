@@ -959,6 +959,7 @@ ul {
   }
   &_navItem {
     background: rgba($siteColor-base, .4);
+    border-right: 1px solid rgba($color-white, .7);
     color: $color-white;
     cursor: pointer;
     font-weight: bold;
@@ -968,6 +969,7 @@ ul {
     }
     &:last-child {
       border-radius: 0 4px 0 0;
+      border-right: none;
     }
     &:hover {
       background: rgba($siteColor-base, .2);
