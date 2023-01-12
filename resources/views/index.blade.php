@@ -5,9 +5,9 @@
   <section id="firstView" class="firstView js-header-change-target">
     <div class="firstView_container">
       <h1 class="firstView_title">旅の思い出<span>、</span><br>のぞき見しよう</h1>
-      <form class="header_form" action="index.html" method="post">
-        <input type="text" name="" class="header_input" value="" placeholder="都道府県名を入力">
-        <input type="text" name="" class="header_input" value="" placeholder="キーワードを入力">
+      <form class="header_form" action="{{ route('notes.list') }}" method="get">
+        <input type="text" name="pref" class="header_input" value="{{ old('pref') }}" placeholder="都道府県名を入力">
+        <input type="text" name="key" class="header_input" value="{{ old('key') }}" placeholder="キーワードを入力">
         <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
       </form>
     </div>
@@ -102,7 +102,7 @@
         <h4 class="list_title--destination">北海道・東北</h3>
         <div class="list_body--destination">
           @foreach($prefs as $pref)
-          <a href="{{ route('prefecture', ['id' => $pref->pref_id]) }}" class="panel--destination">
+          <a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}" class="panel--destination">
             <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
             <span class="panel_destCover"></span>
             <span class="panel_destName">{{ $pref->pref_name }}</span>

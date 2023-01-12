@@ -13,12 +13,12 @@
   </head>
 
   <body>
-    <header id="header" class="header js-change-header <?php if(strpos($_SERVER['PHP_SELF'],'index.php')||strpos($_SERVER['PHP_SELF'],'prefectures.php')) echo 'active';?>">
+    <header id="header" class="header js-change-header @if(strpos($_SERVER['PHP_SELF'],'index.php')||strpos($_SERVER['PHP_SELF'],'prefectures.php')) active @endif">
       <div class="header-wrapper">
         <a href="{{ route('index') }}" class="header_logo">Trabase</a>
-        <form class="header_form js-change-header_form <?php if(strpos($_SERVER['PHP_SELF'],'index.php')||strpos($_SERVER['PHP_SELF'],'prefectures.php')) echo 'nonactive';?>" action="index.html" method="post">
-          <input type="text" name="" class="header_input" value="" placeholder="都道府県名を入力">
-          <input type="text" name="" class="header_input" value="" placeholder="キーワードを入力">
+        <form action="{{ route('notes.list') }}" method="get" class="header_form js-change-header_form @if(strpos($_SERVER['PHP_SELF'],'index.php')||strpos($_SERVER['PHP_SELF'],'prefectures.php')) nonactive @endif">
+          <input type="text" name="pref" class="header_input" value="" placeholder="都道府県名を入力">
+          <input type="text" name="key" class="header_input" value="" placeholder="キーワードを入力">
           <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
         </form>
         <div class="header_humburger js-menu-trigger">

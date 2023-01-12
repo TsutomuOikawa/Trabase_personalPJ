@@ -34,7 +34,7 @@
                     <h3 class="panel_title">{{ $note->title }}</h3>
                     <div class="userInfo">
                       <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">{{ $note->user->name }}</p>
+                      <p class="userInfo_name">{{ $note->name }}</p>
                     </div>
                     <p class="panel_postDay">{{ date('y/m/d' ,strtotime($note->created_at)) }} 投稿</p>
                     <div class="iconBox">

@@ -9,16 +9,36 @@ use App\Models\Note;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
-  // ノート一覧表示（検索なし）
+  // ノート一覧表示（検索）
   public function showList(Request $request) {
-    $notes = Note::with('user')->get();
+    $pref = $request->pref;
+    $key = $request->key;
+
+    $query = DB::table('notes')
+                ->leftJoin('users', 'notes.user_id', '=', 'users.id')
+                ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id');
+    // 検索条件をセット
+    if ($pref) {
+      $query->where('pref_name', 'like', '%'.$pref.'%');
+    }
+
+    if ($key) {
+      $query->where(function($query) use($key){
+        $query->where('title', 'like', '%'.$key.'%')
+              ->orWhere('text', 'like', '%'.$key.'%');
+      });
+    }
+
+    // データを取得
+    $notes = $query->get();
+
     return view('notes.list')
       ->with('notes', $notes);
   }
-  // ノート検索
 
   // ノート詳細表示
   public function showArticle($note_id) {
