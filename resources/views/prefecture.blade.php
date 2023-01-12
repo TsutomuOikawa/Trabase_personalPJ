@@ -98,7 +98,7 @@
         <h3 class="list_title">北海道・東北</h3>
         <div class="list_body--destination">
           @foreach($prefs as $pref)
-          <a href="{{ route('prefecture', ['id' => $pref->pref_id]) }}" class="panel--destination">
+          <a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}" class="panel--destination">
             <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
             <span class="panel_destCover"></span>
             <span class="panel_destName">{{ $pref->pref_name }}</span>
