@@ -43,7 +43,7 @@
                 <li class="comments_item">
                   <div class="userInfo">
                     <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                    <p class="userInfo_name">{{ $comment->user->name }}</p>
+                    <p class="userInfo_name">{{ $comment->name }}</p>
                     <p class="userInfo_date">{{ date('y/m/d', strtotime($comment->created_at)); }}投稿</p>
                   </div>
                   <p class="comments_text">
@@ -122,10 +122,10 @@
               <div class="sidebar_profile">
                 <div class="userInfo userInfo--big">
                   <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
-                  <p class="userInfo_name userInfo_name--big">{{ $note->user->name }}</p>
+                  <p class="userInfo_name userInfo_name--big">{{ $note->name }}</p>
                 </div>
               </div>
-              @if($note->user->id === Auth::id())
+              @if($note->id === Auth::id())
               <ul>
                 <li><a href="/notes/{{ $note->note_id }}/edit">投稿を編集する</a></li>
                 <li>

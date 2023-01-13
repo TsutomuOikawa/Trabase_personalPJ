@@ -42,7 +42,12 @@ class NoteController extends Controller
 
   // ノート詳細表示
   public function showArticle($note_id) {
-    $note = Note::with('user')->find($note_id);
+    $note = DB::table('notes')
+                ->leftJoin('users', 'notes.user_id', '=', 'users.id')
+                ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
+                ->where('note_id', $note_id)
+                ->first();
+
     $note->text = json_decode($note->text, true);
     $comments = Comment::where('note_id', $note_id)->with('user')->get();
 

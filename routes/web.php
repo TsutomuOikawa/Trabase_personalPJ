@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ Route::controller(NoteController::class)->group(function() {
     // ノート一覧画面
     Route::get('/notes', 'showList')->name('notes.list');
     // ノート詳細閲覧
-    Route::get('/notes/detail/{note_id}', 'showArticle')->whereNumber('note_id')->name('notes.article');
+    Route::get('/notes/article/{note_id}', 'showArticle')->whereNumber('note_id')->name('notes.article');
 
     // ログインユーザーのみ
     Route::middleware('auth')->group(function () {
@@ -47,7 +48,7 @@ Route::controller(NoteController::class)->group(function() {
 
 Route::middleware('auth')->group(function () {
     // マイページ
-    Route::get('mypage', [\App\Http\Controllers\MypageController::class, 'mypage'])->name('mypage');
+    Route::get('mypage', [MypageController::class, 'mypage'])->name('mypage');
     // プロフィール編集
     Route::get('mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
