@@ -16,9 +16,7 @@
   <section id="map" class="container map">
     <h2 class="container_title">次の目的地は？</h2>
     <div class="container_body">
-      <div class="map">
-
-      </div>
+      <div class="map js-japanMap"></div>
     </div>
   </section>
   <div class="imgSlider">
@@ -147,5 +145,6 @@
     </div>
   </section>
 </main>
+@vite(['resources/js/jquery-3.6.0.min.js', 'resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
 
 @endsection

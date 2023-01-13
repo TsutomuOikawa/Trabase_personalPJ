@@ -10,35 +10,42 @@
     <div class="container_body--l container_body--2col">
       <div class="mypage">
         <ul class="mypage_nav">
-          <li class="mypage_navItem js-get-tab">Map</li>
-          <li class="mypage_navItem js-get-tab selected">Notes</li>
+          <li class="mypage_navItem js-get-tab selected">Map</li>
+          <li class="mypage_navItem js-get-tab">Notes</li>
           <li class="mypage_navItem js-get-tab">WishList</li>
           <li class="mypage_navItem js-get-tab">Favorites</li>
         </ul>
         <div class="mypage_article">
 
-          <section id="map" class="mypage_contents map js-show-contents">
+          <section id="map" class="mypage_contents js-show-contents active">
             <h2 class="mypage_title">MY MAP</h2>
-            <div class="map">
-
+            <div class="map js-japanMap"></div>
+            <div class="modal js-modal">
+              <div class="modal_content">
+                <p class="modal_header">投稿済みのノート</p>
+                <div class="js-insert-content"></div>
+                <p class="modal_action js-hide-modal">&gt; 閉じる</p>
+              </div>
+              <div class="modal_cover"></div>
             </div>
           </section>
 
-          <section id="notes" class="mypage_contents js-show-contents active">
+          <section id="notes" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--note">
-                @foreach ($myNotes as $myNote)
+                @foreach ($notes as $note)
                 <li class="panel--note">
-                  <a href="{{ route('notes.article', ['note_id' => $myNote->note_id]) }}">
+                  <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
-                      <h3 class="panel_title">{{ $myNote->title }}</h3>
+                      <p class="panel_subInfo">{{ $note->pref_name }}</p>
+                      <h3 class="panel_title">{{ $note->title }}</h3>
                       <div class="userInfo">
                         <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
                         <p class="userInfo_name">{{ $user->name }}</p>
                       </div>
-                      <p class="panel_postDay">{{ date('y/m/d', strtotime($myNote->created_at)) }} 投稿</p>
+                      <p class="panel_subInfo">{{ date('y/m/d', strtotime($note->created_at)) }} 投稿</p>
                       <div class="iconBox">
                         <i></i>
                         <span></span>
@@ -47,6 +54,7 @@
                       </div>
                     </div>
                   </a>
+                  <span  class="js-get-visited" style="display:none;">{{ $note->pref_id }}</span>
                 </li>
                 @endforeach
               </ul>
@@ -191,5 +199,6 @@
     </div>
   </div>
 </main>
+@vite(['resources/js/jquery-3.6.0.min.js', 'resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
 
 @endsection

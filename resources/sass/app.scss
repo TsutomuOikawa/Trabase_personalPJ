@@ -437,10 +437,15 @@ ul {
   }
 }
 .map {
-  overflow: hidden;
-  position: relative;
-  &>.container_title::before {
-    content: 'Where will you visit next ?';
+  &> * {
+    display: block;
+    margin: $space-l auto $space-m;
+  }
+  &>.container_title {
+    position: relative;
+    &::before {
+      content: 'Where will you visit next ?';
+    }
   }
 }
 .imgSlider {
@@ -811,13 +816,26 @@ ul {
     right: 0;
     bottom: 0;
     left: 0;
+  z-index: 1000;
   &_content {
     position: absolute;
       top: 120px;
       left: 50%;
     transform: translateX(-50%);
     width: 35%;
-    z-index: 100;
+    z-index: 2000;
+  }
+  &_header {
+    color: $color-white;
+    font-size: $fontSize-l;
+  }
+  &_list {
+    background: rgba($color-white, .5);
+    border-radius: 4px;
+    height: 40vh;
+    margin-top: $space-xs;
+    overflow-y: scroll;
+    padding: $space-s;
   }
   &-wrapper {
     width: 980px;
@@ -825,7 +843,6 @@ ul {
       top: 120px;
       left: 50%;
     transform: translateX(-50%);
-    z-index: 100;
   }
   &_note {
     background: rgba($siteColor-base, .8);
@@ -1171,7 +1188,7 @@ ul {
     padding-bottom: 0;
     text-align: left;
   }
-  &_postDay{
+  &_subInfo{
     color: $fontColor-sub;
     font-size: $fontSize-ss;
   }
