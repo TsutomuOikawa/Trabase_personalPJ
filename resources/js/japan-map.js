@@ -10,7 +10,6 @@ $(function(){
       selection: 'prefecture',
       drawsBoxLine : false,
       movesIslands : true,
-
       onSelect: function(data){
           window.location = 'pref/' + data.code;
       }
@@ -21,7 +20,7 @@ $(function(){
 
     let prefs = [...Array(47)].map((_, i) => i+1);
     let areas = [
-      {code: 0, name: '未旅行', prefectures: [], color: '#808080', hoverColor: '#cbcbcb'},
+      {code: 0, name: '未旅行', prefectures: [], color: '#808080', hoverColor: '#7ba23f'},
       {code: 1, name: '旅行済み', prefectures: [], color: '#2d6d4b', hoverColor: '#7ba23f'},
     ];
     let visited = [];
@@ -50,13 +49,11 @@ $(function(){
             let modal = $('.js-modal');
             let links = [];
             let html = '';
-
             $('.js-get-links:contains(' + data.name+ ')').each( function () {
               links.push('<li class="modal_action"><a href="'+ $(this).attr('href') +'">'+ $(this).find('.panel_title').html() +'</a></li>');
             });
-            links.forEach(function(elm){
-              html += elm;
-            })
+            links.forEach(function(elm){ html += elm; });
+
             $('.js-insert-content').html('<ul class="modal_list">'+ html +'</ul>');
             modal.show();
         }
