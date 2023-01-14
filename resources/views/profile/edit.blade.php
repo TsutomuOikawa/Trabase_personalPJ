@@ -25,7 +25,7 @@
     <div class="carousel">
       <div class="carousel_wrapper js-move-position">
         <div class="carousel_item">
-          <form method="post" action="{{ route('profile.update') }}" class="form">
+          <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="form">
             @csrf
             @method('patch')
 
@@ -50,9 +50,12 @@
                 <span class="form_label form_label--optional">任意</span>
                 プロフィール画像
               </div>
-              <input type="text" name="image" class="form_input @error('image') form_input--err @enderror" value="">
+              @if($user->avatar)
+              <img src="{{ asset($user->avatar) }}" class="form_avatar">
+              @endif
+              <input type="file" name="avatar" class="@error('avatar') form_input--err @enderror" value="">
             </label>
-            <p class="form_errMsg">{{ $errors->first('image') }}</p>
+            <p class="form_errMsg">{{ $errors->first('avatar') }}</p>
             <label>
               <div class="form_name">
                 <span class="form_label form_label--optional">任意</span>

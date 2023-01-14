@@ -32,6 +32,15 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        // アバター画像をstorage/app/publicに保存し、パスを返す
+        if($request->avatar) {
+            $dir = 'avatar';
+            $path = $request->avatar->store('public/'.$dir);
+            $path = str_replace('public/', 'storage/', $path);
+            // avatarカラムの保存内容をファイルからパスに上書き
+            $request->user()->avatar = $path;
+        }
+
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
