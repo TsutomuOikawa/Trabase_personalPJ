@@ -756,7 +756,7 @@ ul {
   color: $fontColor-sub;
   display: flex;
     align-items: center;
-  padding-top: $space-xs;
+  padding-top: $space-xxs;
   &_num {
     padding: 0 $space-xs 0 $space-xxs;
   }
@@ -1191,6 +1191,7 @@ ul {
   &_subInfo{
     color: $fontColor-sub;
     font-size: $fontSize-ss;
+    padding-right: $space-xxs;
   }
   &--wish {
     @extend .panel;
@@ -1362,6 +1363,10 @@ ul {
       background: rgba($siteColor-err, .3);
     }
   }
+  &_avatar {
+    width: 130px;
+    height: auto;
+  }
   &_date {
     display: flex;
       align-items: flex-end;
@@ -1441,7 +1446,7 @@ ul {
   プロフィールカルーセル
 ====================*/
 .carousel {
-  height: 550px;
+  height: 670px;
   overflow: hidden;
   position:relative;
   &_wrapper {

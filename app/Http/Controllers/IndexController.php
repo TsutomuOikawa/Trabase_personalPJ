@@ -17,8 +17,9 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        $notes = Note::with('user')->orderBy('note_id', 'DESC')->take(8)->get();
+        $notes = Note::with('user')->with('prefecture')->orderBy('note_id', 'DESC')->take(8)->get();
         $prefs = Prefecture::all();
+
         return view('index')
           ->with('notes', $notes)
           ->with('prefs', $prefs);

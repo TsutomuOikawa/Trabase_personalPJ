@@ -35,7 +35,6 @@ class NoteController extends Controller
 
     // データを取得
     $notes = $query->get();
-
     return view('notes.list')
       ->with('notes', $notes);
   }

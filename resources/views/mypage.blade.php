@@ -39,18 +39,21 @@
                   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
-                      <p class="panel_subInfo">{{ $note->pref_name }}</p>
+                      <p><span class="panel_subInfo">{{ $note->pref_name }}</span><span class="panel_subInfo">投稿:{{ date('y/m/d', strtotime($note->created_at)) }}</span></p>
                       <h3 class="panel_title">{{ $note->title }}</h3>
                       <div class="userInfo">
-                        <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                        <p class="userInfo_name">{{ $user->name }}</p>
+                        @if($note->avatar)
+                          <img src="{{ asset($note->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
+                        @else
+                          <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
+                        @endif
+                        <p class="userInfo_name">{{ $note->name }}</p>
                       </div>
-                      <p class="panel_subInfo">{{ date('y/m/d', strtotime($note->created_at)) }} 投稿</p>
                       <div class="iconBox">
-                        <i></i>
-                        <span></span>
-                        <i></i>
-                        <span></span>
+                        <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
+                        <span class="iconBox_num">33</span>
+                        <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
+                        <span class="iconBox_num">2</span>
                       </div>
                     </div>
                   </a>
@@ -176,7 +179,7 @@
         <div class="sidebar_contents">
           <div class="sidebar_profile">
             <div class="userInfo userInfo--big">
-              <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
+              <img src="{{ asset($user->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
               <p class="userInfo_name userInfo_name--big">{{ $user->name }}</p>
               <p>{{ $user->intro }}</p>
             </div>

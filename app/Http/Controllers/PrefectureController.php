@@ -14,14 +14,14 @@ class PrefectureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function showPref($id)
+    public function showPref($pref_id)
     {
-        if (ctype_digit($id)) {
+        if (ctype_digit($pref_id)) {
           // 都道府県データ
           $prefs = Prefecture::all();
-          $data = $prefs->find($id);
+          $data = $prefs->find($pref_id);
           // ノートデータ
-          $notes = Note::with('user')->where('pref_id', $id)->get();
+          $notes = Note::with('user')->with('prefecture')->where('pref_id', $pref_id)->get();
           return view('prefecture')
             ->with('prefs', $prefs)
             ->with('data', $data)
