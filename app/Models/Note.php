@@ -16,7 +16,7 @@ class Note extends Model
       'user_id',
       'pref_id',
       'title',
-      'img',
+      'thumbnail',
       'text'
     ];
 
