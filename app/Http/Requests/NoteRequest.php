@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Note;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class NoteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class CreateRequest extends FormRequest
         return [
           'pref_id' => 'required|integer|max:47',
           'title' => 'required|string|max:255',
-          'img' => 'nullable|string',
+          'thumbnail' => 'nullable|image|mimes:jpg,png,gif,webp|max:2048',
           'text' => 'required|json'
         ];
     }
