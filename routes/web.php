@@ -34,14 +34,14 @@ Route::controller(NoteController::class)->group(function() {
         Route::get('/notes/new', 'new')->name('notes.new');
         Route::post('/notes/new', 'storeNote')->name('notes.store');
         // ノート再編集画面
-        Route::get('/notes/detail/{note_id}/edit', 'edit')->whereNumber('note_id')->name('notes.edit');
-        Route::post('/notes/detail/{note_id}/edit', 'getText')->whereNumber('note_id')->name('notes.getText');
-        Route::put('/notes/detail/{note_id}/edit', 'update')->whereNumber('note_id')->name('notes.update');
+        Route::get('/notes/article/{note_id}/edit', 'edit')->whereNumber('note_id')->name('notes.edit');
+        Route::post('/notes/article/{note_id}/edit', 'getText')->whereNumber('note_id')->name('notes.getText');
+        Route::put('/notes/article/{note_id}/edit', 'update')->whereNumber('note_id')->name('notes.update');
         // ノート削除機能
-        Route::delete('/notes/detail/{note_id}/delete', 'delete')->whereNumber('note_id')->name('notes.delete');
+        Route::delete('/notes/article/{note_id}/delete', 'delete')->whereNumber('note_id')->name('notes.delete');
 
         // コメント投稿
-        Route::post('/notes/detail/{note_id}', 'storeComment')->whereNumber('note_id')->name('comment.storeComment');
+        Route::post('/notes/article/{note_id}', 'storeComment')->whereNumber('note_id')->name('comment.storeComment');
     });
 });
 
