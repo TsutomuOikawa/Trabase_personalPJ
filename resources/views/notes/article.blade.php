@@ -5,10 +5,10 @@
     <main class="page-wrapper">
       <div class="container--note">
         <div class="container_body--l container_body--2col">
-          <article class="note-wrapper">
-            <section class="note">
+          <article class="note">
+            <section class="note_contents js-set-padding">
+              <img src="{{ asset($note->thumbnail) }}" alt="" class="note_thumbnail js-get-height">
               <h1 class="container_title">{{ $note->title }}</h1>
-              <img src="{{ asset('img/IMG_5131.jpg') }}" class="note_thumbnail" alt="">
               <div class="note_icon">
                 <div class="iconBox">
                   <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
@@ -43,7 +43,7 @@
                 <li class="comments_item">
                   <div class="userInfo">
                     <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                    <p class="userInfo_name">{{ $comment->name }}</p>
+                    <p class="userInfo_name">{{ $comment->user->name }}</p>
                     <p class="userInfo_date">{{ date('y/m/d', strtotime($comment->created_at)); }}投稿</p>
                   </div>
                   <p class="comments_text">
@@ -108,10 +108,16 @@
           </div>
 
           <aside class="sidebar">
-            <img src="{{ asset('img/IMG_5131.jpg') }}" class="sidebar_thumbnail" alt="">
             <div class="sidebar_contents">
+              <div class="sidebar_profile">
+                <div class="userInfo userInfo--big">
+                  <img src="{{ asset($note->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
+                  <p class="userInfo_name userInfo_name--big">{{ $note->name }}</p>
+                  <p class="userInfo_intro">{{ $note->intro }}</p>
+                </div>
+              </div>
               <p class="panel_title">{{ $note->title }}</p>
-              <p>{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
+              <p class="panel_subInfo">{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
               <ul class="sidebar_chapters">
               @foreach($note->text['blocks'] as $text)
                 @if($text['type'] === 'header')
@@ -119,24 +125,24 @@
                 @endif
               @endforeach
               </ul>
-              <div class="sidebar_profile">
-                <div class="userInfo userInfo--big">
-                  <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img userInfo_img--big" alt="">
-                  <p class="userInfo_name userInfo_name--big">{{ $note->name }}</p>
-                </div>
-              </div>
               @if($note->id === Auth::id())
               <ul>
-                <li><a href="/notes/{{ $note->note_id }}/edit">投稿を編集する</a></li>
+                <li>
+                  <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">
+                    <i class="fa-solid fa-pen-to-square"></i>投稿を編集する
+                  </a>
+                </li>
                 <li>
                   <form action="{{ route('notes.delete', ['note_id'=>$note->note_id]) }}" method="post">
                     @csrf @method('DELETE')
-                    <button type="submit">投稿を削除する</button>
+                    <button type="submit">
+                      <i class="fa-solid fa-trash-can"></i>
+                      投稿を削除する
+                    </button>
                   </form>
                 </li>
               </ul>
               @endif
-
             </div>
           </aside>
 

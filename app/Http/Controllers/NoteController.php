@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Note\CreateRequest;
-use App\Http\Requests\Note\UpdateRequest;
+use App\Http\Requests\NoteRequest;
 use App\Models\Comment;
 use App\Models\Note;
 use App\Models\Prefecture;
@@ -64,10 +63,16 @@ class NoteController extends Controller
   }
 
   // 投稿
-  public function storeNote(CreateRequest $request) {
+  public function storeNote(NoteRequest $request) {
     $note = new Note;
     $note->user_id = Auth::id();
     $note->fill($request->all());
+
+    if ($note->thumbnail) {
+      $dir = 'thumbnail';
+      $path = $request->thumbnail->store('public/'.$dir);
+      $note->thumbnail = str_replace('public/', 'storage/', $path);
+    }
     $note->save();
 
     // セッションメッセージを追加
@@ -94,13 +99,19 @@ class NoteController extends Controller
   }
 
   // ノート更新
-  public function update(UpdateRequest $request) {
+  public function update(NoteRequest $request) {
     $note = Note::find($request->route('note_id'));
     $note->fill($request->all());
+
+    if ($note->thumbnail) {
+      $dir = 'thumbnail';
+      $path = $request->thumbnail->store('public/'.$dir);
+      $note->thumbnail = str_replace('public/', 'storage/', $path);
+    }
     $note->save();
 
     // セッションメッセージを追加
-    session()->flash('session_success', 'ノートを完了しました');
+    session()->flash('session_success', 'ノートを更新しました');
     echo $note->note_id;
   }
 

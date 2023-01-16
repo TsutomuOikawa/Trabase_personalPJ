@@ -8,7 +8,7 @@ import Paragraph from '@editorjs/paragraph';
 $(function(){
 
   const createRegex = new RegExp('notes/new');
-  const updateRegex = new RegExp('notes/[1-9]+[0-9]*/edit');
+  const updateRegex = new RegExp('notes/article/[1-9]+[0-9]*/edit');
   let path = location.pathname;
 
   ////////////////////
@@ -72,29 +72,33 @@ $(function(){
 
   ////////////////////
   // AjaxでDB保存する関数
-  function saveNote(editor, method) {
-    let title = $('.js-get-note-title').val();
-    let pref = $('.js-get-note-pref').val();
+  function saveNote(editor, putFlag = false) {
+    let formData = new FormData($('.js-get-note').get(0));
     let text = '';
     let redirectURL = '';
 
     editor.save()
       .then((outputData) => {
           text = JSON.stringify(outputData);
-          console.log('textの中身');
-          console.log(text);
+          formData.append('text', text);
+          if (putFlag) {
+            formData.append('_method', 'PUT');
+          }
+          console.log(...formData);
 
           // 通信用データ
           $.ajax({
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            method: method,
+            method: 'POST',
             url: path,
-            data: {pref_id: pref, title: title, text: text}
+            data: formData,
+            contentType: false,
+            processData: false
           })
           .done(function(redirect) {
-            redirectURL = '/notes/'+ redirect;
+            redirectURL = '/notes/article/'+ redirect;
             window.location = redirectURL;
           })
           .fail(function() {
@@ -118,7 +122,7 @@ $(function(){
 
     // ノートの新規登録
     $('.js-save-note').on('click', function() {
-      saveNote(editor, 'POST');
+      saveNote(editor);
     });
 
   ////////////////////
@@ -126,7 +130,7 @@ $(function(){
 }else if (updateRegex.test(path)) {
 
     // 保存済み投稿を取得
-    let note_id = path.replace('/notes/', '').replace('/edit', '');
+    let note_id = path.replace('/notes/article/', '').replace('/edit', '');
     $.ajax({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -143,8 +147,7 @@ $(function(){
       // ノートの更新処理をセット
       $('.js-save-note').on('click', function() {
         console.log('更新処理を開始');
-        console.log(editor);
-        saveNote(editor, 'PUT');
+        saveNote(editor, true);
       });
 
     }).fail(function() {

@@ -96,8 +96,12 @@ body {
   background-color: $siteColor;
 }
 button {
+  background: none;
   border: none;
+  color: inherit;
   cursor: pointer;
+  font-size: inherit;
+  padding: 0;
 }
 img {
   width: 100%;
@@ -606,21 +610,25 @@ ul {
  note
 ====================*/
 .note {
-  @extend %contents-wrapper;
-  background: rgba($siteColor-base, .8);
   color: $fontColor-default;
-  margin-bottom: $space-m;
-  width: 100%;
-  &-wrapper {
-    margin-left: 18%;
-    width: 60%;
+  margin-left: 18%;
+  width: 60%;
+  &_contents {
+    background: rgba($siteColor-base, .8);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: $space-m;
+    width: 100%;
+    padding: $space-xl $space-l;
+    position: relative;
   }
   &_thumbnail {
     border-radius: 4px 4px 0 0;
-    display: none;
-    height: 200px;
-    margin: -30px -15px $space-s;
-    width: calc(100% + 30px);
+    width: 100% ;
+    position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
   }
   &_icon {
     display: flex;
@@ -629,22 +637,26 @@ ul {
   }
   &_text {
     line-height: 1.8;
-    margin-top: $space-m;
+    padding: $space-m $space-xs 0;
   }
   &_h2 {
     font-size: $fontSize-xl;
     line-height: 2;
+    padding: $space-xs 0;
   }
   &_h3 {
     font-size: $fontSize-l;
+    padding-bottom: $space-s;
   }
   &_h4 {
     font-size: $fontSize-m;
-  }
-  &_paragraph {
     padding-bottom: $space-s;
   }
+  &_paragraph {
+    padding: 0 $space-xxs $space-xs;
+  }
   &_list {
+    line-height: 1.4;
     list-style: inside;
     padding: 0 0 $space-s $space-xs;
   }
@@ -728,6 +740,11 @@ ul {
     color: $fontColor-sub;
     font-size: $fontSize-ss;
     margin-left: $space-xs;
+  }
+  &_intro {
+    font-size: $fontSize-ss;
+    max-height: 80px;
+    overflow: hidden;
   }
 }
 
@@ -1318,6 +1335,11 @@ ul {
   @extend %contents-wrapper;
   background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  &--editor {
+    @extend %contents-wrapper;
+    color: $fontColor-default;
+    background: rgba($color-white, .7);
+  }
   &_title {
     @extend %subTitle;
     color: $fontColor-default;
@@ -1367,9 +1389,13 @@ ul {
     width: 130px;
     height: auto;
   }
-  &_date {
+  &_addThumbnail {
+    cursor: pointer;
     display: flex;
-      align-items: flex-end;
+      align-items: center;
+    i {
+      padding-right: $space-xxs;
+    }
   }
   &_button {
     width: 45%;
@@ -1395,6 +1421,7 @@ ul {
   &_editor {
     background: $siteColor-base;
     border-radius: 4px;
+    padding-top: $space-m;
   }
   &_errMsg {
     height: 15px;

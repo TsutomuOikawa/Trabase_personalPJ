@@ -5,7 +5,7 @@
     <main class="page-wrapper">
       <div class="container--note">
         <div class="container_body--s">
-          <form class="note" method="post" action="{{ route('notes.store') }}" enctype="multipart/form-data">
+          <form name="editor" class="form--editor js-get-note" method="post" action="{{ route('notes.store') }}" enctype="multipart/form-data">
             @csrf
             <label>
               <div class="form_name">
@@ -19,6 +19,28 @@
               @endif
             </label>
             <p class="form_errMsg">@error('title') {{ $message }} @enderror</p>
+
+            @if($editMode)
+            <img src="{{ asset($note->thumbnail) }}" alt="">
+            <div class="form_addThumbnail js-add-thumbnail">
+              <i class="fa-solid fa-trash-can fa-lg"></i>
+              サムネイル画像を変更する
+            </div>
+
+            @else
+            <div class="form_addThumbnail js-add-thumbnail">
+              <i class="fa-regular fa-image fa-2x"></i>
+              サムネイル画像を設定する
+            </div>
+            @endif
+            <label class="js-input-thumbnail" style="display:none;">
+              <div class="form_name">
+                <span class="form_label form_label--optional">任意</span>
+                サムネイル画像
+              </div>
+              <input type="file" name="thumbnail" class="form_thumbnail" value="{{ old('thumbnail') }}">
+            </label>
+            <p class="form_errMsg">@error('thumbnail') {{ $message }} @enderror</p>
 
             <label>
               <div class="form_name">

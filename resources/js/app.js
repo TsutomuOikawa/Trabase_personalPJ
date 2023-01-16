@@ -19,7 +19,7 @@ $(function () {
   }
 
 //////////////////////
-  // プロフィールカルーセル
+  // プロフィール編集カルーセル
   let movingContainer = $('.js-move-position');
   // カルーセルアイテムの数とcssのmin-widthにセットしたパーセンテージを指定
   let itemNum = 3;
@@ -66,15 +66,29 @@ $(function () {
 //////////////////////
   // マイページタブ
   $('.js-get-tab').on('click', function() {
-    let tabName = $(this).text().toLowerCase();
+    let $this = $(this);
+    let tabName = $this.text().toLowerCase();
     // 現在の要素を非活性
     $('.js-get-tab'+'.selected').removeClass('selected');
     $('.js-show-contents'+'.active').removeClass('active');
     // 選択した要素を活性
-    $(this).addClass('selected');
+    $this.addClass('selected');
     $('#'+tabName).addClass('active');
   });
 
+//////////////////////
+  // ファイルインプットタグ表示
+  $('.js-add-thumbnail').on('click', function() {
+    let $this = $(this);
+    $this.hide();
+    $this.prev('img').hide();
+    $this.next().show();
+  });
+
+//////////////////////
+  // ノートのpadding調整
+  let height = $('.js-get-height').innerHeight() + 40;
+  $('.js-set-padding').css('padding-top', height);
 
 
 
