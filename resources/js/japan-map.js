@@ -1,7 +1,6 @@
 $(function(){
   // ページによって処理を変更
   let currentPath = location.pathname;
-  console.log(currentPath);
 
   // トップページ
   if (currentPath === '/') {
