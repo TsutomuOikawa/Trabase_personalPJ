@@ -2,6 +2,7 @@
 @section('title', $data->pref_name )
 @section('content')
 
+<!-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key&callback=initMap" defer></script> -->
 <main>
   <section id="firstView" class="firstView js-header-change-target">
     <div class="firstView_container">
@@ -46,7 +47,8 @@
         </div>
         <div class="information_map">
           <h3>{{ $data->pref_name }}のマップ</h3>
-          <div class="" style="height:100px; width:100%; background:white;">
+
+          <div id="googleMap" style="height:100%; width:100%;">
 
           </div>
         </div>

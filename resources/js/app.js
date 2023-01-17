@@ -91,6 +91,34 @@ $(function () {
   $('.js-set-padding').css('padding-top', height);
 
 
+//////////////////////
+  // 特定のページで読み込みたいjsの<script>を生成する関数
+  function createScript(fileName) {
+    let scriptTag = document.createElement('script');
+    scriptTag.src = fileName;
+    scriptTag.async = true;
+    $('body').append(scriptTag);
+  }
+
+
+//////////////////////
+  // googleMap　の表示
+  // let prefRegexp = new RegExp('/pref/[1-9]+[0-9]*');
+  // if (prefRegexp.test(location.pathname)) {
+    // // GoogleMap用のスクリプトをヘッダーに追加
+    // let script = document.createElement('script');
+    // script.src = 'https://maps.googleapis.com/maps/api/js?language=ja&key=';
+    // // AIzaSyBieNmkYCkzbD65SGnFd_UyhUrFqCYkmcU
+    // script.async = true;
+    // document.head.appendChild(script);
+    // console.log(script);
+
+    // google-map.jsを読み込み
+    // createScript('http://0.0.0.0:5173/resources/js/google-map.js');
+  }
+
+
+
 
 
 
