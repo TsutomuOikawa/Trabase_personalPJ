@@ -115,7 +115,7 @@ $(function () {
 
     // google-map.jsを読み込み
     // createScript('http://0.0.0.0:5173/resources/js/google-map.js');
-  }
+  // }
 
 
 

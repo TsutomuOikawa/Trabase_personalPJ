@@ -8,6 +8,8 @@
     <title>@yield('title')｜Trabase（トラベス）</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <!-- GoogleMap API -->
+    <!-- <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script> -->
     <!-- Scripts -->
     @vite(['resources/css/reset.css', 'resources/icon/css/all.css', 'resources/sass/app.scss'])
   </head>
