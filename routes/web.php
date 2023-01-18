@@ -55,4 +55,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('mypage/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/tweet', [App\Http\Controllers\TwitterController::class, 'getTweet']);
+
 require __DIR__.'/auth.php';
