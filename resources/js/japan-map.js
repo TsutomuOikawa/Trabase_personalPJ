@@ -9,8 +9,11 @@ $(function(){
       selection: 'prefecture',
       drawsBoxLine : false,
       movesIslands : true,
-      onSelect: function(data){
-          window.location = 'pref/' + data.code;
+      onHover: function(data) {
+        $('.js-insert-pref').text(data.name);
+      },
+      onSelect: function(data) {
+        window.location = 'pref/' + data.code;
       }
     });
 

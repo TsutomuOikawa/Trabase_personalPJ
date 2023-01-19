@@ -3,8 +3,9 @@ $(function () {
   // ヘッダーの色変化
   let screenHeight = $('.js-header-change-target').height();
   $(window).on('scroll', function(){
-    $('.js-change-header').toggleClass('active', $(this).scrollTop() < screenHeight);
-    $('.js-change-header_form').toggleClass('nonactive', $(this).scrollTop() < screenHeight/2);
+    let $this = $(this);
+    $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.4);
+    $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.4);
   });
 
 //////////////////////

@@ -2,7 +2,7 @@
  変数
 ====================*/
 $siteColor: #2f393a;
-$siteColor-base: #d9d9d9;
+$siteColor-base: #ede6db;
 $siteColor-sub: #304848;
 $siteColor-note: #fcfaf2;
 $siteColor-button: #de6710;
@@ -35,8 +35,8 @@ $space-xl: 40px;
 $space-xxl: 50px;
 
 %imgSize-xs {
-  width: 210px;
-  height: 140px;
+  width: 180px;
+  height: 120px;
 }
 %imgSize-s {
   width: 270px;
@@ -64,7 +64,6 @@ $breakpoint: (
   }
 }
 %contents-wrapper {
-  padding: $space-xl $space-xxl;
   border-radius: 4px;
   box-sizing: border-box;
   margin: 0 auto;
@@ -73,13 +72,11 @@ $breakpoint: (
   }
 }
 %subTitle {
+  font-family: '游明朝体';
   font-weight: bold;
   font-size: $fontSize-xl;
-  text-align: center;
-  padding-bottom: $space-m;
   @include mqSP () {
     font-size: $fontSize-l;
-    padding-bottom: $space-s;
   }
 }
 
@@ -121,83 +118,85 @@ ul {
  ヘッダー
 ====================*/
 .header {
-  height: 70px;
-  box-shadow: 0 1px 3px $siteColor-base;
   background: $siteColor-sub;
+  box-shadow: 0 1px 3px $siteColor-base;
   color: $color-white;
-  text-align: center;
+  height: 60px;
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1000;
+    top: 0;
   transition: all 1s;
-  &.active {
-    background: rgba($color-black, .1);
-  }
-  &-wrapper {
-    height: 100%;
+  width: 100%;
+  z-index: 1000;
+  &_inner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+      justify-content: space-between;
+      align-items: center;
   }
   &_logo {
-    padding-right: 78px;
+    font-family: "游明朝体";
     font-size: $fontSize-xxxl;
     font-weight: bold;
+    padding-left: $space-s;
   }
   &_form {
-    width: 500px;
-    height: 40px;
-    padding: 0 $space-l;
-    margin: 0 auto;
-    border-radius: 20px;
     background: rgba($color-white, .3);
+    border-radius: 30px;
     box-shadow: 0 0 5px $siteColor;
     display: flex;
-    align-items: center;
+      align-items: center;
+    height: 35px;
+    padding-left: $space-l;
+    position: absolute;
+     top: 50%;
+     left: 50%;
+    transform: translate(-50%, -50%);
     transition: all 1s;
-    &.nonactive {
+    width: 450px;
+    &.js-nonactive {
       opacity: 0;
     }
   }
-  &_input{
-    width: 47%;
-    height: 90%;
-    font-size: 15px;
+  &_input {
     color: $color-white;
+    font-size: $fontSize-s;
+    height: 90%;
     text-shadow: 0 0 5px $siteColor;
+    width: 47%;
     &::placeholder {
       color: rgba($color-white, .8)
     }
     &:focus {
-      outline: none;
       border-bottom: 2px solid white;
+      outline: none;
     }
     &:first-child {
       border-right: 1px solid rgba($color-white, .8);
     }
   }
   &_submit {
-    width: 6%;
-    height: 100%;
     background: none;
+    border-radius: 0 30px 30px 0;
     color: $color-white;
+    height: 100%;
+    padding: 0 $space-s;
+    &:hover {
+      background: rgba($color-white, .3);
+    }
   }
   &_humburger {
+    box-sizing: border-box;
+    cursor: pointer;
     display: none;
     height: 44px;
-    width: 50px;
-    box-sizing: border-box;
     position: relative;
-    cursor: pointer;
     transition: all .4s;
+    width: 50px;
     & span {
-      width: 100%;
-      position: absolute;
-      left: 0;
-      height: 4px;
       background: $color-white;
+      height: 4px;
+      position: absolute;
+        left: 0;
+      width: 100%;
       &:nth-of-type(1) {
         top: 0;
       }
@@ -210,8 +209,22 @@ ul {
     }
   }
   &_menu {
-    &.active {
+    font-family: "游明朝体";
+    &.js-active {
       right: 0;
+    }
+  }
+  &.js-transparent {
+    background: rgba($color-black, .1);
+    box-shadow: none;
+    & .header_menu .menu_item {
+      background: none;
+      &:last-child {
+        color: $siteColor-accent;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -248,29 +261,24 @@ ul {
 // メニュー
 .menu {
   display: flex;
+    align-items: center;
   &_item {
-    width: 100px;
-    text-align: center;
+    padding: 0 $space-s;
     &:hover {
-      background: rgba($color-white, 0.3);
+      background: rgba($color-white, .3);
     }
     &:last-child {
       background: $siteColor-accent;
       color: $color-white;
       &:hover {
-        filter: brightness(1.2);
-      }
-    }
-    &--sp {
-      @extend .menu_item;
-      display: none;
-      @include mqSP () {
-        display: block;
+        filter: brightness(1.3);
       }
     }
     &_link {
-      line-height: 70px;
       display: block;
+      font-size: $fontSize-m;
+      font-weight: bold;
+      line-height: 60px;
     }
   }
 }
@@ -290,14 +298,76 @@ ul {
 /*====================
  フッター
 ====================*/
-.footer{
-  height: 150px;
+.footer {
   background: $siteColor;
   color: $color-white;
-  &_copyright {
-    text-align: center;
-    padding-top: 150px;
+  &_wrapper {
+    box-sizing: border-box;
+    height: auto;
+    margin: 0 auto;
+    padding: $space-l;
+    width: 1200px;
+  }
+  &_nav {
+    display: flex;
+      justify-content: space-between;
+  }
+  &_navItem {
+    table {
+      width: 570px;
+    }
+    tr {
+      display: flex;
+        align-items: center;
+      padding-bottom: $space-xxs;
+    }
+    th {
+      font-size: $fontSize-s;
+      font-weight: normal;
+      min-width: 25%;
+      padding-right: $space-xs;
+    }
+    td {
+      font-size: $fontSize-ss;
+      line-height: $fontSize-default;
+      padding-right: $space-xxs;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &_category {
+    font-weight: bold;
+    padding-bottom: $space-xs;
+  }
+  &_detail {
+    font-size: $fontSize-s;
+    padding-bottom: $space-xxs;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &_form {
+    background: rgba($color-white, .4);
+    border-radius: 4px;
+    color: $color-white;
     display: block;
+    height: 150px;
+    margin-bottom: $space-xxs;
+    width: 250px;
+  }
+  &_submit {
+    background: rgba($color-white, .5);
+    border-radius: 4px;
+    font-size: $fontSize-ss;
+    padding: $space-xxs $space-xs;
+
+  }
+  &_copyright {
+    display: block;
+    font-size: $fontSize-ss;
+    padding-top: $space-m;
+    text-align: center;
     br {
       display: none;
     }
@@ -306,6 +376,10 @@ ul {
 
 @include mqSP() {
   .footer {
+    &_wrapper {
+      padding: $space-xs;
+      width: 100%;
+    }
     &_copyright {
       br {
         display: inline;
@@ -318,11 +392,11 @@ ul {
  共通コンテナ
 ====================*/
 .page-wrapper {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 .container {
   color: $color-white;
-  padding: 80px 0 100px;
+  padding: 40px 0;
   &--baseColor {
     @extend .container;
     background: $siteColor-base;
@@ -346,18 +420,20 @@ ul {
     width: 70%;
   }
   &_title {
+    font-family: '游明朝体';
     font-size: $fontSize-xxl;
-    font-weight: bold;
+    margin: -60px auto 0;
+    max-width: 80%;
+    padding-top: 60px;
     position: relative;
     &::before {
       content: '';
       font-size: 60px;
-      top: -45px;
       letter-spacing: 0.08em;
       opacity: 0.2;
       position: absolute;
-      right: 0;
-      left: 0;
+        top: 5px;
+        left: 10px;
     }
   }
   &_notion {
@@ -369,7 +445,7 @@ ul {
     max-width: 1000px;
     padding: 0 $space-xs;
     box-sizing: border-box;
-    margin: $space-xl auto 0;
+    margin: $space-l auto 0;
     &--xs {
       @extend .container_body;
       max-width: 35%;
@@ -415,67 +491,87 @@ ul {
 /*====================
  index.php
 ====================*/
-.firstView {
-  height: 900px;
+.hero {
   background-image: url('/public/img/IMG_9461.JPG');
   background-attachment: fixed;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+}
+
+.firstView {
+  box-sizing: border-box;
+  height: 100vh;
+  opacity: 0.6;
+  padding-top: 13%;
   position: relative;
-  &_container {
-    opacity: 0.6;
-    text-align: center;
-    position: absolute;
-    top: 33%;
-    left: 0;
-    right: 0;
-  }
   &_title {
-    padding-bottom: $space-m;
     color: $color-white;
+    font-family: '游明朝体';
     font-size:$fontSize-xxxl;
+    position: absolute;
+      top: 37%;
+      left: 50%;
+    transform: translateX(-50%);
     br {
       display: none;
     }
   }
 }
+
 .map {
-  &> * {
-    display: block;
-    margin: $space-l auto $space-m;
+  background: rgba($color-black, .7);
+  padding: 80px 0 $space-l;
+  &_pref {
+    font-family: "游明朝体";
+    font-size: $fontSize-l;
   }
-  &>.container_title {
+  &_japanMap {
+    margin: 0 auto;
+    &> * {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  & .container_title {
     position: relative;
     &::before {
-      content: 'Where will you visit next ?';
+      content: 'Check the Map';
+      color: $color-white;
     }
   }
 }
+.search{
+  padding-top: 100px;
+  & > .container_title::before {
+    content: 'Read Notes';
+  }
+}
+
+.about {
+  padding-top: 100px;
+  &> .container_title::before {
+    content: 'About us';
+  }
+}
+
+
 .imgSlider {
-  width: 100%;
-  border-top: 1px solid $color-white;
-  padding: $space-xs 0;
   box-sizing: border-box;
   overflow: hidden;
+  padding-top: $space-m;
+  width: 100%;
   &_list {
     display: flex;
     flex-wrap: nowrap;
   }
   &_item {
-    padding: 0 $space-xs;
+    padding: 0 $space-xxs;
   }
   &_img {
     @extend %imgSize-xs;
   }
 }
-#about > .container_title::before {
-  content: 'About';
-}
-#search > .container_title::before {
-  content: 'Search';
-}
-
 @include mqSP() {
   .firstView {
     &_title {
@@ -773,8 +869,8 @@ ul {
   color: $fontColor-sub;
   display: flex;
     align-items: center;
-  padding-top: $space-xxs;
   &_num {
+    font-size: $fontSize-ss;
     padding: 0 $space-xs 0 $space-xxs;
   }
 }
@@ -1132,7 +1228,7 @@ ul {
   }
   &_body {
     display: flex;
-    flex-wrap: wrap;
+      flex-wrap: wrap;
     &--wish {
       background: rgba($siteColor-base, .2);
       box-sizing: border-box;
@@ -1143,8 +1239,8 @@ ul {
     }
     &--note {
       @extend .list_body;
-      justify-content: space-around;
-      margin-left: -10px;
+        justify-content: flex-start;
+      margin-left: 35px;
     }
     &--destination {
       @extend .list_body;
@@ -1180,35 +1276,35 @@ ul {
   &--note {
     @extend .panel;
     background: rgba(252, 250, 242, .8);
-    height: 330px;
-    margin: 0 0 $space-s $space-xxs;
+    height: 285px;
+    margin: 0 $space-xs $space-s 0;
+    transition: all .5s;
     width: 220px;
+    &:hover {
+      transform: scale(1.07);
+    }
   }
   &_thumbnail {
     border-radius: 4px 4px 0 0;
-    box-sizing: border-box;
-    height: 45%;
+    height: 150px;
   }
   &_info {
     box-sizing: border-box;
     height: auto;
-    padding: $space-xs;
+    padding: $space-xxs $space-xs;
     text-align: left;
     width: 100%;
   }
   &_title {
-    @extend %subTitle;
-    font-size: $fontSize-m;
-    max-height: 55px;
+    font-size: $fontSize-s;
     margin-bottom: $space-xxs;
+    max-height: 45px;
     overflow: hidden;
-    padding-bottom: 0;
-    text-align: left;
   }
   &_subInfo{
     color: $fontColor-sub;
     font-size: $fontSize-ss;
-    padding-right: $space-xxs;
+    line-height: 1.2;
   }
   &--wish {
     @extend .panel;
