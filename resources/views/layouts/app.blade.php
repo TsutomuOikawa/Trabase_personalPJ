@@ -64,7 +64,6 @@
     <!-- Page Content -->
     @yield('content')
 
-
     <footer id="footer" class="footer">
       <div class="footer_wrapper">
         <nav class="footer_nav">
@@ -76,7 +75,7 @@
             </ul>
           </div>
           <div class="footer_navItem">
-            <p class="footer_category">地域別情報</p>
+            <p class="footer_category">エリア別情報</p>
             <table>
               <tbody>
                 <tr>

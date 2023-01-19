@@ -6,6 +6,7 @@ $(function () {
     let $this = $(this);
     $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.4);
     $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.4);
+    $('.js-hide-title').toggleClass('js-nonactive', $this.scrollTop() > screenHeight/4);
   });
 
 //////////////////////
@@ -90,6 +91,24 @@ $(function () {
   // ノートのpadding調整
   let height = $('.js-get-height').innerHeight() + 40;
   $('.js-set-padding').css('padding-top', height);
+
+//////////////////////
+  // 都道府県パネルのトグル表示
+  $('.js-switch-toggle-list').on('click', function() {
+    $(this).next('.js-toggle-list').toggleClass('active')
+  })
+
+//////////////////////
+  // 都道府県パネルホバー時の背景変更
+  $('.js-change-back').hover(
+    function() {
+      let src = $(this).children('img').attr('src');
+      $('.js-change-back-target').css('background-image', 'url('+ src +')');
+    },
+    function() {
+      $('.js-change-back-target').css('background-image', '');
+    }
+  )
 
 
 //////////////////////

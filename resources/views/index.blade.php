@@ -4,14 +4,14 @@
 <main>
   <section class="hero js-header-change-target">
     <section id="firstView" class="firstView">
-      <h1 class="firstView_title">旅の情報を集めよう</h1>
+      <h1 class="firstView_title js-hide-title">旅の情報を集めよう</h1>
       <form class="header_form" action="{{ route('notes.list') }}" method="get">
         <input type="text" name="pref" class="header_input" value="{{ old('pref') }}" placeholder="都道府県名を入力">
         <input type="text" name="key" class="header_input" value="{{ old('key') }}" placeholder="キーワードを入力">
         <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
       </form>
     </section>
-    <section id="map" class="map container">
+    <section id="map" class="map container--transparent">
       <h2 class="container_title">日本地図から探す</h2>
       <div class="container_body">
         <p class="map_pref">次の旅先：<span class="js-insert-pref"></span></p>
@@ -26,8 +26,6 @@
       </div>
     </section>
   </section>
-
-
 
   <section id="search" class="search container--baseColor">
     <h2 class="container_title">ノートから探す</h2>

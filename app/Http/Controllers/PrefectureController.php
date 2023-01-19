@@ -21,7 +21,12 @@ class PrefectureController extends Controller
           $prefs = Prefecture::all();
           $data = $prefs->find($pref_id);
           // ノートデータ
-          $notes = Note::with('user')->with('prefecture')->where('pref_id', $pref_id)->get();
+          $notes = Note::with('user')
+                        ->with('prefecture')
+                        ->where('pref_id', $pref_id)
+                        ->orderBy('note_id', 'DESC')
+                        ->take(8)
+                        ->get();
           return view('prefecture')
             ->with('prefs', $prefs)
             ->with('data', $data)

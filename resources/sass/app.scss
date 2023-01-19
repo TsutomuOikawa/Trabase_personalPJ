@@ -74,7 +74,7 @@ $breakpoint: (
 %subTitle {
   font-family: '游明朝体';
   font-weight: bold;
-  font-size: $fontSize-xl;
+  font-size: $fontSize-l;
   @include mqSP () {
     font-size: $fontSize-l;
   }
@@ -395,7 +395,7 @@ ul {
 }
 .container {
   color: $color-white;
-  padding: 40px 0;
+  padding: 40px 0 30px;
   &--baseColor {
     @extend .container;
     background: $siteColor-base;
@@ -404,6 +404,10 @@ ul {
   &--subColor {
     @extend .container;
     background: $siteColor-sub;
+  }
+  &--transparent {
+    @extend .container;
+    background: rgba($color-black, .6);
   }
   &--note {
     @extend .container;
@@ -508,10 +512,19 @@ ul {
     color: $color-white;
     font-family: '游明朝体';
     font-size:$fontSize-xxxl;
-    position: absolute;
+    letter-spacing: 0.1em;
+    position: fixed;
       top: 37%;
       left: 50%;
     transform: translateX(-50%);
+    transition: all .7s;
+    &--big {
+      @extend .firstView_title;
+      font-size: 70px;
+    }
+    &.js-nonactive {
+      opacity: 0;
+    }
     br {
       display: none;
     }
@@ -519,7 +532,6 @@ ul {
 }
 
 .map {
-  background: rgba($color-black, .8);
   padding: 80px 0 $space-l;
   &_pref {
     font-family: "游明朝体";
@@ -641,22 +653,26 @@ ul {
 /*====================
  prefectures.php > information
 ====================*/
-.information {
+.informations {
+  padding-top: 100px;
+  & > .container_title::before {
+    content: 'Informations';
+  }
   &_orderItems {
     display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
     margin-top: $space-l;
   }
-  &_now {
-    height:400px;
+  &_constructions {
+    height: 300px;
     margin: $space-s 0;
-    width:400px;
+    width: 45%;
   }
   &_map {
-    height:400px;
+    height: 300px;
     margin: $space-s 0;
-    width:400px;
+    width: 45%;
   }
 }
 
@@ -676,27 +692,27 @@ ul {
   }
 }
 
+.prefNotes {
+  padding-top: 80px;
+  & > .container_title::before {
+    content: 'Notes';
+  }
+}
+
 /*====================
  prefectures.php > changeDestination
 ====================*/
-.changeDestination {
-  position: relative;
-  z-index: 3;
-  &::after {
-    content: '';
-    background-attachment: fixed;
-    background-blend-mode: lighten;
-    background-color: rgba(255, 255, 255, .1);
-    background-image: url('/public/img/IMG_5228.JPG');
-    background-position: center;
-    background-size: cover;
-    height: 60%;
-    position: absolute;
-      top: 40%;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    z-index: -100;
+.destination {
+  background-attachment: fixed;
+  background-color: rgba($color-white, .6);
+  background-blend-mode: lighten;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $fontColor-default;
+  padding-top: 80px;
+  & > .container_title::before {
+    content: 'Change Destinations';
   }
 }
 
@@ -1219,10 +1235,9 @@ ul {
   }
   &_title {
     @extend %subTitle;
-    &--destination {
-      @extend .list_title;
-      text-align: center;
-    }
+    cursor: pointer;
+    font-size: $fontSize-l;
+    padding-bottom: $space-xs;
   }
   &_body {
     display: flex;
@@ -1242,14 +1257,31 @@ ul {
     }
     &--destination {
       @extend .list_body;
+      display: none;
         align-items: center;
         flex-wrap: nowrap;
         justify-content: flex-start;
-      margin: 0 -10px $space-l 0;
+      margin-bottom: $space-m;
       overflow-x: auto;
+      &.active {
+        animation: toggleList 1.5s;
+        display: flex;
+      }
     }
   }
 }
+
+@keyframes toggleList {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 
 @include mqSP() {
   .list {
@@ -1273,13 +1305,16 @@ ul {
   position: relative;
   &--note {
     @extend .panel;
-    background: rgba(252, 250, 242, .8);
+    background: rgba(252, 250, 242, 1);
+    box-shadow: 0 0 5px 0 rgba($color-black, .7);
     height: 285px;
     margin: 0 $space-xs $space-s 0;
     transition: all .5s;
     width: 220px;
     &:hover {
-      transform: scale(1.07);
+      box-shadow: 0 0 25px 5px rgba($color-black, .3);
+      transform: scale(1.2);
+      z-index: 1000;
     }
   }
   &_thumbnail {
@@ -1360,20 +1395,26 @@ ul {
   &_destImg {
     border-radius: 4px;
     height: 100%;
+    transition: all .5s;
   }
   &_destCover {
     background: rgba($color-black, .9);
     border-radius: 4px;
+    opacity: 1;
     position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-    transition: 1s;
+    transition: all 1s;
+    &:hover {
+      opacity: 0;
+      transform: scale(1.2);
+    }
   }
   &_destName {
     color: $color-white;
-    font-size: $fontSize-m;
+    font-size: $fontSize-s;
     position: absolute;
       top: 50%;
       left: 50%;
@@ -1434,11 +1475,6 @@ ul {
     @extend %contents-wrapper;
     color: $fontColor-default;
     background: rgba($color-white, .7);
-  }
-  &_title {
-    @extend %subTitle;
-    color: $fontColor-default;
-    padding-bottom: $space-xl;
   }
   &_name {
     margin-bottom: $space-xxs;
