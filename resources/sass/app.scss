@@ -1229,15 +1229,12 @@ ul {
   }
   &--destination {
     @extend .list;
-    .list_title {
-      text-align: left;
-    }
   }
   &_title {
     @extend %subTitle;
     cursor: pointer;
     font-size: $fontSize-l;
-    padding-bottom: $space-xs;
+    padding: $space-xs 0;
   }
   &_body {
     display: flex;

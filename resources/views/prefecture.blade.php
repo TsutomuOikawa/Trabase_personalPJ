@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $data->pref_name )
+@section('title', $data->pref_name)
 @section('content')
 
 <!-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key&callback=initMap" defer></script> -->

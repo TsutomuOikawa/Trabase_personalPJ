@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '旅の計画と記録に')
 @section('content')
 
 <main>
