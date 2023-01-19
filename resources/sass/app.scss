@@ -2,7 +2,7 @@
  変数
 ====================*/
 $siteColor: #2f393a;
-$siteColor-base: #ede6db;
+$siteColor-base: #d9d9d9;
 $siteColor-sub: #304848;
 $siteColor-note: #fcfaf2;
 $siteColor-button: #de6710;
@@ -276,7 +276,6 @@ ul {
     }
     &_link {
       display: block;
-      font-size: $fontSize-m;
       font-weight: bold;
       line-height: 60px;
     }
@@ -520,7 +519,7 @@ ul {
 }
 
 .map {
-  background: rgba($color-black, .7);
+  background: rgba($color-black, .8);
   padding: 80px 0 $space-l;
   &_pref {
     font-family: "游明朝体";
@@ -554,7 +553,6 @@ ul {
     content: 'About us';
   }
 }
-
 
 .imgSlider {
   box-sizing: border-box;
@@ -1431,6 +1429,7 @@ ul {
   @extend %contents-wrapper;
   background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  padding: $space-l $space-m;
   &--editor {
     @extend %contents-wrapper;
     color: $fontColor-default;
