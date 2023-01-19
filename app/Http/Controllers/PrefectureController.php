@@ -28,4 +28,9 @@ class PrefectureController extends Controller
             ->with('notes', $notes);
         }
     }
+
+    public static function getPrefs()
+    {
+      return Prefecture::all();
+    }
 }

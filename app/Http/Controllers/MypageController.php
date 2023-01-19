@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\PrefectureController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,10 +16,12 @@ class MypageController extends Controller
                     ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
                     ->where('user_id', $user->id)
                     ->get();
+        $prefs = PrefectureController::getPrefs();
 
         return view('mypage')
           ->with('user', $user)
-          ->with('notes', $notes);
+          ->with('notes', $notes)
+          ->with('prefs', $prefs);
     }
 
 }

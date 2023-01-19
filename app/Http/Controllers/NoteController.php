@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\PrefectureController;
 use App\Http\Requests\NoteRequest;
 use App\Models\Comment;
 use App\Models\Note;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
+
   // ノート一覧表示（検索）
   public function showList(Request $request) {
     $pref = $request->pref;
@@ -24,18 +26,18 @@ class NoteController extends Controller
     if ($pref) {
       $query->where('pref_name', 'like', '%'.$pref.'%');
     }
-
     if ($key) {
       $query->where(function($query) use($key){
         $query->where('title', 'like', '%'.$key.'%')
               ->orWhere('text', 'like', '%'.$key.'%');
       });
     }
-
     // データを取得
     $notes = $query->get();
+    $prefs = PrefectureController::getPrefs();
     return view('notes.list')
-      ->with('notes', $notes);
+      ->with('notes', $notes)
+      ->with('prefs', $prefs);
   }
 
   // ノート詳細表示
@@ -48,15 +50,17 @@ class NoteController extends Controller
 
     $note->text = json_decode($note->text, true);
     $comments = Comment::where('note_id', $note_id)->with('user')->get();
+    $prefs = PrefectureController::getPrefs();
 
     return view('notes.article')
       ->with('note', $note)
-      ->with('comments', $comments);
+      ->with('comments', $comments)
+      ->with('prefs', $prefs);
   }
 
   // ノート新規作成画面
   public function new() {
-    $prefs = Prefecture::all();
+    $prefs = PrefectureController::getPrefs();
     return view('notes.editor')
       ->with('editMode', false)
       ->with('prefs', $prefs);
@@ -83,13 +87,13 @@ class NoteController extends Controller
 
   // ノート編集画面表示
   public function edit($note_id) {
-    $prefs = Prefecture::all();
     $note = Note::find($note_id);
+    $prefs = PrefectureController::getPrefs();
 
     return view('notes.editor')
       ->with('editMode', true)
-      ->with('prefs', $prefs)
-      ->with('note', $note);
+      ->with('note', $note)
+      ->with('prefs', $prefs);
   }
 
   // テキストデータ取得
