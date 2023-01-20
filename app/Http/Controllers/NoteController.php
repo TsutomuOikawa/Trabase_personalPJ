@@ -19,18 +19,6 @@ class NoteController extends Controller
     $pref = $request->pref;
     $key = $request->key;
 
-    // 都道府県のみならprefページに飛ばす
-    if ($pref && !$key) {
-      $data = DB::table('prefectures')
-                  ->select('pref_id')
-                  ->where('pref_name', 'like', '%'.$pref.'%')
-                  ->get();
-
-      $prefs = PrefectureController::getPrefs();
-      return redirect()->route('pref', ['pref_id' => $data[0]->pref_id])->with('prefs', $prefs);
-    }
-
-    // それ以外ならノート一覧ページへ
     $query = DB::table('notes')
                 ->leftJoin('users', 'notes.user_id', '=', 'users.id')
                 ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id');
