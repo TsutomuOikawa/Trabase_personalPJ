@@ -5,7 +5,7 @@
       <div class="container--note">
         <h1 class="container_title">
           @if($key[0]) {{ $key[0] }} @endif
-          @if($key[1]) 「{{ $key[1] }}」@endif のノート
+          @if($key[1]) 「{{ $key[1] }}」@endif を含むノート
         </h1>
         <div class="container_body">
           <div class="searchMenu">
