@@ -109,7 +109,7 @@
     <h2 class="container_title">行き先を変える</h2>
     <div class="container_body">
       <div class="list--destination">
-        <h3 class="list_title js-switch-toggle-list"><i class="fa-regular fa-square-plus"></i>北海道・東北</h3>
+        <h3 class="list_title js-switch-toggle-list"><i class="fa-regular fa-square-minus"></i>北海道・東北</h3>
         <div class="list_body--destination js-toggle-list active">
           @foreach($prefs as $pref)
           <a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}" class="panel--destination js-change-back">

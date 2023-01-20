@@ -1,11 +1,13 @@
 $(function () {
 //////////////////////
-  // ヘッダーの色変化
+  // スクロールによる変更
   let screenHeight = $('.js-header-change-target').height();
   $(window).on('scroll', function(){
     let $this = $(this);
+    // ヘッダー
     $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.4);
     $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.4);
+    // ファーストビュー
     $('.js-hide-title').toggleClass('js-nonactive', $this.scrollTop() > screenHeight/4);
   });
 
@@ -110,7 +112,9 @@ $(function () {
 //////////////////////
   // 都道府県パネルのトグル表示
   $('.js-switch-toggle-list').on('click', function() {
-    $(this).next('.js-toggle-list').toggleClass('active')
+    let $this = $(this);
+    $this.next('.js-toggle-list').toggleClass('active');
+    $this.children().toggleClass('fa-square-plus').toggleClass('fa-square-minus')
   })
 
 //////////////////////

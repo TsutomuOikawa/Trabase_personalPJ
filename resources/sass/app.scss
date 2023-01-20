@@ -133,14 +133,13 @@ ul {
       justify-content: space-between;
       align-items: center;
     height: 100%;
-    padding: 0 5px;
     width: 100%;
   }
   &_logo {
     font-family: "游明朝体";
     font-size: $fontSize-xxxl;
     font-weight: bold;
-    padding-left: $space-xxs;
+    padding-left: $space-xs;
     z-index: 3000;
   }
   &_form {
@@ -200,7 +199,7 @@ ul {
     box-sizing: border-box;
     cursor: pointer;
     height: 44px;
-    margin-left: $space-xs;
+    margin: 0 $space-xs 0 $space-xxs;
     position: relative;
     transition: all .4s;
     width: 50px;
@@ -562,10 +561,12 @@ ul {
     font-family: '游明朝体';
     font-size: $fontSize-xxxl;
     letter-spacing: 0.1em;
+    opacity: 1;
     position: fixed;
       top: 37%;
     text-align: center;
-    transition: all .7s;
+    transition: all .5s;
+    visibility: visible;
     width: 100%;
     &--big {
       @extend .firstView_title;
@@ -573,6 +574,7 @@ ul {
     }
     &.js-nonactive {
       opacity: 0;
+      visibility: hidden;
     }
     br {
       display: none;
