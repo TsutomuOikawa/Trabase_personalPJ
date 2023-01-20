@@ -105,11 +105,6 @@ $(function () {
   });
 
 //////////////////////
-  // ノートのpadding調整
-  let height = $('.js-get-height').innerHeight() + 40;
-  $('.js-set-padding').css('padding-top', height);
-
-//////////////////////
   // 都道府県パネルのトグル表示
   $('.js-switch-toggle-list').on('click', function() {
     let $this = $(this);

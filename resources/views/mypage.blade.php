@@ -7,7 +7,7 @@
     <div class="container_head">
       <h1 class="container_title">マイページ</h1>
     </div>
-    <div class="container_body--l container_body--2col">
+    <div class="container_body--l container_body--col">
       <div class="mypage">
         <ul class="mypage_nav">
           <li class="mypage_navItem js-get-tab selected">Map</li>
@@ -176,14 +176,13 @@
       </div>
 
       <div class="sidebar">
-        <div class="sidebar_contents">
+        <div class="sidebar_wrapper">
           <div class="sidebar_profile">
             <div class="userInfo userInfo--big">
               <img src="{{ asset($user->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
               <p class="userInfo_name userInfo_name--big">{{ $user->name }}</p>
               <p>{{ $user->intro }}</p>
             </div>
-
           </div>
           <ul class="sidebar_menu">
             <li><a href="{{ route('profile.edit') }}">プロフィール編集</a></li>

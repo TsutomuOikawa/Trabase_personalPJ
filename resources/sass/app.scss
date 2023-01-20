@@ -504,7 +504,7 @@ ul {
       @extend .container_body;
       max-width: 1220px;
     }
-    &--2col {
+    &--col {
       display: flex;
         justify-content: space-between;
     }
@@ -803,33 +803,28 @@ ul {
 ====================*/
 .note {
   color: $fontColor-default;
-  margin-left: 18%;
-  width: 60%;
+  width: 70%;
   &_contents {
     background: rgba($siteColor-base, .8);
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: $space-m;
     width: 100%;
-    padding: $space-xl $space-l;
-    position: relative;
   }
   &_thumbnail {
     border-radius: 4px 4px 0 0;
+    height: auto;
     width: 100% ;
-    position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
   }
-  &_icon {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: $space-xs;
+  &_title {
+    box-sizing: border-box;
+    font-size: $fontSize-xxl;
+    padding: $space-l $space-s 0;
+    width: 100%;
   }
   &_text {
     line-height: 1.8;
-    padding: $space-m $space-xs 0;
+    padding: $space-xs $space-m;
   }
   &_h2 {
     font-size: $fontSize-xl;
@@ -856,10 +851,7 @@ ul {
 
 @include mqSP() {
   .note {
-    &-wrapper {
-      margin-left: 0;
-      width: 100%;
-    }
+    width: 100%;
     &_thumbnail {
       display: block;
     }
@@ -870,6 +862,10 @@ ul {
   @extend %contents-wrapper;
   background: rgba($siteColor-base, .8);
   color: $fontColor-default;
+  padding: $space-s $space-m;
+  &_title {
+    @extend %subTitle;
+  }
   &_list {
     margin-bottom: $space-m;
   }
@@ -881,6 +877,7 @@ ul {
     font-size: $fontSize-s;
   }
   &_posting {
+    border: 1px solid $fontColor-sub;
     border-radius: 4px;
     box-sizing: border-box;
     padding: $space-xs;
@@ -1178,7 +1175,7 @@ ul {
 .mypage {
   color: $fontColor-default;
   margin-bottom: $space_l;
-  width: 78%;
+  width: 80%;
   &_nav {
     display: flex;
     span {
@@ -1238,7 +1235,7 @@ ul {
   .mypage {
     width: 100%;
     &_nav {
-      font-size: $fontSize-s;
+      font-size: $fontSize-ss;
     }
   }
 }
@@ -1247,19 +1244,26 @@ ul {
  sidebar
 ====================*/
 .sidebar {
-  background: rgba($siteColor-base, .7);
-  border-radius: 4px;
+  box-sizing: border-box;
   height: 100%;
-  margin-left: 1%;
+  padding-left: 1%;
   position: sticky;
     top: 90px;
-  width: 23%;
+  width: 20%;
+  &--icon {
+    @extend .sidebar;
+    padding: 0 1% 0 0;
+    width: 10%;
+  }
   &_thumbnail {
     border-radius: 4px 4px 0 0;
     height: 200px;
   }
-  &_contents {
+  &_wrapper {
+    background: rgba($siteColor-base, .7);
+    border-radius: 4px;
     color: $fontColor-default;
+    margin-bottom: $space-xxs;
     padding: $space-xs;
     text-align: left;
   }
@@ -1279,13 +1283,14 @@ ul {
     height: auto;
     margin-left: 0;
     position: fixed;
-      top: 70px;
+      top: 60px;
       left: 0;
     width: 100%;
     &_thumbnail {
       display: none;
     }
     &_contents {
+
       padding: $space-xxs $space-xs;
     }
     &_profile {
@@ -1444,7 +1449,7 @@ ul {
       margin-bottom: 0;
     }
     &::after {
-      content: '\f004';
+      content: '\f0eb';
       color: $fontColor-sub;
       font-family: "Font Awesome 6 Free";
       font-size: $fontSize-xl;

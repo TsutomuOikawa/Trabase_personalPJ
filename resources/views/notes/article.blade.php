@@ -4,17 +4,34 @@
 
     <main class="page-wrapper">
       <div class="container--note">
-        <div class="container_body--l container_body--2col">
+        <div class="container_body--l container_body--col">
+          <aside class="sidebar--icon">
+            <div class="sidebar_wrapper">
+              <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
+            </div>
+            @if($note->id === Auth::id())
+            <ul class="sidebar_wrapper">
+              <li>
+                <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">
+                  <i class="fa-solid fa-pen-to-square"></i>編集
+                </a>
+              </li>
+              <li>
+                <form action="{{ route('notes.delete', ['note_id'=>$note->note_id]) }}" method="post">
+                  @csrf @method('DELETE')
+                  <button type="submit">
+                    <i class="fa-solid fa-trash-can"></i>削除
+                  </button>
+                </form>
+              </li>
+            </ul>
+            @endif
+          </aside>
+
           <article class="note">
             <section class="note_contents js-set-padding">
               <img src="{{ asset($note->thumbnail) }}" alt="" class="note_thumbnail js-get-height">
-              <h1 class="container_title">{{ $note->title }}</h1>
-              <div class="note_icon">
-                <div class="iconBox">
-                  <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                  <span class="iconBox_num">33</span>
-                </div>
-              </div>
+              <h1 class="note_title">{{ $note->title }}</h1>
               <div class="note_text">
                 @foreach($note->text['blocks'] as $text)
                   @if($text['type'] === 'header')
@@ -38,6 +55,7 @@
             </section>
 
             <section class="comments">
+              <p class="comments_title">コメント</p>
               <ul class="comments_list">
                 @foreach($comments as $comment)
                 <li class="comments_item">
@@ -108,7 +126,7 @@
           </div>
 
           <aside class="sidebar">
-            <div class="sidebar_contents">
+            <div class="sidebar_wrapper">
               <div class="sidebar_profile">
                 <div class="userInfo userInfo--big">
                   <img src="{{ asset($note->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
@@ -125,24 +143,6 @@
                 @endif
               @endforeach
               </ul>
-              @if($note->id === Auth::id())
-              <ul>
-                <li>
-                  <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">
-                    <i class="fa-solid fa-pen-to-square"></i>投稿を編集する
-                  </a>
-                </li>
-                <li>
-                  <form action="{{ route('notes.delete', ['note_id'=>$note->note_id]) }}" method="post">
-                    @csrf @method('DELETE')
-                    <button type="submit">
-                      <i class="fa-solid fa-trash-can"></i>
-                      投稿を削除する
-                    </button>
-                  </form>
-                </li>
-              </ul>
-              @endif
             </div>
           </aside>
 
