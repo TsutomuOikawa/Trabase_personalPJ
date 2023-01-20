@@ -3,12 +3,15 @@
 @section('content')
     <main class="page-wrapper">
       <div class="container--note">
-        <h1 class="container_title">書庫</h1>
+        <h1 class="container_title">
+          @if($key[0]) {{ $key[0] }} @endif
+          @if($key[1]) 「{{ $key[1] }}」@endif のノート
+        </h1>
         <div class="container_body">
           <div class="searchMenu">
             <div class="searchMenu_item">
-              <p>検索結果：68件</p>
-              <p>表示中：1~10件/68件</p>
+              <p>検索結果：{{ count($notes) }}件</p>
+              <p>表示中：1~10件/{{ count($notes) }}件</p>
             </div>
             <div class="searchMenu_item">
               <div class="searchMenu_sort">
@@ -31,7 +34,6 @@
                 <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}">
                   <img src="{{ asset('img/IMG_5131.JPG') }}" class="panel_thumbnail" alt="">
                   <div class="panel_info">
-                    <p><span class="panel_subInfo">{{ $note->pref_name }}</span><span class="panel_subInfo">投稿:{{ date('y/m/d', strtotime($note->created_at)) }}</span></p>
                     <h3 class="panel_title">{{ $note->title }}</h3>
                     <div class="userInfo">
                       @if($note->avatar)
@@ -41,11 +43,14 @@
                       @endif
                       <p class="userInfo_name">{{ $note->name }}</p>
                     </div>
-                    <div class="iconBox">
-                      <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                      <span class="iconBox_num">33</span>
-                      <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                      <span class="iconBox_num">2</span>
+                    <div class="panel_subInfo">
+                      <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
+                      <div class="iconBox">
+                        <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
+                        <span class="iconBox_num">33</span>
+                        <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
+                        <span class="iconBox_num">2</span>
+                      </div>
                     </div>
                   </div>
                 </a>

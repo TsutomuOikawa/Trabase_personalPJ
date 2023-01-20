@@ -36,6 +36,7 @@ class NoteController extends Controller
     $notes = $query->get();
     $prefs = PrefectureController::getPrefs();
     return view('notes.list')
+      ->with('key', [$pref, $key])
       ->with('notes', $notes)
       ->with('prefs', $prefs);
   }
