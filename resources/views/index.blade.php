@@ -47,12 +47,14 @@
                   @endif
                   <p class="userInfo_name">{{ $note->user->name }}</p>
                 </div>
-                <p class="panel_subInfo">{{ date('y年m月d日', strtotime($note->created_at)) }}投稿</p>
-                <div class="iconBox">
-                  <i class="fa-regular fa-bookmark icon--bookmark"></i>
-                  <span class="iconBox_num">33</span>
-                  <i class="fa-regular fa-comment-dots icon--comment"></i>
-                  <span class="iconBox_num">2</span>
+                <div class="panel_subInfo">
+                  <p>{{ date('y年m月d日', strtotime($note->created_at)) }}投稿</p>
+                  <div class="iconBox">
+                    <i class="fa-regular fa-bookmark icon--bookmark"></i>
+                    <span class="iconBox_num">33</span>
+                    <i class="fa-regular fa-comment-dots icon--comment"></i>
+                    <span class="iconBox_num">2</span>
+                  </div>
                 </div>
               </div>
             </a>
