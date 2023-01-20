@@ -126,17 +126,22 @@ ul {
     top: 0;
   transition: all 1s;
   width: 100%;
-  z-index: 1000;
+  z-index: 2000;
   &_inner {
+    box-sizing: border-box;
     display: flex;
       justify-content: space-between;
       align-items: center;
+    height: 100%;
+    padding: 0 5px;
+    width: 100%;
   }
   &_logo {
     font-family: "游明朝体";
     font-size: $fontSize-xxxl;
     font-weight: bold;
-    padding-left: $space-s;
+    padding-left: $space-xxs;
+    z-index: 3000;
   }
   &_form {
     background: rgba($color-white, .3);
@@ -183,19 +188,29 @@ ul {
       background: rgba($color-white, .3);
     }
   }
+  &_sp {
+    display: none;
+  }
+  &_search {
+    font-size: 2.5em;
+    height: 50px;
+    width: 50px;
+  }
   &_humburger {
     box-sizing: border-box;
     cursor: pointer;
-    display: none;
     height: 44px;
+    margin-left: $space-xs;
     position: relative;
     transition: all .4s;
     width: 50px;
+    z-index: 3000;
     & span {
       background: $color-white;
       height: 4px;
       position: absolute;
         left: 0;
+      transition: all 1s;
       width: 100%;
       &:nth-of-type(1) {
         top: 0;
@@ -205,6 +220,20 @@ ul {
       }
       &:nth-of-type(3) {
         bottom: 0;
+      }
+    }
+    &.js-active {
+      span {
+        &:nth-of-type(1) {
+          transform: translateY(20px) rotate(45deg);
+        }
+        &:nth-of-type(2) {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        &:nth-of-type(3) {
+          transform: translateY(-20px) rotate(-45deg);
+        }
       }
     }
   }
@@ -240,16 +269,26 @@ ul {
       padding-right: 0;
     }
     &_form {
-      display: none;
+      box-sizing: border-box;
+      height: 70%;
+      position: absolute;
+       top: -100%;
+      width: 100%;
+      &.js-active {
+        opacity: 1;
+          top: 100%;
+        transform: translate(-50%, 20%);
+      }
     }
-    &_humburger {
-      display: inline-block;
+    &_sp {
+      display: flex;
+        align-items: center;
     }
     &_menu {
       width: 100%;
       padding: 70px $space_l $space-s;
       box-sizing: border-box;
-      background: rgba(48, 72, 72, .8);
+      background: $siteColor-sub;
       position: absolute;
       top: 0;
       right: -100%;
@@ -360,7 +399,6 @@ ul {
     border-radius: 4px;
     font-size: $fontSize-ss;
     padding: $space-xxs $space-xs;
-
   }
   &_copyright {
     display: block;
@@ -376,13 +414,19 @@ ul {
 @include mqSP() {
   .footer {
     &_wrapper {
-      padding: $space-xs;
+      padding: $space-m $space-s;
       width: 100%;
+    }
+    &_nav {
+      flex-wrap: wrap;
     }
     &_copyright {
       br {
         display: inline;
       }
+    }
+    &_spHide {
+      display: none;
     }
   }
 }
@@ -475,6 +519,11 @@ ul {
     }
     &_title {
       font-size: $fontSize-xl;
+      max-width: 95%;
+      &::before {
+        font-size: 40px;
+        top: 35px;
+      }
     }
     &_notion {
       br {
@@ -511,13 +560,13 @@ ul {
   &_title {
     color: $color-white;
     font-family: '游明朝体';
-    font-size:$fontSize-xxxl;
+    font-size: $fontSize-xxxl;
     letter-spacing: 0.1em;
     position: fixed;
       top: 37%;
-      left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
     transition: all .7s;
+    width: 100%;
     &--big {
       @extend .firstView_title;
       font-size: 70px;
@@ -526,6 +575,29 @@ ul {
       opacity: 0;
     }
     br {
+      display: none;
+    }
+  }
+  &_form {
+    @extend .header_form;
+  }
+}
+
+@include mqSP() {
+  .firstView {
+    &_title {
+      &--big {
+        @extend .firstView_title;
+        font-size: 50px;
+      }
+      span {
+        display: none;
+      }
+      br {
+        display: inline;
+      }
+    }
+    &_form {
       display: none;
     }
   }
@@ -552,6 +624,13 @@ ul {
     }
   }
 }
+
+@include mqSP() {
+  .map {
+    display: none;
+  }
+};
+
 .search{
   padding-top: 100px;
   & > .container_title::before {
@@ -559,12 +638,23 @@ ul {
   }
 }
 
+@include mqSP() {
+  .search{
+    padding-top: 40px;
+  }
+};
+
 .about {
   padding-top: 100px;
   &> .container_title::before {
     content: 'About us';
   }
 }
+@include mqSP() {
+  .about {
+    padding-top: 40px;
+  }
+};
 
 .imgSlider {
   box-sizing: border-box;
@@ -580,21 +670,6 @@ ul {
   }
   &_img {
     @extend %imgSize-xs;
-  }
-}
-@include mqSP() {
-  .firstView {
-    &_title {
-      span {
-        display: none;
-      }
-      br {
-        display: inline;
-      }
-    }
-  }
-  .map {
-    display: none;
   }
 }
 /*====================
@@ -664,12 +739,7 @@ ul {
       align-items: center;
     margin-top: $space-l;
   }
-  &_constructions {
-    height: 300px;
-    margin: $space-s 0;
-    width: 45%;
-  }
-  &_map {
+  &_item {
     height: 300px;
     margin: $space-s 0;
     width: 45%;
@@ -677,17 +747,13 @@ ul {
 }
 
 @include mqSP() {
-  .information {
+  .informations {
     &_orderItems {
       flex-direction: column;
     }
-    &_now {
+    &_item {
       height: 200px;
-      width: 300px;
-    }
-    &_map {
-      height: 200px;
-      width: 300px;
+      width: 100%;
     }
   }
 }
@@ -698,6 +764,12 @@ ul {
     content: 'Notes';
   }
 }
+@include mqSP() {
+  .prefNotes {
+    padding-top: $space-xl;
+  }
+}
+
 
 /*====================
  prefectures.php > changeDestination
@@ -713,6 +785,14 @@ ul {
   padding-top: 80px;
   & > .container_title::before {
     content: 'Change Destinations';
+  }
+}
+@include mqSP() {
+  .destination {
+    padding-top: $space-xl;
+    & > .container_title::before {
+      content: 'Change Destinations';
+    }
   }
 }
 
@@ -943,14 +1023,14 @@ ul {
     right: 0;
     bottom: 0;
     left: 0;
-  z-index: 1000;
+  z-index: 5000;
   &_content {
     position: absolute;
       top: 120px;
       left: 50%;
     transform: translateX(-50%);
     width: 35%;
-    z-index: 2000;
+    z-index: 6000;
   }
   &_header {
     color: $color-white;
@@ -1279,14 +1359,18 @@ ul {
   }
 }
 
-
 @include mqSP() {
   .list {
     flex-direction: column;
     padding: 0 0 $space-l;
+    &_title {
+      font-size: $fontSize-m;
+      padding: $space-xxs 0;
+    }
     &_body {
       &--note {
           flex-wrap: nowrap;
+        margin-left: 0;
         overflow-x: auto;
       }
     }
@@ -1322,7 +1406,6 @@ ul {
     box-sizing: border-box;
     height: auto;
     padding: $space-xxs $space-xs;
-    text-align: left;
     width: 100%;
   }
   &_title {
@@ -1424,6 +1507,9 @@ ul {
     &--note {
       height: 300px;
       min-width: 180px;
+    }
+    &_info {
+      padding: $space-xxs $space-xxs;
     }
     &_title {
       font-size: $fontSize-s;
@@ -1583,7 +1669,7 @@ ul {
   text-align: center;
   transition: all 1.5s;
   width: 100%;
-  z-index: 2000;
+  z-index: 3000;
   &.active {
     transform: translateY(80px);
   }

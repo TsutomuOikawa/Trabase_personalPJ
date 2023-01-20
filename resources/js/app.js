@@ -10,6 +10,21 @@ $(function () {
   });
 
 //////////////////////
+  // ヘッダーハンバーガーメニュー
+  $('.js-menu-trigger').on('click', function() {
+    $(this).toggleClass('js-active');
+    $('.js-slide-menu').toggleClass('js-active');
+  })
+
+//////////////////////
+  // ヘッダー検索窓
+  $('.js-form-trigger').on('click', function() {
+    $(this).children().toggleClass('fa-magnifying-glass').toggleClass('fa-chevron-up');
+    $('.header_form').toggleClass('js-active');
+  })
+
+
+//////////////////////
   // フラッシュメッセージ
   let msgWindow = $('.js-show-flashMsg');
 

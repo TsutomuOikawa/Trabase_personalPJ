@@ -31,12 +31,15 @@
           <input type="text" name="key" class="header_input" value="" placeholder="キーワードを入力">
           <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
         </form>
-        <div class="header_humburger js-menu-trigger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="header_sp">
+          <button type="button" class="header_search js-form-trigger"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+          <div class="header_humburger js-menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-        <nav class="header_menu">
+        <nav class="header_menu js-slide-menu">
           @guest
           <ul class="menu">
             <li class="menu_item"><a href="{{ route('index', ['#about']) }}" class="menu_item_link">About</a></li>
@@ -68,6 +71,13 @@
       <div class="footer_wrapper">
         <nav class="footer_nav">
           <div class="footer_navItem">
+            <p class="footer_category">運営</p>
+            <ul>
+              <li class="footer_detail"><a href="https://github.com/TsutomuOikawa">運営者情報</a></li>
+              <li class="footer_detail">利用規約</li>
+            </ul>
+          </div>
+          <div class="footer_navItem">
             <p class="footer_category">ノート</p>
             <ul>
               <li class="footer_detail"><a href="{{ route('notes.list') }}">一覧ページ</a></li>
@@ -75,8 +85,8 @@
             </ul>
           </div>
           <div class="footer_navItem">
-            <p class="footer_category">エリア別情報</p>
-            <table>
+            <p class="footer_category js-show-prefs">エリア別情報</p>
+            <table class="footer_spHide">
               <tbody>
                 <tr>
                   <th>北海道・東北地方</th>
@@ -120,14 +130,7 @@
             </table>
           </div>
           <div class="footer_navItem">
-            <p class="footer_category">その他</p>
-            <ul>
-              <li class="footer_detail"><a href="https://github.com/TsutomuOikawa">運営者情報</a></li>
-              <li class="footer_detail">利用規約</li>
-            </ul>
-          </div>
-          <div class="footer_navItem">
-            <p class="footer_category">お問合せ</p>
+            <p class="footer_category">お問い合せ</p>
             <textarea name="inquiry" class="footer_form"></textarea>
             <button type="submit" class="footer_submit">送信する</button>
           </div>
