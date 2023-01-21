@@ -25,7 +25,6 @@ $(function () {
     $('.header_form').toggleClass('js-active');
   })
 
-
 //////////////////////
   // フラッシュメッセージ
   let msgWindow = $('.js-show-flashMsg');
@@ -96,7 +95,7 @@ $(function () {
   });
 
 //////////////////////
-  // ファイルインプットタグ表示
+  // ノート執筆時のサムネ用ファイルインプットタグ表示
   $('.js-add-thumbnail').on('click', function() {
     let $this = $(this);
     $this.hide();
@@ -123,6 +122,25 @@ $(function () {
       $('.js-change-back-target').css('background-image', '');
     }
   )
+
+//////////////////////
+  // お気に入り
+  $('.js-favorite').on('click', function() {
+    let $pushed = $(this);
+    let note_id = $pushed.data('note_id');
+    let url = '/notes/favorite/' + note_id;
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      type: 'POST',
+      url: url,
+      data: {note_id: note_id}
+    }).done(function() {
+      $pushed.toggleClass('fa-regular fa-solid js-active');
+    }).fail(function() {
+    })
+  });
 
 
 //////////////////////

@@ -42,9 +42,11 @@ Route::controller(NoteController::class)->group(function() {
 
         // コメント投稿
         Route::post('/notes/article/{note_id}', 'storeComment')->whereNumber('note_id')->name('comment.storeComment');
+
+        // お気に入り登録
+        Route::post('/notes/favorite/{note_id}', [App\Http\Controllers\FavoriteController::class, 'update'])->whereNumber('note_id')->name('favorite.update');
     });
 });
-
 
 Route::middleware('auth')->group(function () {
     // マイページ

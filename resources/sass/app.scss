@@ -968,13 +968,8 @@ ul {
   }
 }
 
-.icon {
-  cursor: pointer;
-  &--bookmark {
-    &.active {
-      color: $siteColor-accent;
-    }
-  }
+.fa-bookmark.js-active {
+  color: $siteColor-sub;
 }
 
 /*====================

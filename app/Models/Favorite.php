@@ -13,8 +13,8 @@ class Favorite extends Model
     protected $primaryKey = 'favorite_id';
 
     protected $fillable = [
-      'user_id'
-      'note_id',
+      'user_id',
+      'note_id'
     ];
 
     public function user() {
