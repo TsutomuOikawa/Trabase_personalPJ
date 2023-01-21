@@ -4,8 +4,8 @@
     <main class="page-wrapper">
       <div class="container--note">
         <h1 class="container_title">
-          @if($key[0]) {{ $key[0] }} @endif
-          @if($key[1]) 「{{ $key[1] }}」@endif を含むノート
+          @if($key[0]) {{ $key[0] }}の @endif
+          @if($key[1]) 「{{ $key[1] }}」を含む @endif ノート一覧
         </h1>
         <div class="container_body">
           <div class="searchMenu">
@@ -46,10 +46,10 @@
                     <div class="panel_subInfo">
                       <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
                       <div class="iconBox">
-                        <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                        <span class="iconBox_num">33</span>
+                        <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
+                        <span class="iconBox_num">{{ $note->favNum }}</span>
                         <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                        <span class="iconBox_num">2</span>
+                        <span class="iconBox_num">{{ $note->comNum }}</span>
                       </div>
                     </div>
                   </div>

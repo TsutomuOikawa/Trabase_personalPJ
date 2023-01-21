@@ -7,7 +7,7 @@
         <div class="container_body--l container_body--col">
           <aside class="sidebar--icon">
             <div class="sidebar_wrapper">
-              <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
+              <i class="fa-bookmark @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite" data-note_id="{{ $note->note_id }}"></i>
             </div>
             @if($note->id === Auth::id())
             <ul class="sidebar_wrapper">

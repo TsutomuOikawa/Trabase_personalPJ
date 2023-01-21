@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\PrefectureController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Requests\NoteRequest;
 use App\Models\Comment;
+use App\Models\Favorite;
 use App\Models\Note;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
+  // お気に入り数とコメント数を取得する関数
+  public static function countFavsAndComs($note) {
+    $note->favNum = FavoriteController::countFavorites($note->note_id);
+    $note->comNum = CommentController::countComments($note->note_id);;
+    return $note;
+  }
 
   // ノート一覧表示（検索）
   public function showList(Request $request) {
@@ -33,7 +40,13 @@ class NoteController extends Controller
     }
     // データを取得
     $notes = $query->get();
-    $prefs = PrefectureController::getPrefs();
+    // お気に入り状況等を格納
+    foreach ($notes as $note) {
+      $note = $this->countFavsAndComs($note);
+      $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
+    }
+    $prefs = Prefecture::all();
+
     return view('notes.list')
       ->with('key', [$pref, $key])
       ->with('notes', $notes)
@@ -41,7 +54,8 @@ class NoteController extends Controller
   }
 
   // ノート詳細表示
-  public function showArticle($note_id) {
+  public function showArticle(Request $request) {
+    $note_id = $request->note_id;
     $note = DB::table('notes')
                 ->leftJoin('users', 'notes.user_id', '=', 'users.id')
                 ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
@@ -49,8 +63,11 @@ class NoteController extends Controller
                 ->first();
 
     $note->text = json_decode($note->text, true);
+    $note = $this->countFavsAndComs($note);
+    $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note_id);
+
     $comments = Comment::where('note_id', $note_id)->with('user')->get();
-    $prefs = PrefectureController::getPrefs();
+    $prefs = Prefecture::all();
 
     return view('notes.article')
       ->with('note', $note)
@@ -60,7 +77,7 @@ class NoteController extends Controller
 
   // ノート新規作成画面
   public function new() {
-    $prefs = PrefectureController::getPrefs();
+    $prefs = Prefecture::all();
     return view('notes.editor')
       ->with('editMode', false)
       ->with('prefs', $prefs);
@@ -88,7 +105,7 @@ class NoteController extends Controller
   // ノート編集画面表示
   public function edit($note_id) {
     $note = Note::find($note_id);
-    $prefs = PrefectureController::getPrefs();
+    $prefs = Prefecture::all();
 
     return view('notes.editor')
       ->with('editMode', true)
