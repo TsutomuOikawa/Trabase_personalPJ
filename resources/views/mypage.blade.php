@@ -34,12 +34,11 @@
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--note">
-                @foreach ($notes as $note)
+                @foreach ($myNotes as $note)
                 <li class="panel--note">
                   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
-                      <p><span class="panel_subInfo">{{ $note->pref_name }}</span><span class="panel_subInfo">投稿:{{ date('y/m/d', strtotime($note->created_at)) }}</span></p>
                       <h3 class="panel_title">{{ $note->title }}</h3>
                       <div class="userInfo">
                         @if($note->avatar)
@@ -49,11 +48,14 @@
                         @endif
                         <p class="userInfo_name">{{ $note->name }}</p>
                       </div>
-                      <div class="iconBox">
-                        <i class="fa-regular fa-bookmark fa-lg icon--bookmark"></i>
-                        <span class="iconBox_num">33</span>
-                        <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                        <span class="iconBox_num">2</span>
+                      <div class="panel_subInfo">
+                        <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
+                        <div class="iconBox">
+                          <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
+                          <span class="iconBox_num">{{ $note->favNum }}</span>
+                          <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
+                          <span class="iconBox_num">{{ $note->comNum }}</span>
+                        </div>
                       </div>
                     </div>
                   </a>
@@ -94,80 +96,33 @@
             <h2 class="mypage_title">お気に入りのノート</h2>
             <div class="list--note">
               <ul class="list_body--note">
+                @foreach ($favNotes as $note)
                 <li class="panel--note">
-                  <a href="#">
+                  <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
-                      <h3 class="panel_title">朝5時に家を出てから、18時間での熊本訪問</h3>
+                      <h3 class="panel_title">{{ $note->title }}</h3>
                       <div class="userInfo">
-                        <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                        <p class="userInfo_name">ユーザーネーム</p>
+                        @if($note->avatar)
+                          <img src="{{ asset($note->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
+                        @else
+                          <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
+                        @endif
+                        <p class="userInfo_name">{{ $note->name }}</p>
                       </div>
-                      <p class="panel_postDay">2002/08/06投稿</p>
-                      <div class="iconBox">
-                        <i></i>
-                        <span></span>
-                        <i></i>
-                        <span></span>
+                      <div class="panel_subInfo">
+                        <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
+                        <div class="iconBox">
+                          <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
+                          <span class="iconBox_num">{{ $note->favNum }}</span>
+                          <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
+                          <span class="iconBox_num">{{ $note->comNum }}</span>
+                        </div>
                       </div>
                     </div>
                   </a>
                 </li>
-
-                <li class="panel--note">
-                  <img src="{{ asset('img/6241759280_IMG_3459.jpg') }}" class="panel_thumbnail" alt="">
-                  <div class="panel_info">
-                    <h3 class="panel_title">熊本の、城とラーメンと人情と</h3>
-                    <div class="userInfo">
-                      <img src="{{ asset('img/noimage.png') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <p class="panel_postDay">2002/08/06投稿</p>
-                    <div class="iconBox">
-                      <i></i>
-                      <span></span>
-                      <i></i>
-                      <span></span>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="panel--note">
-                  <img src="{{ asset('img/6176658528_IMG_4498.jpg') }}" class="panel_thumbnail" alt="">
-                  <div class="panel_info">
-                    <h3 class="panel_title">いつか行ってみたいと思っていた熊本に行ってきました！</h3>
-                    <div class="userInfo">
-                      <img src="{{ asset('img/プロフィール.jpg') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <p class="panel_postDay">2002/08/06投稿</p>
-                    <div class="iconBox">
-                      <i></i>
-                      <span></span>
-                      <i></i>
-                      <span></span>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="panel--note">
-                  <img src="{{ asset('img/IMG_5506.jpg') }}" class="panel_thumbnail" alt="">
-                  <div class="panel_info">
-                    <h3 class="panel_title">タイトル</h3>
-                    <div class="userInfo">
-                      <img src="{{ asset('img/noimage.png') }}" class="userInfo_img" alt="">
-                      <p class="userInfo_name">ユーザーネーム</p>
-                    </div>
-                    <p class="panel_postDay">2002/08/06投稿</p>
-                    <div class="iconBox">
-                      <i></i>
-                      <span></span>
-                      <i></i>
-                      <span></span>
-                    </div>
-                  </div>
-                </li>
-
+                @endforeach
               </ul>
             </div>
           </section>
