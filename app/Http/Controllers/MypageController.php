@@ -18,6 +18,8 @@ class MypageController extends Controller
                     ->leftJoin('users', 'notes.user_id', '=', 'users.id')
                     ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
                     ->where('user_id', $user_id)
+                    ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_id')
+                    ->orderBy('note_id', 'DESC')
                     ->get();
         foreach ($myNotes as $myNote) {
           $myNote->isFavorite = FavoriteController::isFavorite($user_id, $myNote->note_id);
@@ -26,9 +28,10 @@ class MypageController extends Controller
 
         $favNotes = DB::table('notes')
                       ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                      ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
                       ->leftJoin('favorites', 'notes.note_id', '=', 'favorites.note_id')
                       ->where('favorites.user_id', $user->id)
+                      ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro')
+                      ->orderBy('note_id', 'DESC')
                       ->get();
         foreach ($favNotes as $favNote) {
           $favNote->isFavorite = true;

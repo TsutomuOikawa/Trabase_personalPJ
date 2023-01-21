@@ -39,7 +39,9 @@ class NoteController extends Controller
       });
     }
     // データを取得
-    $notes = $query->get();
+    $notes = $query->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_name', 'prefectures.pref_id')
+                    ->orderBy('note_id', 'DESC')
+                    ->get();
     // お気に入り状況等を格納
     foreach ($notes as $note) {
       $note = $this->countFavsAndComs($note);
@@ -60,6 +62,8 @@ class NoteController extends Controller
                 ->leftJoin('users', 'notes.user_id', '=', 'users.id')
                 ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
                 ->where('note_id', $note_id)
+                ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_name')
+                ->orderBy('note_id', 'DESC')
                 ->first();
 
     $note->text = json_decode($note->text, true);
