@@ -19,4 +19,9 @@ class CommentController extends Controller
       session()->flash('session_success', 'コメントが投稿されました');
       return back();
     }
+
+    // コメント合計数確認
+    public static function countComments($note_id) {
+      return Comment::where('note_id', $note_id)->count();
+    }
 }
