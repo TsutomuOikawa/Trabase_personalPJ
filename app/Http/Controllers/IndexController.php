@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\PrefectureController;
-use App\Models\Note;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\NoteController;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class IndexController extends Controller
@@ -18,8 +20,17 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        $notes = Note::with('user')->with('prefecture')->orderBy('note_id', 'DESC')->take(8)->get();
-        $prefs = PrefectureController::getPrefs();
+        $notes = DB::table('notes')
+                    ->leftJoin('users', 'notes.user_id', '=', 'users.id')
+                    ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro')
+                    ->orderBy('notes.created_at', 'DESC')
+                    ->limit(8)
+                    ->get();
+        foreach ($notes as $note) {
+          $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
+          $note = NoteController::countFavsAndComs($note);
+        }
+        $prefs = Prefecture::all();
 
         return view('index')
           ->with('notes', $notes)

@@ -35,25 +35,25 @@
         <ul class="list_body--note">
           @foreach($notes as $note)
           <li class="panel--note">
-            <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}">
-              <img src="img/IMG_5131.JPG" class="panel_thumbnail" alt="">
+            <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
+              <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
               <div class="panel_info">
                 <h3 class="panel_title">{{ $note->title }}</h3>
                 <div class="userInfo">
-                  @if($note->user->avatar)
-                    <img src="{{ asset($note->user->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
+                  @if($note->avatar)
+                    <img src="{{ asset($note->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
                   @else
                     <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
                   @endif
-                  <p class="userInfo_name">{{ $note->user->name }}</p>
+                  <p class="userInfo_name">{{ $note->name }}</p>
                 </div>
                 <div class="panel_subInfo">
-                  <p>{{ date('y年m月d日', strtotime($note->created_at)) }}投稿</p>
+                  <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
                   <div class="iconBox">
-                    <i class="fa-regular fa-bookmark icon--bookmark"></i>
-                    <span class="iconBox_num">33</span>
-                    <i class="fa-regular fa-comment-dots icon--comment"></i>
-                    <span class="iconBox_num">2</span>
+                    <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
+                    <span class="iconBox_num">{{ $note->favNum }}</span>
+                    <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
+                    <span class="iconBox_num">{{ $note->comNum }}</span>
                   </div>
                 </div>
               </div>
