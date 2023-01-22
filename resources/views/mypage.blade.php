@@ -4,10 +4,8 @@
 
 <main class="page-wrapper">
   <div class="container">
-    <div class="container_head">
-      <h1 class="container_title">マイページ</h1>
-    </div>
-    <div class="container_body--l container_body--col">
+    <h1 class="container_title">マイページ</h1>
+    <div class="container_body container_body--col">
       <div class="mypage">
         <ul class="mypage_nav">
           <li class="mypage_navItem js-get-tab selected">Map</li>
@@ -33,7 +31,7 @@
           <section id="notes" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
-              <ul class="list_body--note">
+              <ul class="list_body--scrollNote">
                 @foreach ($myNotes as $note)
                 <li class="panel--note">
                   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
@@ -95,7 +93,7 @@
           <section id="favorites" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">お気に入りのノート</h2>
             <div class="list--note">
-              <ul class="list_body--note">
+              <ul class="list_body--scrollNote">
                 @foreach ($favNotes as $note)
                 <li class="panel--note">
                   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">

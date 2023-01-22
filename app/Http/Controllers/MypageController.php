@@ -24,7 +24,7 @@ class MypageController extends Controller
         }
 
         $favQuery = NoteController::baseQueryOfGetNotes();
-        $favNotes = $favQuery->where('favorites.user_id', $user->id)
+        $favNotes = $favQuery->where('favorites.favUser_id', $user_id)
                               ->orderBy('notes.created_at', 'DESC')
                               ->get();
         foreach ($favNotes as $favNote) {

@@ -17,8 +17,8 @@ class NoteController extends Controller
   // ノートに必要な情報を取得する基本クエリ
   public static function baseQueryOfGetNotes() {
     $favorites = DB::table('favorites')
-                   ->select(DB::raw('count(*) as favNum, note_id'))
-                   ->groupBy('note_id');
+                   ->select(DB::raw('count(*) as favNum, user_id as favUser_id, note_id'))
+                   ->groupBy('favUser_id', 'note_id');
     $comments = DB::table('comments')
                   ->select(DB::raw('count(*) as comNum, note_id'))
                   ->groupBy('note_id');
