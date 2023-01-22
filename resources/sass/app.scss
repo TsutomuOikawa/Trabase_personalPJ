@@ -461,10 +461,6 @@ ul {
     background-repeat: repeat;
     background-size: 100% 60%;
   }
-  &_head {
-    margin: 0 auto;
-    width: 70%;
-  }
   &_title {
     font-family: '游明朝体';
     font-size: $fontSize-xxl;
@@ -1206,7 +1202,7 @@ ul {
     background: rgba($siteColor-base, .7);
     border-radius: 0 4px 4px 4px;
     box-sizing: border-box;
-    padding: $space-m $space-xs $space-s;
+    padding: $space-m $space-m $space-s;
     width: 100%;
   }
   &_contents {
@@ -1338,6 +1334,11 @@ ul {
       @extend .list_body;
         justify-content: flex-start;
       margin-left: 35px;
+    }
+    &--scrollNote {
+      @extend .list_body--note;
+      height: 500px;
+      overflow-y: auto;
     }
     &--destination {
       @extend .list_body;
@@ -1754,7 +1755,8 @@ ul {
     display: flex;
       justify-content: space-between;
     margin: 0 auto;
-    padding: $space-l 15% $space-m;
+    min-width: 100vw;
+    padding: $space-l 32.5vw $space-m;
   }
   &_navItem {
     cursor: pointer;
@@ -1788,6 +1790,19 @@ ul {
     transform: translate(-50%, -50%);
   }
 }
+
+@include mqSP() {
+  .carousel {
+    &_item {
+      width: 100vw;
+      padding: 0;
+    }
+    &_nav {
+      min-width: 100vw;
+      padding: $space-l 0 $space-m;
+    }
+  }
+};
 
 /*====================
   ウィッシュリスト

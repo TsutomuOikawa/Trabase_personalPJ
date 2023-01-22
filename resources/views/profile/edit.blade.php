@@ -4,23 +4,21 @@
 
 <main class="page-wrapper">
   <div class="container--baseColor">
-    <div class="container_head">
-      <h1 class="container_title">プロフィール編集</h1>
-      <ul class="carousel_nav">
-        <li class="carousel_navItem js-switch-carousel01 active">
-          <span><i class="fa-solid fa-user carousel_icon"></i></span>
-          <p>プロフィール</p>
-        </li>
-        <li class="carousel_navItem js-switch-carousel02 nonactive">
-          <span><i class="fa-solid fa-key carousel_icon"></i></span>
-          <p>パスワード変更</p>
-        </li>
-        <li class="carousel_navItem js-switch-carousel03 nonactive">
-          <span><i class="fa-solid fa-user-xmark carousel_icon"></i></span>
-          <p>退会</p>
-        </li>
-      </ul>
-    </div>
+    <h1 class="container_title">プロフィール編集</h1>
+    <ul class="carousel_nav">
+      <li class="carousel_navItem js-switch-carousel01 active">
+        <span><i class="fa-solid fa-user carousel_icon"></i></span>
+        <p>プロフィール</p>
+      </li>
+      <li class="carousel_navItem js-switch-carousel02 nonactive">
+        <span><i class="fa-solid fa-key carousel_icon"></i></span>
+        <p>パスワード変更</p>
+      </li>
+      <li class="carousel_navItem js-switch-carousel03 nonactive">
+        <span><i class="fa-solid fa-user-xmark carousel_icon"></i></span>
+        <p>退会</p>
+      </li>
+    </ul>
 
     <div class="carousel">
       <div class="carousel_wrapper js-move-position">
