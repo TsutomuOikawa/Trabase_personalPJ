@@ -61,11 +61,18 @@ class NoteController extends Controller
     elseif ($sort === 'comments') {
       $query->orderBy('comNum', 'DESC');
     }
-    // デフォルトは新着順
     $query->orderBy('notes.created_at', 'DESC');
 
-    // データを取得
-    $notes = $query->get();
+    // 表示件数設定
+    if ($num === '20') {
+      $notes = $query->paginate(20)->withQueryString();
+    }
+    elseif ($num === '30') {
+      $notes = $query->paginate(30)->withQueryString();
+    }
+    else {
+      $notes = $query->paginate(10)->withQueryString();
+    }
 
     // ログインユーザーならお気に入り状況を格納
     if (Auth::user()) {

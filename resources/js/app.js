@@ -143,26 +143,36 @@ $(function () {
   });
 
 //////////////////////
-  // ノート一覧ページのソート選択URLに表示件数をセット
-  let num = $('.js-get-num').filter(':selected').val();
-  $('.js-set-link').each(function() {
-    let $this = $(this);
-    let url = $this.attr('href');
-    $this.attr('href', url + '&num=' + num);
+  // ノート一覧ページのソート、表示件数選択
+  let selectTag = $('.js-change-num');
+  let params = new URLSearchParams(location.search);
+  // 表示件数が変わったらajax
+  selectTag.on('change', function() {
+    let num = selectTag.children(':selected').val();
+    params.delete('page');
+    params.set('num', num);
+    window.location = '/notes?' + params.toString();
   });
 
-//////////////////////
-  // ノート一覧ページ 選択中のソートにデコレーションをつける
-  let link = location.search;
-  if (link.indexOf('sort=bookmarks') !== -1) {
+  // 選択中のソートにデコレーションをつける
+  let currentSort = params.get('sort');
+  if (currentSort === 'bookmarks') {
     $('.js-set-link:eq(1)').css('text-decoration', 'underline');
   }
-  else if (link.indexOf('sort=comments') !== -1) {
+  else if (currentSort === 'comments') {
     $('.js-set-link:eq(2)').css('text-decoration', 'underline');
   }
   else {
     $('.js-set-link:eq(0)').css('text-decoration', 'underline');
   }
+
+  // ソートのaタグに表示件数のパラメータをセット
+  let num = selectTag.children(':selected').val();
+  $('.js-set-link').each(function() {
+    let $this = $(this);
+    let href = $this.attr('href');
+    $this.attr('href', href + '&num=' + num);
+  });
 
 
 //////////////////////
