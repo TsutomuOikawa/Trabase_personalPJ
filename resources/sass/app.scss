@@ -1348,14 +1348,14 @@ ul {
       margin-bottom: $space-m;
       overflow-x: auto;
       &.active {
-        animation: toggleList 1.5s;
+        animation: showList 1.5s;
         display: flex;
       }
     }
   }
 }
 
-@keyframes toggleList {
+@keyframes showList {
   0% {
     opacity: 0;
     transform: translateX(-100%);
@@ -1386,6 +1386,24 @@ ul {
   }
 }
 
+.pagination {
+  &_list {
+    display: flex;
+      justify-content: center;
+  }
+  &_item {
+    background: rgba($color-white, .5);
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 2px $space-xxs;
+    &.active {
+      background: rgba($color-white, 1);
+      color: $fontColor-default;
+      font-weight: bold;
+    }
+  }
+}
+
 /*====================
  panel
 ====================*/
@@ -1399,6 +1417,7 @@ ul {
     box-shadow: 0 0 5px 0 rgba($color-black, .7);
     height: 290px;
     margin: 0 $space-xs $space-s 0;
+    position: relative;
     transition: all .5s;
     width: 220px;
     &:hover {
@@ -1406,6 +1425,16 @@ ul {
       transform: scale(1.2);
       z-index: 1000;
     }
+  }
+  &_pref {
+    background: rgba($color-white, .3);
+    border-radius: 4px 0 4px 0;
+    color: $color-white;
+    font-size: $fontSize-ss;
+    padding: 2px 4px;
+    position: absolute;
+      top: 0;
+      left: 0;
   }
   &_thumbnail {
     border-radius: 4px 4px 0 0;
