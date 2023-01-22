@@ -976,24 +976,27 @@ ul {
  noteList
 ====================*/
 .searchMenu {
-  line-height: 1;
   &_item {
+    color: $color-white;
+    font-size: $fontSize-s;
     display: flex;
       align-items: center;
       justify-content: space-between;
-    padding-bottom: $space-s;
+    padding-bottom: $space-xs;
   }
   &_sort {
     display: flex;
-    p {
+    a {
       cursor: pointer;
       &:hover {
         text-decoration: underline;
       }
     }
   }
-  &_appearNum {
-    padding: $space-xxs;
+  &_showNum {
+    color: $color-white;
+    font-size: $fontSize-s;
+    padding: 0;
   }
 }
 @include mqSP() {

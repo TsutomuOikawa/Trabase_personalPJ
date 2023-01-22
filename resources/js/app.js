@@ -142,6 +142,28 @@ $(function () {
     })
   });
 
+//////////////////////
+  // ノート一覧ページのソート選択URLに表示件数をセット
+  let num = $('.js-get-num').filter(':selected').val();
+  $('.js-set-link').each(function() {
+    let $this = $(this);
+    let url = $this.attr('href');
+    $this.attr('href', url + '&num=' + num);
+  });
+
+//////////////////////
+  // ノート一覧ページ 選択中のソートにデコレーションをつける
+  let link = location.search;
+  if (link.indexOf('sort=bookmarks') !== -1) {
+    $('.js-set-link:eq(1)').css('text-decoration', 'underline');
+  }
+  else if (link.indexOf('sort=comments') !== -1) {
+    $('.js-set-link:eq(2)').css('text-decoration', 'underline');
+  }
+  else {
+    $('.js-set-link:eq(0)').css('text-decoration', 'underline');
+  }
+
 
 //////////////////////
   // 特定のページで読み込みたいjsの<script>を生成する関数

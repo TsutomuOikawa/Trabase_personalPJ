@@ -4,8 +4,8 @@
     <main class="page-wrapper">
       <div class="container--note">
         <h1 class="container_title">
-          @if($key[0]) {{ $key[0] }}の @endif
-          @if($key[1]) 「{{ $key[1] }}」を含む @endif ノート一覧
+          @if($key['pref']) {{ $key['pref'] }}の @endif
+          @if($key['key']) ×「{{ $key['key'] }}」を含む @endif ノート一覧
         </h1>
         <div class="container_body">
           <div class="searchMenu">
@@ -15,15 +15,20 @@
             </div>
             <div class="searchMenu_item">
               <div class="searchMenu_sort">
-                <p href="#">新着順</p>
+                <a href="/notes?pref={{$key['pref']}}&key={{$key['key']}}&sort=new" class="js-set-link">新着順</a>
                 <span class="itemSeparater"></span>
-                <p>ブックマーク数順</p>
+                <a href="/notes?pref={{$key['pref']}}&key={{$key['key']}}&sort=bookmarks" class="js-set-link">ブックマーク数順</a>
                 <span class="itemSeparater"></span>
-                <p>コメント数順</p>
+                <a href="/notes?pref={{$key['pref']}}&key={{$key['key']}}&sort=comments" class="js-set-link">コメント数順</a>
               </div>
-              <select class="searchMenu_appearNum">
-                <option value="">表示件数：30件</option>
-              </select>
+              <div>
+                表示件数：
+                <select class="searchMenu_showNum">
+                  <option value="10" class="js-get-num">10件</option>
+                  <option value="20" class="js-get-num" selected>20件</option>
+                  <option value="30" class="js-get-num">30件</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="list--note">
@@ -46,10 +51,15 @@
                     <div class="panel_subInfo">
                       <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
                       <div class="iconBox">
+                        @auth
                         <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
-                        <span class="iconBox_num">{{ $note->favNum }}</span>
+                        @endauth
+                        @guest
+                        <i class="fa-bookmark fa-lg fa-regular js-favorite"></i>
+                        @endguest
+                        <span class="iconBox_num">@if($note->favNum) {{ $note->favNum }} @else 0 @endif</span>
                         <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                        <span class="iconBox_num">{{ $note->comNum }}</span>
+                        <span class="iconBox_num">@if($note->comNum) {{ $note->comNum }} @else 0 @endif</span>
                       </div>
                     </div>
                   </div>
