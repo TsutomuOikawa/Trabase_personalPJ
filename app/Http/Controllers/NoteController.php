@@ -14,15 +14,8 @@ use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
-  // お気に入り数とコメント数を取得する関数
-  public static function countFavsAndComs($note) {
-    $note->favNum = FavoriteController::countFavorites($note->note_id);
-    $note->comNum = CommentController::countComments($note->note_id);;
-    return $note;
-  }
-
-  // ノート一覧表示（検索）
-  public function showList(Request $request) {
+  // ノートに必要な情報を取得する基本クエリ
+  public static function baseQueryOfGetNotes() {
     $favorites = DB::table('favorites')
                    ->select(DB::raw('count(*) as favNum, note_id'))
                    ->groupBy('note_id');
@@ -40,7 +33,13 @@ class NoteController extends Controller
                     $join->on('notes.note_id', '=', 'comments.note_id');
                   })
                 ->select('notes.*', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_id', 'prefectures.pref_name', 'favorites.favNum', 'comments.comNum');
-    // ここから検索条件セット
+    return $query;
+  }
+
+  // ノート一覧表示（検索）
+  public function showList(Request $request) {
+    $query = $this->baseQueryOfGetNotes();
+    // 検索条件セット
     $pref = $request->pref;
     $key = $request->key;
     $sort = $request->sort;
@@ -62,9 +61,8 @@ class NoteController extends Controller
     elseif ($sort === 'comments') {
       $query->orderBy('comNum', 'DESC');
     }
-    else {
-      $query->latest();
-    }
+    // デフォルトは新着順
+    $query->orderBy('notes.created_at', 'DESC');
 
     // データを取得
     $notes = $query->get();
@@ -86,16 +84,11 @@ class NoteController extends Controller
   // ノート詳細表示
   public function showArticle(Request $request) {
     $note_id = $request->note_id;
-    $note = DB::table('notes')
-                ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
-                ->where('note_id', $note_id)
-                ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_name')
-                ->orderBy('note_id', 'DESC')
-                ->first();
+    $query = $this->baseQueryOfGetNotes();
+    $note = $query->where('notes.note_id', $note_id)
+                  ->first();
 
     $note->text = json_decode($note->text, true);
-    $note = $this->countFavsAndComs($note);
     $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note_id);
 
     $comments = Comment::where('note_id', $note_id)->with('user')->get();

@@ -20,15 +20,12 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        $notes = DB::table('notes')
-                    ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                    ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro')
-                    ->orderBy('notes.created_at', 'DESC')
-                    ->limit(8)
-                    ->get();
+        $query = NoteController::baseQueryOfGetNotes();
+        $notes = $query->orderBy('notes.created_at', 'DESC')
+                        ->limit(8)
+                        ->get();
         foreach ($notes as $note) {
           $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
-          $note = NoteController::countFavsAndComs($note);
         }
         $prefs = Prefecture::all();
 

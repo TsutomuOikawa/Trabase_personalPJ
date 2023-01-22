@@ -14,28 +14,21 @@ class MypageController extends Controller
     public function mypage() {
         $user = Auth::user();
         $user_id = $user->id;
-        $myNotes = DB::table('notes')
-                    ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                    ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
-                    ->where('user_id', $user_id)
-                    ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_id')
-                    ->orderBy('note_id', 'DESC')
-                    ->get();
+        $myQuery = NoteController::baseQueryOfGetNotes();
+
+        $myNotes = $myQuery->where('user_id', $user_id)
+                            ->orderBy('notes.created_at', 'DESC')
+                            ->get();
         foreach ($myNotes as $myNote) {
           $myNote->isFavorite = FavoriteController::isFavorite($user_id, $myNote->note_id);
-          $myNote = NoteController::countFavsAndComs($myNote);
         }
 
-        $favNotes = DB::table('notes')
-                      ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                      ->leftJoin('favorites', 'notes.note_id', '=', 'favorites.note_id')
-                      ->where('favorites.user_id', $user->id)
-                      ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro')
-                      ->orderBy('note_id', 'DESC')
-                      ->get();
+        $favQuery = NoteController::baseQueryOfGetNotes();
+        $favNotes = $favQuery->where('favorites.user_id', $user->id)
+                              ->orderBy('notes.created_at', 'DESC')
+                              ->get();
         foreach ($favNotes as $favNote) {
           $favNote->isFavorite = true;
-          $favNote = NoteController::countFavsAndComs($favNote);
         }
 
         $prefs = Prefecture::all();

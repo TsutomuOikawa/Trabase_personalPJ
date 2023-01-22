@@ -9,7 +9,7 @@
             <div class="sidebar_wrapper">
               <i class="fa-bookmark @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite" data-note_id="{{ $note->note_id }}"></i>
             </div>
-            @if($note->id === Auth::id())
+            @if($note->user_id === Auth::id())
             <ul class="sidebar_wrapper">
               <li>
                 <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">

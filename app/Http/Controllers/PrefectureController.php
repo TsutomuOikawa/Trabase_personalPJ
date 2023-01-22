@@ -24,16 +24,13 @@ class PrefectureController extends Controller
           $prefs = Prefecture::all();
           $data = $prefs->find($pref_id);
           // ノートデータ
-          $notes = DB::table('notes')
-                      ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                      ->where('notes.pref_id', $pref_id)
-                      ->select('notes.*', 'users.id', 'users.name', 'users.avatar', 'users.intro')
-                      ->orderBy('note_id', 'DESC')
-                      ->limit(8)
-                      ->get();
+          $query = NoteController::baseQueryOfGetNotes();
+          $notes = $query->where('notes.pref_id', $pref_id)
+                          ->orderBy('note_id', 'DESC')
+                          ->limit(8)
+                          ->get();
           foreach ($notes as $note) {
-            $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->id);
-            $note = NoteController::countFavsAndComs($note);
+            $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
           }
 
           return view('prefecture')
