@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PrefectureController;
+use App\Models\Prefecture;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $prefs = PrefectureController::getPrefs();
+        $prefs = Prefecture:: all();
         return view('auth.register')
           ->with('prefs', $prefs);
     }

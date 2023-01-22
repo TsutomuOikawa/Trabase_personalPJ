@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PrefectureController;
+use App\Models\Prefecture;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +21,7 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request)
     {
-        $prefs = PrefectureController::getPrefs();
+        $prefs = Prefecture::all();
         return view('auth.reset-password', ['request' => $request])
           ->with('prefs', $prefs);
     }
