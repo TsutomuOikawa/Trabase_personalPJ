@@ -8,15 +8,15 @@
     <div class="container_body container_body--col">
       <div class="mypage">
         <ul class="mypage_nav">
-          <li class="mypage_navItem js-get-tab selected">Map</li>
-          <li class="mypage_navItem js-get-tab">Notes</li>
-          <li class="mypage_navItem js-get-tab">WishList</li>
-          <li class="mypage_navItem js-get-tab">Favorites</li>
+          <li class="mypage_navItem js-get-tab selected">マップ</li>
+          <li class="mypage_navItem js-get-tab">ノート</li>
+          <li class="mypage_navItem js-get-tab">イキタイ！</li>
+          <li class="mypage_navItem js-get-tab">ブックマーク</li>
         </ul>
         <div class="mypage_article">
 
-          <section id="map" class="mypage_contents js-show-contents active">
-            <h2 class="mypage_title">MY MAP</h2>
+          <section id="マップ" class="mypage_contents js-show-contents active">
+            <h2 class="mypage_title">マップ</h2>
             <div class="js-japanMap"></div>
             <div class="modal js-modal">
               <div class="modal_content">
@@ -28,7 +28,7 @@
             </div>
           </section>
 
-          <section id="notes" class="mypage_contents js-show-contents">
+          <section id="ノート" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
@@ -65,34 +65,34 @@
             </div>
           </section>
 
-          <section id="wishlist" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">Wish Lists</h2>
+          <section id="イキタイ！" class="mypage_contents js-show-contents">
+            <h2 class="mypage_title">イキタイ！リスト</h2>
             <div class="list--wish">
               <ul class="list_body--wish">
-                @for($i=1; $i<=10; $i++)
+                @foreach($wishes as $wish)
                 <li class="panel--wish">
                   <div class="userInfo">
-                    <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                    <p class="userInfo_name">ユーザーネーム</p>
+                    <img src="{{ asset($wish->user->avatar) }}" class="userInfo_img">
+                    <p class="userInfo_name">{{ $wish->user->name }}</p>
                   </div>
                   <table class="panel_table">
                     <tr class="panel_tableElm">
                       <th>WHERE</th>
-                      <td>熊本城</td>
+                      <td>{{ $wish->place }}</td>
                     </tr>
                     <tr class="panel_tableElm">
                       <th>WHAT</th>
-                      <td>雪の熊本城を撮りたい！</td>
+                      <td>{{ $wish->thing }}</td>
                     </tr>
                   </table>
                 </li>
-                @endfor
+                @endforeach
               </ul>
             </div>
           </section>
 
-          <section id="favorites" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">お気に入りのノート</h2>
+          <section id="ブックマーク" class="mypage_contents js-show-contents">
+            <h2 class="mypage_title">ブックマーク済みのノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
                 @foreach ($favNotes as $note)

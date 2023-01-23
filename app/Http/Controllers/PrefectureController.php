@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\NoteController;
 use App\Models\Prefecture;
+use App\Models\Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -33,10 +34,12 @@ class PrefectureController extends Controller
             $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
           }
 
+          $wishes = Wish::with('user')->where('pref_id', $pref_id)->get();
           return view('prefecture')
             ->with('prefs', $prefs)
             ->with('data', $data)
-            ->with('notes', $notes);
+            ->with('notes', $notes)
+            ->with('wishes', $wishes);
         }
     }
 }

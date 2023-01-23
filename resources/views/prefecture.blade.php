@@ -14,26 +14,24 @@
         <div class="list--wish">
           <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
           <ul class="list_body--wish">
-
-            @for($i=1; $i<=10; $i++)
+            @foreach($wishes as $wish)
             <li class="panel--wish">
               <div class="userInfo">
-                <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                <p class="userInfo_name">ユーザーネーム</p>
+                <img src="{{ asset($wish->user->avatar) }}" class="userInfo_img">
+                <p class="userInfo_name">{{ $wish->user->name }}</p>
               </div>
               <table class="panel_table">
                 <tr class="panel_tableElm">
                   <th>WHERE</th>
-                  <td>熊本城</td>
+                  <td>{{ $wish->place }}</td>
                 </tr>
                 <tr class="panel_tableElm">
                   <th>WHAT</th>
-                  <td>雪の熊本城を撮りたい！</td>
+                  <td>{{ $wish->thing }}</td>
                 </tr>
               </table>
             </li>
-            @endfor
-
+            @endforeach
           </ul>
         </div>
 

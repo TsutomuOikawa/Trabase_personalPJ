@@ -1332,11 +1332,6 @@ ul {
     @extend .list;
     padding: $space-s 0;
   }
-  &--wish {
-  }
-  &--destination {
-    @extend .list;
-  }
   &_title {
     @extend %subTitle;
     cursor: pointer;
@@ -1349,7 +1344,7 @@ ul {
     &--wish {
       background: rgba($siteColor-base, .2);
       box-sizing: border-box;
-      height: 300px;
+      max-height: 300px;
       overflow-y: auto;
       padding: $space-s;
       width: 100%;
@@ -1512,15 +1507,18 @@ ul {
   }
   &_table {
     margin-right: 25px;
-    width: 70%;
+    min-width: 70%;
     tbody {
       display: flex;
         align-items: center;
     }
   }
   &_tableElm {
+    display: flex;
+      align-items: flex-start;
+      flex-direction: column;
     &:first-child {
-      width: 30%;
+      min-width: 30%;
     }
     th {
       color: $fontColor-sub;
@@ -1528,7 +1526,7 @@ ul {
       padding-right: $space-xs;
     }
     td {
-      font-size: $fontSize-m;
+      font-size: $fontSize-s;
     }
   }
   &--destination {
@@ -1598,17 +1596,18 @@ ul {
       }
     }
     &_table {
-      width: 100%;
+      min-width: 100%;
     }
     &_tableElm {
-      display: flex;
-        align-items: flex-start;
-        flex-direction: column;
       &:first-child {
-        width: 25%;
+        min-width: 25%;
+      }
+      th {
+        font-size: $fontSize-sss;
+        padding-right: $space-xxs;
       }
       td {
-        font-size: $fontSize-s;
+        font-size: $fontSize-ss;
       }
     }
     &--destination {
