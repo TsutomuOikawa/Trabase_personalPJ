@@ -15,7 +15,7 @@ class Wish extends Model
     protected $fillable = [
       'user_id',
       'pref_id',
-      'place',
+      'spot',
       'thing'
     ];
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('pref_id');
             $table->foreign('pref_id')->references('pref_id')->on('prefectures');
-            $table->string('place', 30);
+            $table->string('spot', 30);
             $table->string('thing', 100);
             $table->timestamps();
             $table->softDeletes();

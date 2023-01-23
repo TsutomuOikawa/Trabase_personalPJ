@@ -25,7 +25,7 @@ class WishRequest extends FormRequest
     {
         return [
             'pref_id' => 'required|integer|max:47',
-            'place' => 'required|string|max:30',
+            'spot' => 'required|string|max:30',
             'thing' => 'nullable|string|max:100'
         ];
     }

@@ -23,7 +23,7 @@
               <table class="panel_table">
                 <tr class="panel_tableElm">
                   <th>WHERE</th>
-                  <td>{{ $wish->place }}</td>
+                  <td>{{ $wish->spot }}</td>
                 </tr>
                 <tr class="panel_tableElm">
                   <th>WHAT</th>
