@@ -953,6 +953,8 @@ ul {
       margin-bottom: 0;
     }
     &_img {
+      height: 30px;
+      width: 30px;
       &--big {
         height: 35px;
         padding-bottom: 0;
@@ -1495,12 +1497,9 @@ ul {
     &:last-child {
       margin-bottom: 0;
     }
-    &::after {
-      content: '\f0eb';
+    i {
       color: $fontColor-sub;
-      font-family: "Font Awesome 6 Free";
       font-size: $fontSize-xl;
-      font-weight: 900;
       position: absolute;
       right: 15px;
     }

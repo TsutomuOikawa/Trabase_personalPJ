@@ -30,8 +30,12 @@
                   <td>{{ $wish->thing }}</td>
                 </tr>
               </table>
+              <i class="fa-sharp fa-solid fa-lightbulb js-show-modal"></i>
             </li>
             @endforeach
+            @empty($wishes->items)
+            <p>現在登録されているウィッシュリストはありません</p>
+            @endempty
           </ul>
         </div>
 
