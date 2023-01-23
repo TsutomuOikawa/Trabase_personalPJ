@@ -34,18 +34,6 @@ $space-l: 30px;
 $space-xl: 40px;
 $space-xxl: 50px;
 
-%imgSize-xs {
-  width: 180px;
-  height: 120px;
-}
-%imgSize-s {
-  width: 270px;
-  height: 180px;
-}
-%imgSize-l {
-  width: 540px;
-  height: 360px;
-}
 
 $breakpoint: (
   'SP': 'screen and (max-width: 430px)',
@@ -78,6 +66,23 @@ $breakpoint: (
   @include mqSP () {
     font-size: $fontSize-l;
   }
+}
+
+%imgSize-xs {
+  width: 180px;
+  height: 120px;
+  @include mqSP () {
+    width: 90px;
+    height: 60px;
+  }
+}
+%imgSize-s {
+  width: 270px;
+  height: 180px;
+}
+%imgSize-l {
+  width: 540px;
+  height: 360px;
 }
 
 /*====================
@@ -113,6 +118,7 @@ input, textarea, select {
 ul {
   list-style: none;
 }
+
 
 /*====================
  ヘッダー
@@ -519,6 +525,9 @@ ul {
         font-size: 40px;
         top: 35px;
       }
+      &--mypage {
+        margin-top: 0;
+      }
     }
     &_notion {
       br {
@@ -622,12 +631,6 @@ ul {
     }
   }
 }
-
-@include mqSP() {
-  .map {
-    display: none;
-  }
-};
 
 .search{
   padding-top: 100px;
@@ -921,11 +924,6 @@ ul {
       font-weight: bold;
     }
   }
-  &_date {
-    color: $fontColor-sub;
-    font-size: $fontSize-ss;
-    margin-left: $space-xs;
-  }
   &_intro {
     font-size: $fontSize-ss;
     max-height: 80px;
@@ -1133,6 +1131,9 @@ ul {
       width: 90%;
         top: 100px;
     }
+    &_content {
+      width: 90%;
+    }
     &_note {
       margin-bottom: $space-xs;
     }
@@ -1231,6 +1232,9 @@ ul {
     &_nav {
       font-size: $fontSize-ss;
     }
+    &_title {
+      padding-bottom: $space-xs;
+    }
   }
 }
 
@@ -1249,10 +1253,6 @@ ul {
     padding: 0 1% 0 0;
     width: 10%;
   }
-  &_thumbnail {
-    border-radius: 4px 4px 0 0;
-    height: 200px;
-  }
   &_wrapper {
     background: rgba($siteColor-base, .7);
     border-radius: 4px;
@@ -1265,6 +1265,15 @@ ul {
     color: $fontColor-default;
     margin-bottom: $space-xs;
   }
+  &_menu {
+    &>* {
+      font-size: $fontSize-s;
+      padding-top: $space-xxs;
+    }
+    i {
+      width: 20px;
+    }
+  }
   &_chapters {
     margin-bottom: $space-xs;
     padding: $space-xxs 0;
@@ -1273,25 +1282,39 @@ ul {
 
 @include mqSP() {
   .sidebar {
-    border-radius: 0;
     height: auto;
-    margin-left: 0;
+    padding-left: 0;
     position: fixed;
       top: 60px;
       left: 0;
     width: 100%;
-    &_thumbnail {
-      display: none;
-    }
-    &_contents {
-
-      padding: $space-xxs $space-xs;
+    &_wrapper {
+      border-radius: 0;
+      display: flex;
+        align-items: center;
+        justify-content: space-between;
+      margin-bottom: 0;
     }
     &_profile {
       margin-bottom: 0;
+      & .userInfo_intro {
+        display: none;
+      }
     }
     &_menu {
-      display: none;
+      display: flex;
+        align-items: center;
+    }
+    &_menuItem {
+      display: inline-block;
+      width: 30px;
+      margin-right: $space-xs;
+      i {
+        font-size: $fontSize-xl;
+      }
+      span {
+        display: none;
+      }
     }
     &_chapters {
       display: none;

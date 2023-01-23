@@ -4,7 +4,7 @@
 
 <main class="page-wrapper">
   <div class="container">
-    <h1 class="container_title">マイページ</h1>
+    <h1 class="container_title container_title--mypage">マイページ</h1>
     <div class="container_body container_body--col">
       <div class="mypage">
         <ul class="mypage_nav">
@@ -17,7 +17,7 @@
 
           <section id="map" class="mypage_contents js-show-contents active">
             <h2 class="mypage_title">MY MAP</h2>
-            <div class="map js-japanMap"></div>
+            <div class="js-japanMap"></div>
             <div class="modal js-modal">
               <div class="modal_content">
                 <p class="modal_header">投稿済みのノート</p>
@@ -33,7 +33,8 @@
             <div class="list--note">
               <ul class="list_body--scrollNote">
                 @foreach ($myNotes as $note)
-                <li class="panel--note">
+                <li class="panel--note js-get-links">
+                  <p class="panel_pref">{{ $note->pref_name }}</p>
                   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
@@ -96,6 +97,7 @@
               <ul class="list_body--scrollNote">
                 @foreach ($favNotes as $note)
                 <li class="panel--note">
+                  <p class="panel_pref">{{ $note->pref_name }}</p>
                   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
                     <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
                     <div class="panel_info">
@@ -134,12 +136,19 @@
             <div class="userInfo userInfo--big">
               <img src="{{ asset($user->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
               <p class="userInfo_name userInfo_name--big">{{ $user->name }}</p>
-              <p>{{ $user->intro }}</p>
+              <p class="userInfo_intro">{{ $user->intro }}</p>
             </div>
           </div>
           <ul class="sidebar_menu">
-            <li><a href="{{ route('profile.edit') }}">プロフィール編集</a></li>
-            <li><a href="{{ route('logout') }}">ログアウト</a></li>
+            <li><a href="{{ route('profile.edit') }}" class="sidebar_menuItem"><i class="fa-solid fa-address-card"></i><span>プロフィール編集</span></a></li>
+            <li>
+              <form class="" action="{{ route('logout') }}" method="post">
+              @csrf
+                <button type="submit" class="sidebar_menuItem">
+                  <i class="fa-solid fa-right-from-bracket"></i><span>ログアウト</span>
+                </button>
+              </form>
+            </li>
           </ul>
         </div>
       </div>

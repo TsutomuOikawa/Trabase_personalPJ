@@ -37,7 +37,7 @@
             @foreach ($notes as $note)
               <li class="panel--note">
                 <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}">
-                  <p class="panel_pref">{{ $note->pref_name }}</p>
+                  <p class="panel_pref js-get-links">{{ $note->pref_name }}</p>
                   <img src="{{ asset('img/IMG_5131.JPG') }}" class="panel_thumbnail" alt="">
                   <div class="panel_info">
                     <h3 class="panel_title">{{ $note->title }}</h3>
