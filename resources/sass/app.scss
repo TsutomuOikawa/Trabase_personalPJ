@@ -243,7 +243,6 @@ ul {
     }
   }
   &_menu {
-    font-family: "游明朝体";
     &.js-active {
       right: 0;
     }
@@ -306,6 +305,8 @@ ul {
 .menu {
   display: flex;
     align-items: center;
+  font-family: "游明朝体";
+  font-weight: bold;
   &_item {
     padding: 0 $space-s;
     &:hover {
@@ -318,9 +319,11 @@ ul {
         filter: brightness(1.3);
       }
     }
+    i {
+      margin-right: $space-xxs;
+    }
     &_link {
       display: block;
-      font-weight: bold;
       line-height: 60px;
     }
   }
@@ -328,11 +331,19 @@ ul {
 
 @include mqSP() {
   .menu {
-    flex-direction: column;
+      flex-direction: column;
+    font-size: $fontSize-m;
     &_item {
       width: 100%;
       &--sp {
         display: block;
+      }
+      i {
+        margin-right: $space-xs;
+        width: 25px;
+      }
+      &_link {
+        line-height: 3;
       }
     }
   }
@@ -1632,6 +1643,7 @@ ul {
     @extend %contents-wrapper;
     color: $fontColor-default;
     background: rgba($color-white, .7);
+    padding: $space-l $space-l;
   }
   &_name {
     margin-bottom: $space-xxs;
@@ -1729,6 +1741,9 @@ ul {
     &_date {
       align-items: flex-start;
       flex-direction: column;
+    }
+    &--editor {
+      padding: $space-l $space-xxs;
     }
   }
 }
