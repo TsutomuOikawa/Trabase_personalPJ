@@ -16,5 +16,7 @@ class Prefecture extends Model
     public function wishes() {
       return $this->hasMany(Wish::class);
     }
-
+    public function constructions() {
+      return $this->hasMany(construction::class);
+    }
 }

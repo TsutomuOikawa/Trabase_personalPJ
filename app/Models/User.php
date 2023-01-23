@@ -57,4 +57,7 @@ class User extends Authenticatable
     public function wishes() {
       return $this->hasMany(Wish::class);
     }
+    public function constructions() {
+      return $this->hasMany(construction::class);
+    }
 }
