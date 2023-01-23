@@ -30,9 +30,9 @@ $(function () {
   let msgWindow = $('.js-show-flashMsg');
 
   if ($('.js-get-flashMsg').text()) {
-    msgWindow.toggleClass('active');
+    msgWindow.toggleClass('js-active');
     setTimeout(function(){
-      msgWindow.toggleClass('active');
+      msgWindow.toggleClass('js-active');
     }, 4000);
   }
 
@@ -50,9 +50,9 @@ $(function () {
   let s2 = $('.js-switch-carousel02');
   let s3 = $('.js-switch-carousel03');
   function changeActive( pushed, stay1, stay2 ) {
-    pushed.addClass('active').removeClass('nonactive');
-    stay1.addClass('nonactive').removeClass('active');
-    stay2.addClass('nonactive').removeClass('active');
+    pushed.addClass('js-active').removeClass('js-nonactive');
+    stay1.addClass('js-nonactive').removeClass('js-active');
+    stay2.addClass('js-nonactive').removeClass('js-active');
   }
 
   s1.on('click', function() {
@@ -70,15 +70,15 @@ $(function () {
 
 //////////////////////
   // モーダル表示
-  let modal = $('.js-modal');
+  let $modal = $('.js-modal');
   $('.js-show-modal').on('click', function() {
     setTimeout(function() {
-      modal.show();
+      $modal.show();
     }, 500);
   });
   // モーダル非表示
   $('.js-hide-modal').on('click', function() {
-    modal.hide();
+    $modal.hide()
   });
 
 //////////////////////
@@ -88,10 +88,10 @@ $(function () {
     let tabName = $this.text().toLowerCase();
     // 現在の要素を非活性
     $('.js-get-tab'+'.selected').removeClass('selected');
-    $('.js-show-contents'+'.active').removeClass('active');
+    $('.js-show-contents'+'.js-active').removeClass('js-active');
     // 選択した要素を活性
     $this.addClass('selected');
-    $('#'+tabName).addClass('active');
+    $('#'+tabName).addClass('js-active');
   });
 
 //////////////////////
@@ -107,7 +107,7 @@ $(function () {
   // 都道府県パネルのトグル表示
   $('.js-switch-toggle-list').on('click', function() {
     let $this = $(this);
-    $this.next('.js-toggle-list').toggleClass('active');
+    $this.next('.js-toggle-list').toggleClass('js-active');
     $this.children().toggleClass('fa-square-plus').toggleClass('fa-square-minus')
   })
 
