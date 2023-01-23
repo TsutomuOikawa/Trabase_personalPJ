@@ -42,16 +42,16 @@
         <nav class="header_menu js-slide-menu">
           @guest
           <ul class="menu">
-            <li class="menu_item"><a href="{{ route('index', ['#about']) }}" class="menu_item_link">About</a></li>
-            <li class="menu_item"><a href="{{ route('login') }}" class="menu_item_link">Login</a></li>
-            <li class="menu_item"><a href="{{ route('register') }}" class="menu_item_link">Register</a></li>
+            <li class="menu_item"><a href="{{ route('index', ['#about']) }}" class="menu_item_link"><i class="fa-sharp fa-solid fa-book-open"></i>About</a></li>
+            <li class="menu_item"><a href="{{ route('login') }}" class="menu_item_link"><i class="fa-sharp fa-solid fa-right-to-bracket"></i>Login</a></li>
+            <li class="menu_item"><a href="{{ route('register') }}" class="menu_item_link"><i class="fa-solid fa-user-plus"></i>Register</a></li>
           </ul>
           @endguest
 
           @auth
           <ul class="menu">
-            <li class="menu_item"><a href="{{ route('notes.new') }}" class="menu_item_link">TakeNotes</a></li>
-            <li class="menu_item"><a href="{{ route('mypage') }}" class="menu_item_link">Mypage</a></li>
+            <li class="menu_item"><a href="{{ route('notes.new') }}" class="menu_item_link"><i class="fa-solid fa-pen-to-square"></i>TakeNotes</a></li>
+            <li class="menu_item"><a href="{{ route('mypage') }}" class="menu_item_link"><i class="fa-sharp fa-solid fa-user"></i>Mypage</a></li>
           </ul>
           @endauth
         </nav>
