@@ -60,7 +60,7 @@ $breakpoint: (
   }
 }
 %subTitle {
-  font-family: '游明朝体';
+  font-family: "游明朝体";
   font-weight: bold;
   font-size: $fontSize-l;
   @include mqSP () {
@@ -355,6 +355,7 @@ ul {
 .footer {
   background: $siteColor;
   color: $color-white;
+  font-family: "游明朝体";
   &_wrapper {
     box-sizing: border-box;
     height: auto;
@@ -479,7 +480,7 @@ ul {
     background-size: 100% 60%;
   }
   &_title {
-    font-family: '游明朝体';
+    font-family: "游明朝体";
     font-size: $fontSize-xxl;
     margin: -60px auto 0;
     max-width: 80%;
@@ -546,6 +547,7 @@ ul {
       }
     }
     &_body {
+      padding: 0 $space-xxs;
       &--xs {
         max-width: 100%;
       }
@@ -574,7 +576,7 @@ ul {
   position: relative;
   &_title {
     color: $color-white;
-    font-family: '游明朝体';
+    font-family: "游明朝体";
     font-size: $fontSize-xxxl;
     letter-spacing: 0.1em;
     opacity: 1;
@@ -1028,6 +1030,12 @@ ul {
     bottom: 0;
     left: 0;
   z-index: 5000;
+  &_header {
+    color: $color-white;
+    font-size: $fontSize-l;
+    font-weight: bold;
+    margin-bottom: $space-xs;
+  }
   &_content {
     position: absolute;
       top: 120px;
@@ -1036,15 +1044,10 @@ ul {
     width: 35%;
     z-index: 6000;
   }
-  &_header {
-    color: $color-white;
-    font-size: $fontSize-l;
-  }
   &_list {
     background: rgba($color-white, .5);
     border-radius: 4px;
     height: 40vh;
-    margin-top: $space-xs;
     overflow-y: scroll;
     padding: $space-s;
   }
@@ -1105,15 +1108,6 @@ ul {
     height: 20px;
     overflow: hidden;
   }
-  &_form {
-    width: 50%;
-    margin-bottom: $space-m;
-    p {
-      font-size: $fontSize-l;
-      font-weight: bold;
-      margin-bottom: $space-s;
-    }
-  }
   &_action {
     color: $color-white;
     cursor: pointer;
@@ -1164,10 +1158,6 @@ ul {
     &_beginning {
       font-size: $fontSize-sss;
       height: 40px;
-    }
-    &_form {
-      width: 100%;
-      margin-bottom: $space-xs;
     }
     &_action {
       font-size: $fontSize-s;
@@ -1413,7 +1403,7 @@ ul {
       &--note {
           flex-direction: column;
           flex-wrap: nowrap;
-        height: 65vh;
+        max-height: 65vh;
         margin-left: 0;
         overflow-y: auto;
       }
