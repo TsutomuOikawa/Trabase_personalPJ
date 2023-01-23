@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section( 'title', 'ノート投稿｜Trabase（トラベス）')
 @section('content')
+<div class="flashMsg flashMsg--err js-show-flashMsg">
+  <p class="flashMsg_text js-get-flashMsg"></p>
+</div>
 
     <main class="page-wrapper">
       <div class="container--note">

@@ -94,6 +94,7 @@ $(function(){
             method: 'POST',
             url: path,
             data: formData,
+            dataType: 'json',
             contentType: false,
             processData: false
           })
@@ -101,8 +102,15 @@ $(function(){
             redirectURL = '/notes/article/'+ redirect;
             window.location = redirectURL;
           })
-          .fail(function() {
-             console.log('失敗');
+          .fail(function(err) {
+            console.log(err.responseJSON.message);
+            // エラーメッセージ表示
+            let msg = $('.js-show-flashMsg');
+            $('.js-get-flashMsg').text(err.responseJSON.message);
+            msg.addClass('js-active');
+            setTimeout(function() {
+              msg.removeClass('js-active');
+            }, 4000);
           });
       })
       .catch((error) => {
@@ -151,7 +159,6 @@ $(function(){
       });
 
     }).fail(function() {
-      console.log('失敗');
     });
   }
 
