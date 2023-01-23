@@ -1494,6 +1494,9 @@ ul {
     margin-bottom: $space-xxs;
     padding: $space-xs $space-s;
     width: 100%;
+    & .userInfo {
+      margin-bottom: 0;
+    }
     &:last-child {
       margin-bottom: 0;
     }
@@ -1591,8 +1594,8 @@ ul {
     &--wish {
       align-items: flex-start;
       flex-direction: column;
-      &::after {
-        top: 8px;
+      & .userInfo {
+        margin-bottom: $space-xxs;
       }
     }
     &_table {
