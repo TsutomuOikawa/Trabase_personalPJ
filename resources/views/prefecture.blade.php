@@ -156,22 +156,26 @@
     </div>
   </section>
 
-  <div class="followingBtn">
-    <i class="fa-solid fa-up-right-from-square"></i>
+  <div class="followingBtn js-show-modal">
+    <i class="fa-solid fa-lightbulb"></i>
     <p>イキタイ！</p>
   </div>
 
-  <div class="modal">
-    <div class="modal-wrapper">
-      <form class="modal_form form" action="" method="post">
-        <p>イキタイ登録</p>
+  <div class="modal js-modal">
+    <div class="modal_content">
+      <p class="modal_header">イキタイ！登録</p>
+      @auth
+      <form class="form" action="{{ route('wish.storeWish') }}" method="post">
+        @csrf
         <label>
           <div class="form_name">
             <span class="form_label form_label--required">必須</span>
             都道府県
           </div>
-          <select class="form_input" name="prefecture_id">
-            <option value="">熊本県</option>
+          <select name="pref_id" class="form_input @error('pref_id') form_input--err @enderror js-get-note-pref" >
+          @foreach($prefs as $pref)
+            <option value="{{ $pref->pref_id }}" @if(old('pref_id') === $pref->pref_id) selected @elseif($data->pref_id === $pref->pref_id) selected @endif>{{ $pref->pref_name }}</option>
+          @endforeach
           </select>
         </label>
         <p class="form_errMsg"></p>
@@ -181,7 +185,7 @@
             <span class="form_label form_label--required">必須</span>
             どこで
           </div>
-          <input type="text" name="where" class="form_input" value="">
+          <input type="text" name="place" class="form_input" value="" placeholder="富士山">
         </label>
         <p class="form_errMsg"></p>
 
@@ -190,13 +194,14 @@
             <span class="form_label form_label--optional">任意</span>
             何をしたい？
           </div>
-          <input type="text" name="what" class="form_input" value="">
+          <input type="text" name="thing" class="form_input" value="" placeholder="山頂でご来光をみたい！">
         </label>
         <p class="form_errMsg"></p>
         <button type="submit" class="form_button" name="button">登録する</button>
 
       </form>
-      <span class="modal_action">&lt 戻る</span>
+      @endauth
+      <p class="modal_action js-hide-modal">&lt 戻る</p>
     </div>
     <div class="modal_cover"></div>
   </div>

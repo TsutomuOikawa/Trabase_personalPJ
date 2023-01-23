@@ -3,6 +3,7 @@
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WishController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,11 +51,13 @@ Route::controller(NoteController::class)->group(function() {
 
 Route::middleware('auth')->group(function () {
     // マイページ
-    Route::get('mypage', [MypageController::class, 'mypage'])->name('mypage');
+    Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
     // プロフィール編集
-    Route::get('mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('mypage/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/mypage/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // イキタイ！登録
+    Route::post('/wish', [WishController::class, 'storeWish'])->name('wish.storeWish');
 });
 
 Route::get('/tweet', [App\Http\Controllers\TwitterController::class, 'getTweet']);
