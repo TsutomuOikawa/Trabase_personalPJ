@@ -13,7 +13,7 @@
             <span class="form_label form_label--required">必須</span>
             メールアドレス
           </div>
-          <input type="text" name="email" class="form_input @error('email') form_input--err @enderror" value="" placeholder="example@test.com">
+          <input type="text" name="email" class="form_input @error('email') form_input--err @enderror" value="{{ old('email') }}" placeholder="example@test.com">
         </label>
         <p class="form_errMsg">@error('email') {{ $message }} @enderror</p>
         <label>
@@ -22,7 +22,7 @@
             パスワード
             <span class="smallfont">（半角英数字6文字以上）</span>
           </div>
-          <input type="password" name="password" class="form_input @error('password') form_input--err @enderror" value="">
+          <input type="password" name="password" class="form_input @error('password') form_input--err @enderror" value="{{ old('password') }}">
         </label>
         <p class="form_errMsg">@error('password') {{ $message }} @enderror</p>
         <label>
@@ -30,7 +30,7 @@
             <span class="form_label form_label--required">必須</span>
             パスワード再入力
           </div>
-          <input type="password" name="password_confirmation" class="form_input @error('password_confirmation') form_input--err @enderror" value="">
+          <input type="password" name="password_confirmation" class="form_input @error('password_confirmation') form_input--err @enderror">
         </label>
         <p class="form_errMsg">@error('password_confirmation') {{ $message }} @enderror</p>
         <button type="submit" class="form_button" name="">登録する</button>
