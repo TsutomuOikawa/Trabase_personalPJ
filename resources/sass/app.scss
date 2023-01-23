@@ -509,6 +509,7 @@ ul {
     &--xs {
       @extend .container_body;
       max-width: 35%;
+      min-width: 400px;
     }
     &--s {
       @extend .container_body;
@@ -550,9 +551,13 @@ ul {
       padding: 0 $space-xxs;
       &--xs {
         max-width: 100%;
+        min-width: 90%;
       }
       &--s {
         max-width: 100%;
+      }
+      &--col {
+        flex-direction: column-reverse;
       }
     }
   }
@@ -747,27 +752,24 @@ ul {
   & > .container_title::before {
     content: 'Informations';
   }
-  &_orderItems {
-    display: flex;
-      justify-content: space-between;
-      align-items: center;
-    margin-top: $space-l;
+  &_map {
+    margin-top: $space-s;
   }
-  &_item {
-    height: 300px;
-    margin: $space-s 0;
-    width: 45%;
+  &_google {
+    height: 400px;
+    margin: 0 auto;
+    width: 70%;
   }
 }
 
 @include mqSP() {
   .informations {
-    &_orderItems {
-      flex-direction: column;
+    &_map {
+
     }
-    &_item {
+    &_mapBody {
       height: 200px;
-      width: 100%;
+      width: 80%;
     }
   }
 }
@@ -867,6 +869,13 @@ ul {
     &_thumbnail {
       display: block;
     }
+    &_title {
+      font-size: $fontSize-l;
+      padding: $space-l $space-xs 0;
+    }
+    &_text {
+      padding: $space-xs $space-xs;
+    }
   }
 }
 
@@ -941,6 +950,11 @@ ul {
     font-size: $fontSize-ss;
     max-height: 80px;
     overflow: hidden;
+  }
+  &_date {
+    color: $fontColor-sub;
+    font-size: $fontSize-ss;
+    margin-left: $space-xs;
   }
 }
 
@@ -1211,7 +1225,7 @@ ul {
   }
   &_contents {
     display: none;
-    &.active {
+    &.js-active {
       display: block;
       animation: fadeIn 1.7s;
     }
@@ -1251,11 +1265,6 @@ ul {
   position: sticky;
     top: 90px;
   width: 20%;
-  &--icon {
-    @extend .sidebar;
-    padding: 0 1% 0 0;
-    width: 10%;
-  }
   &_wrapper {
     background: rgba($siteColor-base, .7);
     border-radius: 4px;
@@ -1277,9 +1286,44 @@ ul {
       width: 20px;
     }
   }
+  &_summary {
+    display: flex;
+      flex-direction: column;
+  }
+  &_title {
+    font-size: $fontSize-s;
+    font-weight: bold;
+    max-height: 45px;
+    overflow: hidden;
+  }
+  &_date {
+    font-size: $fontSize-ss;
+  }
   &_chapters {
-    margin-bottom: $space-xs;
-    padding: $space-xxs 0;
+    font-size: $fontSize-ss;
+    padding-top: $space-xs;
+    & >* {
+      padding-bottom: $space-xs;
+    }
+  }
+  &--icon {
+    @extend .sidebar;
+    font-size: $fontSize-xl;
+    padding: 0 $space-xs 0 0;
+    width: 10%;
+    &>.sidebar_wrapper {
+      border-radius: 100%;
+      box-sizing: border-box;
+      height: 50px;
+      position: relative;
+      width: 50px;
+    }
+    i {
+      position: absolute;
+        top: 50%;
+        left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
 
@@ -1319,8 +1363,34 @@ ul {
         display: none;
       }
     }
+    &_title {
+      font-size: $fontSize-ss;
+      max-height: 20px;
+    }
+    &_date {
+      font-size: $fontSize-sss;
+    }
     &_chapters {
       display: none;
+    }
+    &--icon {
+      font-size: $fontSize-xl;
+      display: flex;
+      padding: 0 $space-xs 0 0;
+      width: 10%;
+      position: fixed;
+        top: calc(100% - 90px);
+        left: 10px;
+      &>.sidebar_wrapper {
+        background: $color-white;
+        min-width: 50px;
+      }
+      i {
+        position: absolute;
+          top: 50%;
+          left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }
@@ -1369,7 +1439,7 @@ ul {
         justify-content: flex-start;
       margin-bottom: $space-m;
       overflow-x: auto;
-      &.active {
+      &.js-active {
         animation: showList 1.5s;
         display: flex;
       }
@@ -1418,7 +1488,7 @@ ul {
     border-radius: 3px;
     margin: 0 2px;
     padding: 2px $space-xxs;
-    &.active {
+    &.js-active {
       background: rgba($color-white, 1);
       color: $fontColor-default;
       font-weight: bold;
@@ -1647,7 +1717,7 @@ ul {
     border-radius: 2px;
     margin-right: $space-xxs;
     font-size: $fontSize-ss;
-    color: #fff;
+    color: $color-white;
     &--required {
       background: $siteColor-err;
     }
@@ -1692,12 +1762,11 @@ ul {
   &_button {
     width: 45%;
     padding: $space-xs 0;
-    border-radius: 10px;
+    border-radius: 4px;
     box-sizing: border-box;
     margin: $space-xs auto 0;
     background: $siteColor-button;
     box-shadow: 0 4px 1px #552808;
-    font-size: $fontSize-m;
     color: $color-white;
     letter-spacing: 0.05em;
     transition: .1s;
@@ -1737,6 +1806,34 @@ ul {
     &--editor {
       padding: $space-l $space-xxs;
     }
+    &_name {
+      font-size: $fontSize-s;
+    }
+    &_label {
+      font-size: $fontSize-sss;
+    }
+    &_input {
+      height: 35px;
+      &--header {
+        font-size: $fontSize-m;
+        height: 55px;
+      }
+    }
+    &_button {
+      padding: $space-xxs 0;
+      font-size: $fontSize-s;
+      &:hover {
+        filter: brightness(1.5);
+      }
+      &:active {
+        box-shadow: none;
+        transform: translateY(4px);
+      }
+    }
+
+    &_editor {
+      padding: $space-m $space-xxs 0;
+    }
   }
 }
 /*====================
@@ -1751,15 +1848,19 @@ ul {
   transition: all 1.5s;
   width: 100%;
   z-index: 3000;
-  &.active {
+  &.js-active {
     transform: translateY(80px);
   }
   &--success {
     background: rgba(#338a4e, .98);
   }
+  &--err {
+    background: rgba($siteColor-err, .9);
+  }
   &_text {
     color: $color-white;
-    font-size: $fontSize-l;
+    font-size: $fontSize-m;
+    font-weight: bold;
     line-height: 80px;
   }
 }
@@ -1838,9 +1939,9 @@ ul {
   ウィッシュリスト
 ====================*/
 .followingBtn {
-  background: $siteColor-button;
-  border-radius: 40px;
-  box-shadow: 0 4px 1px #552808;
+  background: $siteColor-accent;
+  border-radius: 30px;
+  box-shadow: 0 3px 1px #4b3803;
   box-sizing: border-box;
   color: $color-white;
   cursor: pointer;
@@ -1849,12 +1950,20 @@ ul {
     justify-content: space-between;
   font-size: $fontSize-s;
   font-weight: bold;
-  height: 50px;
+  height: auto;
   padding: $space-xs;
   position: fixed;
     right: 50px;
     bottom: 50px;
+  transition: all .1s;
   width: 120px;
+  &:hover {
+    filter: brightness(1.2);
+  }
+  &:active {
+    box-shadow: none;
+    transform: translateY(3px);
+  }
 }
 
 @include mqSP() {
