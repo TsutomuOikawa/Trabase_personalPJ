@@ -88,7 +88,7 @@
                   <i class="fa-sharp fa-solid fa-lightbulb"></i>
                 </li>
                 @endforeach
-                @empty($wishes->items)
+                @empty($wishes[0])
                 <p>現在登録されているウィッシュリストはありません</p>
                 @endempty
               </ul>
