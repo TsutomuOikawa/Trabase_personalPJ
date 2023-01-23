@@ -2,7 +2,7 @@
 @section('title', $data->pref_name)
 @section('content')
 
-<!-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key&callback=initMap" defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key=initMap" defer></script>
 <main>
   <section class="hero js-header-change-target">
     <section class="firstView">
@@ -39,20 +39,9 @@
           </ul>
         </div>
 
-        <div class="informations_orderItems">
-          <div class="informations_item">
-            <h3 class="list_title">工事中のスポット・注意情報</h3>
-            <div class="" style="background:white;">
-
-            </div>
-          </div>
-          <div class="informations_item">
-            <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
-            <div class="">
-              <div id="googleMap"></div>
-            </div>
-
-          </div>
+        <div class="informations_map">
+          <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
+          <div id="googleMap" class="informations_google"></div>
         </div>
       </div>
 
@@ -64,9 +53,6 @@
         </ul>
       </div>
     </section>
-
-
-
   </section>
 
   <section id="prefNotes" class="prefNotes container--note">

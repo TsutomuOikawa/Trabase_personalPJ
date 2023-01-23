@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- GoogleMap API -->
-    <!-- <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script> -->
+    <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script>
     <!-- Scripts -->
     @vite(['resources/css/reset.css', 'resources/icon/css/all.css', 'resources/sass/app.scss'])
   </head>
@@ -131,8 +131,8 @@
           </div>
           <div class="footer_navItem">
             <p class="footer_category">お問い合せ</p>
-            <textarea name="inquiry" class="footer_form"></textarea>
-            <button type="submit" class="footer_submit">送信する</button>
+            <!-- <textarea name="inquiry" class="footer_form"></textarea>
+            <button type="submit" class="footer_submit">送信する</button> -->
           </div>
         </nav>
         <small class="footer_copyright"> Copyright @ Trabase <br>All Rights Reserved</small>
