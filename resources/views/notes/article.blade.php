@@ -10,21 +10,19 @@
               <i class="fa-bookmark @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite" data-note_id="{{ $note->note_id }}"></i>
             </div>
             @if($note->user_id === Auth::id())
-            <ul class="sidebar_wrapper">
-              <li>
+            <div class="sidebar_wrapper">
                 <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">
-                  <i class="fa-solid fa-pen-to-square"></i>編集
+                  <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-              </li>
-              <li>
-                <form action="{{ route('notes.delete', ['note_id'=>$note->note_id]) }}" method="post">
-                  @csrf @method('DELETE')
-                  <button type="submit">
-                    <i class="fa-solid fa-trash-can"></i>削除
-                  </button>
-                </form>
-              </li>
-            </ul>
+            </div>
+            <div class="sidebar_wrapper">
+              <form action="{{ route('notes.delete', ['note_id'=>$note->note_id]) }}" method="post">
+                @csrf @method('DELETE')
+                <button type="submit">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </form>
+            </div>
             @endif
           </aside>
 
@@ -77,6 +75,11 @@
                 <button type="submit" class="form_button">送信する</button>
               </form>
               @endauth
+              @guest
+              <p>コメントするにはログインが必要です</p>
+              <a href="{{ route('login') }}">&gt; ログインする</a>
+              @endguest
+
             </section>
           </article>
 
@@ -134,15 +137,17 @@
                   <p class="userInfo_intro">{{ $note->intro }}</p>
                 </div>
               </div>
-              <p class="panel_title">{{ $note->title }}</p>
-              <p class="panel_subInfo">{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
-              <ul class="sidebar_chapters">
-              @foreach($note->text['blocks'] as $text)
-                @if($text['type'] === 'header')
-                  <li><a href="#{{ $text['data']['text'] }}">{{ $text['data']['text'] }}</a></li>
-                @endif
-              @endforeach
-              </ul>
+              <div class="sidebar_summary">
+                <p class="sidebar_title">{{ $note->title }}</p>
+                <p class="sidebar_date">{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
+                <ul class="sidebar_chapters">
+                @foreach($note->text['blocks'] as $text)
+                  @if($text['type'] === 'header')
+                    <li><a href="#{{ $text['data']['text'] }}">{{ $text['data']['text'] }}</a></li>
+                  @endif
+                @endforeach
+                </ul>
+              </div>
             </div>
           </aside>
 
