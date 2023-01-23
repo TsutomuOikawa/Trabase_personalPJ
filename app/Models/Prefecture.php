@@ -13,4 +13,8 @@ class Prefecture extends Model
     public function notes() {
       return $this->hasMany(Note::class);
     }
+    public function wishes() {
+      return $this->hasMany(Wish::class);
+    }
+
 }
