@@ -4,55 +4,55 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key=initMap" defer></script>
 <main>
-  <section class="hero js-header-change-target">
-    <section class="firstView">
-      <h1 class="firstView_title--big js-hide-title">{{ $data->pref_name }}</h1>
-    </section>
-    <section id="informations" class="container--transparent informations">
-      <h2 class="container_title">旅の情報</h2>
-      <div class="container_body">
-        <div class="list--wish">
-          <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
-          <ul class="list_body--wish">
-            @foreach($wishes as $wish)
-            <li class="panel--wish">
-              <div class="userInfo">
-                <img src="{{ asset($wish->user->avatar) }}" class="userInfo_img">
-                <p class="userInfo_name">{{ $wish->user->name }}</p>
-              </div>
-              <table class="panel_table">
-                <tr class="panel_tableElm">
-                  <th>WHERE</th>
-                  <td>{{ $wish->spot }}</td>
-                </tr>
-                <tr class="panel_tableElm">
-                  <th>WHAT</th>
-                  <td>{{ $wish->thing }}</td>
-                </tr>
-              </table>
-              <i class="fa-sharp fa-solid fa-lightbulb js-show-modal"></i>
-            </li>
-            @endforeach
-            @empty($wishes[0])
-            <p>現在登録されているウィッシュリストはありません</p>
-            @endempty
-          </ul>
+  <section class="hero">
+    <div class="js-header-change-target">
+      <section class="firstView">
+        <h1 class="firstView_title--big js-hide-title">{{ $data->pref_name }}</h1>
+      </section>
+      <section id="informations" class="container--transparent informations">
+        <h2 class="container_title">旅の情報</h2>
+        <div class="container_body">
+          <div class="list--wish">
+            <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
+            <ul class="list_body--wish">
+              @foreach($wishes as $wish)
+              <li class="panel--wish">
+                <div class="userInfo">
+                  <img src="{{ asset($wish->user->avatar) }}" class="userInfo_img">
+                  <p class="userInfo_name">{{ $wish->user->name }}</p>
+                </div>
+                <table class="panel_table">
+                  <tr class="panel_tableElm">
+                    <th>WHERE</th>
+                    <td>{{ $wish->spot }}</td>
+                  </tr>
+                  <tr class="panel_tableElm">
+                    <th>WHAT</th>
+                    <td>{{ $wish->thing }}</td>
+                  </tr>
+                </table>
+                <i class="fa-sharp fa-solid fa-lightbulb js-show-modal"></i>
+              </li>
+              @endforeach
+              @empty($wishes[0])
+              <p>現在登録されているウィッシュリストはありません</p>
+              @endempty
+            </ul>
+          </div>
+          <div class="informations_map">
+            <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
+            <div id="googleMap" class="informations_google"></div>
+          </div>
         </div>
-
-        <div class="informations_map">
-          <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
-          <div id="googleMap" class="informations_google"></div>
-        </div>
-      </div>
-
-      <div class="imgSlider">
-        <ul class="imgSlider_list">
-          @for($i=1; $i<=10; $i++)
-          <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-          @endfor
-        </ul>
-      </div>
-    </section>
+      </section>
+    </div>
+    <div class="imgSlider">
+      <ul class="imgSlider_list">
+        @for($i=1; $i<=10; $i++)
+        <li><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
+        @endfor
+      </ul>
+    </div>
   </section>
 
   <section id="prefNotes" class="prefNotes container--note">
@@ -167,7 +167,6 @@
           </select>
         </label>
         <p class="form_errMsg"></p>
-
         <label>
           <div class="form_name">
             <span class="form_label form_label--required">必須</span>
@@ -176,7 +175,6 @@
           <input type="text" name="place" class="form_input" value="" placeholder="富士山">
         </label>
         <p class="form_errMsg"></p>
-
         <label>
           <div class="form_name">
             <span class="form_label form_label--optional">任意</span>
@@ -186,14 +184,14 @@
         </label>
         <p class="form_errMsg"></p>
         <button type="submit" class="form_button" name="button">登録する</button>
-
       </form>
       @endauth
       <p class="modal_action js-hide-modal">&lt 戻る</p>
     </div>
     <div class="modal_cover"></div>
   </div>
-
 </main>
-
+@endsection
+@section('script')
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 @endsection

@@ -1,4 +1,7 @@
+import {setEditor} from './editor.js';
+
 $(function () {
+
 //////////////////////
   // スクロールによる変更
   let screenHeight = $('.js-header-change-target').height();
@@ -174,36 +177,35 @@ $(function () {
     $this.attr('href', href + '&num=' + num);
   });
 
-
 //////////////////////
-  // 特定のページで読み込みたいjsの<script>を生成する関数
-  function createScript(fileName) {
-    let scriptTag = document.createElement('script');
-    scriptTag.src = fileName;
-    scriptTag.async = true;
-    $('body').append(scriptTag);
-  }
+  // slickスライダー
+  $('.imgSlider_list').slick({
+		arrows: false,//左右の矢印はなし
+		autoplay: true,//自動的に動き出すか。初期値はfalse。
+		autoplaySpeed: 0,//自動的に動き出す待ち時間。初期値は3000
+		speed: 6900,//スライドのスピード。初期値は300。
+		infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+		pauseOnHover: false,//オンマウスでスライドを一時停止させるかどうか。初期値はtrue。
+		pauseOnFocus: false,//フォーカスした際にスライドを一時停止させるかどうか。初期値はtrue。
+		cssEase: 'linear',//動き方。初期値はease
+		slidesToShow: 8,//スライドを画面に4枚見せる
+		slidesToScroll: 1,//1回のスライドで動かす要素数
+		responsive: [
+			{
+			breakpoint: 769,//モニターの横幅が769px以下の見せ方
+			settings: {
+				slidesToShow: 6,
+			}
+		},
+		{
+			breakpoint: 426,//モニターの横幅が426px以下の見せ方
+			settings: {
+				slidesToShow: 4,
+			}
+		}
+	]
+	});
 
-
-//////////////////////
-  // googleMap　の表示
-  // let prefRegexp = new RegExp('/pref/[1-9]+[0-9]*');
-  // if (prefRegexp.test(location.pathname)) {
-    // // GoogleMap用のスクリプトをヘッダーに追加
-    // let script = document.createElement('script');
-    // script.src = 'https://maps.googleapis.com/maps/api/js?language=ja&key=';
-    // // AIzaSyBieNmkYCkzbD65SGnFd_UyhUrFqCYkmcU
-    // script.async = true;
-    // document.head.appendChild(script);
-    // console.log(script);
-
-    // google-map.jsを読み込み
-    // createScript('http://0.0.0.0:5173/resources/js/google-map.js');
-  // }
-
-
-
-
-
+  setEditor();
 
 });

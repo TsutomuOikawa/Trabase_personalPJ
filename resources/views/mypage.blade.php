@@ -161,12 +161,15 @@
     <div class="imgSlider">
       <ul class="imgSlider_list">
         @for($i=1; $i<=10; $i++)
-        <li class="imgSlider_item"><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
+        <li><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
         @endfor
       </ul>
     </div>
   </div>
 </main>
-@vite(['resources/js/jquery-3.6.0.min.js', 'resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
 
+@endsection
+@section('script')
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
 @endsection

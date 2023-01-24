@@ -629,7 +629,7 @@ ul {
 }
 
 .map {
-  padding: 80px 0 $space-l;
+  padding: 80px 0 $space-m;
   &_pref {
     font-family: "游明朝体";
     font-size: $fontSize-l;
@@ -676,21 +676,23 @@ ul {
 };
 
 .imgSlider {
+  background: rgba($color-black, .6);
   box-sizing: border-box;
   overflow: hidden;
-  padding-top: $space-m;
+  padding: $space-xxs 0;
   width: 100%;
-  &_list {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-  &_item {
-    padding: 0 $space-xxs;
+  & .slick-slide{
+    margin: 0 $space-xxs;/*スライド左右の余白調整*/
   }
   &_img {
-    @extend %imgSize-xs;
+    width: 100%;
+    height: auto;
   }
 }
+
+
+
+
 /*====================
  index.php > feature
 ====================*/

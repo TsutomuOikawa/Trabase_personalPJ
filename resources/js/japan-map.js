@@ -1,4 +1,5 @@
-$(function(){
+$(function() {
+
   // 画面幅によってマップサイズを変更
   let mapWidth,
   windowWidth = $(window).width(), windowSP = 420, windowPC = 960;
@@ -72,7 +73,5 @@ $(function(){
         }
       }
     });
-
   }
-// 最終閉じ
-});
+})
