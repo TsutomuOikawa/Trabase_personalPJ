@@ -13,7 +13,6 @@ $(function() {
 
   // ページによって処理を変更
   let currentPath = location.pathname;
-
   // トップページ
   if (currentPath === '/') {
     $('.js-japanMap').japanMap({

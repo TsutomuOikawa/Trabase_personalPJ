@@ -4,19 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>@yield('title')｜Trabase（トラベス）</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    <!-- Slick -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <!-- GoogleMap API -->
-    <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script>
+    @yield('headerScript')
     <!-- Scripts -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://unpkg.com/japan-map-js@1.0.1/dist/jpmap.min.js"></script> -->
     @vite(['resources/css/reset.css', 'resources/icon/css/all.css', 'resources/sass/app.scss'])
-
   </head>
 
   <body>
@@ -136,8 +129,8 @@
           </div>
           <div class="footer_navItem">
             <p class="footer_category">お問い合せ</p>
-            <!-- <textarea name="inquiry" class="footer_form"></textarea>
-            <button type="submit" class="footer_submit">送信する</button> -->
+            <textarea name="inquiry" class="footer_form"></textarea>
+            <button type="submit" class="footer_submit">送信する</button>
           </div>
         </nav>
         <small class="footer_copyright"> Copyright @ Trabase <br>All Rights Reserved</small>
@@ -145,6 +138,5 @@
     </footer>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  @vite('resources/js/app.js')
   @yield('script')
 </html>

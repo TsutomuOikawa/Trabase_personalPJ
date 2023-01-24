@@ -1,6 +1,9 @@
 import {setEditor} from './editor.js';
 
 $(function () {
+//////////////////////
+  // エディターを展開
+  setEditor();
 
 //////////////////////
   // スクロールによる変更
@@ -178,34 +181,25 @@ $(function () {
   });
 
 //////////////////////
-  // slickスライダー
-  $('.imgSlider_list').slick({
-		arrows: false,//左右の矢印はなし
-		autoplay: true,//自動的に動き出すか。初期値はfalse。
-		autoplaySpeed: 0,//自動的に動き出す待ち時間。初期値は3000
-		speed: 6900,//スライドのスピード。初期値は300。
-		infinite: true,//スライドをループさせるかどうか。初期値はtrue。
-		pauseOnHover: false,//オンマウスでスライドを一時停止させるかどうか。初期値はtrue。
-		pauseOnFocus: false,//フォーカスした際にスライドを一時停止させるかどうか。初期値はtrue。
-		cssEase: 'linear',//動き方。初期値はease
-		slidesToShow: 8,//スライドを画面に4枚見せる
-		slidesToScroll: 1,//1回のスライドで動かす要素数
-		responsive: [
-			{
-			breakpoint: 769,//モニターの横幅が769px以下の見せ方
-			settings: {
-				slidesToShow: 6,
-			}
-		},
-		{
-			breakpoint: 426,//モニターの横幅が426px以下の見せ方
-			settings: {
-				slidesToShow: 4,
-			}
-		}
-	]
-	});
+  // Splideスライダー
+  new Splide( '.splide', {
+    type: 'loop',
+    drag: 'free',
+    focus: 'center',
+    perPage: 8,
+    gap: 10,
+    arrows: false,
+    pagination: false,
+    breakpoints: {
+      960: { perPage: 6 },
+      420: { perPage: 4 }
+    },
+    autoScroll: {
+      speed: 0.5,
+      rewind: true,
+      pauseOnHover: false
+    }
+  }).mount( window.splide.Extensions )
 
-  setEditor();
 
 });

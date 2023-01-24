@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', '旅の計画と記録に')
+@section('headerScript')
+  <!-- splide -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
+@endsection
 @section('content')
 
 <main>
@@ -21,12 +25,14 @@
         </div>
       </section>
     </div>
-    <div class="imgSlider">
-      <ul class="imgSlider_list">
-        @for($i=1; $i<=10; $i++)
-        <li><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        @endfor
-      </ul>
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          @foreach($notes as $note)
+          <li class="splide__slide"><img src="{{ asset($note->thumbnail) }}" class="splide_img" alt=""></li>
+          @endforeach
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -109,6 +115,7 @@
 
 @endsection
 @section('script')
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js', 'resources/js/app.js'])
 @endsection

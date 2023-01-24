@@ -1,8 +1,13 @@
 @extends('layouts.app')
 @section('title', $data->pref_name)
+@section('headerScript')
+  <!-- splide -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
+  <!-- GoogleMap API -->
+  <!-- <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key=initMap" defer></script> -->
+@endsection
 @section('content')
-
-<script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key=initMap" defer></script>
 <main>
   <section class="hero">
     <div class="js-header-change-target">
@@ -46,12 +51,15 @@
         </div>
       </section>
     </div>
-    <div class="imgSlider">
-      <ul class="imgSlider_list">
-        @for($i=1; $i<=10; $i++)
-        <li><img src="{{ asset('img/noimage.png') }}" class="imgSlider_img" alt=""></li>
-        @endfor
-      </ul>
+
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          @foreach($notes as $note)
+          <li class="splide__slide"><img src="{{ asset($note->thumbnail) }}" class="splide_img" alt=""></li>
+          @endforeach
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -96,7 +104,7 @@
     <div class="container_body">
       <div class="list--destination">
         <h3 class="list_title js-switch-toggle-list"><i class="fa-regular fa-square-minus"></i>北海道・東北</h3>
-        <div class="list_body--destination js-toggle-list active">
+        <div class="list_body--destination js-toggle-list js-active">
           @foreach($prefs as $pref)
           <a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}" class="panel--destination js-change-back">
             <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
@@ -193,5 +201,7 @@
 </main>
 @endsection
 @section('script')
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+  @vite('resources/js/app.js')
 @endsection

@@ -145,6 +145,7 @@ ul {
     font-family: "游明朝体";
     font-size: $fontSize-xxxl;
     font-weight: bold;
+    letter-spacing: 0.08em;
     padding-left: $space-xs;
     z-index: 3000;
   }
@@ -688,6 +689,11 @@ ul {
     width: 100%;
     height: auto;
   }
+}
+
+.splide {
+  background: rgba($color-black, 0.6);
+  padding: $space-xs 0;
 }
 
 
@@ -1271,7 +1277,7 @@ ul {
     background: rgba($siteColor-base, .7);
     border-radius: 4px;
     color: $fontColor-default;
-    margin-bottom: $space-xxs;
+    margin-bottom: $space-s;
     padding: $space-xs;
     text-align: left;
   }
