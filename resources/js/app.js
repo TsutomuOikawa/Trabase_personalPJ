@@ -1,8 +1,11 @@
+import {makeSlider} from './slider.js';
 import {setEditor} from './editor.js';
 
 $(function () {
 //////////////////////
-  // エディターを展開
+  // スライダー
+  makeSlider();
+  // エディター
   setEditor();
 
 //////////////////////
@@ -179,27 +182,5 @@ $(function () {
     let href = $this.attr('href');
     $this.attr('href', href + '&num=' + num);
   });
-
-//////////////////////
-  // Splideスライダー
-  new Splide( '.splide', {
-    type: 'loop',
-    drag: 'free',
-    focus: 'center',
-    perPage: 8,
-    gap: 10,
-    arrows: false,
-    pagination: false,
-    breakpoints: {
-      960: { perPage: 6 },
-      420: { perPage: 4 }
-    },
-    autoScroll: {
-      speed: 0.5,
-      rewind: true,
-      pauseOnHover: false
-    }
-  }).mount( window.splide.Extensions )
-
 
 });
