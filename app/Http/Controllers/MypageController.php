@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\WishController;
 use App\Models\Prefecture;
 use App\Models\Wish;
 use Illuminate\Http\Request;
@@ -32,7 +33,10 @@ class MypageController extends Controller
           $favNote->isFavorite = true;
         }
 
-        $wishes = Wish::with('user')->where('user_id', $user_id)->get();
+        $wishQuery = WishController::setWishesQuery();
+        $wishes = $wishQuery->where('user_id', $user_id)
+                            ->get();
+
         $prefs = Prefecture::all();
         return view('mypage')
           ->with('user', $user)
