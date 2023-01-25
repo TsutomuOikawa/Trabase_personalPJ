@@ -1509,15 +1509,15 @@ ul {
   position: relative;
   &--note {
     @extend .panel;
-    background: rgba(252, 250, 242, 1);
-    box-shadow: 0 0 5px 0 rgba($color-black, .7);
+    background: rgba($color-white, 1);
+    box-shadow: 0 0 5px 0 rgba($color-black, .2);
     height: 290px;
     margin: 0 $space-xs $space-s 0;
     position: relative;
     transition: all .5s;
     width: 220px;
     &:hover {
-      box-shadow: 0 0 25px 5px rgba($color-black, .3);
+      box-shadow: 0 0 25px 5px rgba($color-black, .2);
       transform: scale(1.2);
       z-index: 1000;
     }
@@ -1533,10 +1533,12 @@ ul {
       left: 0;
   }
   &_thumbnail {
+    background: rgba($color-black, .7);
     border-radius: 4px 4px 0 0;
     height: 150px;
   }
   &_info {
+    border-radius: 0 0 4px 4px;
     box-sizing: border-box;
     height: auto;
     padding: $space-xxs $space-xs;
