@@ -33,41 +33,9 @@
           </div>
           <div class="list--note">
             <ul class="list_body--note">
-
-            @foreach ($notes as $note)
-              <li class="panel--note">
-                <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}">
-                  <p class="panel_pref js-get-links">{{ $note->pref_name }}</p>
-                  <img src="{{ asset('img/IMG_5131.JPG') }}" class="panel_thumbnail" alt="">
-                  <div class="panel_info">
-                    <h3 class="panel_title">{{ $note->title }}</h3>
-                    <div class="userInfo">
-                      @if($note->avatar)
-                      <img src="{{ asset($note->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
-                      @else
-                      <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
-                      @endif
-                      <p class="userInfo_name">{{ $note->name }}</p>
-                    </div>
-                    <div class="panel_subInfo">
-                      <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
-                      <div class="iconBox">
-                        @auth
-                        <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
-                        @endauth
-                        @guest
-                        <i class="fa-bookmark fa-lg fa-regular js-favorite"></i>
-                        @endguest
-                        <span class="iconBox_num">@if($note->favNum) {{ $note->favNum }} @else 0 @endif</span>
-                        <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                        <span class="iconBox_num">@if($note->comNum) {{ $note->comNum }} @else 0 @endif</span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            @endforeach
-
+              @component('components.note',
+                ['notes' => $notes])
+              @endcomponent
             </ul>
           </div>
           {{ $notes->links() }}

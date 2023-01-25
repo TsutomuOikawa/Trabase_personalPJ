@@ -36,35 +36,9 @@
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
-                @foreach ($myNotes as $note)
-                <li class="panel--note js-get-links">
-                  <p class="panel_pref">{{ $note->pref_name }}</p>
-                  <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
-                    <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
-                    <div class="panel_info">
-                      <h3 class="panel_title">{{ $note->title }}</h3>
-                      <div class="userInfo">
-                        @if($note->avatar)
-                          <img src="{{ asset($note->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
-                        @else
-                          <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
-                        @endif
-                        <p class="userInfo_name">{{ $note->name }}</p>
-                      </div>
-                      <div class="panel_subInfo">
-                        <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
-                        <div class="iconBox">
-                          <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
-                          <span class="iconBox_num">{{ $note->favNum }}</span>
-                          <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                          <span class="iconBox_num">{{ $note->comNum }}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <span class="js-get-visited" style="display:none;">{{ $note->pref_id }}</span>
-                </li>
-                @endforeach
+                @component('components.note',
+                 ['notes' => $myNotes])
+                @endcomponent
               </ul>
             </div>
           </section>
@@ -103,34 +77,9 @@
             <h2 class="mypage_title">ブックマーク済みのノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
-                @foreach ($favNotes as $note)
-                <li class="panel--note">
-                  <p class="panel_pref">{{ $note->pref_name }}</p>
-                  <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
-                    <img src="{{ asset('img/IMG_5131.jpg') }}" class="panel_thumbnail" alt="">
-                    <div class="panel_info">
-                      <h3 class="panel_title">{{ $note->title }}</h3>
-                      <div class="userInfo">
-                        @if($note->avatar)
-                          <img src="{{ asset($note->avatar)}}" class="userInfo_img" alt="{{ $note->name.'さんのプロフィール画像' }}">
-                        @else
-                          <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
-                        @endif
-                        <p class="userInfo_name">{{ $note->name }}</p>
-                      </div>
-                      <div class="panel_subInfo">
-                        <p>{{ date('y/m/d', strtotime($note->created_at)) }}投稿</p>
-                        <div class="iconBox">
-                          <i class="fa-bookmark fa-lg @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite"></i>
-                          <span class="iconBox_num">{{ $note->favNum }}</span>
-                          <i class="fa-regular fa-comment-dots fa-lg icon--comment"></i>
-                          <span class="iconBox_num">{{ $note->comNum }}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                @endforeach
+                @component('components.note',
+                  ['notes' => $favNotes])
+                @endcomponent
               </ul>
             </div>
           </section>
@@ -142,8 +91,12 @@
         <div class="sidebar_wrapper">
           <div class="sidebar_profile">
             <div class="userInfo userInfo--big">
-              <img src="{{ asset($user->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
-              <p class="userInfo_name userInfo_name--big">{{ $user->name }}</p>
+              @if($user->avatar)
+                <img src="{{ asset($user->avatar)}}" class="userInfo_img userInfo_img--big" alt="{{ $user->name.'さんのプロフィール画像' }}">
+              @else
+                <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
+              @endif
+              <p class="userInfo_name userInfo_name--big">@if($user->name){{ $user->name }} @else 匿名ユーザー @endif</p>
               <p class="userInfo_intro">{{ $user->intro }}</p>
             </div>
           </div>
