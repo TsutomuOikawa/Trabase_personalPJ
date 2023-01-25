@@ -94,13 +94,13 @@ $(function () {
   // マイページタブ
   $('.js-get-tab').on('click', function() {
     let $this = $(this);
-    let tabName = $this.text().toLowerCase();
+    let tabNum = $this.index();
     // 現在の要素を非活性
-    $('.js-get-tab'+'.selected').removeClass('selected');
+    $('.js-get-tab'+'.js-selected').removeClass('js-selected');
     $('.js-show-contents'+'.js-active').removeClass('js-active');
     // 選択した要素を活性
-    $this.addClass('selected');
-    $('#'+tabName).addClass('js-active');
+    $this.addClass('js-selected');
+    $('.js-show-contents').eq(tabNum).addClass('js-active');
   });
 
 //////////////////////

@@ -12,15 +12,15 @@
     <div class="container_body container_body--col">
       <div class="mypage">
         <ul class="mypage_nav">
-          <li class="mypage_navItem js-get-tab selected">マップ</li>
+          <li class="mypage_navItem js-get-tab js-selected">マップ</li>
           <li class="mypage_navItem js-get-tab">ノート</li>
           <li class="mypage_navItem js-get-tab">イキタイ！</li>
           <li class="mypage_navItem js-get-tab">ブックマーク</li>
         </ul>
         <div class="mypage_article">
 
-          <section id="マップ" class="mypage_contents js-show-contents js-active">
-            <h2 class="mypage_title">マップ</h2>
+          <section id="map" class="mypage_contents js-show-contents js-active">
+            <h2 class="mypage_title">現在の地図</h2>
             <div class="js-japanMap"></div>
             <div class="modal js-modal">
               <div class="modal_content">
@@ -32,7 +32,7 @@
             </div>
           </section>
 
-          <section id="ノート" class="mypage_contents js-show-contents">
+          <section id="notes" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
@@ -43,7 +43,7 @@
             </div>
           </section>
 
-          <section id="イキタイ！" class="mypage_contents js-show-contents">
+          <section id="wishLists" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">イキタイ！リスト</h2>
             <div class="list--wish">
               @component('components.wishLists',
@@ -52,7 +52,7 @@
             </div>
           </section>
 
-          <section id="ブックマーク" class="mypage_contents js-show-contents">
+          <section id="bookmarks" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">ブックマーク済みのノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">

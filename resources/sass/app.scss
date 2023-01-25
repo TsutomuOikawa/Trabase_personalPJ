@@ -1215,7 +1215,7 @@ ul {
     &:hover {
       background: rgba($siteColor-base, .2);
     }
-    &.selected {
+    &.js-selected {
       background: rgba($siteColor-base, .7);
       color: $fontColor-default;
     }
