@@ -58,8 +58,12 @@
                 @foreach($comments as $comment)
                 <li class="comments_item">
                   <div class="userInfo">
-                    <img src="{{ asset('img/プロフィールアイコン：有色.jpeg') }}" class="userInfo_img" alt="">
-                    <p class="userInfo_name">{{ $comment->user->name }}</p>
+                    @if($comment->user->avatar)
+                      <img src="{{ asset($comment->user->avatar)}}" class="userInfo_img" alt="{{ $comment->user->name.'さんのプロフィール画像' }}">
+                    @else
+                      <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
+                    @endif
+                    <p class="userInfo_name">@if($comment->user->name){{ $comment->user->name }} @else 匿名ユーザー @endif</p>
                     <p class="userInfo_date">{{ date('y/m/d', strtotime($comment->created_at)); }}投稿</p>
                   </div>
                   <p class="comments_text">
@@ -132,8 +136,12 @@
             <div class="sidebar_wrapper">
               <div class="sidebar_profile">
                 <div class="userInfo userInfo--big">
-                  <img src="{{ asset($note->avatar) }}" class="userInfo_img userInfo_img--big" alt="">
-                  <p class="userInfo_name userInfo_name--big">{{ $note->name }}</p>
+                  @if($note->avatar)
+                    <img src="{{ asset($note->avatar)}}" class="userInfo_img userInfo_img--big" alt="{{ $note->name.'さんのプロフィール画像' }}">
+                  @else
+                    <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
+                  @endif
+                  <p class="userInfo_name userInfo_name--big">@if($note->name){{ $note->name }} @else 匿名ユーザー @endif</p>
                   <p class="userInfo_intro">{{ $note->intro }}</p>
                 </div>
               </div>
