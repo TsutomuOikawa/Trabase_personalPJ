@@ -40,7 +40,7 @@ $(function() {
 
     // マイページのノートから旅行済みの県を取得
     $('.js-get-visited').each( function () {
-      visited = Number( $(this).text() );
+      visited = Number( $(this).data('pref') );
       areas[1].prefectures.push(visited);
     });
     // 未旅行の県を取得

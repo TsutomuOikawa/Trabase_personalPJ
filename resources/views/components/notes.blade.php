@@ -1,5 +1,5 @@
 @foreach($notes as $note)
-<li class="panel--note js-get-links">
+<li class="panel--note js-get-visited" data-pref="{{ $note->pref_id }}">
   <p class="panel_pref">{{ $note->pref_name }}</p>
   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
     <img src="@if($note->thumbnail){{ asset($note->thumbnail) }} @else {{ asset('img/noImage.png') }} @endif" class="panel_thumbnail" alt="">
@@ -29,7 +29,6 @@
       </div>
     </div>
   </a>
-  <span class="js-get-visited" style="display:none;">{{ $note->pref_id }}</span>
 </li>
 @endforeach
 
