@@ -55,26 +55,11 @@ $(function () {
   // コンテナの幅をセット
   movingContainer.css('width', containerWidth + 'px');
 
-  let s1 = $('.js-switch-carousel01');
-  let s2 = $('.js-switch-carousel02');
-  let s3 = $('.js-switch-carousel03');
-  function changeActive( pushed, stay1, stay2 ) {
-    pushed.addClass('js-active').removeClass('js-nonactive');
-    stay1.addClass('js-nonactive').removeClass('js-active');
-    stay2.addClass('js-nonactive').removeClass('js-active');
-  }
-
-  s1.on('click', function() {
-    movingContainer.animate({left: (itemWidth * 0) + 'px'}, 800);
-    changeActive( s1, s2, s3 );
-  });
-  s2.on('click', function() {
-    movingContainer.animate({left: '-' + (itemWidth * 1) + 'px'}, 800);
-    changeActive( s2, s1, s3 );
-  });
-  s3.on('click', function() {
-    movingContainer.animate({left: '-' + (itemWidth * 2) + 'px'}, 800);
-    changeActive( s3, s1, s2 );
+  $('.js-switch-carousel').on('click', function() {
+    let $this = $(this), num = $this.index();
+    movingContainer.animate({left: '-' + (itemWidth * num) + 'px'}, 800);
+    $('.js-switch-carousel' + '.js-active').removeClass('js-active');
+    $this.addClass('js-active');
   });
 
 //////////////////////
