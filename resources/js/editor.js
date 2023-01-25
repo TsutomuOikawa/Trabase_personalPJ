@@ -4,8 +4,8 @@ import ImageTool from '@editorjs/image';
 import List from '@editorjs/list';
 import Paragraph from '@editorjs/paragraph';
 
-const createRegex = new RegExp('^notes/new/?$');
-const updateRegex = new RegExp('^notes/article/[1-9]+[0-9]*/edit/?$');
+const createRegex = new RegExp('^/notes/new/?$');
+const updateRegex = new RegExp('^/notes/article/[1-9]+[0-9]*/edit/?$');
 let path = location.pathname;
 
 ////////////////////
