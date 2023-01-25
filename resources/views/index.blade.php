@@ -77,37 +77,32 @@
     <h2 class="container_title">Trabaseとは</h2>
     <div class="container_body">
       <div class="features-wrapper">
-        <div class="feature">
-          <img src="{{ asset('img/noimage.png') }}" class="feature_img" alt="">
-          <div class="feature_description">
-            <p class="feature_title">タイトル</p>
-            <p class="feature_text">テキストテキストテキストテキストテキストテキスト<br>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>テキストテキストテキスト</p>
-          </div>
-        </div>
-
         <div class="feature feature--reverse">
-          <img src="{{ asset('img/noimage.png') }}" class="feature_img" alt="">
+          <img src="{{ asset('img/topPage_japanMap.png') }}" class="feature_img" alt="">
           <div class="feature_description">
-            <p class="feature_title">タイトル</p>
-            <p class="feature_text">テキストテキストテキストテキストテキストテキスト<br>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>テキストテキストテキスト</p>
+            <p class="feature_title">日本地図を完成させよう</p>
+            <p class="feature_text">記録を残した土地はマイページで確認<br>全国を巡って日本地図を塗りつぶそう</p>
           </div>
         </div>
 
         <div class="feature">
-          <img src="{{ asset('img/noimage.png') }}" class="feature_img" alt="">
+          <img src="{{ asset('img/topPage_wishLists.png') }}" class="feature_img" alt="">
           <div class="feature_description">
-            <p class="feature_title">タイトル</p>
-            <p class="feature_text">テキストテキストテキストテキストテキストテキスト<br>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>テキストテキストテキスト</p>
+            <p class="feature_title">行きたい場所を管理</p>
+            <p class="feature_text">絶景やグルメ、アクティビティ<br>はたまた静寂に包まれる瞬間など、<br>旅に求めるものは人それぞれ。</p>
+            <p class="feature_text">他の旅人の記録やリストも参考に<br>自分だけのオリジナルリストをつくろう</p>
           </div>
         </div>
 
         <div class="feature feature--reverse">
-          <img src="{{ asset('img/noimage.png') }}" class="feature_img" alt="">
+          <img src="{{ asset('img/topPage_editor.png') }}" class="feature_img" alt="">
           <div class="feature_description">
-            <p class="feature_title">タイトル</p>
-            <p class="feature_text">テキストテキストテキストテキストテキストテキスト<br>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>テキストテキストテキスト</p>
+            <p class="feature_title">シンプルなエディタですぐ記録</p>
+            <p class="feature_text">旅行に行ったことは覚えているのに、<br>現地のことを詳しく思い出せない、、<br>そんな経験はありませんか？
+            <p class="feature_text">簡単かつシンプルなエディタで<br>新鮮な記憶を書き残そう</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -117,5 +112,5 @@
 @section('script')
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
-  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js', 'resources/js/app.js'])
+  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
 @endsection

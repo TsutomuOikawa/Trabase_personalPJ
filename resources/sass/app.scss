@@ -68,23 +68,6 @@ $breakpoint: (
   }
 }
 
-%imgSize-xs {
-  width: 180px;
-  height: 120px;
-  @include mqSP () {
-    width: 90px;
-    height: 60px;
-  }
-}
-%imgSize-s {
-  width: 270px;
-  height: 180px;
-}
-%imgSize-l {
-  width: 540px;
-  height: 360px;
-}
-
 /*====================
  ベース
 ====================*/
@@ -709,10 +692,11 @@ ul {
 }
 .feature {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+    align-items: center;
+    justify-content: space-around;
   flex-wrap: wrap;
-  padding-bottom: $space-xxl;
+  font-family: "游明朝体";
+  padding-bottom: $space-xl;
   &:last-child {
     padding-bottom: 0;
   }
@@ -720,7 +704,8 @@ ul {
     flex-direction: row-reverse;
   }
   &_img {
-    @extend %imgSize-l;
+    max-width: 390px;
+    height: auto;
   }
   &_description {
     width: 35%;
@@ -728,6 +713,10 @@ ul {
   }
   &_title {
     @extend %subTitle;
+    padding-bottom: $space-s;
+  }
+  &_text {
+    padding-bottom: $space-xxs;
   }
 }
 
@@ -738,6 +727,7 @@ ul {
   }
   .feature {
     flex-direction:column;
+    padding-bottom: $space-m;
     &--reverse {
       flex-direction: column;
     }
@@ -747,7 +737,11 @@ ul {
       padding-bottom: $space-xs;
     }
     &_description {
+      text-align: center;
       width: 100%;
+    }
+    &_title {
+      padding-bottom: $space-xs;
     }
   }
 }
