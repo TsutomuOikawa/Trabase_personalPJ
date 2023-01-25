@@ -138,8 +138,6 @@
                 <div class="userInfo userInfo--big">
                   @if($note->avatar)
                     <img src="{{ asset($note->avatar)}}" class="userInfo_img userInfo_img--big" alt="{{ $note->name.'さんのプロフィール画像' }}">
-                  @else
-                    <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
                   @endif
                   <p class="userInfo_name userInfo_name--big">@if($note->name){{ $note->name }} @else 匿名ユーザー @endif</p>
                   <p class="userInfo_intro">{{ $note->intro }}</p>

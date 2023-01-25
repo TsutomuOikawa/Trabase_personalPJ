@@ -46,30 +46,9 @@
           <section id="イキタイ！" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">イキタイ！リスト</h2>
             <div class="list--wish">
-              <ul class="list_body--wish">
-                @foreach($wishes as $wish)
-                <li class="panel--wish">
-                  <div class="userInfo">
-                    <img src="{{ asset($wish->user->avatar) }}" class="userInfo_img">
-                    <p class="userInfo_name">{{ $wish->user->name }}</p>
-                  </div>
-                  <table class="panel_table">
-                    <tr class="panel_tableElm">
-                      <th>WHERE</th>
-                      <td>{{ $wish->spot }}</td>
-                    </tr>
-                    <tr class="panel_tableElm">
-                      <th>WHAT</th>
-                      <td>{{ $wish->thing }}</td>
-                    </tr>
-                  </table>
-                  <i class="fa-sharp fa-solid fa-lightbulb"></i>
-                </li>
-                @endforeach
-                @empty($wishes[0])
-                <p>現在登録されているウィッシュリストはありません</p>
-                @endempty
-              </ul>
+                @component('components.wishLists,
+                  ['wishes', $wishes])
+                @endcomponent
             </div>
           </section>
 
@@ -93,8 +72,6 @@
             <div class="userInfo userInfo--big">
               @if($user->avatar)
                 <img src="{{ asset($user->avatar)}}" class="userInfo_img userInfo_img--big" alt="{{ $user->name.'さんのプロフィール画像' }}">
-              @else
-                <i class="fa-solid fa-user fa-lg" style="padding-right:10px;"></i>
               @endif
               <p class="userInfo_name userInfo_name--big">@if($user->name){{ $user->name }} @else 匿名ユーザー @endif</p>
               <p class="userInfo_intro">{{ $user->intro }}</p>

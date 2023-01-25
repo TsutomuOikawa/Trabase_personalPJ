@@ -19,30 +19,9 @@
         <div class="container_body">
           <div class="list--wish">
             <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
-            <ul class="list_body--wish">
-              @foreach($wishes as $wish)
-              <li class="panel--wish">
-                <div class="userInfo">
-                  <img src="{{ asset($wish->user->avatar) }}" class="userInfo_img">
-                  <p class="userInfo_name">{{ $wish->user->name }}</p>
-                </div>
-                <table class="panel_table">
-                  <tr class="panel_tableElm">
-                    <th>WHERE</th>
-                    <td>{{ $wish->spot }}</td>
-                  </tr>
-                  <tr class="panel_tableElm">
-                    <th>WHAT</th>
-                    <td>{{ $wish->thing }}</td>
-                  </tr>
-                </table>
-                <i class="fa-sharp fa-solid fa-lightbulb js-show-modal"></i>
-              </li>
-              @endforeach
-              @empty($wishes[0])
-              <p>現在登録されているウィッシュリストはありません</p>
-              @endempty
-            </ul>
+              @component('components.wishLists,
+                ['wishes', $wishes])
+              @endcomponent
           </div>
           <div class="informations_map">
             <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
