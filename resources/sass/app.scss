@@ -481,6 +481,8 @@ ul {
     }
   }
   &_notion {
+    margin: 0 auto;
+    max-width: 80%;
     br {
       display: none;
     }
@@ -1794,8 +1796,11 @@ ul {
   }
   &_notion {
     font-size: $fontSize-ss;
-    margin-top: $space-xs;
+    padding-top: $space-xs;
     text-align: right;
+    &>* {
+      margin-top: $space-xxs;
+    }
   }
 }
 
