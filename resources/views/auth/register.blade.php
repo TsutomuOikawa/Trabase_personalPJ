@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', '会員登録｜Trabase(トラベス)')
+@section('headerScript')
+@endsection
 @section('content')
 
 <main class="page-wrapper">
@@ -39,5 +41,4 @@
     </div>
   </div>
 </main>
-
 @endsection

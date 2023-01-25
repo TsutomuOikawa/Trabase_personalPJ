@@ -4,7 +4,6 @@
 <div class="flashMsg flashMsg--err js-show-flashMsg">
   <p class="flashMsg_text js-get-flashMsg"></p>
 </div>
-
     <main class="page-wrapper">
       <div class="container--note">
         <div class="container_body--s">
@@ -70,14 +69,13 @@
               <div id="editor" class="form_editor"></div>
             </label>
             <p class="form_errMsg">@error('text') {{ $message }} @enderror</p>
-
             <button type="button" class="form_button js-save-note">@if($editMode) 更新する @else 投稿する @endif</button>
-
           </form>
         </div>
-
       </div>
     </main>
-    @vite(['resources/js/jquery-3.6.0.min.js','resources/js/editor.js'])
 
+@endsection
+@section('script')
+  @vite('resources/js/app.js')
 @endsection

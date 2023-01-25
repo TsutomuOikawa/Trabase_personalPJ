@@ -19,14 +19,12 @@
         <p>退会</p>
       </li>
     </ul>
-
     <div class="carousel">
       <div class="carousel_wrapper js-move-position">
         <div class="carousel_item">
           <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="form">
             @csrf
             @method('patch')
-
             <label>
               <div class="form_name">
                 <span class="form_label form_label--optional">任意</span>
@@ -65,7 +63,6 @@
             <button type="submit" class="form_button" name="">更新する</button>
           </form>
         </div>
-
         <div class="carousel_item">
           <form action="{{ route('password.update') }}" method="post" class="form">
             @csrf
@@ -97,14 +94,12 @@
             <button type="submit" class="form_button">変更する</button>
           </form>
         </div>
-
         <div class="carousel_item">
           <div class="form">
             <button type="button" class="form_button js-show-modal">退会する</button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </main>
@@ -126,9 +121,10 @@
     </form>
     <p class="modal_action js-hide-modal">&gt; 閉じて戻る</p>
   </div>
-
   <div class="modal_cover"></div>
 </div>
 
-
+@endsection
+@section('script')
+  @vite('resources/js/app.js')
 @endsection
