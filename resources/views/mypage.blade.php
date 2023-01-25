@@ -36,8 +36,8 @@
             <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
-                @component('components.note',
-                 ['notes' => $myNotes])
+                @component('components.notes',
+                  ['notes' => $myNotes])
                 @endcomponent
               </ul>
             </div>
@@ -46,9 +46,9 @@
           <section id="イキタイ！" class="mypage_contents js-show-contents">
             <h2 class="mypage_title">イキタイ！リスト</h2>
             <div class="list--wish">
-                @component('components.wishLists,
-                  ['wishes', $wishes])
-                @endcomponent
+              @component('components.wishLists',
+                ['wishes' => $wishes])
+              @endcomponent
             </div>
           </section>
 
@@ -56,7 +56,7 @@
             <h2 class="mypage_title">ブックマーク済みのノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
-                @component('components.note',
+                @component('components.notes',
                   ['notes' => $favNotes])
                 @endcomponent
               </ul>
@@ -90,10 +90,9 @@
           </ul>
         </div>
       </div>
-
     </div>
       @component('components.slider',
-        ['notes' => $notes])
+       ['notes' => $myNotes])
       @endcomponent
   </div>
 </main>

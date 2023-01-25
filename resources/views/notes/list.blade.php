@@ -33,7 +33,7 @@
           </div>
           <div class="list--note">
             <ul class="list_body--note">
-              @component('components.note',
+              @component('components.notes',
                 ['notes' => $notes])
               @endcomponent
             </ul>

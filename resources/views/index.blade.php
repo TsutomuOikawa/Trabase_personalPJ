@@ -4,8 +4,8 @@
   <!-- splide -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
 @endsection
-@section('content')
 
+@section('content')
 <main>
   <section class="hero">
     <div class="js-header-change-target">
@@ -29,20 +29,18 @@
         ['notes' => $notes])
       @endcomponent
   </section>
-
   <section id="search" class="search container--baseColor">
     <h2 class="container_title">ノートから探す</h2>
     <div class="container_body">
       <div class="list--note">
         <ul class="list_body--note">
-          @component('components.note',
+          @component('components.notes',
             ['notes' => $notes])
           @endcomponent
         </ul>
       </div>
     </div>
   </section>
-
   <section id="about" class="about container--subColor">
     <h2 class="container_title">Trabaseとは</h2>
     <div class="container_body">
@@ -54,7 +52,6 @@
             <p class="feature_text">記録を残した土地はマイページで確認<br>全国を巡って日本地図を塗りつぶそう</p>
           </div>
         </div>
-
         <div class="feature">
           <img src="{{ asset('img/topPage_wishLists.png') }}" class="feature_img" alt="">
           <div class="feature_description">
@@ -63,7 +60,6 @@
             <p class="feature_text">他の旅人の記録やリストも参考に<br>自分だけのオリジナルリストをつくろう</p>
           </div>
         </div>
-
         <div class="feature feature--reverse">
           <img src="{{ asset('img/topPage_editor.png') }}" class="feature_img" alt="">
           <div class="feature_description">
@@ -72,13 +68,12 @@
             <p class="feature_text">簡単かつシンプルなエディタで<br>新鮮な記憶を書き残そう</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 </main>
-
 @endsection
+
 @section('script')
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>

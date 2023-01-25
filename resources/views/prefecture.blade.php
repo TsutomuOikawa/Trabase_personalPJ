@@ -7,6 +7,7 @@
   <!-- <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key=initMap" defer></script> -->
 @endsection
+
 @section('content')
 <main>
   <section class="hero">
@@ -19,9 +20,9 @@
         <div class="container_body">
           <div class="list--wish">
             <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
-              @component('components.wishLists,
-                ['wishes', $wishes])
-              @endcomponent
+            @component('components.wishLists',
+              ['wishes' => $wishes])
+            @endcomponent
           </div>
           <div class="informations_map">
             <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
@@ -30,18 +31,16 @@
         </div>
       </section>
     </div>
-
     @component('components.slider',
       ['notes' => $notes])
     @endcomponent
   </section>
-
   <section id="prefNotes" class="prefNotes container--note">
     <h2 class="container_title">{{ $data->pref_name }}の最新の記録</h2>
     <div class="container_body">
       <div class="list--note">
         <ul class="list_body--note">
-          @component('components.note',
+          @component('components.notes',
             ['notes' => $notes])
           @endcomponent
         </ul>
@@ -61,7 +60,6 @@
               <span class="panel_destName">{{ $pref->pref_name }}</span>
             </span>
           </a>
-
           @switch($pref->pref_id)
           @case(7)
         </div>
@@ -100,12 +98,10 @@
       </div>
     </div>
   </section>
-
   <div class="followingBtn js-show-modal">
     <i class="fa-solid fa-lightbulb"></i>
     <p>イキタイ！</p>
   </div>
-
   <div class="modal js-modal">
     <div class="modal_content">
       <p class="modal_header">イキタイ！登録</p>
@@ -149,6 +145,7 @@
   </div>
 </main>
 @endsection
+
 @section('script')
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
