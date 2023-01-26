@@ -650,7 +650,7 @@ ul {
 };
 
 .about {
-  padding-top: 100px;
+  padding: 100px 0;
   &> .container_title::before {
     content: 'About us';
   }
