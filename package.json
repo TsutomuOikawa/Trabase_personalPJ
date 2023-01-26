@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "heroku-postbuild": "npm run production"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
@@ -21,6 +22,9 @@
         "@editorjs/header": "^2.7.0",
         "@editorjs/image": "^2.8.1",
         "@editorjs/list": "^1.8.0",
-        "@editorjs/paragraph": "^2.9.0"
+        "@editorjs/paragraph": "^2.9.0",
+        "@splidejs/splide": "^4.1.4",
+        "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+        "japan-map-js": "^1.0.1"
     }
 }
