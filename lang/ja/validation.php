@@ -134,6 +134,9 @@ return [
         ],
     ],
     'attributes'           => [
+        'email'         => 'メールアドレス',
+        'password'      => 'パスワード',
+        'current_password'  => '現在のパスワード',
         'title'         => 'タイトル',
         'pref_id'       => '旅先'
     ]
