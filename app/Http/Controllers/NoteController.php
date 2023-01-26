@@ -8,12 +8,16 @@ use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Note;
 use App\Models\Prefecture;
+// use App\Modules\ImageUpload\ImageManagerInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
+  // public function __construct(private ImageManagerInterface $imageManager)
+  // {}
+
   // ノートに必要な情報を取得する基本クエリ
   public static function baseQueryOfGetNotes() {
     $favorites = DB::table('favorites')
@@ -121,7 +125,7 @@ class NoteController extends Controller
     $note->user_id = Auth::id();
     $note->fill($request->all());
 
-    if ($note->thumbnail) {
+    if ($request->thumbnail) {
       $dir = 'thumbnail';
       $path = $request->thumbnail->store('public/'.$dir);
       $note->thumbnail = str_replace('public/', 'storage/', $path);
