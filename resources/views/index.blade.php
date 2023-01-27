@@ -49,7 +49,7 @@
           <img src="{{ asset('img/topPage_japanMap.png') }}" class="feature_img" alt="">
           <div class="feature_description">
             <p class="feature_title">日本地図を完成させよう</p>
-            <p class="feature_text">記録を残した土地はマイページで確認<br>全国を巡って日本地図を塗りつぶそう</p>
+            <p class="feature_text">記録を残した土地はマイページで確認<br>まだ見ぬ土地を巡りましょう</p>
           </div>
         </div>
         <div class="feature">
@@ -57,7 +57,7 @@
           <div class="feature_description">
             <p class="feature_title">行きたい場所を管理</p>
             <p class="feature_text">絶景やグルメ、アクティビティ<br>はたまた静寂に包まれる瞬間など、<br>旅に求めるものは人それぞれ。</p>
-            <p class="feature_text">他の旅人の記録やリストも参考に<br>自分だけのオリジナルリストをつくろう</p>
+            <p class="feature_text">他の旅人の記録やリストも参考に<br>自分だけのリストで管理しましょう</p>
           </div>
         </div>
         <div class="feature feature--reverse">
@@ -65,7 +65,7 @@
           <div class="feature_description">
             <p class="feature_title">シンプルなエディタですぐ記録</p>
             <p class="feature_text">旅行に行ったことは覚えているのに、<br>現地のことを詳しく思い出せない、、<br>そんな経験はありませんか？
-            <p class="feature_text">簡単かつシンプルなエディタで<br>新鮮な記憶を書き残そう</p>
+            <p class="feature_text">簡単かつシンプルなエディタで<br>新鮮な記憶を書き残しましょう</p>
           </div>
         </div>
       </div>

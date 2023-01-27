@@ -17,7 +17,7 @@
     <header id="header" class="header">
     @endif
       <div class="header_inner">
-        <a href="{{ route('index') }}" class="header_logo">Trabase</a>
+        <a href="{{ route('index') }}" class="header_logo"><img src="{{ asset('img/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
         @if($_SERVER['PHP_SELF'] === '/index.php'|| strpos($_SERVER['PHP_SELF'], 'index.php/pref/'))
         <form action="{{ route('notes.list') }}" method="get" class="header_form js-change-header_form js-nonactive">
         @else
