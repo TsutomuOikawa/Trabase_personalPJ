@@ -125,6 +125,7 @@ ul {
     width: 100%;
   }
   &_logo {
+    color: $siteColor-accent;
     font-family: "游明朝体";
     font-size: $fontSize-xxxl;
     font-weight: bold;
@@ -715,6 +716,7 @@ ul {
   }
   &_title {
     @extend %subTitle;
+    color: $siteColor-accent;
     padding-bottom: $space-s;
   }
   &_text {
