@@ -125,13 +125,13 @@ ul {
     width: 100%;
   }
   &_logo {
-    color: $siteColor-accent;
-    font-family: "游明朝体";
-    font-size: $fontSize-xxxl;
-    font-weight: bold;
-    letter-spacing: 0.08em;
+    height: 100%;
     padding-left: $space-s;
     z-index: 3000;
+    &_img {
+      height: 100%;
+      width: auto;
+    }
   }
   &_form {
     background: rgba($color-white, .3);
@@ -196,7 +196,7 @@ ul {
     width: 50px;
     z-index: 3000;
     & span {
-      background: $color-white;
+      background: $siteColor-accent;
       height: 4px;
       position: absolute;
         left: 0;
@@ -255,7 +255,11 @@ ul {
       position: relative;
     }
     &_logo {
-      padding-right: 0;
+      padding-left: 2px;
+      &_img {
+        height: 95%;
+        width: auto;
+      }
     }
     &_form {
       box-sizing: border-box;
@@ -759,23 +763,23 @@ ul {
     content: 'Informations';
   }
   &_map {
-    margin-top: $space-s;
+    margin-top: $space-m;
   }
   &_google {
-    height: 400px;
-    margin: 0 auto;
-    width: 70%;
+    height: 350px;
+    margin: $space-m auto 0;
+    width: 40vw;
   }
 }
 
 @include mqSP() {
   .informations {
     &_map {
-
+      margin-top: $space-s;
     }
-    &_mapBody {
+    &_google {
       height: 200px;
-      width: 80%;
+      width: 85vw;
     }
   }
 }
