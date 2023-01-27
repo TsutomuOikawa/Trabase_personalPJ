@@ -6,6 +6,8 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/reset.css',
+                'resources/icon/css/all.min.css',
                 'resources/js/app.js',
                 'resources/js/editor.js',
                 'resources/js/google-map.js',
