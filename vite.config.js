@@ -7,6 +7,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/jquery.japan-map.min.js',
                 'resources/sass/app.scss'
             ],
             refresh: true,
