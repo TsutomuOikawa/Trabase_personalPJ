@@ -19,7 +19,7 @@
         <td>{{ $wish->thing }}</td>
       </tr>
     </table>
-    <i class="fa-sharp fa-solid fa-lightbulb"></i>
+    <i class="fa-solid fa-lightbulb"></i>
   </li>
   @endforeach
   @empty($wishes[0])

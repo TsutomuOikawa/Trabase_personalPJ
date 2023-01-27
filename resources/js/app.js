@@ -1,3 +1,4 @@
+import './font-awesome.js';
 import {makeSlider} from './slider.js';
 import {setEditor} from './editor.js';
 

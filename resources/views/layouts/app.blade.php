@@ -25,10 +25,10 @@
         @endif
           <input type="text" name="pref" class="header_input" value="" placeholder="都道府県名を入力">
           <input type="text" name="key" class="header_input" value="" placeholder="キーワードを入力">
-          <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
+          <button type="submit" class="header_submit" name=""><i class="fa-solid fa-search fa-lg"></i></button>
         </form>
         <div class="header_sp">
-          <button type="button" class="header_search js-form-trigger"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+          <button type="button" class="header_search js-form-trigger"><i class="fa-solid fa-magnifying-glass"></i></button>
           <div class="header_humburger js-menu-trigger">
             <span></span>
             <span></span>
@@ -38,16 +38,16 @@
         <nav class="header_menu js-slide-menu">
           @guest
           <ul class="menu">
-            <li class="menu_item"><a href="{{ route('index', ['#about']) }}" class="menu_item_link"><i class="fa-sharp fa-solid fa-book-open"></i>About</a></li>
-            <li class="menu_item"><a href="{{ route('login') }}" class="menu_item_link"><i class="fa-sharp fa-solid fa-right-to-bracket"></i>Login</a></li>
+            <li class="menu_item"><a href="{{ route('index', ['#about']) }}" class="menu_item_link"><i class="fa-solid fa-book-open"></i>About</a></li>
+            <li class="menu_item"><a href="{{ route('login') }}" class="menu_item_link"><i class="fa-solid fa-right-to-bracket"></i>Login</a></li>
             <li class="menu_item"><a href="{{ route('register') }}" class="menu_item_link"><i class="fa-solid fa-user-plus"></i>Register</a></li>
           </ul>
           @endguest
 
           @auth
           <ul class="menu">
-            <li class="menu_item"><a href="{{ route('notes.new') }}" class="menu_item_link"><i class="fa-solid fa-pen-to-square"></i>TakeNotes</a></li>
-            <li class="menu_item"><a href="{{ route('mypage') }}" class="menu_item_link"><i class="fa-sharp fa-solid fa-user"></i>Mypage</a></li>
+            <li class="menu_item"><a href="{{ route('notes.new') }}" class="menu_item_link"><i class="fa-solid fa-pen-to-square fa-lg"></i>TakeNotes</a></li>
+            <li class="menu_item"><a href="{{ route('mypage') }}" class="menu_item_link"><i class="fa-solid fa-user"></i>Mypage</a></li>
           </ul>
           @endauth
         </nav>

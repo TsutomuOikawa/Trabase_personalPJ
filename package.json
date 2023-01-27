@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "heroku-postbuild": "npm run build"
+        "heroku-postbuild": "npm run prod"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
@@ -23,6 +23,7 @@
         "@editorjs/image": "^2.8.1",
         "@editorjs/list": "^1.8.0",
         "@editorjs/paragraph": "^2.9.0",
+        "@fortawesome/fontawesome-free": "^6.2.1",
         "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-auto-scroll": "^0.5.3",
         "japan-map-js": "^1.0.1"
