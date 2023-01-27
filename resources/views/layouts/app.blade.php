@@ -70,7 +70,7 @@
             <p class="footer_category">運営</p>
             <ul>
               <li class="footer_detail"><a href="https://github.com/TsutomuOikawa">運営者情報</a></li>
-              <li class="footer_detail">利用規約</li>
+              <!-- <li class="footer_detail">利用規約</li> -->
             </ul>
           </div>
           <div class="footer_navItem">
@@ -127,8 +127,8 @@
           </div>
           <div class="footer_navItem">
             <p class="footer_category">お問い合せ</p>
-            <textarea name="inquiry" class="footer_form"></textarea>
-            <button type="submit" class="footer_submit">送信する</button>
+            <textarea name="inquiry" class="footer_form">現在はご利用いただけません</textarea>
+            <button type="button" class="footer_submit">送信する</button>
           </div>
         </nav>
         <small class="footer_copyright"> Copyright @ Trabase <br>All Rights Reserved</small>
