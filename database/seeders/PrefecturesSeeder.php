@@ -62,6 +62,6 @@ class PrefecturesSeeder extends Seeder
             ['pref_id' => 8, 'pref_name' => '宮崎県'],
             ['pref_id' => 8, 'pref_name' => '鹿児島県'],
             ['pref_id' => 8, 'pref_name' => '沖縄県']
-        ])
+        ]);
     }
 }
