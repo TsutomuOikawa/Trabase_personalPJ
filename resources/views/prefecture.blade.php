@@ -4,8 +4,8 @@
   <!-- splide -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
   <!-- GoogleMap API -->
-  <!-- <script type="module" src="http://0.0.0.0:5173/resources/js/google-map.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?language=ja&key=key=initMap" defer></script> -->
+  @vite('resources/js/google-map.js')
+  <script src="https://maps.googleapis.com/maps/api/js?language=ja&key={{ config('googlemap.api_key') }}&callback=initMap" defer></script>
 @endsection
 
 @section('content')

@@ -20,7 +20,7 @@ function initMap() {
         default:
           map = new google.maps.Map(elm, {
             center: results[0].geometry.location,
-            zoom: 9
+            zoom: 8
           });
           break;
       }
