@@ -732,12 +732,17 @@ ul {
     height: auto;
   }
   &_description {
-    width: 35%;
     box-sizing: border-box;
+    display: flex;
+      align-items:center;
+      flex-direction: column;
+      justify-content: center;
+    min-width: 40%;
   }
   &_title {
     @extend %subTitle;
     color: $siteColor-accent;
+    font-size: $fontSize-xl;
     padding-bottom: $space-s;
   }
   &_text {
