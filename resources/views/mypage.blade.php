@@ -78,7 +78,7 @@
             </div>
           </div>
           <ul class="sidebar_menu">
-            <li><a href="{{ route('profile.edit') }}" class="sidebar_menuItem"><i class="fa-solid fa-address-card"></i><span>プロフィール編集</span></a></li>
+            <li><a href="{{ route('profile.edit') }}" class="sidebar_menuItem"><i class="fa-solid fa-user-gear"></i><span>プロフィール編集</span></a></li>
             <li>
               <form class="" action="{{ route('logout') }}" method="post">
               @csrf

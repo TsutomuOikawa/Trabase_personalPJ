@@ -10,7 +10,7 @@
 
 @section('content')
 <main>
-  <section class="hero">
+  <section class="hero js-set-back">
     <div class="js-header-change-target">
       <section class="firstView">
         <h1 class="firstView_title--big js-hide-title">{{ $data->pref_name }}</h1>
@@ -55,7 +55,7 @@
         <div class="list_body--destination js-toggle-list js-active">
           @foreach($prefs as $pref)
           <a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}" class="panel--destination js-change-back">
-            <img src="{{ asset('img/IMG_3930.JPG') }}" class="panel_destImg" alt="">
+            <img src="{{ asset('img/hero/'.$pref->pref_name.'.jpg') }}" class="panel_destImg" alt="">
             <span class="panel_destCover">
               <span class="panel_destName">{{ $pref->pref_name }}</span>
             </span>

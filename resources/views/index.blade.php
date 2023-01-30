@@ -55,7 +55,7 @@
         <div class="feature">
           <img src="{{ asset('img/topPage_wishLists.png') }}" class="feature_img" alt="">
           <div class="feature_description">
-            <p class="feature_title">行きたい場所を管理</p>
+            <p class="feature_title">マイリストで未来の旅を管理</p>
             <p class="feature_text">絶景やグルメ、アクティビティ<br>はたまた静寂に包まれる瞬間など、<br>旅に求めるものは人それぞれ。</p>
             <p class="feature_text">他の旅人の記録やリストも参考に<br>自分だけのリストで管理しましょう</p>
           </div>
@@ -63,7 +63,7 @@
         <div class="feature feature--reverse">
           <img src="{{ asset('img/topPage_editor.png') }}" class="feature_img" alt="">
           <div class="feature_description">
-            <p class="feature_title">シンプルなエディタですぐ記録</p>
+            <p class="feature_title">シンプルなエディタで思い出を記録</p>
             <p class="feature_text">旅行に行ったことは覚えているのに、<br>詳しいことは思い出せない、、<br>そんな経験はありませんか？
             <p class="feature_text">簡単かつシンプルなエディタを使って<br>新鮮な記憶を書き残しましょう</p>
           </div>

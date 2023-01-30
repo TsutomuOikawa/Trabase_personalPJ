@@ -10,18 +10,6 @@ $(function () {
   setEditor();
 
 //////////////////////
-  // スクロールによる変更
-  let screenHeight = $('.js-header-change-target').height();
-  $(window).on('scroll', function(){
-    let $this = $(this);
-    // ヘッダー
-    $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.4);
-    $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.4);
-    // ファーストビュー
-    $('.js-hide-title').toggleClass('js-nonactive', $this.scrollTop() > screenHeight/4);
-  });
-
-//////////////////////
   // ヘッダーハンバーガーメニュー
   $('.js-menu-trigger').on('click', function() {
     $(this).toggleClass('js-active');
@@ -34,6 +22,25 @@ $(function () {
     $(this).children().toggleClass('fa-magnifying-glass').toggleClass('fa-chevron-up');
     $('.header_form').toggleClass('js-active');
   })
+
+//////////////////////
+  // スクロールによる変更
+  let screenHeight = $('.js-header-change-target').height();
+  let $title = $('.js-hide-title');
+  $(window).on('scroll', function(){
+    let $this = $(this);
+    // ヘッダー
+    $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.4);
+    $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.4);
+    // ファーストビュー
+    $title.toggleClass('js-nonactive', $this.scrollTop() > screenHeight/4);
+  });
+
+//////////////////////
+  // 都道府県ページの背景セット
+  let pref_name = $title.text();
+  let url = '/public/img/hero/' + pref_name + '.jpg';
+  $('.js-set-back').css('background-image', 'url(' + url + ')');
 
 //////////////////////
   // フラッシュメッセージ
