@@ -836,6 +836,9 @@ ul {
   & > .container_title::before {
     content: 'Change Destinations';
   }
+  svg {
+    margin-right: $space-xxs;
+  }
 }
 @include mqSP() {
   .destination {

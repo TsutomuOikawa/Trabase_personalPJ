@@ -113,11 +113,7 @@ $(function () {
     function() {
       let src = $(this).children('img').attr('src');
       $('.js-change-back-target').css('background-image', 'url('+ src +')');
-    },
-    function() {
-      $('.js-change-back-target').css('background-image', '');
-    }
-  )
+    })
 
 //////////////////////
   // お気に入り
