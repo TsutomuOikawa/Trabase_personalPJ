@@ -11,7 +11,7 @@
         <p>プロフィール</p>
       </li>
       <li class="carousel_navItem js-switch-carousel">
-        <span><i class="fa-solid fa-key carousel_icon"></i></span>
+        <span><i class="fa-solid fa-lock carousel_icon"></i></span>
         <p>パスワード変更</p>
       </li>
       <li class="carousel_navItem js-switch-carousel">
