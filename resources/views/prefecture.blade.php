@@ -10,7 +10,8 @@
 
 @section('content')
 <main>
-  <section class="hero js-set-back">
+  <section class="hero js-set-back" style="background-image: url({{ asset('img/hero/'.$data->pref_name.'.jpg')}});
+">
     <div class="js-header-change-target">
       <section class="firstView">
         <h1 class="firstView_title--big js-hide-title">{{ $data->pref_name }}</h1>

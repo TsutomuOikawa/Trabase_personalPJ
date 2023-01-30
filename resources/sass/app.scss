@@ -474,7 +474,7 @@ ul {
   }
   &--transparent {
     @extend .container;
-    background: rgba($color-black, .6);
+    background: rgba($color-black, .8);
   }
   &--note {
     @extend .container;
@@ -574,10 +574,12 @@ ul {
  index.php
 ====================*/
 .hero {
-  background-image: url('/public/img/img_9461.jpg');
+  background-image: url('/public/img/hero/trabase_top.jpg');
   background-attachment: fixed;
+  background-blend-mode: darken;
+  background-color: rgba($color-black, .7);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
 }
 
