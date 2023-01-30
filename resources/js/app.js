@@ -37,12 +37,6 @@ $(function () {
   });
 
 //////////////////////
-  // 都道府県ページの背景セット
-  let pref_name = $title.text();
-  let url = '/public/img/hero/' + pref_name + '.jpg';
-  $('.js-set-back').css('background-image', 'url(' + url + ')');
-
-//////////////////////
   // フラッシュメッセージ
   let msgWindow = $('.js-show-flashMsg');
 
