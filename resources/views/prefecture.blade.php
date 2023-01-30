@@ -104,8 +104,8 @@
   </div>
   <div class="modal js-modal">
     <div class="modal_content">
+    @auth
       <p class="modal_header">イキタイ！登録</p>
-      @auth
       <form class="form" action="{{ route('wish.storeWish') }}" method="post">
         @csrf
         <label>
@@ -139,6 +139,10 @@
         <button type="submit" class="form_button" name="button">登録する</button>
       </form>
       @endauth
+      @guest
+      <p class="modal_header">マイリスト登録はログイン後にご利用いただけます</p>
+      <a href="{{ route('login') }}" class="modal_header">&gt ログインはこちら</a>
+      @endguest
       <p class="modal_action js-hide-modal">&lt 戻る</p>
     </div>
     <div class="modal_cover"></div>
