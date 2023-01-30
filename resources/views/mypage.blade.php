@@ -22,14 +22,20 @@
           <section id="map" class="mypage_contents js-show-contents js-active">
             <h2 class="mypage_title">現在の地図</h2>
             <div class="js-japanMap"></div>
-            <div class="modal js-modal">
-              <div class="modal_content">
-                <p class="modal_header">投稿済みのノート</p>
+
+            @component('components.modal')
+               @slot('modal_title')
+                投稿済みのノート
+               @endslot
+
+               @slot('modal_content')
                 <div class="js-insert-content"></div>
-                <p class="modal_action js-hide-modal">&gt; 閉じる</p>
-              </div>
-              <div class="modal_cover"></div>
-            </div>
+               @endslot
+
+               @slot('modal_action')
+                &gt 閉じる
+               @endslot
+            @endcomponent
           </section>
 
           <section id="notes" class="mypage_contents js-show-contents">
