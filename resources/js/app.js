@@ -77,6 +77,15 @@ $(function () {
     $modal.hide()
   });
 
+  // ウィッシュリストからモーダルをオープンした時は内容をコピーしてフォームにセット
+  $('.js-get-wish').on('click', function() {
+    let $wish = $(this).prev('table');
+    let spot = $wish.find('.js-get-spot').text();
+    let thing = $wish.find('.js-get-thing').text();
+    $modal.find('[name=spot]').attr('value', spot);
+    $modal.find('[name=thing]').attr('value', thing);
+  })
+
 //////////////////////
   // マイページタブ
   $('.js-get-tab').on('click', function() {

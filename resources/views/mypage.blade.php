@@ -14,7 +14,7 @@
         <ul class="mypage_nav">
           <li class="mypage_navItem js-get-tab js-selected">マップ</li>
           <li class="mypage_navItem js-get-tab">ノート</li>
-          <li class="mypage_navItem js-get-tab">マイリスト</li>
+          <li class="mypage_navItem js-get-tab">ウィッシュリスト</li>
           <li class="mypage_navItem js-get-tab">ブックマーク</li>
         </ul>
         <div class="mypage_article">
@@ -50,10 +50,10 @@
           </section>
 
           <section id="wishLists" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">イキタイ！リスト</h2>
+            <h2 class="mypage_title">ウィッシュリスト</h2>
             <div class="list--wish">
               @component('components.wishLists',
-                ['wishes' => $wishes])
+                ['wishes' => $wishes, 'mine' => true])
               @endcomponent
             </div>
           </section>

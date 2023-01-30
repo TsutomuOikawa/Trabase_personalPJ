@@ -22,7 +22,7 @@
           <div class="list--wish">
             <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
             @component('components.wishLists',
-              ['wishes' => $wishes])
+              ['wishes' => $wishes, 'mine' => false])
             @endcomponent
           </div>
           <div class="informations_map">
