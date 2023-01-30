@@ -1104,13 +1104,6 @@ ul {
     overflow-y: scroll;
     padding: $space-s;
   }
-  &-wrapper {
-    width: 980px;
-    position: absolute;
-      top: 120px;
-      left: 50%;
-    transform: translateX(-50%);
-  }
   &_note {
     background: rgba($siteColor-base, .8);
     border-radius: 4px;

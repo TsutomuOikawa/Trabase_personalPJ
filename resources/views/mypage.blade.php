@@ -14,7 +14,7 @@
         <ul class="mypage_nav">
           <li class="mypage_navItem js-get-tab js-selected">マップ</li>
           <li class="mypage_navItem js-get-tab">ノート</li>
-          <li class="mypage_navItem js-get-tab">イキタイ！</li>
+          <li class="mypage_navItem js-get-tab">マイリスト</li>
           <li class="mypage_navItem js-get-tab">ブックマーク</li>
         </ul>
         <div class="mypage_article">

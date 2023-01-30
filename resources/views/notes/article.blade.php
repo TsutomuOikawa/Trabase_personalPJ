@@ -87,50 +87,62 @@
             </section>
           </article>
 
-          <div class="followingBtn">
+          <div class="followingBtn js-show-modal">
             <i class="fa-solid fa-up-right-from-square"></i>
             <p>イキタイ！</p>
           </div>
 
-          <div class="modal">
-            <div class="modal-wrapper">
-              <form class="modal_form form" action="" method="post">
-                <p>イキタイ登録</p>
-                <label>
-                  <div class="form_name">
-                    <span class="form_label form_label--required">必須</span>
-                    都道府県
-                  </div>
-                  <select class="form_input" name="prefecture_id">
-                    <option value="">熊本県</option>
-                  </select>
-                </label>
-                <p class="form_errMsg"></p>
+          @component('components.modal')
+             @slot('modal_title')
+              @auth マイリスト登録 @endauth
+              @guest マイリスト登録はログイン後にご利用いただけます @endguest
+             @endslot
 
-                <label>
-                  <div class="form_name">
-                    <span class="form_label form_label--required">必須</span>
-                    どこで
-                  </div>
-                  <input type="text" name="where" class="form_input" value="">
-                </label>
-                <p class="form_errMsg"></p>
+             @slot('modal_content')
+                @auth
+               <form class="modal_form form" action="{{ route('wish.storeWish') }}" method="post">
+                 @csrf
+                 <label>
+                   <div class="form_name">
+                     <span class="form_label form_label--required">必須</span>
+                     都道府県
+                   </div>
+                   <select name="pref_id" class="form_input @error('pref_id') form_input--err @enderror js-get-note-pref" >
+                   @foreach($prefs as $pref)
+                     <option value="{{ $pref->pref_id }}" @if(old('pref_id') === $pref->pref_id) selected @elseif($note->pref_id === $pref->pref_id) selected @endif>{{ $pref->pref_name }}</option>
+                   @endforeach
+                   </select>
+                 </label>
+                 <p class="form_errMsg"></p>
+                 <label>
+                   <div class="form_name">
+                     <span class="form_label form_label--required">必須</span>
+                     どこで
+                   </div>
+                   <input type="text" name="spot" class="form_input" value="{{ old('spot') }}" placeholder="富士山の山頂">
+                 </label>
+                 <p class="form_errMsg"></p>
+                 <label>
+                   <div class="form_name">
+                     <span class="form_label form_label--optional">任意</span>
+                     何をしたい？
+                   </div>
+                   <input type="text" name="thing" class="form_input" value="{{ old('thing') }}" placeholder="ご来光をみたい">
+                 </label>
+                 <p class="form_errMsg"></p>
+                 <button type="submit" class="form_button" name="button">登録する</button>
+               </form>
+               @endauth
+               @guest
+               <a href="{{ route('login') }}" class="modal_header">&gt ログインはこちら</a>
+               @endguest
 
-                <label>
-                  <div class="form_name">
-                    <span class="form_label form_label--optional">任意</span>
-                    何をしたい？
-                  </div>
-                  <input type="text" name="what" class="form_input" value="">
-                </label>
-                <p class="form_errMsg"></p>
-                <button type="submit" class="form_button" name="button">登録する</button>
+             @endslot
 
-              </form>
-              <span class="modal_action">&lt 戻る</span>
-            </div>
-            <div class="modal_cover"></div>
-          </div>
+             @slot('modal_action')
+              &gt 閉じる
+             @endslot
+          @endcomponent
 
           <aside class="sidebar">
             <div class="sidebar_wrapper">
