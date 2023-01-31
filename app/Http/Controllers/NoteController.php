@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Storage;
 
 class NoteController extends Controller
 {
-  // public function __construct(private ImageManagerInterface $imageManager)
-  // {}
 
   // ノートに必要な情報を取得する基本クエリ
   public static function baseQueryOfGetNotes() {
@@ -127,13 +125,12 @@ class NoteController extends Controller
     $note->user_id = Auth::id();
     $note->fill($request->all());
 
-    if ($request->thumbnail) {
+    if ($request->file('thumbnail')) {
       $dir = 'thumbnail';
-      if (!Storage::exists('public/thumbnail')) {
-        Storage::makeDirectory('public/thumbnail');
-      }
-      $path = $request->thumbnail->store('public/'.$dir);
-      $note->thumbnail = str_replace('public/', 'storage/', $path);
+      // s3のdirに保存
+      $path = Storage::disk('s3')->putFile($dir, $request->file('thumbnail'), 'public');
+      // パスを格納
+      $request->user()->avatar = Storage::disk('s3')->url($path);
     }
     $note->save();
 
