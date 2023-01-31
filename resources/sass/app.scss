@@ -1886,7 +1886,7 @@ ul {
   width: 100%;
   z-index: 3000;
   &.js-active {
-    transform: translateY(100%);
+    top: 0;
   }
   &--success {
     background: rgba(#338a4e, .98);

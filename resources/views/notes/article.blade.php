@@ -28,7 +28,7 @@
 
           <article class="note">
             <section class="note_contents js-set-padding">
-              <img src="{{ asset($note->thumbnail) }}" alt="" class="note_thumbnail js-get-height">
+              <img src="{{ $note->thumbnail }}" alt="" class="note_thumbnail js-get-height">
               <h1 class="note_title">{{ $note->title }}</h1>
               <div class="note_text">
                 @foreach($note->text['blocks'] as $text)
