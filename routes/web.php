@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
@@ -41,9 +42,6 @@ Route::controller(NoteController::class)->group(function() {
         // ノート削除機能
         Route::delete('/notes/article/{note_id}/delete', 'delete')->whereNumber('note_id')->name('notes.delete');
 
-        // コメント投稿
-        Route::post('/notes/article/{note_id}', 'storeComment')->whereNumber('note_id')->name('comment.storeComment');
-
         // お気に入り登録
         Route::post('/notes/favorite/{note_id}', [App\Http\Controllers\FavoriteController::class, 'update'])->whereNumber('note_id')->name('favorite.update');
     });
@@ -56,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/mypage/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // コメント投稿
+    Route::post('/notes/article/{note_id}', [CommentController::class, 'storeComment'])->whereNumber('note_id')->name('comment.storeComment');
     // イキタイ！登録
     Route::post('/wish', [WishController::class, 'storeWish'])->name('wish.storeWish');
 });
