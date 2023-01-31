@@ -22,11 +22,11 @@ function initEditor(data) {
             defaultLevel: 2
           }
         },
-        image: {
-          class: ImageTool,
-          config: {
-            readOnly: true,
-            uploader: {
+        // image: {
+        //   class: ImageTool,
+        //   config: {
+        //     readOnly: true,
+        //     uploader: {
               //Fileを選択、ドラッグアンドドロップしたときに呼び出されるアップローダー
               // uploadByFile(file) {
               //   let formData = new FormData();
@@ -39,12 +39,12 @@ function initEditor(data) {
               //       return res.data;
               //     });
               // },
-              uploadByFile(file) {
-
-              }
-            }
-          }
-        },
+        //       uploadByFile(file) {
+        //
+        //       }
+        //     }
+        //   }
+        // },
         list: {
           class: List,
           inlineToolBar: true,
