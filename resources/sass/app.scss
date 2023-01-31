@@ -854,7 +854,7 @@ ul {
 ====================*/
 .note {
   color: $fontColor-default;
-  width: 70%;
+  width: 73%;
   &_contents {
     background: rgba($siteColor-base, .8);
     border-radius: 4px;
@@ -870,12 +870,12 @@ ul {
   &_title {
     box-sizing: border-box;
     font-size: $fontSize-xxl;
-    padding: $space-l $space-s 0;
+    padding: $space-l $space-xl 0;
     width: 100%;
   }
   &_text {
-    line-height: 1.8;
-    padding: $space-xs $space-m;
+    line-height: 1.5;
+    padding: $space-xs $space-xxl;
   }
   &_h2 {
     font-size: $fontSize-xl;
@@ -1342,7 +1342,7 @@ ul {
     @extend .sidebar;
     font-size: $fontSize-xl;
     padding: 0 $space-xs 0 0;
-    width: 10%;
+    width: 7%;
     &>.sidebar_wrapper {
       border-radius: 100%;
       box-sizing: border-box;
