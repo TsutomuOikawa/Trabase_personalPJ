@@ -1877,16 +1877,16 @@ ul {
   セッションメッセージ
 ====================*/
 .flashMsg {
-  height: 80px;
+  height: 70px;
   position: fixed;
-   top: -80px;
+   top: -100%;
    left: 0;
   text-align: center;
   transition: all 1.5s;
   width: 100%;
   z-index: 3000;
   &.js-active {
-    transform: translateY(80px);
+    transform: translateY(100%);
   }
   &--success {
     background: rgba(#338a4e, .98);
@@ -1896,9 +1896,10 @@ ul {
   }
   &_text {
     color: $color-white;
+    font-family: "游明朝体";
     font-size: $fontSize-m;
     font-weight: bold;
-    line-height: 80px;
+    line-height: 70px;
   }
 }
 
