@@ -26,7 +26,7 @@ class NoteRequest extends FormRequest
         return [
           'pref_id' => 'required|integer|max:47',
           'title' => 'required|string|max:255',
-          'thumbnail' => 'nullable|image|mimes:jpg,png,gif,webp|max:10240',
+          'thumbnail' => 'nullable|image|mimes:jpg,png,gif,webp|max:2048',
           'text' => 'required|json'
         ];
     }
