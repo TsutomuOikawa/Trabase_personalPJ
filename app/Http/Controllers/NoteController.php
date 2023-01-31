@@ -129,7 +129,7 @@ class NoteController extends Controller
       // s3のdirに保存
       $path = Storage::disk('s3')->putFile('thumbnail', $request->file('thumbnail'), 'public');
       // パスを格納
-      $note->avatar = Storage::disk('s3')->url($path);
+      $note->thumbnail = Storage::disk('s3')->url($path);
     }
     $note->save();
 
@@ -165,7 +165,7 @@ class NoteController extends Controller
       // s3のdirに保存
       $path = Storage::disk('s3')->putFile('thumbnail', $request->file('thumbnail'), 'public');
       // パスを格納
-      $note->avatar = Storage::disk('s3')->url($path);
+      $note->thumbnail = Storage::disk('s3')->url($path);
     }
 
     $note->save();
