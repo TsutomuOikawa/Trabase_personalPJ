@@ -130,26 +130,6 @@
    @endslot
 @endcomponent
 
-<!-- <div class="modal js-modal">
-  <div class="modal_content">
-    <form action="{{ route('profile.destroy') }}" method="post" class="form">
-      @csrf
-      @method('delete')
-      <label>
-        <div class="form_name">
-          <span class="form_label form_label--required">必須</span>
-          パスワード確認
-        </div>
-        <input type="password" name="password" class="form_input @error('password') form_input--err @enderror" value="">
-      </label>
-      <p class="form_errMsg">@error('password') {{ $message }} @enderror</p>
-      <button type="submit" class="form_button" name="">退会する</button>
-    </form>
-    <p class="modal_action js-hide-modal">&gt; 閉じて戻る</p>
-  </div>
-  <div class="modal_cover"></div>
-</div> -->
-
 @endsection
 @section('script')
   @vite('resources/js/app.js')
