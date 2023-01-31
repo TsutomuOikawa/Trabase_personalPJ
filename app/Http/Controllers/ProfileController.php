@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prefecture;
-// use App\Modules\ImageUpload\ImageManagerInterface;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,10 +25,6 @@ class ProfileController extends Controller
           ->with('prefs', $prefs);
     }
 
-    // ユーザー画像保存用の設定
-    // public function __construct(private ImageManagerInterface $imageManager)
-    // {}
-
     /**
      * Update the user's profile information.
      *
@@ -41,15 +36,17 @@ class ProfileController extends Controller
         $request->user()->fill($request->validated());
 
         // アバター画像をstorage/app/publicに保存し、パスを返す
-        if($request->avatar) {
+        if($request->file('avatar')) {
             $dir = 'avatar';
-            if (!Storage::exists('public/avatar')) {
-              Storage::makeDirectory('public/avatar');
-            }
-            $path = $request->avatar->store('public/'.$dir);
-            $path = str_replace('public/', 'storage/', $path);
+            // s3のdirに保存
+            $path = Storage::disk('s3')->putFile($dir, $request->file('avatar'), 'public');
+            // パスを格納
+            $request->user()->avatar = Storage::disk('s3')->url($path);
+
+            // $path = $request->avatar->store('public/'.$dir);
+            // $path = str_replace('public/', 'storage/', $path);
             // avatarカラムの保存内容をファイルからパスに上書き
-            $request->user()->avatar = $path;
+            // $request->user()->avatar = $path;
         }
 
         if ($request->user()->isDirty('email')) {

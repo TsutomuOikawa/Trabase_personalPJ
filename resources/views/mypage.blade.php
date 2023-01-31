@@ -77,7 +77,7 @@
           <div class="sidebar_profile">
             <div class="userInfo userInfo--big">
               @if($user->avatar)
-                <img src="{{ asset($user->avatar)}}" class="userInfo_img userInfo_img--big" alt="{{ $user->name.'さんのプロフィール画像' }}">
+                <img src="{{ $user->avatar }}" class="userInfo_img userInfo_img--big" alt="{{ $user->name.'さんのプロフィール画像' }}">
               @endif
               <p class="userInfo_name userInfo_name--big">@if($user->name){{ $user->name }} @else 匿名ユーザー @endif</p>
               <p class="userInfo_intro">{{ $user->intro }}</p>
