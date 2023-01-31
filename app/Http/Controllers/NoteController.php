@@ -162,11 +162,14 @@ class NoteController extends Controller
     $note = Note::find($request->route('note_id'));
     $note->fill($request->all());
 
-    if ($note->thumbnail) {
+    if ($request->file('thumbnail')) {
       $dir = 'thumbnail';
-      $path = $request->thumbnail->store('public/'.$dir);
-      $note->thumbnail = str_replace('public/', 'storage/', $path);
+      // s3のdirに保存
+      $path = Storage::disk('s3')->putFile($dir, $request->file('thumbnail'), 'public');
+      // パスを格納
+      $request->user()->avatar = Storage::disk('s3')->url($path);
     }
+
     $note->save();
 
     // セッションメッセージを追加
