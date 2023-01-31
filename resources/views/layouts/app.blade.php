@@ -12,15 +12,14 @@
   </head>
 
   <body>
-    @if($_SERVER['PHP_SELF'] === '/index.php'|| strpos($_SERVER['PHP_SELF'], 'index.php/pref/'))
+    @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], '/pref/'))
     <header id="header" class="header js-change-header js-transparent">
-      {{ var_dump($_SERVER['PHP_SELF']) }}
     @else
     <header id="header" class="header">
     @endif
       <div class="header_inner">
         <a href="{{ route('index') }}" class="header_logo"><img src="{{ asset('img/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
-        @if($_SERVER['PHP_SELF'] === '/index.php'|| strpos($_SERVER['PHP_SELF'], 'index.php/pref/'))
+        @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], '/pref/'))
         <form action="{{ route('notes.list') }}" method="get" class="header_form js-change-header_form js-nonactive">
         @else
         <form action="{{ route('notes.list') }}" method="get" class="header_form">
