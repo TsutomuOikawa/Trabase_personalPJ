@@ -14,6 +14,7 @@
   <body>
     @if($_SERVER['PHP_SELF'] === '/index.php'|| strpos($_SERVER['PHP_SELF'], 'index.php/pref/'))
     <header id="header" class="header js-change-header js-transparent">
+      {{ var_dump($_SERVER['PHP_SELF']) }}
     @else
     <header id="header" class="header">
     @endif

@@ -875,7 +875,7 @@ ul {
   }
   &_text {
     line-height: 1.5;
-    padding: $space-xs $space-xxl;
+    padding: $space-xs $space-xxl $space-l;
   }
   &_h2 {
     font-size: $fontSize-xl;
@@ -1877,7 +1877,7 @@ ul {
   セッションメッセージ
 ====================*/
 .flashMsg {
-  height: 70px;
+  height: 60px;
   position: fixed;
    top: -100%;
    left: 0;
@@ -1899,7 +1899,7 @@ ul {
     font-family: "游明朝体";
     font-size: $fontSize-m;
     font-weight: bold;
-    line-height: 70px;
+    line-height: 60px;
   }
 }
 
