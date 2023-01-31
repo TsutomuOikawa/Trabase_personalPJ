@@ -12,6 +12,8 @@ use App\Models\Prefecture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class NoteController extends Controller
 {
@@ -127,6 +129,9 @@ class NoteController extends Controller
 
     if ($request->thumbnail) {
       $dir = 'thumbnail';
+      if (!Storage::exists('public/thumbnail')) {
+        Storage::makeDirectory('public/thumbnail');
+      }
       $path = $request->thumbnail->store('public/'.$dir);
       $note->thumbnail = str_replace('public/', 'storage/', $path);
     }
