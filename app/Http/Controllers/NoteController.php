@@ -126,11 +126,10 @@ class NoteController extends Controller
     $note->fill($request->all());
 
     if ($request->file('thumbnail')) {
-      $dir = 'thumbnail';
       // s3のdirに保存
-      $path = Storage::disk('s3')->putFile($dir, $request->file('thumbnail'), 'public');
+      $path = Storage::disk('s3')->putFile('thumbnail', $request->file('thumbnail'), 'public');
       // パスを格納
-      $request->user()->avatar = Storage::disk('s3')->url($path);
+      $note->avatar = Storage::disk('s3')->url($path);
     }
     $note->save();
 
@@ -163,11 +162,10 @@ class NoteController extends Controller
     $note->fill($request->all());
 
     if ($request->file('thumbnail')) {
-      $dir = 'thumbnail';
       // s3のdirに保存
-      $path = Storage::disk('s3')->putFile($dir, $request->file('thumbnail'), 'public');
+      $path = Storage::disk('s3')->putFile('thumbnail', $request->file('thumbnail'), 'public');
       // パスを格納
-      $request->user()->avatar = Storage::disk('s3')->url($path);
+      $note->avatar = Storage::disk('s3')->url($path);
     }
 
     $note->save();
