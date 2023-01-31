@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prefecture;
+// use App\Modules\ImageUpload\ImageManagerInterface;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProfileController extends Controller
 {
@@ -23,6 +26,10 @@ class ProfileController extends Controller
           ->with('prefs', $prefs);
     }
 
+    // ユーザー画像保存用の設定
+    // public function __construct(private ImageManagerInterface $imageManager)
+    // {}
+
     /**
      * Update the user's profile information.
      *
@@ -36,6 +43,9 @@ class ProfileController extends Controller
         // アバター画像をstorage/app/publicに保存し、パスを返す
         if($request->avatar) {
             $dir = 'avatar';
+            if (!Storage::exists('public/avatar')) {
+              Storage::makeDirectory('public/avatar');
+            }
             $path = $request->avatar->store('public/'.$dir);
             $path = str_replace('public/', 'storage/', $path);
             // avatarカラムの保存内容をファイルからパスに上書き
