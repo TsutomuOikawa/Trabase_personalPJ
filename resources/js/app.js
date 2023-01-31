@@ -67,13 +67,16 @@ $(function () {
 //////////////////////
   // モーダル表示
   let $modal = $('.js-modal');
+  let $body = $('body');
   $('.js-show-modal').on('click', function() {
     setTimeout(function() {
       $modal.show();
+      $body.css('overflow-y', 'hidden');
     }, 500);
   });
   // モーダル非表示
   $('.js-hide-modal').on('click', function() {
+    $body.css('overflow-y', 'auto');
     $modal.hide()
   });
 
@@ -181,10 +184,12 @@ $(function () {
   // セッションがなければ見せる
   if(!sessionStorage.getItem('check')) {
     $message.show();
+    $body.css('overflow-y', 'hidden');
     sessionStorage.setItem('check', 'true');
   }
   // 隠す
   $('.js-hide-message').on('click', function() {
+    $body.css('overflow-y', 'auto');
     $message.hide()
   });
 
