@@ -75,7 +75,7 @@
   <div class="modal js-message-to-recruiter">
     <div class="modal_content" style="width: 80%;">
       <p class="modal_header">採用ご担当者様</p>
-      <div style="
+      <div class="dearRecruiters" style="
         background: rgba(217, 217, 217, .4);
         border-radius: 4px;
         color: white;
