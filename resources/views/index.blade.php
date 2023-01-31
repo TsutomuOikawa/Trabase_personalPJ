@@ -87,8 +87,7 @@
           現状、47都道府県全てのページにコンテンツが入っているわけではございません。<br>
           サンプルデータが入っているページについては、下記をご参照ください。（クリックで遷移します）
         </p>
-        <p style="margin-top:30px; color: #cfb10e;"><a href="{{ route('pref', ['pref_id'=>1]) }}">北海道（https://trabase-heroku.herokuapp.com/pref/1）</a></p>
-        <p style="margin-bottom:20px; color: #cfb10e;"><a href="{{ route('pref', ['pref_id'=>2]) }}">青森（https://trabase-heroku.herokuapp.com/pref/2）</a></p>
+        <p style="margin:30px 0 20px; color: #cfb10e;"><a href="{{ route('pref', ['pref_id'=>2]) }}">青森（https://trabase-heroku.herokuapp.com/pref/2）</a></p>
         <p>※都道府県別のページ以外は問題なくアクセスいただけます。</p>
         <p>※サンプルアカウントのログイン情報は職務経歴書に記載がございます。</p>
         <p style="padding-top:10px;">何卒よろしくお願いいたします。</p>
