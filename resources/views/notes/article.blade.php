@@ -6,20 +6,22 @@
       <div class="container--note">
         <div class="container_body--l container_body--col">
           <aside class="sidebar--icon">
-            <div class="sidebar_wrapper">
-              <i class="fa-bookmark @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite" data-note_id="{{ $note->note_id }}"></i>
-            </div>
+            @auth
+              <div class="sidebar_wrapper">
+                <i class="fa-bookmark @if($note->isFavorite) fa-solid js-active @else fa-regular @endif js-favorite" data-note_id="{{ $note->note_id }}"></i>
+              </div>
 
-            @if($note->user_id === Auth::id())
-            <div class="sidebar_wrapper">
-              <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </a>
-            </div>
-            <div class="sidebar_wrapper">
-              <i class="fa-solid fa-trash-can js-show-modal"></i>
-            </div>
-            @endif
+              @if($note->user_id === Auth::id())
+              <div class="sidebar_wrapper">
+                <a href="{{ route('notes.edit', ['note_id'=>$note->note_id]) }}">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+              </div>
+              <div class="sidebar_wrapper">
+                <i class="fa-solid fa-trash-can js-show-modal"></i>
+              </div>
+              @endif
+            @endauth
           </aside>
           @if($note->user_id === Auth::id())
             @component('components.modal')
