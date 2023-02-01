@@ -10,7 +10,6 @@ export function makeSlider() {
       focus: 'center',
       perPage: 8,
       gap: 10,
-      heightRatio: 0.66,
       arrows: false,
       pagination: false,
       breakpoints: {
