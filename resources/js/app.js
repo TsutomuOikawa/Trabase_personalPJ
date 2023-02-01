@@ -140,7 +140,8 @@ $(function () {
       type: 'POST',
       url: url,
       data: {note_id: note_id}
-    }).done(function() {
+
+    }).done(function( result ) {
       $pushed.toggleClass('fa-regular fa-solid js-active');
     }).fail(function() {
     })
