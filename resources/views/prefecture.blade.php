@@ -32,7 +32,7 @@
       </section>
     </div>
     @component('components.slider',
-      ['notes' => $notes])
+      ['notes' => $notes, 'data' => $data])
     @endcomponent
   </section>
   <section id="prefNotes" class="prefNotes container--note">
