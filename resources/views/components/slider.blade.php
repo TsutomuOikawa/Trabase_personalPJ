@@ -7,7 +7,7 @@
           <li class="splide__slide"><img src="{{ Storage::disk('s3')->url('assets/hero/'.$pref->pref_name.'.jpg') }}" class="splide_img" alt="{{ $pref->pref_name }}のイメージ写真"></li>
           @endforeach
 
-      @elseif(strpos($_SERVER['REQUEST_URI'], '/pref/'))
+      @elseif(strpos($_SERVER['REQUEST_URI'], 'pref/'))
           <li class="splide__slide"><img src="{{ Storage::disk('s3')->url('assets/hero/'.$data->pref_name.'.jpg') }}" class="splide_img" alt="{{ $data->pref_name }}のイメージ写真"></li>
           @foreach($notes as $note)
             @if($note->thumbnail)

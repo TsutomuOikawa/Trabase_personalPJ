@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], '/pref/'))
+    @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'pref/'))
     <header id="header" class="header js-change-header js-transparent">
     @else
     <header id="header" class="header">
@@ -132,7 +132,7 @@
             <button type="button" class="footer_submit">送信する</button>
           </div>
         </nav>
-        <small class="footer_copyright"> Copyright @ Trabase <br>All Rights Reserved</small>
+        <small class="footer_copyright"> Copyright @ Trabase <br>All Rights Reserved </small>
       </div>
     </footer>
   </body>
