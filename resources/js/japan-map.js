@@ -61,7 +61,7 @@ $(function() {
           case 1:
             let modal = $('.js-modal');
             let html = '<ul class="modal_list">', links = [];
-            $('.mypage_contents').children('[data-pref=' + data.code + ']').each( function () {
+            $('.mypage_contents:eq(1)').children('[data-pref=' + data.code + ']').each( function () {
               let $this = $(this);
               links.push('<li class="modal_action"><a href="'+ $this.children('a').attr('href') +'">'+ $this.find('.panel_title').text() +'</a></li>');
             });
