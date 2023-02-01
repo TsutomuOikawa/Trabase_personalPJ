@@ -24,8 +24,11 @@
     </table>
     @if($mine)
       <div class="iconBox">
-        <i class="fa-regular fa-circle-check js-check-wish" style="margin-right: 30px; display:none:"></i>
-        <i class="fa-solid fa-trash-can js-delete-wish"></i>
+        <i class="fa-regular fa-circle-check js-check-wish" style="margin-right: 30px; display:none;"></i>
+        <form class="" action="{{ route('wish.delete', ['wish_id'=> $wish->wish_id]) }}" method="post">
+          @csrf @method('DELETE')
+          <button type="submit" class="js-delete-wish"><i class="fa-solid fa-trash-can"></i></button>
+        </form>
       </div>
     @else
       <i class="fa-solid fa-lightbulb js-show-modal js-get-wish"></i>

@@ -1026,6 +1026,10 @@ ul {
     font-size: $fontSize-ss;
     padding: 0 $space-xs 0 $space-xxs;
   }
+  button {
+    display: flex;
+      align-items: center;
+  }
 }
 
 .fa-bookmark.js-active {

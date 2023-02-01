@@ -178,7 +178,7 @@ $(function () {
     let href = $this.attr('href');
     $this.attr('href', href + '&num=' + num);
   });
-
+  
 //////////////////////
   // 採用担当者様向けメッセージ
   let $message = $('.js-message-to-recruiter');
@@ -193,6 +193,7 @@ $(function () {
     $body.css('overflow-y', 'auto');
     $message.hide()
   });
+
 
 
 

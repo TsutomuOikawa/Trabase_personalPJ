@@ -56,8 +56,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/mypage/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // コメント投稿
     Route::post('/notes/article/{note_id}', [CommentController::class, 'storeComment'])->whereNumber('note_id')->name('comment.storeComment');
-    // イキタイ！登録
+    // マイリスト登録
     Route::post('/wish', [WishController::class, 'storeWish'])->name('wish.storeWish');
+    Route::delete('/wish/complete/{wish_id}', [WishController::class, 'delete'])->whereNumber('wish_id')->name('wish.delete');
 });
 
 Route::get('/tweet', [App\Http\Controllers\TwitterController::class, 'getTweet']);
