@@ -3,7 +3,7 @@
 @section('content')
 
     <main class="page-wrapper">
-      <div class="container--note">
+      <div class="container">
         <h1 class="container_title">
           @if($key['pref']) {{ $key['pref'] }} の @endif @if($key['key'])「{{ $key['key'] }}」を含む @endifノート一覧
         </h1>

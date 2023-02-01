@@ -35,7 +35,7 @@
       ['notes' => $notes, 'data' => $data])
     @endcomponent
   </section>
-  <section id="prefNotes" class="prefNotes container--note">
+  <section id="prefNotes" class="prefNotes container">
     <h2 class="container_title">{{ $data->pref_name }}の最新の記録</h2>
     <div class="container_body">
       <div class="list--note">

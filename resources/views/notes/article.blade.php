@@ -3,7 +3,7 @@
 @section('content')
 
     <main class="page-wrapper">
-      <div class="container--note">
+      <div class="container">
         <div class="container_body--l container_body--col">
           <aside class="sidebar--icon">
             @auth

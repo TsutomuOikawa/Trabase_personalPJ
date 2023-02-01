@@ -476,15 +476,6 @@ ul {
     @extend .container;
     background: rgba($color-black, .8);
   }
-  &--note {
-    @extend .container;
-    background-blend-mode: darken;
-    background-color: rgba($color-black, .4);
-    background-image: url('/public/img/background-woody.JPG');
-    background-position: left;
-    background-repeat: repeat;
-    background-size: 100% 60%;
-  }
   &_title {
     font-family: "游明朝体";
     font-size: $fontSize-xxl;
@@ -536,9 +527,6 @@ ul {
 
 @include mqSP() {
   .container {
-    &--note {
-      background-size: 100% 15%;
-    }
     &_title {
       font-size: $fontSize-l;
       max-width: 95%;

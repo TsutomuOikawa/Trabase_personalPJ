@@ -5,7 +5,7 @@
   <p class="flashMsg_text js-get-flashMsg"></p>
 </div>
     <main class="page-wrapper">
-      <div class="container--note">
+      <div class="container">
         <div class="container_body--s">
           <form name="editor" class="form--editor js-get-note" method="post" action="{{ route('notes.store') }}" enctype="multipart/form-data">
             @csrf
