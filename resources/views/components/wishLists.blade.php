@@ -24,7 +24,7 @@
     </table>
     @if($mine)
       <div class="iconBox">
-        <i class="fa-regular fa-circle-check js-check-wish" style="margin-right: 30px;"></i>
+        <i class="fa-regular fa-circle-check js-check-wish" style="margin-right: 30px; display:none:"></i>
         <i class="fa-solid fa-trash-can js-delete-wish"></i>
       </div>
     @else
