@@ -10,8 +10,7 @@
 
 @section('content')
 <main>
-  <section class="hero js-set-back" style="background-image: url({{ asset('img/hero/'.$data->pref_name.'.jpg')}});
-">
+  <section class="hero js-set-back" style="background-image: url( {{ Storage::disk('s3')->url('assets/hero/'.$data->pref_name.'.jpg') }} );">
     <div class="js-header-change-target">
       <section class="firstView">
         <h1 class="firstView_title--big js-hide-title">{{ $data->pref_name }}</h1>
@@ -56,7 +55,7 @@
         <div class="list_body--destination js-toggle-list js-active">
           @foreach($prefs as $pref)
           <a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}" class="panel--destination js-change-back">
-            <img src="{{ asset('img/hero/'.$pref->pref_name.'.jpg') }}" class="panel_destImg" alt="">
+            <img src="{{ Storage::disk('s3')->url('assets/hero/'.$pref->pref_name.'.jpg') }}" class="panel_destImg" alt="{{ $pref->pref_name }}のイメージ写真">
             <span class="panel_destCover">
               <span class="panel_destName">{{ $pref->pref_name }}</span>
             </span>

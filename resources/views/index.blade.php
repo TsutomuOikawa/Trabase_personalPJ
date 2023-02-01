@@ -7,7 +7,7 @@
 
 @section('content')
 <main>
-  <section class="hero">
+  <section class="hero" style="background-image: url( {{Storage::disk('s3')->url('assets/hero/trabase_top.jpg')}} );">
     <div class="js-header-change-target">
       <section id="firstView" class="firstView">
         <h1 class="firstView_title js-hide-title">旅の情報を<br>集めよう</h1>
@@ -46,14 +46,14 @@
     <div class="container_body">
       <div class="features-wrapper">
         <div class="feature feature--reverse">
-          <img src="{{ asset('img/topPage_japanMap.png') }}" class="feature_img" alt="">
+          <img src="{{ Storage::disk('s3')->url('assets/topPage_japanMap.png') }}" class="feature_img" alt="">
           <div class="feature_description">
             <p class="feature_title">日本地図を完成させよう</p>
             <p class="feature_text">記録を残した土地はマイページで確認<br>まだ見ぬ土地を巡りましょう</p>
           </div>
         </div>
         <div class="feature">
-          <img src="{{ asset('img/topPage_wishLists.png') }}" class="feature_img" alt="">
+          <img src="{{ Storage::disk('s3')->url('assets/topPage_wishLists.png') }}" class="feature_img" alt="">
           <div class="feature_description">
             <p class="feature_title">マイリストで未来の旅を管理</p>
             <p class="feature_text">絶景やグルメ、アクティビティ<br>はたまた静寂に包まれる瞬間など、<br>旅に求めるものは人それぞれ。</p>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="feature feature--reverse">
-          <img src="{{ asset('img/topPage_editor.png') }}" class="feature_img" alt="">
+          <img src="{{ Storage::disk('s3')->url('assets/topPage_editor.png') }}" class="feature_img" alt="">
           <div class="feature_description">
             <p class="feature_title">シンプルなエディタで思い出を記録</p>
             <p class="feature_text">旅行に行ったことは覚えているのに、<br>詳しいことは思い出せない、、<br>そんな経験はありませんか？

@@ -12,10 +12,10 @@
     <div class="container_body container_body--col">
       <div class="mypage">
         <ul class="mypage_nav">
-          <li class="mypage_navItem js-get-tab js-selected">マップ</li>
-          <li class="mypage_navItem js-get-tab">ノート</li>
-          <li class="mypage_navItem js-get-tab">ウィッシュリスト</li>
-          <li class="mypage_navItem js-get-tab">ブックマーク</li>
+          <li class="mypage_navItem js-get-tab js-selected">MyMap</li>
+          <li class="mypage_navItem js-get-tab">Notes</li>
+          <li class="mypage_navItem js-get-tab">WishLists</li>
+          <li class="mypage_navItem js-get-tab">Bookmarks</li>
         </ul>
         <div class="mypage_article">
 

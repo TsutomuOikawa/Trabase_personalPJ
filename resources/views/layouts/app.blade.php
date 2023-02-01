@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('img/trabase_favicon.ico') }}">
+    <link rel="icon" href="{{ Storage::disk('s3')->url('assets/trabase_favicon.ico') }}">
     <title>@yield('title')｜Trabase（トラベス）</title>
     @yield('headerScript')
     <!-- Scripts -->
@@ -18,7 +18,7 @@
     <header id="header" class="header">
     @endif
       <div class="header_inner">
-        <a href="{{ route('index') }}" class="header_logo"><img src="{{ asset('img/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
+        <a href="{{ route('index') }}" class="header_logo"><img src="{{ Storage::disk('s3')->url('assets/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
         @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], '/pref/'))
         <form action="{{ route('notes.list') }}" method="get" class="header_form js-change-header_form js-nonactive">
         @else

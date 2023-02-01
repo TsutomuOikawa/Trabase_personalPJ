@@ -574,7 +574,6 @@ ul {
  index.php
 ====================*/
 .hero {
-  background-image: url('/public/img/hero/trabase_top.jpg');
   background-attachment: fixed;
   background-blend-mode: darken;
   background-color: rgba($color-black, .7);
@@ -1239,6 +1238,7 @@ ul {
     border-right: 1px solid rgba($color-white, .7);
     color: $color-white;
     cursor: pointer;
+    font-family: "游明朝体";
     font-weight: bold;
     padding: $space-xs $space-s;
     &:first-child {
