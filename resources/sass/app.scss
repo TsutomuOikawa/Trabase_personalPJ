@@ -1029,7 +1029,13 @@ ul {
 }
 
 .fa-bookmark.js-active {
-  color: $siteColor-sub;
+  color: $siteColor-accent;
+  animation: bookmark 1s;
+}
+@keyframes bookmark {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 /*====================
