@@ -8,7 +8,6 @@ use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Note;
 use App\Models\Prefecture;
-// use App\Modules\ImageUpload\ImageManagerInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
