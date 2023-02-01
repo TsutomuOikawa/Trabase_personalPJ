@@ -16,7 +16,7 @@ class MypageController extends Controller
     public function mypage() {
         $user = Auth::user();
         $user_id = $user->id;
-        $myQuery = NoteController::baseQueryOfGetNotes();
+        $myQuery = NoteController::setNotesQuery();
 
         $myNotes = $myQuery->where('user_id', $user_id)
                             ->orderBy('notes.created_at', 'DESC')
@@ -25,7 +25,7 @@ class MypageController extends Controller
           $myNote->isFavorite = FavoriteController::isFavorite($user_id, $myNote->note_id);
         }
 
-        $favQuery = NoteController::baseQueryOfGetNotes();
+        $favQuery = NoteController::setNotesQuery();
         $favNotes = $favQuery->where('favorites.favUser_id', $user_id)
                               ->orderBy('notes.created_at', 'DESC')
                               ->get();

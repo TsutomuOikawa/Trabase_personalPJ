@@ -20,7 +20,7 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        $query = NoteController::baseQueryOfGetNotes();
+        $query = NoteController::setNotesQuery();
         $notes = $query->orderBy('notes.created_at', 'DESC')
                         ->limit(8)
                         ->get();

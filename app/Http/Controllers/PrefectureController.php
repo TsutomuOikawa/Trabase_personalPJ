@@ -26,7 +26,7 @@ class PrefectureController extends Controller
           $prefs = Prefecture::all();
           $data = $prefs->find($pref_id);
           // ノートデータ
-          $query = NoteController::baseQueryOfGetNotes();
+          $query = NoteController::setNotesQuery();
           $notes = $query->where('notes.pref_id', $pref_id)
                           ->orderBy('note_id', 'DESC')
                           ->limit(8)

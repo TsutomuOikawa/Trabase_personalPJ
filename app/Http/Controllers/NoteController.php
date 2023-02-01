@@ -19,7 +19,7 @@ class NoteController extends Controller
 {
 
   // ノートに必要な情報を取得する基本クエリ
-  public static function baseQueryOfGetNotes() {
+  public static function setNotesQuery() {
     $favorites = DB::table('favorites')
                    ->select(DB::raw('count(*) as favNum, user_id as favUser_id, note_id'))
                    ->groupBy('favUser_id', 'note_id');
@@ -36,13 +36,14 @@ class NoteController extends Controller
                 ->leftJoinSub($comments, 'comments', function ($join) {
                     $join->on('notes.note_id', '=', 'comments.note_id');
                   })
-                ->select('notes.*', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_id', 'prefectures.pref_name', 'favorites.favNum', 'comments.comNum');
+                ->select('notes.*', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_id', 'prefectures.pref_name', 'favorites.favNum', 'comments.comNum')
+                ->where('notes.deleted_at', null);
     return $query;
   }
 
   // ノート一覧表示（検索）
   public function showList(Request $request) {
-    $query = $this->baseQueryOfGetNotes();
+    $query = $this->setNotesQuery();
     // 検索条件セット
     $pref = $request->pref;
     $key = $request->key;
@@ -95,7 +96,7 @@ class NoteController extends Controller
   // ノート詳細表示
   public function showArticle(Request $request) {
     $note_id = $request->note_id;
-    $query = $this->baseQueryOfGetNotes();
+    $query = $this->setNotesQuery();
     $note = $query->where('notes.note_id', $note_id)
                   ->first();
 
