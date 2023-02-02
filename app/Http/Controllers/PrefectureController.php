@@ -39,7 +39,6 @@ class PrefectureController extends Controller
           $wishes = $wishQuery->where('wishes.pref_id', $pref_id)
                               ->get();
 
-          // Wish::with('user')->where('pref_id', $pref_id)->get();
           return view('prefecture')
             ->with('prefs', $prefs)
             ->with('data', $data)
