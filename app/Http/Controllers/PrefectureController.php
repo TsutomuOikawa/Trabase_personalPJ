@@ -46,4 +46,11 @@ class PrefectureController extends Controller
             ->with('wishes', $wishes);
         }
     }
+
+    public static function getPrefs() {
+      $prefs = DB::table('prefectures')
+                  ->select('pref_id', 'pref_name')
+                  ->get();
+      return $prefs;
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\NoteController;
-use App\Models\Prefecture;
+use App\Http\Controllers\PrefectureController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +26,7 @@ class IndexController extends Controller
         foreach ($notes as $note) {
           $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
         }
-        $prefs = Prefecture::all();
+        $prefs = PrefectureController::getPrefs();
 
         return view('index')
           ->with('notes', $notes)
