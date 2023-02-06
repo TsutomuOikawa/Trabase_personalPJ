@@ -1541,12 +1541,11 @@ ul {
     height: 290px;
     margin: 0 $space-xs $space-s 0;
     position: relative;
-    transition: all .5s;
     width: 220px;
     &:hover {
-      box-shadow: 0 0 25px 5px rgba($color-black, .2);
-      transform: scale(1.2);
-      z-index: 1000;
+      .panel_thumbnail>img {
+        transform: scale(1.5);
+      }
     }
   }
   &_pref {
@@ -1558,11 +1557,18 @@ ul {
     position: absolute;
       top: 0;
       left: 0;
+    z-index: 1000;
   }
   &_thumbnail {
     background: rgba($color-black, .7);
     border-radius: 4px 4px 0 0;
     height: 150px;
+    overflow: hidden;
+    img {
+      border-radius: 4px 4px 0 0;
+      height: 100%;
+      transition: all 1s;
+    }
   }
   &_info {
     border-radius: 0 0 4px 4px;

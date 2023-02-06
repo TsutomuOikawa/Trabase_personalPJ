@@ -2,7 +2,9 @@
 <li class="panel--note js-get-visited" data-pref="{{ $note->pref_id }}">
   <p class="panel_pref">{{ $note->pref_name }}</p>
   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
-    <img src="@if($note->thumbnail){{ asset($note->thumbnail) }} @else {{ Storage::disk('s3')->url('assets/noImage.png') }} @endif" class="panel_thumbnail" alt="">
+    <div class="panel_thumbnail">
+      <img src="@if($note->thumbnail){{ asset($note->thumbnail) }} @else {{ Storage::disk('s3')->url('assets/noImage.png') }} @endif" alt="{{ $note->title }}">
+    </div>
     <div class="panel_info">
       <h3 class="panel_title">{{ $note->title }}</h3>
       <div class="userInfo">
