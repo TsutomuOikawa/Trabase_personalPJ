@@ -20,7 +20,6 @@
         <div class="mypage_article">
 
           <section id="map" class="mypage_contents js-show-contents js-active">
-            <h2 class="mypage_title">現在の地図</h2>
             <div class="js-japanMap"></div>
 
             @component('components.modal')
@@ -39,7 +38,6 @@
           </section>
 
           <section id="notes" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">記録済みノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
                 @component('components.notes',
@@ -50,7 +48,6 @@
           </section>
 
           <section id="wishLists" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">ウィッシュリスト</h2>
             <div class="list--wish">
               @component('components.wishLists',
                 ['wishes' => $wishes, 'mine' => true])
@@ -59,7 +56,6 @@
           </section>
 
           <section id="bookmarks" class="mypage_contents js-show-contents">
-            <h2 class="mypage_title">ブックマーク済みのノート</h2>
             <div class="list--note">
               <ul class="list_body--scrollNote">
                 @component('components.notes',
