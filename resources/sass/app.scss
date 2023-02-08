@@ -1248,7 +1248,7 @@ ul {
     background: rgba($siteColor-base, .7);
     border-radius: 0 4px 4px 4px;
     box-sizing: border-box;
-    padding: $space-m $space-m $space-s;
+    padding: $space-l $space-m $space-m;
     width: 100%;
   }
   &_contents {
@@ -1459,7 +1459,7 @@ ul {
     }
     &--scrollNote {
       @extend .list_body--note;
-      height: 500px;
+      max-height: 500px;
       overflow-y: auto;
     }
     &--destination {
@@ -1542,14 +1542,20 @@ ul {
     margin: 0 $space-xs $space-s 0;
     position: relative;
     width: 220px;
+    * {
+       transition: all 0.5s;
+    }
     &:hover {
       .panel_thumbnail>img {
-        transform: scale(1.5);
+        transform: scale(1.2);
+      }
+      .panel_title {
+        text-decoration: underline;
       }
     }
   }
   &_pref {
-    background: rgba($color-white, .3);
+    background: rgba($color-black, .3);
     border-radius: 4px 0 4px 0;
     color: $color-white;
     font-size: $fontSize-ss;
@@ -1567,7 +1573,6 @@ ul {
     img {
       border-radius: 4px 4px 0 0;
       height: 100%;
-      transition: all 1s;
     }
   }
   &_info {

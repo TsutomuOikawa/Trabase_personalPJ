@@ -20,6 +20,7 @@
         <div class="mypage_article">
 
           <section id="map" class="mypage_contents js-show-contents js-active">
+            <p class="mypage_title">全国踏破まであと<span class="js-insert-progress"></span>県</p>
             <div class="js-japanMap"></div>
 
             @component('components.modal')
@@ -39,7 +40,7 @@
 
           <section id="notes" class="mypage_contents js-show-contents">
             <div class="list--note">
-              <ul class="list_body--scrollNote">
+              <ul class="list_body--scrollNote js-get-visited">
                 @component('components.notes',
                   ['notes' => $myNotes])
                 @endcomponent
@@ -93,10 +94,10 @@
         </div>
       </div>
     </div>
-      @component('components.slider',
-       ['notes' => $myNotes])
-      @endcomponent
   </div>
+  @component('components.slider',
+   ['notes' => $myNotes])
+  @endcomponent
 </main>
 
 @endsection

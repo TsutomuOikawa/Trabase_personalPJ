@@ -36,15 +36,17 @@ $(function() {
       {code: 0, name: '未旅行', prefectures: [], color: '#808080', hoverColor: '#7ba23f'},
       {code: 1, name: '旅行済み', prefectures: [], color: '#2d6d4b', hoverColor: '#7ba23f'},
     ];
-    let visited = [];
+    let visited = [], progress;
 
     // マイページのノートから旅行済みの県を取得
-    $('.js-get-visited').each( function () {
+    $('.js-get-visited').children().each( function () {
       visited = Number( $(this).data('pref') );
       areas[1].prefectures.push(visited);
     });
     // 未旅行の県を取得
     areas[0].prefectures = prefs.filter(i=>areas[1].prefectures.indexOf(i) == -1);
+    // 踏破の進捗状況を表示
+    $('.js-insert-progress').text( areas[0].prefectures.length );
 
     $('.js-japanMap').japanMap({
       width: mapWidth,

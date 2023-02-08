@@ -1,5 +1,5 @@
 @foreach($notes as $note)
-<li class="panel--note js-get-visited" data-pref="{{ $note->pref_id }}">
+<li class="panel--note" data-pref="{{ $note->pref_id }}">
   <p class="panel_pref">{{ $note->pref_name }}</p>
   <a href="{{ route('notes.article', ['note_id' => $note->note_id]) }}" class="js-get-links">
     <div class="panel_thumbnail">
