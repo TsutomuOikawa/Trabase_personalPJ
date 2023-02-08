@@ -74,11 +74,6 @@ $(function () {
       $body.css('overflow-y', 'hidden');
     }, 500);
   });
-  // モーダル非表示
-  $('.js-hide-modal').on('click', function() {
-    $body.css('overflow-y', 'auto');
-    $modal.hide()
-  });
 
   // ウィッシュリストからモーダルをオープンした時は内容をコピーしてフォームにセット
   $('.js-get-wish').on('click', function() {
@@ -88,6 +83,16 @@ $(function () {
     $modal.find('[name=spot]').attr('value', spot);
     $modal.find('[name=thing]').attr('value', thing);
   })
+
+  // モーダル非表示
+  $('.js-hide-modal').on('click', function() {
+    $body.css('overflow-y', 'auto');
+    $modal.hide()
+    // フォームの内容を削除
+    $modal.find('input').each(function () {
+      $(this).attr('value', '');
+    })
+  });
 
 //////////////////////
   // マイページタブ
@@ -178,7 +183,7 @@ $(function () {
     let href = $this.attr('href');
     $this.attr('href', href + '&num=' + num);
   });
-  
+
 //////////////////////
   // 採用担当者様向けメッセージ
   let $message = $('.js-message-to-recruiter');

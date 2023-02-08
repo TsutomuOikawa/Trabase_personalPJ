@@ -18,7 +18,6 @@
           <li class="mypage_navItem js-get-tab">Bookmarks</li>
         </ul>
         <div class="mypage_article">
-
           <section id="map" class="mypage_contents js-show-contents js-active">
             <p class="mypage_title">全国踏破まであと<span class="js-insert-progress"></span>県</p>
             <div class="js-japanMap"></div>
@@ -37,7 +36,6 @@
                @endslot
             @endcomponent
           </section>
-
           <section id="notes" class="mypage_contents js-show-contents">
             <div class="list--note">
               <ul class="list_body--scrollNote js-get-visited">
@@ -47,7 +45,6 @@
               </ul>
             </div>
           </section>
-
           <section id="wishLists" class="mypage_contents js-show-contents">
             <div class="list--wish">
               @component('components.wishLists',
@@ -55,7 +52,6 @@
               @endcomponent
             </div>
           </section>
-
           <section id="bookmarks" class="mypage_contents js-show-contents">
             <div class="list--note">
               <ul class="list_body--scrollNote">
@@ -65,7 +61,6 @@
               </ul>
             </div>
           </section>
-
         </div>
       </div>
 
@@ -83,7 +78,7 @@
           <ul class="sidebar_menu">
             <li><a href="{{ route('profile.edit') }}" class="sidebar_menuItem"><i class="fa-solid fa-user-gear"></i><span>プロフィール編集</span></a></li>
             <li>
-              <form class="" action="{{ route('logout') }}" method="post">
+              <form action="{{ route('logout') }}" method="post">
               @csrf
                 <button type="submit" class="sidebar_menuItem">
                   <i class="fa-solid fa-right-from-bracket"></i><span>ログアウト</span>
