@@ -279,7 +279,7 @@ ul {
 }
 
 
-@include mqSP() {
+@include mqTAB() {
   .header {
     &-wrapper {
       padding: $space-xxs;
@@ -505,11 +505,6 @@ ul {
     padding: 0 $space-xs;
     box-sizing: border-box;
     margin: $space-l auto 0;
-    &--xs {
-      @extend .container_body;
-      max-width: 35%;
-      min-width: 400px;
-    }
     &--s {
       @extend .container_body;
       max-width: 60%;
@@ -545,10 +540,6 @@ ul {
     }
     &_body {
       padding: 0 $space-xxs;
-      &--xs {
-        max-width: 100%;
-        min-width: 90%;
-      }
       &--s {
         max-width: 100%;
       }
@@ -1744,7 +1735,8 @@ ul {
   @extend %contents-wrapper;
   background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-  padding: $space-l $space-m;
+  padding: $space-l;
+  width: 430px;
   &--editor {
     @extend %contents-wrapper;
     color: $fontColor-default;
@@ -1846,6 +1838,8 @@ ul {
 
 @include mqSP() {
   .form {
+    max-width: 100%;
+    padding: $space-m $space-xxs;
     &_date {
       align-items: flex-start;
       flex-direction: column;
