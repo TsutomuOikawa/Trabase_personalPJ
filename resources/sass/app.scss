@@ -1,30 +1,27 @@
 /*====================
  変数
 ====================*/
-$siteColor: #2f393a;
-$siteColor-base: #d9d9d9;
-$siteColor-sub: #304848;
-$siteColor-note: #fcfaf2;
-$siteColor-button: #de6710;
-$siteColor-accent: #ae9600;
-$siteColor-accent-hover: #ff9f58;
-$siteColor-err: #ff6565;
+$black: #0e0e0e;
+$white: #f3f3f3;
 
-$fontSize-sss: 10px;
-$fontSize-ss: 13px;
-$fontSize-s: 15px;
-$fontSize-default: 16px;
-$fontSize-m: 18px;
-$fontSize-l: 20px;
-$fontSize-xl: 24px;
-$fontSize-xxl: 30px;
-$fontSize-xxxl: 36px;
+$color-base: #2f393a;
+$color-whiteGray: #d9d9d9;
+$color-green: #304848;
+$color-accent: #ae9600;
+$color-btn: #de6710;
+$color-err: #ff6565;
+$color-font: #333333;
+$color-fontSub: #898989;
 
-$fontColor-default: #333333;
-$fontColor-sub: #898989;
-
-$color-white: #f3f3f3;
-$color-black: #0e0e0e;
+$font-xxs: 10px;
+$font-xs: 13px;
+$font-s: 15px;
+$font-default: 16px;
+$font-m: 18px;
+$font-l: 20px;
+$font-xl: 24px;
+$font-xxl: 30px;
+$font-xxxl: 36px;
 
 $space-xxs: 5px;
 $space-xs: 10px;
@@ -33,7 +30,6 @@ $space-m: 20px;
 $space-l: 30px;
 $space-xl: 40px;
 $space-xxl: 50px;
-
 
 $breakpoint: (
   'SP': 'screen and (max-width: 430px)',
@@ -62,9 +58,9 @@ $breakpoint: (
 %subTitle {
   font-family: "游明朝体";
   font-weight: bold;
-  font-size: $fontSize-l;
+  font-size: $font-l;
   @include mqSP () {
-    font-size: $fontSize-l;
+    font-size: $font-l;
   }
 }
 
@@ -74,11 +70,11 @@ $breakpoint: (
 html,
 body {
   width: 100%;
-  color: $fontColor-default;
-  font-size: $fontSize-default;
+  color: $color-font;
+  font-size: $font-default;
   line-height: 1.5;
   letter-spacing: 0.05em;
-  background-color: $siteColor;
+  background-color: $color-base;
 }
 button {
   background: none;
@@ -107,9 +103,9 @@ ul {
  ヘッダー
 ====================*/
 .header {
-  background: $siteColor-sub;
-  box-shadow: 0 1px 3px $siteColor-base;
-  color: $color-white;
+  background: $color-green;
+  box-shadow: 0 1px 3px $color-whiteGray;
+  color: $white;
   height: 60px;
   position: fixed;
     top: 0;
@@ -137,9 +133,9 @@ ul {
     }
   }
   &_form {
-    background: rgba($color-white, .3);
+    background: rgba($white, .3);
     border-radius: 30px;
-    box-shadow: 0 0 5px $siteColor;
+    box-shadow: 0 0 5px $color-base;
     display: flex;
       align-items: center;
     height: 35px;
@@ -155,37 +151,37 @@ ul {
     }
   }
   &_input {
-    color: $color-white;
-    font-size: $fontSize-s;
+    color: $white;
+    font-size: $font-s;
     height: 90%;
-    text-shadow: 0 0 5px $siteColor;
+    text-shadow: 0 0 5px $color-base;
     width: 47%;
     &::placeholder {
-      color: rgba($color-white, .8)
+      color: rgba($white, .8)
     }
     &:focus {
       border-bottom: 2px solid white;
       outline: none;
     }
     &:first-child {
-      border-right: 1px solid rgba($color-white, .8);
+      border-right: 1px solid rgba($white, .8);
     }
   }
   &_submit {
     background: none;
     border-radius: 0 30px 30px 0;
-    color: $color-white;
+    color: $white;
     height: 100%;
     padding: 0 $space-s;
     &:hover {
-      background: rgba($color-white, .3);
+      background: rgba($white, .3);
     }
   }
   &_sp {
     display: none;
   }
   &_search {
-    color: $siteColor-accent;
+    color: $color-accent;
     font-size: 2em;
     height: 50px;
     width: 50px;
@@ -200,7 +196,7 @@ ul {
     width: 50px;
     z-index: 3000;
     & span {
-      background: $siteColor-accent;
+      background: $color-accent;
       height: 3px;
       position: absolute;
         left: 0;
@@ -237,12 +233,12 @@ ul {
     }
   }
   &.js-transparent {
-    background: rgba($color-black, .1);
+    background: rgba($black, .1);
     box-shadow: none;
     & .header_menu .menu_item {
       background: none;
       &:last-child {
-        color: $siteColor-accent;
+        color: $color-accent;
       }
       &:hover {
         text-decoration: underline;
@@ -259,11 +255,11 @@ ul {
   &_item {
     padding: 0 $space-s;
     &:hover {
-      background: rgba($color-white, .3);
+      background: rgba($white, .3);
     }
     &:last-child {
-      background: $siteColor-accent;
-      color: $color-white;
+      background: $color-accent;
+      color: $white;
       &:hover {
         filter: brightness(1.3);
       }
@@ -294,7 +290,7 @@ ul {
       }
     }
     &_form {
-      background: rgba($color-white, .7);
+      background: rgba($white, .7);
       box-sizing: border-box;
       height: 70%;
       position: absolute;
@@ -307,15 +303,15 @@ ul {
       }
     }
     &_input {
-      color: $fontColor-default;
+      color: $color-font;
       text-shadow: none;
       &::placeholder {
-        color: rgba($fontColor-default, .8)
+        color: rgba($color-font, .8)
       }
     }
     &_submit {
-      background: rgba($color-black, .4);
-      color: rgba($color-white, .7);
+      background: rgba($black, .4);
+      color: rgba($white, .7);
       &:hover {
         filter: brightness(1.2);
       }
@@ -328,7 +324,7 @@ ul {
       width: 100%;
       padding: 70px $space_l $space-s;
       box-sizing: border-box;
-      background: $siteColor-sub;
+      background: $color-green;
       position: absolute;
       top: 0;
       right: -100%;
@@ -338,7 +334,7 @@ ul {
 
   .menu {
       flex-direction: column;
-    font-size: $fontSize-m;
+    font-size: $font-m;
     &_item {
       width: 100%;
       &--sp {
@@ -359,8 +355,8 @@ ul {
  フッター
 ====================*/
 .footer {
-  background: $siteColor;
-  color: $color-white;
+  background: $color-base;
+  color: $white;
   font-family: "游明朝体";
   &_wrapper {
     box-sizing: border-box;
@@ -384,14 +380,14 @@ ul {
       padding-bottom: $space-xxs;
     }
     th {
-      font-size: $fontSize-s;
+      font-size: $font-s;
       font-weight: normal;
       min-width: 25%;
       padding-right: $space-xs;
     }
     td {
-      font-size: $fontSize-ss;
-      line-height: $fontSize-default;
+      font-size: $font-xs;
+      line-height: $font-default;
       padding-right: $space-xxs;
       &:hover {
         text-decoration: underline;
@@ -403,30 +399,30 @@ ul {
     padding-bottom: $space-xs;
   }
   &_detail {
-    font-size: $fontSize-s;
+    font-size: $font-s;
     padding-bottom: $space-xxs;
     &:hover {
       text-decoration: underline;
     }
   }
   &_form {
-    background: rgba($color-white, .4);
+    background: rgba($white, .4);
     border-radius: 4px;
-    color: $color-white;
+    color: $white;
     display: block;
     height: 150px;
     margin-bottom: $space-xxs;
     width: 250px;
   }
   &_submit {
-    background: rgba($color-white, .5);
+    background: rgba($white, .5);
     border-radius: 4px;
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
     padding: $space-xxs $space-xs;
   }
   &_copyright {
     display: block;
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
     padding-top: $space-m;
     text-align: center;
     br {
@@ -461,24 +457,24 @@ ul {
   margin-top: 50px;
 }
 .container {
-  color: $color-white;
+  color: $white;
   padding: 40px 0 30px;
   &--baseColor {
     @extend .container;
-    background: $siteColor-base;
-    color: $fontColor-default;
+    background: $color-whiteGray;
+    color: $color-font;
   }
   &--subColor {
     @extend .container;
-    background: $siteColor-sub;
+    background: $color-green;
   }
   &--transparent {
     @extend .container;
-    background: rgba($color-black, .8);
+    background: rgba($black, .8);
   }
   &_title {
     font-family: "游明朝体";
-    font-size: $fontSize-xxl;
+    font-size: $font-xxl;
     margin: -60px auto 0;
     max-width: 80%;
     padding-top: 60px;
@@ -523,7 +519,7 @@ ul {
 @include mqSP() {
   .container {
     &_title {
-      font-size: $fontSize-l;
+      font-size: $font-l;
       max-width: 95%;
       &::before {
         font-size: 40px;
@@ -555,7 +551,7 @@ ul {
 .hero {
   background-attachment: fixed;
   background-blend-mode: darken;
-  background-color: rgba($color-black, .7);
+  background-color: rgba($black, .7);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
@@ -568,9 +564,9 @@ ul {
   padding-top: 13%;
   position: relative;
   &_title {
-    color: $color-white;
+    color: $white;
     font-family: "游明朝体";
-    font-size: $fontSize-xxxl;
+    font-size: $font-xxxl;
     letter-spacing: 0.1em;
     opacity: 1;
     position: fixed;
@@ -620,7 +616,7 @@ ul {
   padding: 80px 0 $space-m;
   &_pref {
     font-family: "游明朝体";
-    font-size: $fontSize-l;
+    font-size: $font-l;
   }
   &_japanMap {
     margin: 0 auto;
@@ -633,7 +629,7 @@ ul {
     position: relative;
     &::before {
       content: 'Check the Map';
-      color: $color-white;
+      color: $white;
     }
   }
 }
@@ -664,7 +660,7 @@ ul {
 };
 
 .imgSlider {
-  background: rgba($color-black, .6);
+  background: rgba($black, .6);
   box-sizing: border-box;
   overflow: hidden;
   padding: $space-xxs 0;
@@ -679,7 +675,7 @@ ul {
 }
 
 .splide {
-  background: rgba($color-black, 0.8);
+  background: rgba($black, 0.8);
   padding: $space-xs 0;
 }
 
@@ -721,8 +717,8 @@ ul {
   }
   &_title {
     @extend %subTitle;
-    color: $siteColor-accent;
-    font-size: $fontSize-xl;
+    color: $color-accent;
+    font-size: $font-xl;
     padding-bottom: $space-s;
   }
   &_text {
@@ -804,12 +800,12 @@ ul {
 ====================*/
 .destination {
   background-attachment: fixed;
-  background-color: rgba($color-white, .6);
+  background-color: rgba($white, .6);
   background-blend-mode: lighten;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: $fontColor-default;
+  color: $color-font;
   padding-top: 80px;
   & > .container_title::before {
     content: 'Change Destinations';
@@ -831,10 +827,10 @@ ul {
  note
 ====================*/
 .note {
-  color: $fontColor-default;
+  color: $color-font;
   width: 73%;
   &_contents {
-    background: rgba($siteColor-base, .8);
+    background: rgba($color-whiteGray, .8);
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: $space-m;
@@ -847,7 +843,7 @@ ul {
   }
   &_title {
     box-sizing: border-box;
-    font-size: $fontSize-xxl;
+    font-size: $font-xxl;
     padding: $space-l $space-xl 0;
     width: 100%;
   }
@@ -856,16 +852,16 @@ ul {
     padding: $space-xs $space-xxl $space-l;
   }
   &_h2 {
-    font-size: $fontSize-xl;
+    font-size: $font-xl;
     line-height: 2;
     padding: $space-xs 0;
   }
   &_h3 {
-    font-size: $fontSize-l;
+    font-size: $font-l;
     padding-bottom: $space-s;
   }
   &_h4 {
-    font-size: $fontSize-m;
+    font-size: $font-m;
     padding-bottom: $space-s;
   }
   &_paragraph {
@@ -885,7 +881,7 @@ ul {
       display: block;
     }
     &_title {
-      font-size: $fontSize-l;
+      font-size: $font-l;
       padding: $space-l $space-xs 0;
     }
     &_text {
@@ -896,8 +892,8 @@ ul {
 
 .comments {
   @extend %contents-wrapper;
-  background: rgba($siteColor-base, .8);
-  color: $fontColor-default;
+  background: rgba($color-whiteGray, .8);
+  color: $color-font;
   padding: $space-s $space-m;
   &_title {
     @extend %subTitle;
@@ -906,14 +902,14 @@ ul {
     margin-bottom: $space-m;
   }
   &_item {
-    border-bottom: 1px solid $siteColor;
+    border-bottom: 1px solid $color-base;
     padding: $space-xs;
   }
   &_text {
-    font-size: $fontSize-s;
+    font-size: $font-s;
   }
   &_posting {
-    border: 1px solid $fontColor-sub;
+    border: 1px solid $color-fontSub;
     border-radius: 4px;
     box-sizing: border-box;
     padding: $space-xs;
@@ -928,7 +924,7 @@ ul {
     &_item {
     }
     &_text {
-      font-size: $fontSize-ss;
+      font-size: $font-xs;
     }
     &_posting {
     }
@@ -955,20 +951,20 @@ ul {
     }
   }
   &_name {
-    font-size: $fontSize-s;
+    font-size: $font-s;
     &--big {
-      font-size: $fontSize-default;
+      font-size: $font-default;
       font-weight: bold;
     }
   }
   &_intro {
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
     max-height: 80px;
     overflow: hidden;
   }
   &_date {
-    color: $fontColor-sub;
-    font-size: $fontSize-ss;
+    color: $color-fontSub;
+    font-size: $font-xs;
     margin-left: $space-xs;
   }
 }
@@ -991,17 +987,17 @@ ul {
       }
     }
     &_name {
-      font-size: $fontSize-ss;
+      font-size: $font-xs;
     }
   }
 }
 
 .iconBox {
-  color: $fontColor-sub;
+  color: $color-fontSub;
   display: flex;
     align-items: center;
   &_num {
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
     padding: 0 $space-xs 0 $space-xxs;
   }
   button {
@@ -1011,7 +1007,7 @@ ul {
 }
 
 .fa-bookmark.js-active {
-  color: $siteColor-accent;
+  color: $color-accent;
   animation: bookmark 1s;
 }
 @keyframes bookmark {
@@ -1025,8 +1021,8 @@ ul {
 ====================*/
 .searchMenu {
   &_item {
-    color: $color-white;
-    font-size: $fontSize-s;
+    color: $white;
+    font-size: $font-s;
     display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1042,14 +1038,14 @@ ul {
     }
   }
   &_showNum {
-    color: $color-white;
-    font-size: $fontSize-s;
+    color: $white;
+    font-size: $font-s;
     padding: 0;
   }
 }
 @include mqSP() {
   .searchMenu {
-    font-size: $fontSize-s;
+    font-size: $font-s;
     &_item {
       padding-bottom: $space-xs;
       &:last-child {
@@ -1072,8 +1068,8 @@ ul {
     left: 0;
   z-index: 5000;
   &_header {
-    color: $color-white;
-    font-size: $fontSize-l;
+    color: $white;
+    font-size: $font-l;
     font-weight: bold;
     margin-bottom: $space-xs;
   }
@@ -1086,73 +1082,23 @@ ul {
     z-index: 6000;
   }
   &_list {
-    background: rgba($color-white, .5);
+    background: rgba($white, .5);
     border-radius: 4px;
     height: 40vh;
     overflow-y: scroll;
     padding: $space-s;
   }
-  &_note {
-    background: rgba($siteColor-base, .8);
-    border-radius: 4px;
-    margin-bottom: $space-m;
-  }
-  &_thumbnail {
-     border-radius: 4px 4px 0 0;
-     height: 250px;
-     position: relative;
-     &::before {
-       content: '';
-       background-image: url('/public/img/IMG_5131.JPG');
-       background-position: center;
-       background-size: cover;
-       border-radius: 4px 4px 0 0;
-       position: absolute;
-         top: 0;
-         right: 0;
-         bottom: 0;
-         left: 0;
-    }
-  }
-  &_body {
-    color: $fontColor-default;
-    display: flex;
-    padding: $space-s;
-  }
-  &_outline {
-    border-left: 1px solid $fontColor-default;
-    box-sizing: border-box;
-    display: flex;
-      flex-direction: column;
-    max-width: 50%;
-    min-width: 50%;
-    padding: $space-xs;
-  }
-  &_chapter {
-    display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-    padding-bottom: $space-xxs;
-    &:last-child {
-      padding-bottom: 0;
-    }
-  }
-  &_beginning {
-    font-size: $fontSize-s;
-    height: 20px;
-    overflow: hidden;
-  }
   &_action {
-    color: $color-white;
+    color: $white;
     cursor: pointer;
-    font-size: $fontSize-s;
+    font-size: $font-s;
     margin-top: $space-xs;
     &:hover {
       text-decoration: underline;
     }
   }
   &_cover {
-    background: rgba($color-black, .9);
+    background: rgba($black, .9);
     height: 100%;
     position: fixed;
     top: 0;
@@ -1173,28 +1119,8 @@ ul {
     &_content {
       width: 90%;
     }
-    &_note {
-      margin-bottom: $space-xs;
-    }
-    &_thumbnail {
-      height: 150px;
-    }
-    &_body {
-      padding: $space-xxs;
-    }
-    &_outline {
-      padding: $space-xs;
-    }
-    &_chapter {
-      font-size: $fontSize-s;
-      padding-bottom: $space-xxs;
-    }
-    &_beginning {
-      font-size: $fontSize-sss;
-      height: 40px;
-    }
     &_action {
-      font-size: $fontSize-s;
+      font-size: $font-s;
     }
   }
 }
@@ -1203,19 +1129,19 @@ ul {
  mypage
 ====================*/
 .mypage {
-  color: $fontColor-default;
+  color: $color-font;
   margin-bottom: $space_l;
   width: 80%;
   &_nav {
     display: flex;
     span {
-      background: $fontColor-default;
+      background: $color-font;
     }
   }
   &_navItem {
-    background: rgba($siteColor-base, .4);
-    border-right: 1px solid rgba($color-white, .7);
-    color: $color-white;
+    background: rgba($color-whiteGray, .4);
+    border-right: 1px solid rgba($white, .7);
+    color: $white;
     cursor: pointer;
     font-family: "游明朝体";
     font-weight: bold;
@@ -1228,15 +1154,15 @@ ul {
       border-right: none;
     }
     &:hover {
-      background: rgba($siteColor-base, .2);
+      background: rgba($color-whiteGray, .2);
     }
     &.js-selected {
-      background: rgba($siteColor-base, .7);
-      color: $fontColor-default;
+      background: rgba($color-whiteGray, .7);
+      color: $color-font;
     }
   }
   &_article {
-    background: rgba($siteColor-base, .7);
+    background: rgba($color-whiteGray, .7);
     border-radius: 0 4px 4px 4px;
     box-sizing: border-box;
     padding: $space-l $space-m $space-m;
@@ -1266,7 +1192,7 @@ ul {
   .mypage {
     width: 100%;
     &_nav {
-      font-size: $fontSize-ss;
+      font-size: $font-xs;
     }
     &_title {
       padding-bottom: $space-xs;
@@ -1285,24 +1211,24 @@ ul {
     top: 90px;
   width: 20%;
   &_wrapper {
-    background: rgba($siteColor-base, .7);
+    background: rgba($color-whiteGray, .7);
     border-radius: 4px;
-    color: $fontColor-default;
+    color: $color-font;
     margin-bottom: $space-s;
     padding: $space-xs;
     text-align: left;
   }
   &_profile {
-    color: $fontColor-default;
+    color: $color-font;
     margin-bottom: $space-xs;
   }
   &_menu {
     &>* {
-      font-size: $fontSize-s;
+      font-size: $font-s;
       padding-top: $space-xxs;
     }
     svg {
-      font-size: $fontSize-m;
+      font-size: $font-m;
       margin-right: $space-xxs;
       width: 20px;
     }
@@ -1312,16 +1238,16 @@ ul {
       flex-direction: column;
   }
   &_title {
-    font-size: $fontSize-s;
+    font-size: $font-s;
     font-weight: bold;
     max-height: 45px;
     overflow: hidden;
   }
   &_date {
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
   }
   &_chapters {
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
     padding-top: $space-xs;
     & >* {
       padding-bottom: $space-xs;
@@ -1329,7 +1255,7 @@ ul {
   }
   &--icon {
     @extend .sidebar;
-    font-size: $fontSize-xl;
+    font-size: $font-xl;
     padding: 0 $space-xs 0 0;
     width: 7%;
     &>.sidebar_wrapper {
@@ -1379,24 +1305,24 @@ ul {
       width: 30px;
       margin-right: $space-xs;
       svg {
-        font-size: $fontSize-xl;
+        font-size: $font-xl;
       }
       span {
         display: none;
       }
     }
     &_title {
-      font-size: $fontSize-ss;
+      font-size: $font-xs;
       max-height: 20px;
     }
     &_date {
-      font-size: $fontSize-sss;
+      font-size: $font-xxs;
     }
     &_chapters {
       display: none;
     }
     &--icon {
-      font-size: $fontSize-xl;
+      font-size: $font-xl;
       display: flex;
       padding: 0 $space-xs 0 0;
       width: 10%;
@@ -1404,7 +1330,7 @@ ul {
         top: calc(100% - 90px);
         left: 10px;
       &>.sidebar_wrapper {
-        background: $color-white;
+        background: $white;
         min-width: 50px;
       }
       svg {
@@ -1429,14 +1355,14 @@ ul {
   &_title {
     @extend %subTitle;
     cursor: pointer;
-    font-size: $fontSize-l;
+    font-size: $font-l;
     padding: $space-xs 0;
   }
   &_body {
     display: flex;
       flex-wrap: wrap;
     &--wish {
-      background: rgba($siteColor-base, .2);
+      background: rgba($color-whiteGray, .2);
       box-sizing: border-box;
       max-height: 300px;
       overflow-y: auto;
@@ -1485,7 +1411,7 @@ ul {
     flex-direction: column;
     padding: 0 0 $space-l;
     &_title {
-      font-size: $fontSize-m;
+      font-size: $font-m;
       padding: $space-xxs 0;
     }
     &_body {
@@ -1506,13 +1432,13 @@ ul {
       justify-content: center;
   }
   &_item {
-    background: rgba($color-white, .5);
+    background: rgba($white, .5);
     border-radius: 3px;
     margin: 0 2px;
     padding: 2px $space-xxs;
     &.js-active {
-      background: rgba($color-white, 1);
-      color: $fontColor-default;
+      background: rgba($white, 1);
+      color: $color-font;
       font-weight: bold;
     }
   }
@@ -1523,12 +1449,12 @@ ul {
 ====================*/
 .panel {
   border-radius: 4px;
-  color: $fontColor-default;
+  color: $color-font;
   position: relative;
   &--note {
     @extend .panel;
-    background: rgba($color-white, 1);
-    box-shadow: 0 0 5px 0 rgba($color-black, .2);
+    background: rgba($white, 1);
+    box-shadow: 0 0 5px 0 rgba($black, .2);
     height: 290px;
     margin: 0 $space-xs $space-s 0;
     position: relative;
@@ -1546,10 +1472,10 @@ ul {
     }
   }
   &_pref {
-    background: rgba($color-black, .3);
+    background: rgba($black, .3);
     border-radius: 4px 0 4px 0;
-    color: $color-white;
-    font-size: $fontSize-ss;
+    color: $white;
+    font-size: $font-xs;
     padding: 2px 4px;
     position: absolute;
       top: 0;
@@ -1557,7 +1483,7 @@ ul {
     z-index: 1000;
   }
   &_thumbnail {
-    background: rgba($color-black, .7);
+    background: rgba($black, .7);
     border-radius: 4px 4px 0 0;
     height: 150px;
     overflow: hidden;
@@ -1577,13 +1503,13 @@ ul {
     }
   }
   &_title {
-    font-size: $fontSize-s;
+    font-size: $font-s;
     max-height: 45px;
     overflow: hidden;
   }
   &_subInfo{
-    color: $fontColor-sub;
-    font-size: $fontSize-ss;
+    color: $color-fontSub;
+    font-size: $font-xs;
     line-height: 1.3;
     &> * {
       padding-bottom: $space-xxs;
@@ -1591,7 +1517,7 @@ ul {
   }
   &--wish {
     @extend .panel;
-    background: $color-white;
+    background: $white;
     box-sizing: border-box;
     display: flex;
       align-items: center;
@@ -1606,9 +1532,9 @@ ul {
       margin-bottom: 0;
     }
     svg {
-      color: $fontColor-sub;
+      color: $color-fontSub;
       cursor: pointer;
-      font-size: $fontSize-xl;
+      font-size: $font-xl;
       position: absolute;
       right: 15px;
     }
@@ -1629,12 +1555,12 @@ ul {
       min-width: 30%;
     }
     th {
-      color: $fontColor-sub;
-      font-size: $fontSize-ss;
+      color: $color-fontSub;
+      font-size: $font-xs;
       padding-right: $space-xs;
     }
     td {
-      font-size: $fontSize-s;
+      font-size: $font-s;
     }
   }
   &--destination {
@@ -1652,7 +1578,7 @@ ul {
     transition: all .5s;
   }
   &_destCover {
-    background: rgba($color-black, .9);
+    background: rgba($black, .9);
     border-radius: 4px;
     opacity: 1;
     position: absolute;
@@ -1667,8 +1593,8 @@ ul {
     }
   }
   &_destName {
-    color: $color-white;
-    font-size: $fontSize-s;
+    color: $white;
+    font-size: $font-s;
     position: absolute;
       top: 50%;
       left: 50%;
@@ -1685,7 +1611,7 @@ ul {
       padding: $space-xs $space-xs $space-xxs;
     }
     &_title {
-      font-size: $fontSize-s;
+      font-size: $font-s;
       max-height: 45px;
     }
     &_subInfo {
@@ -1711,11 +1637,11 @@ ul {
         min-width: 25%;
       }
       th {
-        font-size: $fontSize-sss;
+        font-size: $font-xxs;
         padding-right: $space-xxs;
       }
       td {
-        font-size: $fontSize-ss;
+        font-size: $font-xs;
       }
     }
     &--destination {
@@ -1723,7 +1649,7 @@ ul {
       min-width: 30%;
     }
     &_destName {
-      font-size: $fontSize-s;
+      font-size: $font-s;
     }
   }
 }
@@ -1739,8 +1665,8 @@ ul {
   width: 430px;
   &--editor {
     @extend %contents-wrapper;
-    color: $fontColor-default;
-    background: rgba($color-white, .7);
+    color: $color-font;
+    background: rgba($white, .7);
     padding: $space-l $space-l;
   }
   &_name {
@@ -1752,35 +1678,35 @@ ul {
     padding: 2px 3px;
     border-radius: 2px;
     margin-right: $space-xxs;
-    font-size: $fontSize-ss;
-    color: $color-white;
+    font-size: $font-xs;
+    color: $white;
     &--required {
-      background: $siteColor-err;
+      background: $color-err;
     }
     &--optional {
-      background: $siteColor-base;
+      background: $color-whiteGray;
     }
   }
   &_input {
     height: 45px;
     width: 100%;
     border-radius: 3px;
-    background: $siteColor-base;
+    background: $color-whiteGray;
     &:focus-visible {
       outline: none;
     }
     &:focus {
-      border: 2px solid $siteColor-sub;
+      border: 2px solid $color-green;
     }
     &--header {
-      font-size: $fontSize-xl;
+      font-size: $font-xl;
       height: 55px;
     }
     &--half {
       width: 40%;
     }
     &--err {
-      background: rgba($siteColor-err, .3);
+      background: rgba($color-err, .3);
     }
   }
   &_avatar {
@@ -1801,9 +1727,9 @@ ul {
     border-radius: 4px;
     box-sizing: border-box;
     margin: $space-xs auto 0;
-    background: $siteColor-button;
+    background: $color-btn;
     box-shadow: 0 4px 1px #552808;
-    color: $color-white;
+    color: $white;
     letter-spacing: 0.05em;
     transition: .1s;
     display: block;
@@ -1816,18 +1742,18 @@ ul {
     }
   }
   &_editor {
-    background: $siteColor-base;
+    background: $color-whiteGray;
     border-radius: 4px;
     padding-top: $space-m;
   }
   &_errMsg {
     height: 15px;
     margin-bottom: $space-s;
-    font-size: $fontSize-ss;
-    color: $siteColor-err;
+    font-size: $font-xs;
+    color: $color-err;
   }
   &_notion {
-    font-size: $fontSize-ss;
+    font-size: $font-xs;
     padding-top: $space-xs;
     text-align: right;
     &>* {
@@ -1848,21 +1774,21 @@ ul {
       padding: $space-l $space-xxs;
     }
     &_name {
-      font-size: $fontSize-s;
+      font-size: $font-s;
     }
     &_label {
-      font-size: $fontSize-sss;
+      font-size: $font-xxs;
     }
     &_input {
       height: 35px;
       &--header {
-        font-size: $fontSize-m;
+        font-size: $font-m;
         height: 55px;
       }
     }
     &_button {
       padding: $space-xxs 0;
-      font-size: $fontSize-s;
+      font-size: $font-s;
       &:hover {
         filter: brightness(1.5);
       }
@@ -1896,11 +1822,11 @@ ul {
     background: rgba(#338a4e, .98);
   }
   &--err {
-    background: rgba($siteColor-err, .9);
+    background: rgba($color-err, .9);
   }
   &_text {
-    color: $color-white;
-    font-size: $fontSize-m;
+    color: $white;
+    font-size: $font-m;
     font-weight: bold;
     line-height: 60px;
   }
@@ -1937,7 +1863,7 @@ ul {
       flex-direction: column;
     min-width: 30%;
     span {
-      background: $color-white;
+      background: $white;
       border-radius: 100%;
       height: 50px;
       position: relative;
@@ -1945,17 +1871,17 @@ ul {
     }
     &.js-active {
       span {
-        background: $color-black;
-        color: $color-white;
+        background: $black;
+        color: $white;
       }
     }
     p {
-      color: $fontColor-sub;
-      font-size: $fontSize-ss;
+      color: $color-fontSub;
+      font-size: $font-xs;
     }
   }
   &_icon {
-    font-size: $fontSize-xl;
+    font-size: $font-xl;
     position: absolute;
       top: 50%;
       left: 50%;
@@ -1977,19 +1903,19 @@ ul {
 };
 
 /*====================
-  ウィッシュリスト
+  リスト登録ボタン
 ====================*/
 .followingBtn {
-  background: $siteColor-accent;
+  background: $color-accent;
   border-radius: 30px;
   box-shadow: 0 3px 1px #4b3803;
   box-sizing: border-box;
-  color: $color-white;
+  color: $white;
   cursor: pointer;
   display: flex;
     align-items: center;
     justify-content: space-between;
-  font-size: $fontSize-s;
+  font-size: $font-s;
   font-weight: bold;
   height: auto;
   padding: $space-xs;
@@ -2009,8 +1935,8 @@ ul {
 
 @include mqSP() {
   .followingBtn {
-    box-shadow: 0 5px $color-black;
-    font-size: $fontSize-ss;
+    box-shadow: 0 5px $black;
+    font-size: $font-xs;
     height: 40px;
     padding: $space-xxs;
       right: 10px;
@@ -2022,7 +1948,7 @@ ul {
   ピンポイントアイテム
 ====================*/
 .smallfont {
-  font-size: $fontSize-ss;
+  font-size: $font-xs;
   letter-spacing: 0.01em;
 }
 
@@ -2034,7 +1960,7 @@ ul {
 }
 
 .itemSeparater {
-  background: $color-white;
+  background: $white;
   margin: 0 $space-xs;
   width: 1px;
 }
