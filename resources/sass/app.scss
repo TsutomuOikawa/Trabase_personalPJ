@@ -830,7 +830,7 @@ ul {
   color: $color-font;
   width: 73%;
   &_contents {
-    background: rgba($color-whiteGray, .8);
+    background: rgba($white, .7);
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: $space-m;
@@ -892,7 +892,7 @@ ul {
 
 .comments {
   @extend %contents-wrapper;
-  background: rgba($color-whiteGray, .8);
+  background: rgba($white, .7);
   color: $color-font;
   padding: $space-s $space-m;
   &_title {
@@ -1021,7 +1021,6 @@ ul {
 ====================*/
 .searchMenu {
   &_item {
-    color: $white;
     font-size: $font-s;
     display: flex;
       align-items: center;
@@ -1036,9 +1035,14 @@ ul {
         text-decoration: underline;
       }
     }
+    span {
+      background: $color-font;
+      margin: 0 $space-xs;
+      width: 1px;
+    }
   }
   &_showNum {
-    color: $white;
+    color: $color-font;
     font-size: $font-s;
     padding: 0;
   }
@@ -1211,7 +1215,7 @@ ul {
     top: 90px;
   width: 20%;
   &_wrapper {
-    background: rgba($color-whiteGray, .7);
+    background: rgba($white, .7);
     border-radius: 4px;
     color: $color-font;
     margin-bottom: $space-s;
@@ -1679,24 +1683,25 @@ ul {
     border-radius: 2px;
     margin-right: $space-xxs;
     font-size: $font-xs;
-    color: $white;
     &--required {
       background: $color-err;
+      color: $white;
     }
     &--optional {
       background: $color-whiteGray;
+      color: $color-fontSub;
     }
   }
   &_input {
     height: 45px;
     width: 100%;
     border-radius: 3px;
-    background: $color-whiteGray;
+    background: $white;
     &:focus-visible {
       outline: none;
     }
     &:focus {
-      border: 2px solid $color-green;
+      border: 1px solid $color-green;
     }
     &--header {
       font-size: $font-xl;
@@ -1742,7 +1747,7 @@ ul {
     }
   }
   &_editor {
-    background: $color-whiteGray;
+    background: $white;
     border-radius: 4px;
     padding-top: $space-m;
   }
@@ -1957,12 +1962,6 @@ ul {
   &:hover {
     text-decoration: underline;
   }
-}
-
-.itemSeparater {
-  background: $white;
-  margin: 0 $space-xs;
-  width: 1px;
 }
 
 @include mqSP() {

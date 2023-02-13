@@ -3,7 +3,7 @@
 @section('content')
 
     <main class="page-wrapper">
-      <div class="container">
+      <div class="container--baseColor">
         <h1 class="container_title">
           @if($key['pref']) {{ $key['pref'] }} の @endif @if($key['key'])「{{ $key['key'] }}」を含む @endifノート一覧
         </h1>
