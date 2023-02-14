@@ -20,8 +20,9 @@ class FavoriteController extends Controller
         $favorite->user_id = $user_id;
         $favorite->note_id = $note_id;
         $favorite->save();
+
         // ajaxに返却
-        echo true;
+        echo 'on';
       }
 
       elseif(Favorite::onlyTrashed()->where('user_id', $user_id)->where('note_id', $note_id)->exists()) {
@@ -30,13 +31,13 @@ class FavoriteController extends Controller
                             ->where('user_id', $user_id)
                             ->where('note_id', $note_id)
                             ->restore();
-        echo true;
+        echo 'on';
 
       } else {
         // 存在した場合
         $favorite = Favorite::where('user_id', $user_id)->where('note_id', $note_id)
                             ->delete();
-        echo true;
+        echo 'off';
       }
     }
 
