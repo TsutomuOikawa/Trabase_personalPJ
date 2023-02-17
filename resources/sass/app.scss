@@ -41,7 +41,6 @@ $breakpoint: (
     @content;
   }
 }
-
 @mixin mqTAB() {
   @media #{map-get($breakpoint, 'TAB')}{
     @content;
