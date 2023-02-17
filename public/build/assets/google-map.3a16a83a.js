@@ -1,0 +1,1 @@
+function a(){let o=document.getElementById("googleMap"),t=document.querySelector("h1").textContent;new google.maps.Geocoder().geocode({address:t},function(e,n){if(n==="OK"&&e[0])switch(t){case"\u5317\u6D77\u9053":new google.maps.Map(o,{center:e[0].geometry.location,zoom:7});break;default:new google.maps.Map(o,{center:e[0].geometry.location,zoom:8});break}})}window.initMap=a;
