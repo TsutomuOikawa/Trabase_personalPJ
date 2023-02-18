@@ -29,10 +29,10 @@ $(function () {
   $(window).on('scroll', function(){
     let $this = $(this);
     // ヘッダー
-    $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.4);
-    $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.4);
+    $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.6);
+    $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.6);
     // ファーストビュー
-    $title.toggleClass('js-nonactive', $this.scrollTop() > screenHeight/4);
+    $title.toggleClass('js-nonactive', $this.scrollTop() > screenHeight/3);
   });
 
 //////////////////////
