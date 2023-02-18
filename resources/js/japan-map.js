@@ -4,7 +4,7 @@ $(function() {
   let mapWidth,
   windowWidth = $(window).width(), windowSP = 420, windowPC = 960;
   if (windowWidth <= windowSP) {
-    mapWidth = 300;
+    mapWidth = 350;
   } else if(windowWidth >= windowPC){
     mapWidth = 650;
   } else {
