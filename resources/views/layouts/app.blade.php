@@ -40,7 +40,7 @@
         <nav class="header_menu js-slide-menu">
           @guest
           <ul class="menu">
-            <li class="menu_item"><a href="{{ route('index', ['#about']) }}" class="menu_item_link"><i class="fa-solid fa-book-open"></i>About</a></li>
+            <li class="menu_item"><a href="/#about" class="menu_item_link"><i class="fa-solid fa-book-open"></i>About</a></li>
             <li class="menu_item"><a href="{{ route('login') }}" class="menu_item_link"><i class="fa-solid fa-right-to-bracket"></i>Login</a></li>
             <li class="menu_item"><a href="{{ route('register') }}" class="menu_item_link"><i class="fa-solid fa-user-plus"></i>Register</a></li>
           </ul>
