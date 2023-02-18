@@ -5,7 +5,7 @@
 <main class="page-wrapper">
   <div class="container--baseColor">
     <h1 class="container_title">会員登録（無料）</h1>
-    <div class="container_body--xs">
+    <div class="container_body">
       <form method="POST" action="{{ route('register') }}" class="form">
       @csrf
         <label>

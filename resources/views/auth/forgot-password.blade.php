@@ -9,7 +9,7 @@
   <div class="container--baseColor">
     <h1 class="container_title">パスワードの再設定</h1>
     <p class="container_notion">ご登録のメールアドレス宛に<br>再設定用リンクをお送りします</p>
-    <div class="container_body--xs">
+    <div class="container_body">
       <form method="post" action="{{ route('password.email') }}" class="form">
         @csrf
         <label>

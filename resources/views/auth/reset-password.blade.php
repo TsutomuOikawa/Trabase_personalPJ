@@ -5,7 +5,7 @@
     <main class="page-wrapper">
       <div class="container--baseColor">
         <h1 class="container_title">パスワードの再登録</h1>
-        <div class="container_body--xs">
+        <div class="container_body">
           <form method="POST" action="{{ route('password.store') }}" class="form">
           @csrf
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
