@@ -5,7 +5,7 @@
     <main class="page-wrapper">
       <div class="container--baseColor">
         <h1 class="container_title">ログイン</h1>
-        <div class="container_body--xs">
+        <div class="container_body">
           <form method="POST" action="{{ route('login') }}" class="form">
           @csrf
             <label>
@@ -27,14 +27,14 @@
             </label>
             <p class="form_errMsg">@error('password') {{ $message }} @enderror</p>
 
-            <label>
-              <div class="form_notion">
-                <input type="checkbox" name="remember" value="">ログイン状態を保存する
-              </div>
+            <label class="smallfont">
+              <input type="checkbox" name="remember">ログイン状態を保存する
             </label>
-            <button type="submit" class="form_button" name="">ログインする</button>
-            <p class="form_notion"><a href="{{ route('password.request') }}" class="link">&gt パスワードをお忘れの方はこちら</a></p>
-            <p class="form_notion"><a href="{{ route('register') }}" class="link">&gt ご登録がお済みでない方はこちら</a></p>
+            <button type="submit" class="form_button">ログインする</button>
+            <div class="form_notion">
+              <p><a href="{{ route('password.request') }}" class="link">&gt パスワードをお忘れの方はこちら</a></p>
+              <p><a href="{{ route('register') }}" class="link">&gt ご登録がお済みでない方はこちら</a></p>
+            </div>
           </form>
         </div>
       </div>
