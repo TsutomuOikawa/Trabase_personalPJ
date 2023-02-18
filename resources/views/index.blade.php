@@ -63,7 +63,7 @@
         <div class="feature feature--reverse">
           <img src="{{ Storage::disk('s3')->url('assets/topPage_editor.png') }}" class="feature_img" alt="">
           <div class="feature_description">
-            <p class="feature_title">シンプルなエディタで思い出を記録</p>
+            <p class="feature_title">シンプルなエディタで<br>思い出を記録</p>
             <p class="feature_text">旅行に行ったことは覚えているのに、<br>詳しいことは思い出せない、、<br>そんな経験はありませんか？
             <p class="feature_text">簡単かつシンプルなエディタを使って<br>新鮮な記憶を書き残しましょう</p>
           </div>
