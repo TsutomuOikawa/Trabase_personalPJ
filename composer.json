@@ -6,9 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "ext-memcached": "^3.2",
-        "abraham/twitteroauth": "^5.0",
-        "cloudinary/cloudinary_php": "^2",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-lang/lang": "~10.3",
