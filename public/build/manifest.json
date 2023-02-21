@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.f3251336.js",
+    "file": "assets/app.260e60c2.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -18,7 +18,7 @@
     "isEntry": true
   },
   "resources/js/japan-map.js": {
-    "file": "assets/japan-map.5207b53c.js",
+    "file": "assets/japan-map.839d33a9.js",
     "src": "resources/js/japan-map.js",
     "isEntry": true
   },
@@ -32,14 +32,14 @@
     "src": "resources/css/reset.css",
     "isEntry": true
   },
+  "resources/sass/app.scss": {
+    "file": "assets/app.b0ae8aae.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
   "resources/css/app.css": {
     "file": "assets/app.81253769.css",
     "src": "resources/css/app.css",
-    "isEntry": true
-  },
-  "resources/sass/app.scss": {
-    "file": "assets/app.ec8c0d42.css",
-    "src": "resources/sass/app.scss",
     "isEntry": true
   }
 }
