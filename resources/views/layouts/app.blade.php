@@ -20,7 +20,7 @@
     @endif
       <div class="header_inner">
         <a href="{{ route('index') }}" class="header_logo"><img src="{{ Storage::disk('s3')->url('assets/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
-        @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], '/pref/'))
+        @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'pref/'))
         <form action="{{ route('notes.list') }}" method="get" class="header_form js-change-header_form js-nonactive">
         @else
         <form action="{{ route('notes.list') }}" method="get" class="header_form">
@@ -62,6 +62,7 @@
       <p class="flashMsg_text js-get-flashMsg">{{ session('session_success') }}</p>
     </div>
     @endif
+
     <!-- Page Content -->
     @yield('content')
 

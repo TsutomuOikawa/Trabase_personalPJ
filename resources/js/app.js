@@ -7,6 +7,8 @@ $(function () {
   makeSlider();
   // エディター
   setEditor();
+  // ウィンドウ
+  let $window = $(window);
 
 //////////////////////
   // ヘッダーハンバーガーメニュー
@@ -26,13 +28,12 @@ $(function () {
   // スクロールによる変更
   let screenHeight = $('.js-header-change-target').height();
   let $title = $('.js-hide-title');
-  $(window).on('scroll', function(){
-    let $this = $(this);
+  $window.on('scroll', function(){
     // ヘッダー
-    $('.js-change-header').toggleClass('js-transparent', $this.scrollTop() < screenHeight/1.6);
-    $('.js-change-header_form').toggleClass('js-nonactive', $this.scrollTop() < screenHeight/1.6);
+    $('.js-change-header').toggleClass('js-transparent', $window.scrollTop() < screenHeight/1.6);
+    $('.js-change-header_form').toggleClass('js-nonactive', $window.scrollTop() < screenHeight/1.6);
     // ファーストビュー
-    $title.toggleClass('js-nonactive', $this.scrollTop() > screenHeight/3);
+    $title.toggleClass('js-nonactive', $window.scrollTop() > screenHeight/3);
   });
 
 //////////////////////
