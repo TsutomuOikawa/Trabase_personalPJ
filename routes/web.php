@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 // ホーム
 Route::get('/', \App\Http\Controllers\IndexController::class) -> name('index');
 // 都道府県別ページ
-Route::get('/pref/{pref_id}', [\App\Http\Controllers\PrefectureController::class, 'showPref'])->whereNumber('pref_id')->name('pref');
+Route::get('/pref/{pref_id}', [\App\Http\Controllers\PrefectureController::class, 'showPref'])->where('pref_id', '^([1-9]|[1-3][0-9]|4[0-7])$')->name('pref');
 
 // ノート関連
 Route::controller(NoteController::class)->group(function() {
