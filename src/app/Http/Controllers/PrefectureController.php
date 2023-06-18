@@ -49,7 +49,7 @@ class PrefectureController extends Controller
 
     public static function getPrefs() {
       $prefs = DB::table('prefectures')
-                  ->select('pref_id', 'pref_name')
+                  ->select('id', 'name')
                   ->get();
       return $prefs;
     }
