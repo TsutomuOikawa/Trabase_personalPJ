@@ -10,8 +10,6 @@ class Wish extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'wish_id';
-
     protected $fillable = [
       'user_id',
       'pref_id',

@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->id('note_id');
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('pref_id');
-            $table->foreign('pref_id')->references('pref_id')->on('prefectures');
+            $table->foreign('pref_id')->references('id')->on('prefectures');
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();

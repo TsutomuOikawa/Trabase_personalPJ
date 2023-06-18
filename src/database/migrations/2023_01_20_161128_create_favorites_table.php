@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('favorites', function (Blueprint $table) {
-            $table->id('favorite_id');
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');            
             $table->unsignedBigInteger('note_id');
-            $table->foreign('note_id')->references('note_id')->on('notes');
+            $table->foreign('note_id')->references('id')->on('notes');
             $table->timestamps();
             $table->softDeletes();
         });
