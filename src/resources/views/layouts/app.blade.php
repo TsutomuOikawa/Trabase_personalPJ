@@ -21,12 +21,12 @@
       <div class="header_inner">
         <a href="{{ route('index') }}" class="header_logo"><img src="{{ Storage::disk('s3')->url('assets/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
         @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'pref/'))
-        <form action="{{ route('notes.list') }}" method="get" class="header_form js-change-header_form js-nonactive">
+        <form action="{{ route('notes.index') }}" method="get" class="header_form js-change-header_form js-nonactive">
         @else
-        <form action="{{ route('notes.list') }}" method="get" class="header_form">
+        <form action="{{ route('notes.index') }}" method="get" class="header_form">
         @endif
           <input type="text" name="pref" class="header_input" value="" placeholder="都道府県名を入力">
-          <input type="text" name="key" class="header_input" value="" placeholder="キーワードを入力">
+          <input type="text" name="keyword" class="header_input" value="" placeholder="キーワードを入力">
           <button type="submit" class="header_submit" name=""><i class="fa-solid fa-search fa-lg"></i></button>
         </form>
         <div class="header_sp">
@@ -79,7 +79,7 @@
           <div class="footer_navItem">
             <p class="footer_category">ノート</p>
             <ul>
-              <li class="footer_detail"><a href="{{ route('notes.list') }}">一覧ページ</a></li>
+              <li class="footer_detail"><a href="{{ route('notes.index') }}">一覧ページ</a></li>
               <li class="footer_detail"><a href="{{ route('notes.new') }}">投稿ページ</a></li>
             </ul>
           </div>
@@ -90,8 +90,8 @@
                 <tr>
                   <th>北海道・東北地方</th>
                   @foreach($prefs as $pref)
-                  <td><a href="{{ route('pref', ['pref_id' => $pref->pref_id]) }}">{{ $pref->pref_name }}</a></td>
-                @switch($pref->pref_id)
+                  <td><a href="{{ route('pref', ['pref_id' => $pref->id]) }}">{{ $pref->name }}</a></td>
+                @switch($pref->id)
                 @case(7)
                 </tr>
                 <tr>

@@ -11,7 +11,7 @@
     <div class="js-header-change-target">
       <section id="firstView" class="firstView">
         <h1 class="firstView_title js-hide-title">旅の情報を<br>集めよう</h1>
-        <form class="firstView_form" action="{{ route('notes.list') }}" method="get">
+        <form class="firstView_form" action="{{ route('notes.index') }}" method="get">
           <input type="text" name="pref" class="header_input" value="{{ old('pref') }}" placeholder="都道府県名を入力">
           <input type="text" name="key" class="header_input" value="{{ old('key') }}" placeholder="キーワードを入力">
           <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>

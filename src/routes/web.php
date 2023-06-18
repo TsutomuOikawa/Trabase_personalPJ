@@ -26,7 +26,7 @@ Route::get('/pref/{pref_id}', [\App\Http\Controllers\PrefectureController::class
 // ノート関連
 Route::controller(NoteController::class)->group(function() {
     // ノート一覧画面
-    Route::get('/notes', 'showList')->name('notes.list');
+    Route::get('/notes', 'index')->name('notes.index');
     // ノート詳細閲覧
     Route::get('/notes/article/{note_id}', 'showArticle')->whereNumber('note_id')->name('notes.article');
 
