@@ -10,8 +10,6 @@ class Favorite extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'favorite_id';
-
     protected $fillable = [
       'user_id',
       'note_id'

@@ -10,8 +10,6 @@ class Comment extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'comment_id';
-
     protected $fillable = [
       'note_id',
       'user_id',

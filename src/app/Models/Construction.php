@@ -10,8 +10,6 @@ class Construction extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'construction_id';
-
     protected $fillable = [
       'user_id',
       'pref_id',
