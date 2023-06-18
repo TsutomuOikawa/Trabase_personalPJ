@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\PrefectureController;
 use App\Http\Requests\NoteRequest;
+use App\Http\Requests\Notes\IndexRequest;
 use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Note;
 use App\Models\Prefecture;
+use App\UseCases\Notes\IndexAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,68 +31,23 @@ class NoteController extends Controller
 
     $query = DB::table('notes')
                 ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-                ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.pref_id')
+                ->leftJoin('prefectures', 'notes.pref_id', '=', 'prefectures.id')
                 ->leftJoinSub($favorites, 'favorites', function ($join) {
-                    $join->on('notes.note_id', '=', 'favorites.note_id');
+                    $join->on('notes.id', '=', 'favorites.note_id');
                   })
                 ->leftJoinSub($comments, 'comments', function ($join) {
-                    $join->on('notes.note_id', '=', 'comments.note_id');
+                    $join->on('notes.id', '=', 'comments.note_id');
                   })
-                ->select('notes.*', 'users.name', 'users.avatar', 'users.intro', 'prefectures.pref_id', 'prefectures.pref_name', 'favorites.favNum', 'comments.comNum')
+                ->select('notes.*', 'users.name', 'users.avatar', 'users.intro', 'prefectures.id', 'prefectures.name', 'favorites.favNum', 'comments.comNum')
                 ->where('notes.deleted_at', null);
     return $query;
   }
 
   // ノート一覧表示（検索）
-  public function showList(Request $request) {
-    $query = $this->setNotesQuery();
-    // 検索条件セット
-    $pref = $request->pref;
-    $key = $request->key;
-    $sort = $request->sort;
-    $num = $request->num;
-    //キーワード設定
-    if ($pref) {
-      $query->where('pref_name', 'like', '%'.$pref.'%');
-    }
-    if ($key) {
-      $query->where(function($query) use($key){
-        $query->where('title', 'like', '%'.$key.'%')
-              ->orWhere('text', 'like', '%'.$key.'%');
-      });
-    }
-    // ソート設定
-    if ($sort === 'bookmarks') {
-      $query->orderBy('favNum', 'DESC');
-    }
-    elseif ($sort === 'comments') {
-      $query->orderBy('comNum', 'DESC');
-    }
-    $query->orderBy('notes.created_at', 'DESC');
-
-    // 表示件数設定
-    if ($num === '20') {
-      $notes = $query->paginate(20)->withQueryString();
-    }
-    elseif ($num === '30') {
-      $notes = $query->paginate(30)->withQueryString();
-    }
-    else {
-      $notes = $query->paginate(10)->withQueryString();
-    }
-
-    // ログインユーザーならお気に入り状況を格納
-    if (Auth::user()) {
-      foreach ($notes as $note) {
-        $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
-      }
-    }
-
+  public function index(IndexRequest $request, IndexAction $action) {
+    $notes = $action($request->all());
     $prefs = Prefecture::all();
-    return view('notes.list')
-      ->with('key', ['pref'=>$pref, 'key'=>$key])
-      ->with('notes', $notes)
-      ->with('prefs', $prefs);
+    return view('notes.index', compact('notes', 'prefs'));
   }
 
   // ノート詳細表示
