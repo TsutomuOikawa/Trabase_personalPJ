@@ -34,7 +34,7 @@ Route::controller(NoteController::class)->group(function() {
     Route::middleware('auth')->group(function () {
         // ノート投稿画面
         Route::get('/notes/new', 'new')->name('notes.new');
-        Route::post('/notes/new', 'storeNote')->name('notes.store');
+        Route::post('/notes/new', 'store')->name('notes.store');
         // ノート再編集画面
         Route::get('/notes/article/{note_id}/edit', 'edit')->whereNumber('note_id')->name('notes.edit');
         Route::post('/notes/article/{note_id}/edit', 'getText')->whereNumber('note_id')->name('notes.getText');
