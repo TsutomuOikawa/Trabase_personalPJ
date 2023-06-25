@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCases\notes;
+namespace App\UseCases\Notes;
 
 use App\Models\Note;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,8 +10,8 @@ class IndexAction
     public function __invoke(array $params)
     {
         $query = Note::with([
-            'users',
-            'prefectures',
+            'user',
+            'prefecture',
         ])
         ->withcount([
             'favorites' => function(Builder $query) {
