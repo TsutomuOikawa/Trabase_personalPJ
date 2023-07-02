@@ -28,7 +28,7 @@ Route::controller(NoteController::class)->group(function() {
     // ノート一覧画面
     Route::get('/notes', 'index')->name('notes.index');
     // ノート詳細閲覧
-    Route::get('/notes/article/{note_id}', 'showArticle')->whereNumber('note_id')->name('notes.article');
+    Route::get('/notes/{note_id}', 'show')->whereNumber('note_id')->name('notes.show');
 
     // ログインユーザーのみ
     Route::middleware('auth')->group(function () {

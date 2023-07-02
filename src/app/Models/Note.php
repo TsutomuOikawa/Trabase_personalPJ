@@ -22,7 +22,7 @@ class Note extends Model
       return $this->belongsTo(User::class);
     }
     public function prefecture() {
-      return $this->belongsTo(Prefecture::class);
+      return $this->belongsTo(Prefecture::class, 'pref_id', 'id');
     }
     public function comments() {
       return $this->hasMany(Comment::class);
