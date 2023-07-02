@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', $note->title)
 @section('content')
-
     <main class="page-wrapper">
 		<div class="container--baseColor">
 			<div class="container_body--l container_body--col">
@@ -69,7 +68,7 @@
 					<section class="comments">
 						<p class="comments_title">コメント</p>
 						<ul class="comments_list">
-						@foreach($comments as $comment)
+						@foreach($note->comments as $comment)
 							<li class="comments_item">
 								<div class="userInfo">
 								@if($comment->user->avatar)

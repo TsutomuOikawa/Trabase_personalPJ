@@ -12,6 +12,7 @@ use App\Models\Favorite;
 use App\Models\Note;
 use App\Models\Prefecture;
 use App\UseCases\Notes\IndexAction;
+use App\UseCases\Notes\ShowAction;
 use App\UseCases\Notes\StoreAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,7 @@ class NoteController extends Controller
 	return $query;
   }
 
-	// ノート一覧表示（検索）
+	// 一覧・検索
 	public function index(IndexRequest $request, IndexAction $action)
 	{
 		$notes = $action($request->validated());
@@ -53,24 +54,20 @@ class NoteController extends Controller
 		return view('notes.index', compact('notes', 'prefs'));
 	}
 
-  // ノート詳細表示
-  public function showArticle(Request $request) {
-	$note_id = $request->note_id;
-	$query = $this->setNotesQuery();
-	$note = $query->where('notes.id', $note_id)
-				  ->first();
+	// 登録
+	public function store(StoreRequest $request, StoreAction $action)
+	{
+		$note_id = $action($request->validated());
+		return $note_id;
+	}
+	
+	// 詳細
+	public function show(Request $request, ShowAction $action) {
+		$note = $action($request->route('note_id'));
+		$prefs = Prefecture::all();
 
-	$note->text = json_decode($note->text, true);
-	$note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note_id);
-
-	$comments = Comment::where('note_id', $note_id)->with('user')->get();
-	$prefs = Prefecture::all();
-
-	return view('notes.article')
-	  ->with('note', $note)
-	  ->with('comments', $comments)
-	  ->with('prefs', $prefs);
-  }
+		return view('notes.show', compact('note', 'prefs'));
+	}
 
   // ノート新規作成画面
   public function new() {
@@ -79,13 +76,6 @@ class NoteController extends Controller
 	  ->with('editMode', false)
 	  ->with('prefs', $prefs);
   }
-
-	// 投稿
-	public function store(StoreRequest $request, StoreAction $action)
-	{
-		$note_id = $action($request->validated());
-		return $note_id;
-	}
 
   // ノート編集画面表示
   public function edit($note_id) {

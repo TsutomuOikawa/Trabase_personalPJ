@@ -13,7 +13,7 @@ class IndexAction
             'user',
             'prefecture',
         ])
-        ->withcount([
+        ->withCount([
             'favorites' => function(Builder $query) {
                 $query->groupBy('favorites.user_id', 'favorites.note_id');
             },

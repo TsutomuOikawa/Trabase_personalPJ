@@ -24,7 +24,7 @@ class IndexController extends Controller
                         ->limit(8)
                         ->get();
         foreach ($notes as $note) {
-          $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
+          $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->id);
         }
         $prefs = PrefectureController::getPrefs();
 
