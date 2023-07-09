@@ -24,7 +24,7 @@ class IndexRequest extends FormRequest
     public function rules()
     {
         return [
-            'pref' => 'nullable|string',
+            'prefecture_name' => 'nullable|string',
             'keyword' => 'nullable|string',
             'sort' => 'nullable|string',
             'num' => 'nullable|integer',

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('pref_id');
-            $table->foreign('pref_id')->references('id')->on('prefectures');
+            $table->unsignedBigInteger('prefecture_id');
+            $table->foreign('prefecture_id')->references('id')->on('prefectures');
             $table->string('spot', 30);
             $table->string('thing', 100);
             $table->timestamps();
@@ -34,8 +34,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('wishes', function (Blueprint $table) {
-          $table->dropForeign('wishes_user_id_foreign');
-          $table->dropForeign('wishes_pref_id_foreign');
+            $table->dropForeign('wishes_user_id_foreign');
+            $table->dropForeign('wishes_prefecture_id_foreign');
         });
         Schema::dropIfExists('wishes');
     }

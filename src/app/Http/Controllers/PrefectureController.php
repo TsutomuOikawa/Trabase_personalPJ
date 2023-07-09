@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\NoteController;
-use App\Http\Controllers\WishController;
+use App\Models\Prefecture;
 use Illuminate\Support\Facades\Auth;
 
 class PrefectureController extends Controller
@@ -14,28 +12,28 @@ class PrefectureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showPref($pref_id)
+    public function show($prefecture_id)
     {
-        if (ctype_digit($pref_id)) {
-          $data = $prefs->find($pref_id);
-          // ノートデータ
-          $query = NoteController::setNotesQuery();
-          $notes = $query->where('notes.pref_id', $pref_id)
-                          ->orderBy('note_id', 'DESC')
-                          ->limit(8)
-                          ->get();
-          foreach ($notes as $note) {
-            $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
-          }
+        if (ctype_digit($prefecture_id)) {
+            $data = Prefecture::find($prefecture_id);
+            // ノートデータ
+            $query = NoteController::setNotesQuery();
+            $notes = $query->where('notes.prefecture_id', $prefecture_id)
+                ->orderBy('note_id', 'DESC')
+                ->limit(8)
+                ->get();
+            foreach ($notes as $note) {
+                $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
+            }
 
-          $wishQuery = WishController::setWishesQuery();
-          $wishes = $wishQuery->where('wishes.pref_id', $pref_id)
-                              ->get();
+            $wishQuery = WishController::setWishesQuery();
+            $wishes = $wishQuery->where('wishes.prefecture_id', $prefecture_id)
+                ->get();
 
-          return view('prefecture')
-            ->with('data', $data)
-            ->with('notes', $notes)
-            ->with('wishes', $wishes);
+            return view('prefecture')
+                ->with('data', $data)
+                ->with('notes', $notes)
+                ->with('wishes', $wishes);
         }
     }
 }

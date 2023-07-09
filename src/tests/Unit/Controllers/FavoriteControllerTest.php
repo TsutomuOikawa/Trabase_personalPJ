@@ -10,7 +10,9 @@ class FavoriteControllerTest extends TestCase
 {
     /**
      * A basic unit test example.
+     *
      * @runInSeparateProcess
+     *
      * @return void
      */
     public function test_is_favorite()
@@ -20,9 +22,9 @@ class FavoriteControllerTest extends TestCase
         // モック
 
         $mock = Mockery::mock('alias:App\Models\Favorite');
-        $mock->shouldReceive('where->where->exists')->andReturn((object)[
-          'user_id' => 1,
-          'note_id' => 33
+        $mock->shouldReceive('where->where->exists')->andReturn((object) [
+            'user_id' => 1,
+            'note_id' => 33,
         ]);
 
         // trueになる処理

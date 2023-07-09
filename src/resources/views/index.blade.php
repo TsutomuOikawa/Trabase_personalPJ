@@ -12,7 +12,7 @@
       <section id="firstView" class="firstView">
         <h1 class="firstView_title js-hide-title">旅の情報を<br>集めよう</h1>
         <form class="firstView_form" action="{{ route('notes.index') }}" method="get">
-          <input type="text" name="pref" class="header_input" value="{{ old('pref') }}" placeholder="都道府県名を入力">
+          <input type="text" name="prefecture_name" class="header_input" value="{{ old('prefecture_name') }}" placeholder="都道府県名を入力">
           <input type="text" name="key" class="header_input" value="{{ old('key') }}" placeholder="キーワードを入力">
           <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
         </form>
@@ -71,32 +71,6 @@
       </div>
     </div>
   </section>
-<!-- 採用担当者様向け -->
-  <div class="modal js-message-to-recruiter">
-    <div class="modal_content" style="width: 80%;">
-      <p class="modal_header">採用ご担当者様</p>
-      <div class="dearRecruiters" style="
-        background: rgba(217, 217, 217, .4);
-        border-radius: 4px;
-        color: white;
-        padding: 20px;
-      ">
-        <p>
-          この度はTrabaseをご覧くださり、誠にありがとうございます。<br><br>
-          本サービスには各都道府県ごとのページ（~~~.com/pref/）がございますが、<br>
-          現状、全都道府県にコンテンツが入っているわけではございません。<br>
-          データのあるページは、下記をご参照ください。
-        </p>
-        <p style="margin:30px 0 20px; color: #cfb10e;"><a href="{{ route('pref', ['pref_id'=>2]) }}">青森（https://trabase-heroku.herokuapp.com/pref/2）</a></p>
-        <p>※都道府県別のページ以外は問題なくアクセスいただけます。</p>
-        <p>※サンプルアカウントのログイン情報は職務経歴書に記載がございます。</p>
-        <p style="padding-top:10px;">何卒よろしくお願いいたします。</p>
-      </div>
-      <p class="modal_action js-hide-message">閉じる</p>
-    </div>
-    <div class="modal_cover"></div>
-  </div>
-
 </main>
 @endsection
 

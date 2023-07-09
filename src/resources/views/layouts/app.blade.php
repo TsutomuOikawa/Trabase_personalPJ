@@ -13,19 +13,19 @@
   </head>
 
   <body>
-    @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'pref/'))
+    @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'prefectures/'))
     <header id="header" class="header js-change-header js-transparent">
     @else
     <header id="header" class="header">
     @endif
       <div class="header_inner">
         <a href="{{ route('index') }}" class="header_logo"><img src="{{ Storage::disk('s3')->url('assets/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
-        @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'pref/'))
+        @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'prefectures/'))
         <form action="{{ route('notes.index') }}" method="get" class="header_form js-change-header_form js-nonactive">
         @else
         <form action="{{ route('notes.index') }}" method="get" class="header_form">
         @endif
-          <input type="text" name="pref" class="header_input" value="" placeholder="都道府県名を入力">
+          <input type="text" name="prefecture_name" class="header_input" value="" placeholder="都道府県名を入力">
           <input type="text" name="keyword" class="header_input" value="" placeholder="キーワードを入力">
           <button type="submit" class="header_submit" name=""><i class="fa-solid fa-search fa-lg"></i></button>
         </form>
@@ -90,7 +90,7 @@
                 <tr>
                   <th>北海道・東北地方</th>
                   @foreach($prefectures as $prefecture)
-                  <td><a href="{{ route('pref', $prefecture['id']) }}">{{ $prefecture['name'] }}</a></td>
+                  <td><a href="{{ route('prefectures', $prefecture['id']) }}">{{ $prefecture['name'] }}</a></td>
                 @switch($prefecture['id'])
                 @case(7)
                 </tr>

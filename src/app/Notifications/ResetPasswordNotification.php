@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -32,19 +31,19 @@ class ResetPasswordNotification extends Notification
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
+     /**
+      * Get the mail representation of the notification.
+      *
+      * @param  mixed  $notifiable
+      * @return \Illuminate\Notifications\Messages\MailMessage
+      */
      public function toMail($notifiable)
      {
          return (new MailMessage)
-                     ->subject(config('app.name'). ' パスワードリセットURLの送付')
-                     ->greeting('いつもご利用頂きありがとうございます')
-                     ->action('パスワードリセット', $this->url)
-                     ->line('こちらからパスワードリセットを行ってください');
+             ->subject(config('app.name').' パスワードリセットURLの送付')
+             ->greeting('いつもご利用頂きありがとうございます')
+             ->action('パスワードリセット', $this->url)
+             ->line('こちらからパスワードリセットを行ってください');
      }
 
     /**
@@ -59,5 +58,4 @@ class ResetPasswordNotification extends Notification
             //
         ];
     }
-
 }

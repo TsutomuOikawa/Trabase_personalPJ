@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-
 class User extends Authenticatable
 {
     use HasApiTokens, SoftDeletes, HasFactory, Notifiable;
@@ -25,7 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
-        'intro'
+        'introduction',
     ];
 
     /**
@@ -47,20 +46,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function notes() {
-      return $this->hasMany(Note::class);
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
     }
-    public function comments() {
-      return $this->hasMany(Comment::class);
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
-    public function favorites() {
-      return $this->hasMany(Favorite::class);
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
-    public function wishes() {
-      return $this->hasMany(Wish::class);
+
+    public function wishes()
+    {
+        return $this->hasMany(Wish::class);
     }
-    public function constructions() {
-      return $this->hasMany(construction::class);
+
+    public function constructions()
+    {
+        return $this->hasMany(construction::class);
     }
 
     public function sendPasswordResetNotification($token)
@@ -68,5 +76,4 @@ class User extends Authenticatable
         $url = url("reset-password/${token}");
         $this->notify(new ResetPasswordNotification($url));
     }
-
 }

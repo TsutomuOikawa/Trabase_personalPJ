@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');            
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('note_id');
             $table->foreign('note_id')->references('id')->on('notes');
             $table->timestamps();
@@ -32,8 +32,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('favorites', function (Blueprint $table) {
-          $table->dropForeign('favorites_user_id_foreign');
-          $table->dropForeign('favorites_note_id_foreign');
+            $table->dropForeign('favorites_user_id_foreign');
+            $table->dropForeign('favorites_note_id_foreign');
         });
         Schema::dropIfExists('favorites');
     }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $data->pref_name)
+@section('title', $data->prefecture_name)
 @section('headerScript')
   <!-- splide -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
@@ -10,22 +10,22 @@
 
 @section('content')
 <main>
-  <section class="hero js-set-back" style="background-image: url( {{ Storage::disk('s3')->url('assets/hero/'.$data->pref_name.'.jpg') }} );">
+  <section class="hero js-set-back" style="background-image: url( {{ Storage::disk('s3')->url('assets/hero/'.$data->prefecture_name.'.jpg') }} );">
     <div class="js-header-change-target">
       <section class="firstView">
-        <h1 class="firstView_title--big js-hide-title">{{ $data->pref_name }}</h1>
+        <h1 class="firstView_title--big js-hide-title">{{ $data->prefecture_name }}</h1>
       </section>
       <section id="informations" class="container--transparent informations">
         <h2 class="container_title">旅の情報</h2>
         <div class="container_body">
           <div class="list--wish">
-            <h3 class="list_title">{{ $data->pref_name }}の人気スポット・体験</h3>
+            <h3 class="list_title">{{ $data->prefecture_name }}の人気スポット・体験</h3>
             @component('components.wishLists',
               ['wishes' => $wishes, 'mine' => false])
             @endcomponent
           </div>
           <div class="informations_map">
-            <h3 class="list_title">{{ $data->pref_name }}のマップ</h3>
+            <h3 class="list_title">{{ $data->prefecture_name }}のマップ</h3>
             <div id="googleMap" class="informations_google"></div>
           </div>
         </div>
@@ -36,7 +36,7 @@
     @endcomponent
   </section>
   <section id="prefNotes" class="prefNotes container">
-    <h2 class="container_title">{{ $data->pref_name }}の最新の記録</h2>
+    <h2 class="container_title">{{ $data->prefecture_name }}の最新の記録</h2>
     <div class="container_body">
       <div class="list--note">
         <ul class="list_body--note">
@@ -75,9 +75,9 @@
              <span class="form_label form_label--required">必須</span>
              都道府県
            </div>
-           <select name="pref_id" class="form_input @error('pref_id') form_input--err @enderror js-get-note-pref" >
+           <select name="prefecture_id" class="form_input @error('prefecture_id') form_input--err @enderror js-get-note-pref" >
            @foreach($prefectures as $prefecture)
-              <option value="{{ $prefecture->pref_id }}" @if(old('pref_id') === $prefecture->pref_id) selected @elseif($data->pref_id === $prefecture->pref_id) selected @endif>{{ $prefecture->pref_name }}</option>
+              <option value="{{ $prefecture['id'] }}" @if(old('prefecture_id') === $prefecture['id']) selected @elseif($data->prefecture_id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
            @endforeach
            </select>
          </label>

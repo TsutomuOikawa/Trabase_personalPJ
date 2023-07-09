@@ -57,9 +57,9 @@
                 <span class="form_label form_label--optional">任意</span>
                 コメント
               </div>
-              <input type="text" name="intro" class="form_input @error('intro') form_input--err @enderror" value="@if(old('intro')) {{ old('intro') }} @else {{ $user->intro }} @endif">
+              <input type="text" name="introduction" class="form_input @error('introduction') form_input--err @enderror" value="@if(old('introduction')) {{ old('introduction') }} @else {{ $user->introduction }} @endif">
             </label>
-            <p class="form_errMsg">{{ $errors->first('intro') }}</p>
+            <p class="form_errMsg">{{ $errors->first('introduction') }}</p>
             <button type="submit" class="form_button" name="">更新する</button>
           </form>
         </div>

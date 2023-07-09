@@ -1,4 +1,4 @@
-const regex = new RegExp('^/$|^/mypage/?$|^/pref/[1-9]+[0-9/]*$');
+const regex = new RegExp('^/$|^/mypage/?$|^/prefectures/[1-9]+[0-9/]*$');
 let path = location.pathname;
 
 export function makeSlider() {

@@ -11,23 +11,30 @@ class Note extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-      'user_id',
-      'pref_id',
-      'title',
-      'thumbnail',
-      'text'
+        'user_id',
+        'prefecture_id',
+        'title',
+        'thumbnail',
+        'content',
     ];
 
-    public function user() {
-      return $this->belongsTo(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function prefecture() {
-      return $this->belongsTo(Prefecture::class, 'pref_id', 'id');
+
+    public function prefecture()
+    {
+        return $this->belongsTo(Prefecture::class);
     }
-    public function comments() {
-      return $this->hasMany(Comment::class);
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
-    public function favorites() {
-      return $this->hasMany(Favorite::class);
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

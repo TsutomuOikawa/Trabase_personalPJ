@@ -13,41 +13,36 @@ class IndexAction
             'user',
             'prefecture',
         ])
-        ->withCount([
-            'favorites' => function(Builder $query) {
-                $query->groupBy('favorites.user_id', 'favorites.note_id');
-            },
-            'comments' => function(Builder $query) {
-                $query->groupBy('comments.note_id');
-            },
-        ])
-        ->where('notes.deleted_at', null)
+            ->withCount([
+                'favorites' => function (Builder $query) {
+                    $query->groupBy('favorites.user_id', 'favorites.note_id');
+                },
+                'comments' => function (Builder $query) {
+                    $query->groupBy('comments.note_id');
+                },
+            ])
+            ->where('notes.deleted_at', null)
 
         // 検索条件セット
-        ->when(isset($params['pref']), fn($query) => $query->where('pref_name', 'like', "%{$params['pref']}%"))
-        ->when(isset($params['keyword']), fn($query) => $query->where( fn($query) =>
-            $query->where('title', 'like', "%{$params['keyword']}%")
-                ->orWhere('text', 'like', "%{$params['keyword']}%")
+            ->when(isset($params['prefecture_name']), fn ($query) => $query->where('prefectures.name', 'like', "%{$params['prefecture_name']}%"))
+            ->when(isset($params['keyword']), fn ($query) => $query->where(fn ($query) => $query->where('title', 'like', "%{$params['keyword']}%")
+                ->orWhere('content', 'like', "%{$params['keyword']}%")
             )
-        );
+            );
 
         if (isset($params['sort']) && $params['sort'] === 'bookmarks') {
             $query->orderBy('favNum', 'DESC');
-        }
-        elseif (isset($params['sort']) && $params['sort'] === 'comments') {
+        } elseif (isset($params['sort']) && $params['sort'] === 'comments') {
             $query->orderBy('comNum', 'DESC');
-        }
-        else {
+        } else {
             $query->orderBy('notes.created_at', 'DESC');
         }
 
         if (isset($params['num']) && $params['num'] === '20') {
             $notes = $query->paginate(20)->withQueryString();
-        }
-        elseif (isset($params['num']) && $params['num'] === '30') {
+        } elseif (isset($params['num']) && $params['num'] === '30') {
             $notes = $query->paginate(30)->withQueryString();
-        }
-        else {
+        } else {
             $notes = $query->paginate(10)->withQueryString();
         }
 

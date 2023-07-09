@@ -11,15 +11,18 @@ class Comment extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-      'note_id',
-      'user_id',
-      'comment'
+        'note_id',
+        'user_id',
+        'content',
     ];
 
-    public function note() {
-      return $this->belongsTo(Note::class);
+    public function note()
+    {
+        return $this->belongsTo(Note::class);
     }
-    public function user() {
-      return $this->belongsTo(User::class);
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -11,18 +11,21 @@ class Construction extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-      'user_id',
-      'pref_id',
-      'place',
-      'matter',
-      'long',
-      'completed'
+        'user_id',
+        'pref_id',
+        'place',
+        'matter',
+        'long',
+        'completed',
     ];
 
-    public function user() {
-      return $this->belongsTo(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function prefecture() {
-      return $this->belongsTo(Prefecture::class);
+
+    public function prefecture()
+    {
+        return $this->belongsTo(Prefecture::class);
     }
 }
