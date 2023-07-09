@@ -18,8 +18,8 @@
         @endforeach
 
       @else
-        @foreach($prefs as $pref)
-          <li class="splide__slide"><img src="{{ Storage::disk('s3')->url('assets/hero/'.$pref->name.'.jpg') }}" class="splide_img" alt="{{ $pref->name }}のイメージ写真"></li>
+        @foreach($prefectures as $prefecture)
+          <li class="splide__slide"><img src="{{ Storage::disk('s3')->url('assets/hero/'.$prefecture['name'].'.jpg') }}" class="splide_img" alt="{{ $prefecture['name'] }}のイメージ写真"></li>
         @endforeach
       @endif
     </ul>
