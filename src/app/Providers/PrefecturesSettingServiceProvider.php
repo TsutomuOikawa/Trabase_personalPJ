@@ -25,7 +25,7 @@ class PrefecturesSettingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*', function($view) {
+        View::composer('*', function ($view) {
             $view->with('prefectures', Prefecture::get(['id', 'name'])->toArray());
         });
     }

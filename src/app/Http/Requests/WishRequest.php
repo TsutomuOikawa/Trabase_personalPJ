@@ -24,9 +24,9 @@ class WishRequest extends FormRequest
     public function rules()
     {
         return [
-            'pref_id' => 'required|integer|max:47',
+            'prefecture_id' => 'required|integer|max:47',
             'spot' => 'required|string|max:30',
-            'thing' => 'nullable|string|max:100'
+            'thing' => 'nullable|string|max:100',
         ];
     }
 }

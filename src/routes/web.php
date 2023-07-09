@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ホーム
-Route::get('/', \App\Http\Controllers\IndexController::class) -> name('index');
+Route::get('/', \App\Http\Controllers\IndexController::class)->name('index');
 // 都道府県別ページ
-Route::get('/pref/{pref_id}', [\App\Http\Controllers\PrefectureController::class, 'showPref'])->where('pref_id', '^([1-9]|[1-3][0-9]|4[0-7])$')->name('pref');
+Route::get('/prefectures/{prefecture_id}', [\App\Http\Controllers\PrefectureController::class, 'show'])->where('prefecture_id', '^([1-9]|[1-3][0-9]|4[0-7])$')->name('prefectures');
 
 // ノート関連
-Route::controller(NoteController::class)->group(function() {
+Route::controller(NoteController::class)->group(function () {
     // ノート一覧画面
     Route::get('/notes', 'index')->name('notes.index');
     // ノート詳細閲覧

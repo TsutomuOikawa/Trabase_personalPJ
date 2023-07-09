@@ -5,7 +5,7 @@
     <main class="page-wrapper">
       <div class="container--baseColor">
         <h1 class="container_title">
-          @if(request()->query('pref')) {{ request()->query('pref') }} の @endif @if(request()->query('keyword'))「{{ request()->query('keyword') }}」を含む @endifノート一覧
+          @if(request()->query('prefecture_name')) {{ request()->query('prefecture_name') }} の @endif @if(request()->query('keyword'))「{{ request()->query('keyword') }}」を含む @endifノート一覧
         </h1>
         <div class="container_body--l">
           <div class="searchMenu">
@@ -15,11 +15,11 @@
             </div>
             <div class="searchMenu_item">
               <div class="searchMenu_sort">
-                <a href="/notes?pref={{request()->query('pref')}}&keyword={{request()->query('keyword')}}&sort=new" class="js-set-link">新着順</a>
+                <a href="/notes?prefecture_name={{request()->query('prefecture_name')}}&keyword={{request()->query('keyword')}}&sort=new" class="js-set-link">新着順</a>
                 <span class="itemSeparater"></span>
-                <a href="/notes?pref={{request()->query('pref')}}&keyword={{request()->query('keyword')}}&sort=bookmarks" class="js-set-link">ブックマーク数順</a>
+                <a href="/notes?prefecture_name={{request()->query('prefecture_name')}}&keyword={{request()->query('keyword')}}&sort=bookmarks" class="js-set-link">ブックマーク数順</a>
                 <span class="itemSeparater"></span>
-                <a href="/notes?pref={{request()->query('pref')}}&keyword={{request()->query('keyword')}}&sort=comments" class="js-set-link">コメント数順</a>
+                <a href="/notes?prefecture_name={{request()->query('prefecture_name')}}&keyword={{request()->query('keyword')}}&sort=comments" class="js-set-link">コメント数順</a>
               </div>
               <div>
                 表示件数：

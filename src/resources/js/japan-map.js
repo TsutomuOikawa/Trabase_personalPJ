@@ -24,7 +24,7 @@ $(function() {
         $('.js-insert-pref').text(data.name);
       },
       onSelect: function(data) {
-        window.location = 'pref/' + data.code;
+        window.location = 'prefectures/' + data.code;
       }
     });
 
@@ -40,7 +40,7 @@ $(function() {
 
     // マイページのノートから旅行済みの県を取得
     $('.js-get-visited').children().each( function () {
-      visited = Number( $(this).data('pref') );
+      visited = Number( $(this).data('prefecture') );
       areas[1].prefectures.push(visited);
     });
     // 未旅行の県を取得
@@ -57,13 +57,13 @@ $(function() {
       onSelect: function(data){
         switch (data.area.code) {
           case 0:
-            window.location = '/pref/' + data.code;
+            window.location = '/prefectures/' + data.code;
             break;
 
           case 1:
             let modal = $('.js-modal');
             let html = '<ul class="modal_list">', links = [];
-            $('.mypage_contents:eq(1)').find('[data-pref=' + data.code + ']').each( function () {
+            $('.mypage_contents:eq(1)').find('[data-prefecture=' + data.code + ']').each( function () {
               let $this = $(this);
               links.push('<li class="modal_action"><a href="'+ $this.children('a').attr('href') +'">'+ $this.find('.panel_title').text() +'</a></li>');
             });

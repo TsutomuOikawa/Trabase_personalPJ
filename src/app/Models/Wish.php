@@ -11,16 +11,19 @@ class Wish extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-      'user_id',
-      'pref_id',
-      'spot',
-      'thing'
+        'user_id',
+        'prefecture_id',
+        'spot',
+        'thing',
     ];
 
-    public function user() {
-      return $this->belongsTo(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function prefecture() {
-      return $this->belongsTo(Prefecture::class);
+
+    public function prefecture()
+    {
+        return $this->belongsTo(Prefecture::class);
     }
 }

@@ -72,7 +72,7 @@
                 <img src="{{ $user->avatar }}" class="userInfo_img userInfo_img--big" alt="{{ $user->name.'さんのプロフィール画像' }}">
               @endif
               <p class="userInfo_name userInfo_name--big">@if($user->name){{ $user->name }} @else 匿名ユーザー @endif</p>
-              <p class="userInfo_intro">{{ $user->intro }}</p>
+              <p class="userInfo_intro">{{ $user->introduction }}</p>
             </div>
           </div>
           <ul class="sidebar_menu">

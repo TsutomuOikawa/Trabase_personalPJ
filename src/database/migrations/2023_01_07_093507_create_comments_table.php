@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('note_id')->references('id')->on('notes');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('comment', 200);
+            $table->string('content', 200);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,8 +33,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('comments', function (Blueprint $table) {
-          $table->dropForeign('comments_note_id_foreign');
-          $table->dropForeign('comments_user_id_foreign');
+            $table->dropForeign('comments_note_id_foreign');
+            $table->dropForeign('comments_user_id_foreign');
         });
         Schema::dropIfExists('comments');
     }

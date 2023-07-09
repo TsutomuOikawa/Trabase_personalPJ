@@ -9,8 +9,8 @@
           @endif
         @endforeach
 
-      @elseif(strpos($_SERVER['REQUEST_URI'], 'pref/'))
-        <li class="splide__slide"><img src="{{ Storage::disk('s3')->url('assets/hero/'.$data->pref_name.'.jpg') }}" class="splide_img" alt="{{ $data->pref_name }}のイメージ写真"></li>
+      @elseif(strpos($_SERVER['REQUEST_URI'], 'prefectures/'))
+        <li class="splide__slide"><img src="{{ Storage::disk('s3')->url('assets/hero/'.$data->prefecture_name.'.jpg') }}" class="splide_img" alt="{{ $data->prefecture_name }}のイメージ写真"></li>
         @foreach($notes as $note)
           @if($note->thumbnail)
             <li class="splide__slide"><img src="{{ asset($note->thumbnail) }}" class="splide_img" alt="{{ $note->title }}"></li>

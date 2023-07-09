@@ -12,7 +12,6 @@ class PasswordController extends Controller
     /**
      * Update the user's password.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
@@ -27,6 +26,7 @@ class PasswordController extends Controller
         ]);
 
         session()->flash('session_success', 'パスワードを変更しました');
+
         return redirect()->route('mypage')->with('status', 'password-updated');
     }
 }

@@ -44,19 +44,19 @@
 						<img src="{{ $note->thumbnail }}" alt="" class="note_thumbnail js-get-height">
 						<h1 class="note_title">{{ $note->title }}</h1>
 						<div class="note_text">
-						@foreach($note->text['blocks'] as $text)
-							@if($text['type'] === 'header')
-								<h{{ $text['data']['level'] }} id="{{ $text['data']['text'] }}" class="note_h{{ $text['data']['level'] }}">{{ $text['data']['text'] }}</h{{ $text['data']['level'] }}>
-							@elseif($text['type'] === 'paragraph')
-								<p class="note_paragraph">{!! $text['data']['text'] !!}</p>
-							@elseif($text['type'] === 'list')
+						@foreach($note->content['blocks'] as $block)
+							@if($block['type'] === 'header')
+								<h{{ $block['data']['level'] }} id="{{ $block['data']['text'] }}" class="note_h{{ $block['data']['level'] }}">{{ $block['data']['text'] }}</h{{ $block['data']['level'] }}>
+							@elseif($block['type'] === 'paragraph')
+								<p class="note_paragraph">{!! $block['data']['text'] !!}</p>
+							@elseif($block['type'] === 'list')
 
-							@if($text['data']['style'] === 'ordered')
+							@if($block['data']['style'] === 'ordered')
 								<ul class="note_list" style="list-style: decimal inside;">
-							@elseif($text['data']['style'] === 'unordered')
+							@elseif($block['data']['style'] === 'unordered')
 								<ul class="note_list" style="list-style: disc inside;">
 							@endif
-								@foreach($text['data']['items'] as $item)
+								@foreach($block['data']['items'] as $item)
 									<li>{{ $item }}</li>
 								@endforeach
 								</ul>
@@ -79,7 +79,7 @@
 									<p class="userInfo_name">@if($comment->user->name){{ $comment->user->name }} @else 匿名ユーザー @endif</p>
 									<p class="userInfo_date">{{ date('y/m/d', strtotime($comment->created_at)); }}投稿</p>
 								</div>
-								<p class="comments_text">{{ $comment->comment }}</p>
+								<p class="comments_text">{{ $comment->content }}</p>
 							</li>
 						@endforeach
 						</ul>
@@ -116,9 +116,9 @@
 									<span class="form_label form_label--required">必須</span>
 									都道府県
 								</div>
-								<select name="pref_id" class="form_input @error('pref_id') form_input--err @enderror js-get-note-pref" >
+								<select name="prefecture_id" class="form_input @error('prefecture_id') form_input--err @enderror js-get-note-pref" >
 								@foreach($prefectures as $prefecture)
-									<option value="{{ $prefecture['id'] }}" @if(old('pref_id') === $prefecture['id']) selected @elseif($note->pref_id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
+									<option value="{{ $prefecture['id'] }}" @if(old('prefecture_id') === $prefecture['id']) selected @elseif($note->prefecture_id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
 								@endforeach
 								</select>
 							</label>
@@ -160,16 +160,16 @@
 								<img src="{{ asset($note->avatar)}}" class="userInfo_img userInfo_img--big" alt="{{ $note->name.'さんのプロフィール画像' }}">
 							@endif
 								<p class="userInfo_name userInfo_name--big">@if($note->name){{ $note->name }} @else 匿名ユーザー @endif</p>
-								<p class="userInfo_intro">{{ $note->intro }}</p>
+								<p class="userInfo_intro">{{ $note->introduction }}</p>
 							</div>
 						</div>
 						<div class="sidebar_summary">
 							<p class="sidebar_title">{{ $note->title }}</p>
 							<p class="sidebar_date">{{ date('y/m/d', strtotime($note->created_at)); }} 投稿</p>
 							<ul class="sidebar_chapters">
-							@foreach($note->text['blocks'] as $text)
-								@if($text['type'] === 'header')
-								<li><a href="#{{ $text['data']['text'] }}">{{ $text['data']['text'] }}</a></li>
+							@foreach($note->content['blocks'] as $block)
+								@if($block['type'] === 'header')
+								<li><a href="#{{ $block['data']['text'] }}">{{ $block['data']['text'] }}</a></li>
 								@endif
 							@endforeach
 							</ul>

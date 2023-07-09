@@ -11,15 +11,17 @@ class Favorite extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-      'user_id',
-      'note_id'
+        'user_id',
+        'note_id',
     ];
 
-    public function user() {
-      return $this->belongsTo(User::class);
-    }
-    public function note() {
-      return $this->belongsTo(Note::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
+    public function note()
+    {
+        return $this->belongsTo(Note::class);
+    }
 }

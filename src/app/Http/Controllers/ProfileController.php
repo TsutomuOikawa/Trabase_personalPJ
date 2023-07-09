@@ -8,24 +8,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
-
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
     public function edit(Request $request)
     {
-        return view('profile.edit', ['user' => $request->user(),]);
+        return view('profile.edit', ['user' => $request->user()]);
     }
 
     /**
      * Update the user's profile information.
      *
-     * @param  \App\Http\Requests\ProfileUpdateRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ProfileUpdateRequest $request)
@@ -33,7 +30,7 @@ class ProfileController extends Controller
         $request->user()->fill($request->validated());
 
         // アバター画像をstorage/app/publicに保存し、パスを返す
-        if($request->file('avatar')) {
+        if ($request->file('avatar')) {
             $dir = 'avatar';
             // s3のdirに保存
             $path = Storage::disk('s3')->putFile($dir, $request->file('avatar'), 'public');
@@ -59,7 +56,6 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)

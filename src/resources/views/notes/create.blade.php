@@ -49,17 +49,17 @@
 					<span class="form_label form_label--required">必須</span>
 					旅先
 				</div>
-				<select name="pref_id" class="form_input form_input--half @error('id') form_input--err @enderror js-get-note-pref" >
+				<select name="prefecture_id" class="form_input form_input--half @error('id') form_input--err @enderror js-get-note-pref" >
 					@foreach($prefectures as $prefecture)
 						@if($editMode)
-							<option value="{{ $prefecture['id'] }}" @if(old('pref_id') === $prefecture['id']) selected @elseif($note->id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
+							<option value="{{ $prefecture['id'] }}" @if(old('prefecture_id') === $prefecture['id']) selected @elseif($note->id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
 						@else
-							<option value="{{ $prefecture['id'] }}" {{ (old('pref_id') === $prefecture['id']) ? 'selected' : '' }} >{{ $prefecture['name'] }}</option>
+							<option value="{{ $prefecture['id'] }}" {{ (old('prefecture_id') === $prefecture['id']) ? 'selected' : '' }} >{{ $prefecture['name'] }}</option>
 						@endif
 					@endforeach
 				</select>
             </label>
-            <p class="form_errMsg">@error('pref_id') {{ $message }} @enderror</p>
+            <p class="form_errMsg">@error('prefecture_id') {{ $message }} @enderror</p>
 
             <label>
 				<div class="form_name">
@@ -68,7 +68,7 @@
 				</div>
 				<div id="editor" class="form_editor"></div>
             </label>
-            <p class="form_errMsg">@error('text') {{ $message }} @enderror</p>
+            <p class="form_errMsg">@error('content') {{ $message }} @enderror</p>
             <button type="button" class="form_button js-save-note">@if($editMode) 更新する @else 投稿する @endif</button>
           </form>
         </div>
