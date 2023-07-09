@@ -26,7 +26,7 @@
       </section>
     </div>
       @component('components.slider',
-        ['prefs' => $prefs])
+        ['prefectures' => $prefectures])
       @endcomponent
   </section>
   <section id="search" class="search container--baseColor">

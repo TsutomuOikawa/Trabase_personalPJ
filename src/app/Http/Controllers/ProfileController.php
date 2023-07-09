@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prefecture;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +19,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        $prefs = Prefecture::all();
-        return view('profile.edit', ['user' => $request->user(),])
-          ->with('prefs', $prefs);
+        return view('profile.edit', ['user' => $request->user(),]);
     }
 
     /**

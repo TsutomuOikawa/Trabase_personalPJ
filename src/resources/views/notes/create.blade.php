@@ -50,11 +50,11 @@
 					旅先
 				</div>
 				<select name="pref_id" class="form_input form_input--half @error('id') form_input--err @enderror js-get-note-pref" >
-					@foreach($prefs as $pref)
+					@foreach($prefectures as $prefecture)
 						@if($editMode)
-							<option value="{{ $pref->id }}" @if(old('pref_id') === $pref->id) selected @elseif($note->id === $pref->id) selected @endif>{{ $pref->name }}</option>
+							<option value="{{ $prefecture['id'] }}" @if(old('pref_id') === $prefecture['id']) selected @elseif($note->id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
 						@else
-							<option value="{{ $pref->id }}" {{ (old('pref_id') === $pref->id) ? 'selected' : '' }} >{{ $pref->name }}</option>
+							<option value="{{ $prefecture['id'] }}" {{ (old('pref_id') === $prefecture['id']) ? 'selected' : '' }} >{{ $prefecture['name'] }}</option>
 						@endif
 					@endforeach
 				</select>

@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\PrefectureController;
 use App\Http\Requests\NoteRequest;
 use App\Http\Requests\Notes\IndexRequest;
 use App\Http\Requests\Notes\StoreRequest;
-use App\Models\Comment;
-use App\Models\Favorite;
 use App\Models\Note;
-use App\Models\Prefecture;
 use App\UseCases\Notes\IndexAction;
 use App\UseCases\Notes\ShowAction;
 use App\UseCases\Notes\StoreAction;
@@ -50,8 +45,7 @@ class NoteController extends Controller
 	public function index(IndexRequest $request, IndexAction $action)
 	{
 		$notes = $action($request->validated());
-		$prefs = Prefecture::all();
-		return view('notes.index', compact('notes', 'prefs'));
+		return view('notes.index', compact('notes'));
 	}
 
 	// 登録
@@ -64,28 +58,23 @@ class NoteController extends Controller
 	// 詳細
 	public function show(Request $request, ShowAction $action) {
 		$note = $action($request->route('note_id'));
-		$prefs = Prefecture::all();
 
-		return view('notes.show', compact('note', 'prefs'));
+		return view('notes.show', compact('note'));
 	}
 
   // ノート新規作成画面
   public function new() {
-	$prefs = Prefecture::all();
 	return view('notes.create')
-	  ->with('editMode', false)
-	  ->with('prefs', $prefs);
+	  ->with('editMode', false);
   }
 
   // ノート編集画面表示
   public function edit($note_id) {
 	$note = Note::find($note_id);
-	$prefs = Prefecture::all();
 
 	return view('notes.create')
 	  ->with('editMode', true)
-	  ->with('note', $note)
-	  ->with('prefs', $prefs);
+	  ->with('note', $note);
   }
 
   // テキストデータ取得

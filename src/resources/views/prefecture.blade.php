@@ -51,7 +51,7 @@
     <h2 class="container_title">行き先を変える</h2>
     <div class="container_body">
       @component('components.destinations',
-        ['tag' => 'h3', 'prefs' => $prefs])
+        ['tag' => 'h3', 'prefectures' => $prefectures])
       @endcomponent
     </div>
   </section>
@@ -76,8 +76,8 @@
              都道府県
            </div>
            <select name="pref_id" class="form_input @error('pref_id') form_input--err @enderror js-get-note-pref" >
-           @foreach($prefs as $pref)
-              <option value="{{ $pref->pref_id }}" @if(old('pref_id') === $pref->pref_id) selected @elseif($data->pref_id === $pref->pref_id) selected @endif>{{ $pref->pref_name }}</option>
+           @foreach($prefectures as $prefecture)
+              <option value="{{ $prefecture->pref_id }}" @if(old('pref_id') === $prefecture->pref_id) selected @elseif($data->pref_id === $prefecture->pref_id) selected @endif>{{ $prefecture->pref_name }}</option>
            @endforeach
            </select>
          </label>
