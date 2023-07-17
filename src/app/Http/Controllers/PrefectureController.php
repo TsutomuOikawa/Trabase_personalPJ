@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prefecture;
-use Illuminate\Support\Facades\Auth;
+use App\UseCases\Prefecture\ShowAction;
+use Illuminate\Http\Request;
 
 class PrefectureController extends Controller
 {
@@ -12,28 +12,9 @@ class PrefectureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($prefecture_id)
+    public function show(Request $request, ShowAction $action)
     {
-        if (ctype_digit($prefecture_id)) {
-            $data = Prefecture::find($prefecture_id);
-            // ノートデータ
-            $query = NoteController::setNotesQuery();
-            $notes = $query->where('notes.prefecture_id', $prefecture_id)
-                ->orderBy('note_id', 'DESC')
-                ->limit(8)
-                ->get();
-            foreach ($notes as $note) {
-                $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->note_id);
-            }
-
-            $wishQuery = WishController::setWishesQuery();
-            $wishes = $wishQuery->where('wishes.prefecture_id', $prefecture_id)
-                ->get();
-
-            return view('prefecture')
-                ->with('data', $data)
-                ->with('notes', $notes)
-                ->with('wishes', $wishes);
-        }
+        $prefecture = $action($request->prefecture_id);
+        return view('prefectures.show', compact('prefecture'));
     }
 }

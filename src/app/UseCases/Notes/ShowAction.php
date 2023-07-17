@@ -26,7 +26,7 @@ class ShowAction
             ->where('notes.deleted_at', null);
 
         $note = $query->first();
-        $note->content = json_decode(note->content, true);
+        $note->content = json_decode($note->content, true);
 
         // TODO:お気に入り状況チェック
         return $note;

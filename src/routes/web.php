@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\NoteController;
+USE App\Http\Controllers\PrefectureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WishController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 // ホーム
 Route::get('/', \App\Http\Controllers\IndexController::class)->name('index');
 // 都道府県別ページ
-Route::get('/prefectures/{prefecture_id}', [\App\Http\Controllers\PrefectureController::class, 'show'])->where('prefecture_id', '^([1-9]|[1-3][0-9]|4[0-7])$')->name('prefectures');
+Route::get('/prefectures/{prefecture_id}', [PrefectureController::class, 'show'])->where('prefecture_id', '^([1-9]|[1-3][0-9]|4[0-7])$')->name('prefectures.show');
 
 // ノート関連
 Route::controller(NoteController::class)->group(function () {
