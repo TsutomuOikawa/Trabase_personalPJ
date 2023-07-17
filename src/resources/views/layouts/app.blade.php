@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ Storage::disk('s3')->url('assets/trabase_favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <title>@yield('title')｜Trabase（トラベス）</title>
+    <title>@yield('title')｜Trabase -トラベス-</title>
     @yield('headerScript')
     <!-- Scripts -->
     @vite(['resources/css/reset.css', 'resources/sass/app.scss'])
@@ -70,13 +70,6 @@
       <div class="footer_wrapper">
         <nav class="footer_nav">
           <div class="footer_navItem">
-            <p class="footer_category">運営</p>
-            <ul>
-              <li class="footer_detail"><a href="https://github.com/TsutomuOikawa">運営者情報</a></li>
-              <!-- <li class="footer_detail">利用規約</li> -->
-            </ul>
-          </div>
-          <div class="footer_navItem">
             <p class="footer_category">ノート</p>
             <ul>
               <li class="footer_detail"><a href="{{ route('notes.index') }}">一覧ページ</a></li>
@@ -129,9 +122,17 @@
             </table>
           </div>
           <div class="footer_navItem">
-            <p class="footer_category">お問い合せ</p>
-            <textarea name="inquiry" class="footer_form">現在はご利用いただけません</textarea>
-            <button type="button" class="footer_submit">送信する</button>
+            <p class="footer_category">運営</p>
+            <ul>
+              <li class="footer_detail">
+                <a href="https://github.com/TsutomuOikawa" target="_blank" rel="noopener noreferrer"><i class="fa-sharp fa-solid fa-up-right-from-square" style="margin-right:5px;"></i>運営者情報</a>
+              </li>
+              <!-- <li class="footer_detail">利用規約</li> -->
+              {{-- TODO:埋め込み形式に変更 --}}
+              <li class="footer_detail">
+                <a href="https://forms.gle/C1KuHcvwuX7UxF6V6" target="_blank" rel="noopener noreferrer"><i class="fa-sharp fa-solid fa-up-right-from-square" style="margin-right:5px;"></i>お問合せ</a>
+              </li>
+            </ul>
           </div>
         </nav>
         <small class="footer_copyright"> Copyright @ Trabase <br>All Rights Reserved </small>
