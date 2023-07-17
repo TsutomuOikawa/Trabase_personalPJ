@@ -90,7 +90,7 @@
                 <tr>
                   <th>北海道・東北地方</th>
                   @foreach($prefectures as $prefecture)
-                  <td><a href="{{ route('prefectures', $prefecture['id']) }}">{{ $prefecture['name'] }}</a></td>
+                  <td><a href="{{ route('prefectures.show', $prefecture['id']) }}">{{ $prefecture['name'] }}</a></td>
                 @switch($prefecture['id'])
                 @case(7)
                 </tr>

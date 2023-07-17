@@ -2,7 +2,7 @@
   <{{ $tag }} class="list_title js-switch-toggle-list"><i class="fa-solid fa-square-minus"></i>北海道・東北</{{ $tag }}>
   <div class="list_body--destination js-toggle-list js-active">
   @foreach($prefectures as $prefecture)
-    <a href="{{ route('prefectures', $prefecture['id']) }}" class="panel--destination js-change-back">
+    <a href="{{ route('prefectures.show', $prefecture['id']) }}" class="panel--destination js-change-back">
       <img src="{{ Storage::disk('s3')->url("assets/hero/$prefecture[name].jpg") }}" class="panel_destImg" alt="{{ "$prefecture[name]のイメージ写真" }}">
       <span class="panel_destCover">
         <span class="panel_destName">{{ $prefecture['name'] }}</span>
