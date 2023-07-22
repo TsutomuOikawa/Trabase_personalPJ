@@ -49,7 +49,7 @@
           @auth
           <ul class="menu">
             <li class="menu_item"><a href="{{ route('notes.new') }}" class="menu_item_link"><i class="fa-solid fa-pen-to-square fa-lg"></i>TakeNotes</a></li>
-            <li class="menu_item"><a href="{{ route('mypage') }}" class="menu_item_link"><i class="fa-solid fa-user"></i>Mypage</a></li>
+            <li class="menu_item"><a href="{{ route('mypage.show', Auth::id()) }}" class="menu_item_link"><i class="fa-solid fa-user"></i>Mypage</a></li>
           </ul>
           @endauth
         </nav>

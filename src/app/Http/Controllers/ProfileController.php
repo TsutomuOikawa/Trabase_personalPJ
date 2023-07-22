@@ -50,7 +50,7 @@ class ProfileController extends Controller
         $request->user()->save();
         session()->flash('session_success', 'プロフィールを更新しました');
 
-        return Redirect::route('mypage')->with('status', 'profile-updated');
+        return Redirect::route('mypage.show', Auth::id())->with('status', 'profile-updated');
     }
 
     /**

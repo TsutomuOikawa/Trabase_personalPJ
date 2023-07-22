@@ -45,6 +45,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('mypage');
+        return redirect()->route('mypage.show', Auth::id());
     }
 }

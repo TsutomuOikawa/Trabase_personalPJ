@@ -42,15 +42,4 @@ class WishController extends Controller
             return back();
         }
     }
-
-    public static function setWishesQuery()
-    {
-        $query = DB::table('wishes')
-            ->leftJoin('users', 'wishes.user_id', '=', 'users.id')
-            ->leftJoin('prefectures', 'wishes.prefecture_id', '=', 'prefectures.id')
-            ->select('wishes.*', 'users.name', 'users.avatar', 'prefectures.name')
-            ->where('wishes.deleted_at', null);
-
-        return $query;
-    }
 }
