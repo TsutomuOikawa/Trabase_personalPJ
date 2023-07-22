@@ -40,7 +40,7 @@
             <div class="list--note">
               <ul class="list_body--scrollNote js-get-visited">
                 @component('components.notes',
-                  ['notes' => $myNotes])
+                  ['notes' => $user->notes])
                 @endcomponent
               </ul>
             </div>
@@ -48,7 +48,7 @@
           <section id="wishLists" class="mypage_contents js-show-contents">
             <div class="list--wish">
               @component('components.wishLists',
-                ['wishes' => $wishes, 'mine' => true])
+                ['wishes' => $user->wishes, 'mine' => true])
               @endcomponent
             </div>
           </section>
@@ -56,7 +56,7 @@
             <div class="list--note">
               <ul class="list_body--scrollNote">
                 @component('components.notes',
-                  ['notes' => $favNotes])
+                  ['notes' => $user->favoriteNotes])
                 @endcomponent
               </ul>
             </div>
@@ -91,7 +91,7 @@
     </div>
   </div>
   @component('components.slider',
-   ['notes' => $myNotes])
+   ['notes' => $user->notes])
   @endcomponent
 </main>
 

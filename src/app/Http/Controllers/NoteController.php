@@ -121,7 +121,7 @@ class NoteController extends Controller
             // フラッシュメッセージ追加
             session()->flash('session_success', '投稿を削除しました');
 
-            return redirect()->route('mypage');
+            return redirect()->route('mypage.show', Auth::id());
 
         } else {
             // ログインユーザーとノートの筆者が一致しないためエラー（発生しない想定）

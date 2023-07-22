@@ -33,8 +33,8 @@ class Note extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function favorites()
+    public function favoriteUsers()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(User::class, 'favorites');
     }
 }

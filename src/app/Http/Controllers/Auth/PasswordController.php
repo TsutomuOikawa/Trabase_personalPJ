@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -27,6 +28,6 @@ class PasswordController extends Controller
 
         session()->flash('session_success', 'パスワードを変更しました');
 
-        return redirect()->route('mypage')->with('status', 'password-updated');
+        return redirect()->route('mypage.show', Auth::id())->with('status', 'password-updated');
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Notifications\ResetPasswordNotification;
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,9 +55,9 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function favorites()
+    public function favoriteNotes()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(Note::class, 'favorites');
     }
 
     public function wishes()

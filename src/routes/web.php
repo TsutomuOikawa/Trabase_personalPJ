@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Http\Controllers\IndexController::class)->name('index');
 // 都道府県別ページ
 Route::get('/prefectures/{prefecture_id}', [PrefectureController::class, 'show'])->where('prefecture_id', '^([1-9]|[1-3][0-9]|4[0-7])$')->name('prefectures.show');
+// マイページ
+Route::get('/mypage/{user_id}', [MypageController::class, 'show'])->name('mypage.show');
 
 // ノート関連
 Route::controller(NoteController::class)->group(function () {
@@ -42,15 +44,13 @@ Route::controller(NoteController::class)->group(function () {
         Route::put('/notes/article/{note_id}/edit', 'update')->whereNumber('note_id')->name('notes.update');
         // ノート削除機能
         Route::delete('/notes/article/{note_id}/delete', 'delete')->whereNumber('note_id')->name('notes.delete');
-
         // お気に入り登録
         Route::post('/notes/favorite/{note_id}', [App\Http\Controllers\FavoriteController::class, 'update'])->whereNumber('note_id')->name('favorite.update');
     });
 });
 
+// ログインユーザー専用
 Route::middleware('auth')->group(function () {
-    // マイページ
-    Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
     // プロフィール編集
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
