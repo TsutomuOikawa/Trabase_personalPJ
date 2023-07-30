@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Note;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,6 +11,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class NoteFactory extends Factory
 {
     /**
+     * モデルと対応するファクトリの名前
+     *
+     * @var string
+     */
+    protected $model = Note::class;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -17,10 +25,30 @@ class NoteFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween($min = 1, $max = 2),
-            'prefecture_id' => 4,
-            'title' => $this->faker->realText(15),
-            'content' => $this->faker->realText(300),
+            'user_id' => $this->faker->numberBetween(1, 20),
+            'prefecture_id' => $this->faker->numberBetween(1, 47),
+            'title' => $this->faker->realText(10),
+            'content' => '{
+                "time":'.now()->format('U').',
+                "blocks":[
+                    {
+                        "id":"pZy-xfgRQM",
+                        "type":"header",
+                        "data":{
+                            "text":"'.$this->faker->realText(15).'",
+                            "level":2
+                        }
+                    },
+                    {
+                        "id":"y-yFhbSHnE",
+                        "type":"paragraph",
+                        "data":{
+                            "text":"'.$this->faker->realText(40).'"
+                        }
+                    }
+                ],
+                "version":"2.26.4"
+            }',
             'created_at' => date('Y-m-d H:i:s'),
         ];
     }
