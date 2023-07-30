@@ -16,31 +16,6 @@ use Illuminate\Support\Facades\Storage;
 
 class NoteController extends Controller
 {
-    // ノートに必要な情報を取得する基本クエリ
-    public static function setNotesQuery()
-    {
-        $favorites = DB::table('favorites')
-            ->select(DB::raw('count(*) as favNum, user_id as favUser_id, note_id'))
-            ->groupBy('favUser_id', 'note_id');
-        $comments = DB::table('comments')
-            ->select(DB::raw('count(*) as comNum, note_id'))
-            ->groupBy('note_id');
-
-        $query = DB::table('notes')
-            ->leftJoin('users', 'notes.user_id', '=', 'users.id')
-            ->leftJoin('prefectures', 'notes.prefecture_id', '=', 'prefectures.id')
-            ->leftJoinSub($favorites, 'favorites', function ($join) {
-                $join->on('notes.id', '=', 'favorites.note_id');
-            })
-            ->leftJoinSub($comments, 'comments', function ($join) {
-                $join->on('notes.id', '=', 'comments.note_id');
-            })
-            ->select('notes.*', 'users.name', 'users.avatar', 'users.introduction', 'prefectures.id', 'prefectures.name', 'favorites.favNum', 'comments.comNum')
-            ->where('notes.deleted_at', null);
-
-        return $query;
-    }
-
       // 一覧・検索
       public function index(IndexRequest $request, IndexAction $action)
       {

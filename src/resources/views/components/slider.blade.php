@@ -2,7 +2,7 @@
   <div class="splide__track">
     <ul class="splide__list">
 
-      @if($_SERVER['REQUEST_URI'] === '/mypage')
+      @if(strpos($_SERVER['REQUEST_URI'], 'mypage/'))
         @foreach($notes as $note)
           @if($note->thumbnail)
             <li class="splide__slide"><img src="{{ asset($note->thumbnail) }}" class="splide_img" alt="{{ $note->title }}"></li>

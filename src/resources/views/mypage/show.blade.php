@@ -91,7 +91,7 @@
     </div>
   </div>
   @component('components.slider',
-   ['notes' => $user->notes])
+    ['notes' => $user->notes]),
   @endcomponent
 </main>
 

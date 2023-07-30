@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Note;
 
 class IndexController extends Controller
 {
@@ -13,13 +13,18 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        $query = NoteController::setNotesQuery();
-        $notes = $query->orderBy('notes.created_at', 'DESC')
-            ->limit(8)
-            ->get();
-        foreach ($notes as $note) {
-            $note->isFavorite = FavoriteController::isFavorite(Auth::id(), $note->id);
-        }
+        $notes = Note::query()
+        ->with([
+            'user',
+            'prefecture',
+        ])
+        ->withCount([
+            'comments',
+            'favoriteUsers',
+        ])
+        ->orderBy('notes.id', 'DESC')
+        ->limit(8)
+        ->get();
 
         return view('index')
             ->with('notes', $notes);
