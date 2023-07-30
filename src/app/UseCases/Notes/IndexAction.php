@@ -3,32 +3,29 @@
 namespace App\UseCases\Notes;
 
 use App\Models\Note;
-use Illuminate\Database\Eloquent\Builder;
 
 class IndexAction
 {
     public function __invoke(array $params)
     {
-        $query = Note::with([
+        $query = Note::query()
+        ->with([
             'user',
             'prefecture',
         ])
-            ->withCount([
-                'favorites' => function (Builder $query) {
-                    $query->groupBy('favorites.user_id', 'favorites.note_id');
-                },
-                'comments' => function (Builder $query) {
-                    $query->groupBy('comments.note_id');
-                },
-            ])
-            ->where('notes.deleted_at', null)
+        ->withCount([
+            'favoriteUsers',
+            'comments',
+        ])
 
         // 検索条件セット
-            ->when(isset($params['prefecture_name']), fn ($query) => $query->where('prefectures.name', 'like', "%{$params['prefecture_name']}%"))
-            ->when(isset($params['keyword']), fn ($query) => $query->where(fn ($query) => $query->where('title', 'like', "%{$params['keyword']}%")
+        ->when(isset($params['prefecture_name']), fn ($query) => $query->where('prefectures.name', 'like', "%{$params['prefecture_name']}%"))
+        ->when(isset($params['keyword']), fn ($query) => 
+            $query->where(fn ($query) => 
+                $query->where('title', 'like', "%{$params['keyword']}%")
                 ->orWhere('content', 'like', "%{$params['keyword']}%")
             )
-            );
+        );
 
         if (isset($params['sort']) && $params['sort'] === 'bookmarks') {
             $query->orderBy('favNum', 'DESC');

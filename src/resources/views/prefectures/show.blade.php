@@ -76,8 +76,8 @@
              都道府県
            </div>
            <select name="prefecture_id" class="form_input @error('prefecture_id') form_input--err @enderror js-get-note-pref" >
-           @foreach($prefectures as $prefecture)
-              <option value="{{ $prefecture['id'] }}" @if(old('prefecture_id') === $prefecture['id']) selected @elseif($prefecture->id === $prefecture['id']) selected @endif>{{ $prefecture['name'] }}</option>
+           @foreach($prefectures as $pref)
+              <option value="{{ $pref['id'] }}" @if(old('prefecture_id') === $pref['id']) selected @elseif($prefecture->id === $pref['id']) selected @endif>{{ $pref['name'] }}</option>
            @endforeach
            </select>
          </label>

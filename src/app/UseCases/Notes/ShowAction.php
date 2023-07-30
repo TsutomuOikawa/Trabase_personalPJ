@@ -3,7 +3,6 @@
 namespace App\UseCases\Notes;
 
 use App\Models\Note;
-use Illuminate\Database\Eloquent\Builder;
 
 class ShowAction
 {
@@ -15,12 +14,8 @@ class ShowAction
             'comments',
         ])
             ->withCount([
-                'favorites' => function (Builder $query) {
-                    $query->groupBy('favorites.user_id', 'favorites.note_id');
-                },
-                'comments' => function (Builder $query) {
-                    $query->groupBy('comments.note_id');
-                },
+                'favoriteUsers',
+                'comments',
             ])
             ->where('notes.id', $note_id)
             ->where('notes.deleted_at', null);

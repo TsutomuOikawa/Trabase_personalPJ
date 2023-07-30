@@ -9,14 +9,14 @@ class ShowAction
     public function __invoke(int $id)
     {
         $prefecture = Prefecture::with([
-            'notes' => function ($query) {
-                $query->with([
+            'notes' => fn ($query) =>
+                $query->withCount([
                     'comments',
-                    'favorites',
+                    'favoriteUsers',
                     ])
                     ->orderBy('notes.id', 'DESC')
-                    ->limit(8);
-            },
+                    ->limit(8)
+            ,
             'wishes',
         ])->find($id);
         return $prefecture;
