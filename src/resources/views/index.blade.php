@@ -8,7 +8,7 @@
 @section('content')
 <main>
   <section class="hero" style="background-image: url( {{Storage::disk('s3')->url('assets/hero/trabase_top.jpg')}} );">
-    <div class="js-header-change-target">
+    <div id="ts-header-change-target">
       <section id="firstView" class="firstView">
         <h1 class="firstView_title js-hide-title">旅の情報を<br>集めよう</h1>
         <form class="firstView_form" action="{{ route('notes.index') }}" method="get">

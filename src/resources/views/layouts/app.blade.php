@@ -14,14 +14,14 @@
 
   <body>
     @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'prefectures/'))
-    <header id="header" class="header js-change-header js-transparent">
+    <header id="header" class="header ts-change-header ts-transparent">
     @else
     <header id="header" class="header">
     @endif
       <div class="header_inner">
         <a href="{{ route('index') }}" class="header_logo"><img src="{{ Storage::disk('s3')->url('assets/trabase_logo.png') }}" class="header_logo_img" alt="Trabaseのロゴ画像"></a>
         @if($_SERVER['REQUEST_URI'] === '/'|| strpos($_SERVER['REQUEST_URI'], 'prefectures/'))
-        <form action="{{ route('notes.index') }}" method="get" class="header_form js-change-header_form js-nonactive">
+        <form action="{{ route('notes.index') }}" method="get" class="header_form ts-change-header_form ts-nonactive">
         @else
         <form action="{{ route('notes.index') }}" method="get" class="header_form">
         @endif
@@ -30,14 +30,14 @@
           <button type="submit" class="header_submit" name=""><i class="fa-solid fa-search fa-lg"></i></button>
         </form>
         <div class="header_sp">
-          <button type="button" class="header_search js-form-trigger"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <div class="header_humburger js-menu-trigger">
+          <button type="button" id="ts-form-trigger" class="header_search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <div id="ts-menu-trigger" class="header_humburger">
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
-        <nav class="header_menu js-slide-menu">
+        <nav id="ts-slide-menu" class="header_menu">
           @guest
           <ul class="menu">
             <li class="menu_item"><a href="/#about" class="menu_item_link"><i class="fa-solid fa-book-open"></i>About</a></li>
@@ -58,8 +58,8 @@
 
     @if(session('session_success'))
     <!-- Session Message -->
-    <div class="flashMsg flashMsg--success js-show-flashMsg">
-      <p class="flashMsg_text js-get-flashMsg">{{ session('session_success') }}</p>
+    <div id="ts-show-flashMsg" class="flashMsg flashMsg--success">
+      <p class="flasMsg_text">{{ session('session_success') }}</p>
     </div>
     @endif
 

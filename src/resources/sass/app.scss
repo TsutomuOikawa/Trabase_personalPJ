@@ -147,7 +147,7 @@ ul {
     transform: translate(-50%, -50%);
     transition: all 1s;
     width: 450px;
-    &.js-nonactive {
+    &.ts-nonactive {
       opacity: 0;
     }
   }
@@ -213,7 +213,7 @@ ul {
         bottom: 10px;
       }
     }
-    &.js-active {
+    &.ts-active {
       span {
         &:nth-of-type(1) {
           transform: translate(-50%, 14px) rotate(45deg);
@@ -229,11 +229,11 @@ ul {
     }
   }
   &_menu {
-    &.js-active {
+    &.ts-active {
       right: 0;
     }
   }
-  &.js-transparent {
+  &.ts-transparent {
     background: rgba($black, .1);
     box-shadow: none;
     & .header_menu .menu_item {
@@ -298,7 +298,7 @@ ul {
       position: absolute;
        top: -100%;
       width: 100%;
-      &.js-active {
+      &.ts-active {
         opacity: 1;
           top: 100%;
         transform: translate(-50%, 20%);
@@ -568,14 +568,13 @@ ul {
   box-sizing: border-box;
   height: 100vh;
   opacity: 0.6;
-  padding-top: 13%;
   position: relative;
   &_title {
     color: $white;
     font-family: "游明朝体";
     font-size: $font-xxxl;
     letter-spacing: 0.1em;
-    opacity: 1;
+    opacity: 0.7;
     position: fixed;
       top: 37%;
     text-align: center;
@@ -583,10 +582,9 @@ ul {
     visibility: visible;
     width: 100%;
     &--big {
-      @extend .firstView_title;
       font-size: 70px;
     }
-    &.js-nonactive {
+    &.ts-nonactive {
       opacity: 0;
       visibility: hidden;
     }
@@ -603,7 +601,6 @@ ul {
   .firstView {
     &_title {
       &--big {
-        @extend .firstView_title;
         font-size: 50px;
       }
       span {
@@ -1826,7 +1823,7 @@ ul {
   transition: all 1.5s;
   width: 100%;
   z-index: 3000;
-  &.js-active {
+  &.ts-active {
     top: 0;
   }
   &--success {
