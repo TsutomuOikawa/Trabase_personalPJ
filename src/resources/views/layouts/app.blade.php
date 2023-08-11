@@ -9,7 +9,7 @@
     <title>@yield('title')｜Trabase -トラベス-</title>
     @yield('headerScript')
     <!-- Scripts -->
-    @vite(['resources/css/reset.css', 'resources/sass/app.scss'])
+    @vite(['resources/css/reset.css', 'resources/sass/app.scss', 'resources/ts/app.ts'])
   </head>
 
   <body>
