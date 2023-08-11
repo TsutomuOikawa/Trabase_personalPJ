@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/reset.css',
                 'resources/icon/css/all.min.css',
+                'resources/ts/app.ts',
                 'resources/js/app.js',
                 'resources/js/editor.js',
                 'resources/js/google-map.js',
