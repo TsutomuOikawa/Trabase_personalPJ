@@ -11,43 +11,6 @@ $(function () {
   let $window = $(window);
 
 //////////////////////
-  // ヘッダーハンバーガーメニュー
-  $('.js-menu-trigger').on('click', function() {
-    $(this).toggleClass('js-active');
-    $('.js-slide-menu').toggleClass('js-active');
-  })
-
-//////////////////////
-  // ヘッダー検索窓
-  $('.js-form-trigger').on('click', function() {
-    $(this).children().toggleClass('fa-magnifying-glass').toggleClass('fa-chevron-up');
-    $('.header_form').toggleClass('js-active');
-  })
-
-//////////////////////
-  // スクロールによる変更
-  let screenHeight = $('.js-header-change-target').height();
-  let $title = $('.js-hide-title');
-  $window.on('scroll', function(){
-    // ヘッダー
-    $('.js-change-header').toggleClass('js-transparent', $window.scrollTop() < screenHeight/1.6);
-    $('.js-change-header_form').toggleClass('js-nonactive', $window.scrollTop() < screenHeight/1.6);
-    // ファーストビュー
-    $title.toggleClass('js-nonactive', $window.scrollTop() > screenHeight/3);
-  });
-
-//////////////////////
-  // フラッシュメッセージ
-  let msgWindow = $('.js-show-flashMsg');
-
-  if ($('.js-get-flashMsg').text()) {
-    msgWindow.toggleClass('js-active');
-    setTimeout(function(){
-      msgWindow.toggleClass('js-active');
-    }, 4000);
-  }
-
-//////////////////////
   // プロフィール編集カルーセル
   let movingContainer = $('.js-move-position');
   // カルーセルアイテムの数とcssのmin-widthにセットしたパーセンテージを指定

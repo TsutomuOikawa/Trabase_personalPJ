@@ -11,9 +11,9 @@
 @section('content')
 <main>
   <section class="hero js-set-back" style="background-image: url( {{ Storage::disk('s3')->url('assets/hero/'.$prefecture->name.'.jpg') }} );">
-    <div class="js-header-change-target">
+    <div id="ts-header-change-target">
       <section class="firstView">
-        <h1 class="firstView_title--big js-hide-title">{{ $prefecture->name }}</h1>
+        <h1 class="firstView_title firstView_title--big js-hide-title">{{ $prefecture->name }}</h1>
       </section>
       <section id="informations" class="container--transparent informations">
         <h2 class="container_title">旅の情報</h2>
