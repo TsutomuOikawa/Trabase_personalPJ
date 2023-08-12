@@ -1,10 +1,8 @@
-import {makeSlider} from './slider.js';
 import {setEditor} from './editor.js';
 
 $(function () {
 //////////////////////
   // スライダー
-  makeSlider();
   // エディター
   setEditor();
   // ウィンドウ
