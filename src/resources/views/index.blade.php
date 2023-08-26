@@ -20,8 +20,8 @@
       <section id="map" class="map container--transparent">
         <h2 class="container_title">日本地図から探す</h2>
         <div class="container_body">
-          <p class="map_pref">次の旅先：<span class="js-insert-pref"></span></p>
-          <div class="map_japanMap js-japanMap"></div>
+          <p class="map_pref">次の旅先：<span id="ts-insert-pref"></span></p>
+          <div id="ts-japan-map" class="map_japanMap"></div>
         </div>
       </section>
     </div>
@@ -75,7 +75,6 @@
 @endsection
 
 @section('script')
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
-  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script> 
+  @vite(['resources/js/jquery.japan-map.min.js', 'resources/ts/pages/index.ts'])
 @endsection
