@@ -24,6 +24,7 @@
         "@editorjs/paragraph": "^2.9.0",
         "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+        "@types/jquery": "^3.5.17",
         "japan-map-js": "^1.0.1"
     },
     "engines": {
