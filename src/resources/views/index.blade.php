@@ -8,23 +8,21 @@
 @section('content')
 <main>
   <section class="hero" style="background-image: url( {{Storage::disk('s3')->url('assets/hero/trabase_top.jpg')}} );">
-    <div id="ts-header-change-target">
-      <section id="firstView" class="firstView">
-        <h1 class="firstView_title js-hide-title">旅の情報を<br>集めよう</h1>
-        <form class="firstView_form" action="{{ route('notes.index') }}" method="get">
-          <input type="text" name="prefecture_name" class="header_input" value="{{ old('prefecture_name') }}" placeholder="都道府県名を入力">
-          <input type="text" name="key" class="header_input" value="{{ old('key') }}" placeholder="キーワードを入力">
-          <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
-        </form>
-      </section>
-      <section id="map" class="map container--transparent">
-        <h2 class="container_title">日本地図から探す</h2>
-        <div class="container_body">
-          <p class="map_pref">次の旅先：<span id="ts-insert-pref"></span></p>
-          <div id="ts-japan-map" class="map_japanMap"></div>
-        </div>
-      </section>
-    </div>
+    <section id="ts-header-change-target" class="firstView">
+      <h1 class="firstView_title js-hide-title">旅の情報を<br>集めよう</h1>
+      <form class="firstView_form" action="{{ route('notes.index') }}" method="get">
+        <input type="text" name="prefecture_name" class="header_input" value="{{ old('prefecture_name') }}" placeholder="都道府県名を入力">
+        <input type="text" name="key" class="header_input" value="{{ old('key') }}" placeholder="キーワードを入力">
+        <button type="submit" class="header_submit" name=""><i class="fas fa-search fa-lg"></i></button>
+      </form>
+    </section>
+    <section id="map" class="map container--transparent">
+      <h2 class="container_title">日本地図から探す</h2>
+      <div class="container_body">
+        <p class="map_pref">次の旅先：<span id="ts-insert-pref"></span></p>
+        <div id="ts-japan-map" class="map_japanMap"></div>
+      </div>
+    </section>
       @component('components.slider',
         ['prefectures' => $prefectures])
       @endcomponent

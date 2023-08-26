@@ -11,26 +11,24 @@
 @section('content')
 <main>
   <section class="hero js-set-back" style="background-image: url( {{ Storage::disk('s3')->url('assets/hero/'.$prefecture->name.'.jpg') }} );">
-    <div id="ts-header-change-target">
-      <section class="firstView">
-        <h1 class="firstView_title firstView_title--big js-hide-title">{{ $prefecture->name }}</h1>
-      </section>
-      <section id="informations" class="container--transparent informations">
-        <h2 class="container_title">旅の情報</h2>
-        <div class="container_body">
-          <div class="list--wish">
-            <h3 class="list_title">{{ $prefecture->name }}の人気スポット・体験</h3>
-            @component('components.wishLists',
-              ['wishes' => $prefecture->wishes, 'mine' => false])
-            @endcomponent
-          </div>
-          <div class="informations_map">
-            <h3 class="list_title">{{ $prefecture->name }}のマップ</h3>
-            <div id="googleMap" class="informations_google"></div>
-          </div>
+    <section id="ts-header-change-target" class="firstView">
+      <h1 class="firstView_title firstView_title--big js-hide-title">{{ $prefecture->name }}</h1>
+    </section>
+    <section id="informations" class="container--transparent informations">
+      <h2 class="container_title">旅の情報</h2>
+      <div class="container_body">
+        <div class="list--wish">
+          <h3 class="list_title">{{ $prefecture->name }}の人気スポット・体験</h3>
+          @component('components.wishLists',
+            ['wishes' => $prefecture->wishes, 'mine' => false])
+          @endcomponent
         </div>
-      </section>
-    </div>
+        <div class="informations_map">
+          <h3 class="list_title">{{ $prefecture->name }}のマップ</h3>
+          <div id="googleMap" class="informations_google"></div>
+        </div>
+      </div>
+    </section>
     @component('components.slider',
         ['prefecture' => $prefecture])
     @endcomponent
