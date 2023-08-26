@@ -19,8 +19,8 @@
         </ul>
         <div class="mypage_article">
           <section id="map" class="mypage_contents js-show-contents js-active">
-            <p class="mypage_title">全国踏破まであと<span class="js-insert-progress"></span>県</p>
-            <div class="js-japanMap"></div>
+            <p class="mypage_title">全国踏破まであと<span id="ts-insert-progress"></span>県</p>
+            <div id="ts-japan-map"></div>
 
             @component('components.modal')
                @slot('modal_title')
@@ -28,7 +28,7 @@
                @endslot
 
                @slot('modal_content')
-                <div class="js-insert-content"></div>
+                <div id="ts-insert-anchors"></div>
                @endslot
 
                @slot('modal_action')
@@ -38,7 +38,7 @@
           </section>
           <section id="notes" class="mypage_contents js-show-contents">
             <div class="list--note">
-              <ul class="list_body--scrollNote js-get-visited">
+              <ul id="ts-get-visited" class="list_body--scrollNote">
                 @component('components.notes',
                   ['notes' => $user->notes])
                 @endcomponent
@@ -97,7 +97,6 @@
 
 @endsection
 @section('script')
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
-  @vite(['resources/js/jquery.japan-map.min.js', 'resources/js/japan-map.js'])
+  @vite(['resources/js/jquery.japan-map.min.js', 'resources/ts/pages/mypage/show.ts'])
 @endsection
