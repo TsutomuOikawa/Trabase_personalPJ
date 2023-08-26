@@ -145,20 +145,6 @@ $(function () {
     $this.attr('href', href + '&num=' + num);
   });
 
-//////////////////////
-  // 採用担当者様向けメッセージ
-  let $message = $('.js-message-to-recruiter');
-  // セッションがなければ見せる
-  if(!sessionStorage.getItem('check')) {
-    $message.show();
-    $body.css('overflow-y', 'hidden');
-    sessionStorage.setItem('check', 'true');
-  }
-  // 隠す
-  $('.js-hide-message').on('click', function() {
-    $body.css('overflow-y', 'auto');
-    $message.hide()
-  });
 
 
 
